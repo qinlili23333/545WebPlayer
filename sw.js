@@ -8,13 +8,10 @@ var URLS = [
     './',
 ]
 const getCacheName = url => {
-    if (url.indexOf("qinlili.bid") > 0) {
-        return CACHE_NAME;
-    }
     if (url.indexOf("bcebos.com") > 0) {
         return "MusicCache";
     }
-    return "NoCache"
+    return CACHE_NAME;
 }
 self.addEventListener('fetch', event => {
     if (event.request.method == "GET" && (event.request.url.indexOf("http") == 0) && (event.request.url.indexOf("ForceNoCache") == -1)) {
