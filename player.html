@@ -167,6 +167,7 @@
         integrity="sha512-y9glprRcVESvYY3suAqBUYXx0ySbQNvbzzgvLy9F2o38Y7XCNeq/No2gnHjV3+Rjyq5ijoPZRMXotpdw6jcG4g=="
         href="https://lib.baomitu.com/material-design-icons/3.0.2/iconfont/material-icons.min.css" rel="stylesheet">
     <script src="./lib/pullrefresh.js"></script>
+    <script src="./lib/long-press.min.js"></script>
 </head>
 
 <body style="text-align: center">
@@ -380,6 +381,11 @@
                             //立即播放
                             playNow(songInfo);
                         })
+                        song.addEventListener('long-press', () => {
+                            if (confirm("你想要从播放列表删除 " + songInfo.name + " 吗？")) {
+                                removeFromPlayList(songInfo);
+                            }
+                        })
                         audioListModule.appendChild(song);
                     })
                 } else {
@@ -395,6 +401,20 @@
                 window.list = [];
             }
             window.list.push(song);
+            window.list = window.list.filter((value, index, self) =>
+                index === self.findIndex((t) => (
+                    t.place === value.place && t.name === value.name
+                ))
+            )
+            localStorage.playList = JSON.stringify(window.list);
+            renderPlayList();
+        }
+        const removeFromPlayList = song => {
+            window.list.forEach((info, index) => {
+                if (info == song) {
+                    window.list.splice(index, 1)
+                }
+            });
             localStorage.playList = JSON.stringify(window.list);
             renderPlayList();
         }
