@@ -10,6 +10,7 @@
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E5%A4%A7%E5%96%9C_20220325122827_12379.ogg"
                     },
+                    "cover": "https://i0.hdslb.com/bfs/archive/c751c763a22e662ccaefc1cd934b906cd082ccc2.jpg",
                     "quality": "OPUS192",
                     "full_title": "『笙歌』年夜饭不得不听的《大喜》｜祝大家新年快乐！",
                     "origin": "https://www.bilibili.com/video/BV1ba41127Fn",
@@ -20,6 +21,7 @@
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E8%99%9A%E6%8B%9Fparadise_20220325124722_60749.ogg"
                     },
+                    "cover": "https://i0.hdslb.com/bfs/archive/4234c855581f6d2be0799cbebb09b9f9b0b32023.jpg",
                     "quality": "OPUS96",
                     "full_title": "原创曲生日作【虚拟paradise】—笙歌 ｜有没有被虚拟主播治愈过的瞬间",
                     "origin": "https://www.bilibili.com/video/BV1Fr4y1i7g5",
@@ -30,10 +32,22 @@
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BA%A2%E5%8F%B6%E5%AF%BA_20220325124721_6771.ogg"
                     },
+                    "cover": "https://i0.hdslb.com/bfs/archive/7e91258b4423201f8618ed6d21fd90333af371b0.jpg",
                     "quality": "OPUS96",
                     "full_title": "【红叶寺】笙歌——就问你们够不够御姐是不是心魔！",
                     "origin": "https://www.bilibili.com/video/BV1kC4y1h717",
                     "source_quality": "AAC128"
+                },
+                {
+                    "name": "人间不值得",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BA%BA%E9%97%B4%E4%B8%8D%E5%80%BC%E5%BE%97_20220325140311_31095.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/music/a2b38aba10aa7243ce12a8cc08cad3942d49ca23.jpg",
+                    "quality": "OPUS128",
+                    "full_title": "温柔女声超好听戏腔【人间不值得】（cover：黄诗扶）——笙歌",
+                    "origin": "https://www.bilibili.com/audio/au1045251",
+                    "source_quality": "AAC192"
                 }
             ]
         }

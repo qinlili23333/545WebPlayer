@@ -1,0 +1,28 @@
+/* (A) LIST STYLES */
+.slist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.slist li {
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid #dfdfdf;
+  background: #f5f5f5;
+}
+
+/* (B) DRAG-AND-DROP HINT */
+.slist li.hint {
+  border: 1px solid #ffc49a;
+  background: #feffb4;
+}
+.slist li.active {
+  border: 1px solid #ffa5a5;
+  background: #ffe7e7;
+}
+
+/* (X) DOES NOT MATTER */
+* {
+  font-family: arial, sans-serif;
+  box-sizing: border-box;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="545在线，随时补充塔能量！笙歌牌播放器，支持智能缓存本地播放，由琴梨梨驱动" />
+    <meta name="robots" content="noindex">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <link rel="canonical" href="https://545.qinlili.bid/setting.html" />
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#9EA6E5">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="icon" href="./icon.png">
+    <title>545在线-设置</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .mdc-card {
+            margin: 20px;
+        }
+
+        .card-title {
+            background-color: rgba(219, 199, 251, .5);
+            padding: 3px;
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <script>
+        document.title = "载入设置中..."
+    </script>
+    <link crossorigin="anonymous"
+        integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ=="
+        href="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.css" rel="stylesheet">
+    <script crossorigin="anonymous"
+        integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
+        src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
+    <script src="./lib/pullrefresh.js"></script>
+</head>
+
+<body style="text-align: center">
+    <div class="navbar">
+        <button onclick="document.location.href='./player.html'" class="mdc-button foo-button">
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label"><<</span>
+        </button>
+
+        <button onclick="document.location.href='./about.html'" class="mdc-button foo-button">
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">关于</span>
+        </button>
+    </div>
+
+    <div id="settings">
+
+    </div>
+    <script>
+        const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
+        window.mdc.autoInit();
+        document.querySelectorAll('.foo-button').forEach(element => {
+            mdc.ripple.MDCRipple.attachTo(element);
+        });
+        document.title = "545在线-设置";
+    </script>
+</body>
+
+</html>

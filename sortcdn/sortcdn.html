@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="545在线，随时补充塔能量！笙歌牌播放器，支持智能缓存本地播放，由琴梨梨驱动" />
+  <meta name="robots" content="noindex">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <title>CDN排序</title>
+
+  <!-- (A) LOAD CSS + JS -->
+  <link rel="stylesheet" href="sort-list.css" />
+  <script src="sort-list.js"></script>
+  <script src="../lib/DragDropTouch.js"></script>
+</head>
+
+<body>
+  <!-- (B) THE LIST -->
+  <ul id="sortlist">
+    <li key="yuketang">雨课堂</li>
+    <li key="cloudflare">Cloudflare（尚未开放）</li>
+    <li key="chaoxing">超星（尚未开放）</li>
+    <li key="github">Github（尚未开放）</li>
+  </ul>
+
+  <!-- (C) INIT ON PAGE LOAD -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      slist(document.getElementById("sortlist"));
+    });
+  </script>
+</body>
+
+</html>
