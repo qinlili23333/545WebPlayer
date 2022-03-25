@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="description" content="545在线，随时补充塔能量！笙歌牌播放器，支持智能缓存本地播放，由琴梨梨驱动" />
     <meta name="robots" content="noindex">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     <link rel="canonical" href="https://545.qinlili.bid/player.html" />
     <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#9EA6E5">
@@ -78,7 +79,7 @@
         }
 
         #audioList {
-            overflow: scroll;
+            overflow-y: scroll;
         }
     </style>
     <script>
@@ -101,22 +102,31 @@
     </div>
     <script>
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay))
-        const getAudioList = async () => {
-            let jsonData = await (await fetch("audioInfo.json")).json()
-            if (jsonData && jsonData.success) {
-                return jsonData.songs;
-            }
-            return false;
+        let config = {
+            cdnPriority: ['yuketang', 'cloudflare', 'chaoxing', 'p2p']
         }
         document.title = "读取歌单..."
         const renderAudioList = async () => {
-            const audioList = await getAudioList();
-            if (audioList) {
-                window.audioList = audioList;
-                console.log(audioList);
-            } else {
-                alert("读取歌单失败！请尝试刷新页面重试！")
+            const getAudioList = async () => {
+                let jsonData = await (await fetch("audioInfo.json?ForceNoCache=1")).json()
+                if (jsonData && jsonData.success) {
+                    return jsonData.songs;
+                }
+                return false;
             }
+            let audioList;
+            if (localStorage.cacheSong) {
+                audioList = JSON.parse(localStorage.cacheSong)
+            } else {
+                audioList = await getAudioList();
+                if (audioList) {
+                    localStorage.cacheSong = JSON.stringify(audioList);
+                } else {
+                    alert("读取歌单失败！请尝试刷新页面重试！")
+                }
+            }
+            console.log(audioList);
+            window.audioList = audioList;
         }
         renderAudioList();
     </script>

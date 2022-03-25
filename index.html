@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="description" content="545在线，随时补充塔能量！笙歌牌播放器，支持智能缓存本地播放，由琴梨梨驱动" />
   <link rel="canonical" href="https://545.qinlili.bid/" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <link rel="manifest" href="./manifest.json">
   <meta name="theme-color" content="#9EA6E5">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -55,7 +56,7 @@
       }
       let liveStatus = await (await fetch("https://bililive.qinlili.workers.dev/status?uid=15641218&ForceNoCache=1")).json();
       if (liveStatus.data && (liveStatus.data.status == 1) && confirm("塔宝正在直播，不去看直播？\n（点击确定即可快速跳转到直播间，点击取消继续前往播放器）")) {
-        location.href ="https://live.bilibili.com/545"
+        location.href = "https://live.bilibili.com/545"
         return;
       }
       document.body.innerHTML = "正在加载播放器...";
