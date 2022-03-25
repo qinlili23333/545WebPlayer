@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="545在线，随时补充塔能量！笙歌牌播放器，支持智能缓存本地播放，由琴梨梨驱动" />
+  <link rel="canonical" href="https://545.qinlili.bid/" />
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#9EA6E5">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="icon" href="./icon.png">
+  <title>545在线</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* to remove the top and left whitespace */
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* just to be sure these are full screen*/
+
+    canvas {
+      display: block;
+    }
+
+    /* To remove the scrollbars */
+  </style>
+</head>
+
+<body style="text-align: center">
+  <script>
+    const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay))
+    const init = async () => {
+      if (!navigator.serviceWorker) {
+        document.body.innerHTML = ("你的浏览器不支持Service Worker，你应该换个浏览器了");
+        return;
+      }
+      if (navigator.serviceWorker && !navigator.serviceWorker.controller) {
+        document.body.innerHTML = ("安装Service Worker...安装成功后将自动刷新页面");
+        await navigator.serviceWorker.register('./sw.js', { scope: '/' });
+        await sleep(3000)
+        document.location.reload();
+      }
+      if (navigator.userAgent.indexOf("WOW64") > 1) {
+        document.body.innerHTML = "你正在64位操作系统上使用32位浏览器!为了更快的访问速度请改用64位浏览器!"
+        await sleep(3000)
+      }
+      location.href = "player.html"
+    }
+    init();
+  </script>
+</body>
+
+</html>
