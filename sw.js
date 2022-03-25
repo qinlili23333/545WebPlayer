@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '20220325'
-var VERSION_AZUSA_PATCH_USE = 'NOTHING'
+var VERSION = '20220326'
+var VERSION_AZUSA_PATCH_USE = 'ForceUpdate'
 var AZUSA_PATCH_SKIP_LIST = []
 var CACHE_NAME = APP_PREFIX + VERSION
 var AZUSA_CACHE = APP_PREFIX + VERSION_AZUSA_PATCH_USE
@@ -64,7 +64,7 @@ self.addEventListener('activate', e => {
             })
             cacheWhitelist.push(CACHE_NAME);
             cacheWhitelist.push("MusicCache");
-
+            cacheWhitelist.push("ImageCache");
             return Promise.all(keyList.map((key, i) => {
                 if (cacheWhitelist.indexOf(key) === -1) {
                     console.log('deleting cache : ' + keyList[i])
