@@ -19,37 +19,36 @@
             border-radius: 0px;
         }
 
+        ::-webkit-scrollbar {
+            height: 12px;
+            width: 8px;
+            background: transparent;
+            z-index: 12;
+            overflow: visible;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            width: 10px;
+            background-color: #DFAEFF;
+            z-index: 12;
+            border: 3px solid rgba(0, 0, 0, 0);
+            background-clip: padding-box;
+            transition: background-color .32s ease-in-out;
+            margin: 4px;
+            min-height: 32px;
+            min-width: 32px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #DFAEFF;
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: #202020;
+        }
+
         *:focus {
             outline: none;
-        }
-
-        .column {
-            float: left;
-            width: 100%;
-            padding: 10px;
-        }
-
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        .btn {
-            border: none;
-            outline: none;
-            padding: 0px 0px;
-            background-color: #f1f1f1;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: #ddd;
-        }
-
-        .btn.active {
-            background-color: #666;
-            color: white;
         }
 
         * {
@@ -80,6 +79,8 @@
 
         #audioList {
             overflow-y: scroll;
+            min-height: 100vh;
+            margin-bottom: 64px;
         }
     </style>
     <script>
@@ -91,6 +92,7 @@
     <script crossorigin="anonymous"
         integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
         src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
+    <script src="./lib/pullrefresh.js"></script>
 </head>
 
 <body style="text-align: center">
@@ -106,7 +108,7 @@
             cdnPriority: ['yuketang', 'cloudflare', 'chaoxing', 'p2p']
         }
         document.title = "读取歌单..."
-        const renderAudioList = async () => {
+        const renderAudioList = async force => {
             const getAudioList = async () => {
                 let jsonData = await (await fetch("audioInfo.json?ForceNoCache=1")).json()
                 if (jsonData && jsonData.success) {
@@ -115,7 +117,7 @@
                 return false;
             }
             let audioList;
-            if (localStorage.cacheSong) {
+            if (localStorage.cacheSong && !force) {
                 audioList = JSON.parse(localStorage.cacheSong)
             } else {
                 audioList = await getAudioList();
@@ -128,7 +130,13 @@
             console.log(audioList);
             window.audioList = audioList;
         }
-        renderAudioList();
+        renderAudioList(false);
+        PullToRefresh.init({
+            mainElement: '#audioList',
+            onRefresh: function () {
+                renderAudioList(true);
+            }
+        });
     </script>
 </body>
 
