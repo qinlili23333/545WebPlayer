@@ -12,12 +12,50 @@
     <link rel="icon" href="./icon.png">
     <title>545在线-播放</title>
     <style>
+        audio::-webkit-media-controls-play-button,
+        audio::-webkit-media-controls-panel {
+            background-color: rgba(256, 256, 256, 1.0);
+            border-radius: 0px;
+        }
+
+        *:focus {
+            outline: none;
+        }
+
+        .column {
+            float: left;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .btn {
+            border: none;
+            outline: none;
+            padding: 0px 0px;
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+        .btn.active {
+            background-color: #666;
+            color: white;
+        }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
-        /* to remove the top and left whitespace */
 
         html,
         body {
@@ -25,14 +63,27 @@
             height: 100%;
         }
 
-        /* just to be sure these are full screen*/
-
-        canvas {
-            display: block;
+        #playPanel {
+            z-index: 999;
+            position: fixed;
+            height: auto;
+            min-height: 32px;
+            width: auto;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            padding: 5px;
+            background-color: white;
+            box-shadow: 0px -2px 2px 1px rgba(0, 0, 0, 0.5);
         }
 
-        /* To remove the scrollbars */
+        #audioList {
+            overflow: scroll;
+        }
     </style>
+    <script>
+        document.title = "载入播放器中..."
+    </script>
     <link crossorigin="anonymous"
         integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ=="
         href="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.css" rel="stylesheet">
@@ -42,7 +93,12 @@
 </head>
 
 <body style="text-align: center">
-    正在加载播放器...
+    <div id="playPanel">
+        <audio controls autoplay id="player" style="width: 100%;"></audio>
+    </div>
+    <div id="audioList">
+
+    </div>
     <script>
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay))
         const getAudioList = async () => {
@@ -52,7 +108,17 @@
             }
             return false;
         }
-
+        document.title = "读取歌单..."
+        const renderAudioList = async () => {
+            const audioList = await getAudioList();
+            if (audioList) {
+                window.audioList = audioList;
+                console.log(audioList);
+            } else {
+                alert("读取歌单失败！请尝试刷新页面重试！")
+            }
+        }
+        renderAudioList();
     </script>
 </body>
 
