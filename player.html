@@ -78,6 +78,8 @@
             padding: 5px;
             background-color: white;
             box-shadow: 0px -2px 2px 1px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
         }
 
         #audioList,
@@ -104,6 +106,26 @@
             padding-top: 32px;
             height: auto;
             text-align: center;
+        }
+
+        #controls {
+            justify-content: space-between;
+            display: flex;
+            flex-direction: row;
+        }
+
+        #status {
+            display: flex;
+            flex-direction: row;
+            height: 32px;
+        }
+
+        #tips {
+            margin: auto;
+        }
+
+        #loading {
+            margin: 4px;
         }
     </style>
     <script>
@@ -152,9 +174,13 @@
     </div>
     <div id="playPanel">
         <div id="controls">
-
+            <div id="status">
+                <img src="./img/loading.svg" id="loading">
+                <p id="tips">正在加载播放器</p>
+            </div>
+            <div id="buttons"></div>
         </div>
-        <audio controls autoplay id="player" style="width: 100%;"></audio>
+        <audio controls autoplay id="player" style="width: 100%;height:32px;"></audio>
     </div>
     <div style="height:48px;"></div>
     <div id="audioList" style="display:none;">
@@ -190,6 +216,10 @@
         }
     </script>
     <script>
+        const setStatus = (text, loading) => {
+            document.getElementById("loading").style.display = loading ? "block" : "none";
+            document.getElementById("tips").innerText = text;
+        }
         const makeItem = (name, info, avatar, menuCallback) => {
             let newItem = document.createElement("li");
             newItem.className = "mdc-list-item";
@@ -228,7 +258,7 @@
             }
             return newItem;
         }
-        document.title = "读取歌单..."
+        document.title = "读取歌单...";
         const renderAudioList = async force => {
             const getAudioList = async () => {
                 let jsonData = await (await fetch("audioInfo.json?ForceNoCache=1")).json()
@@ -248,6 +278,8 @@
                     alert("读取歌单失败！请尝试刷新页面重试！")
                 }
             }
+            setStatus("就绪", false)
+            document.title = "545在线-播放";
             console.log(audioList);
             window.audioList = audioList;
             //渲染全部歌单
@@ -338,13 +370,11 @@
         const playNow = async song => {
             //为日后多CDN切换做准备
             const cdn = "yuketang";
-            setStatus("正在缓存" + song.name, true)
+            document.title = song.name + "-545在线";
+            setStatus("正在下载" + song.name, true)
             let playBlob = URL.createObjectURL(await (await fetch(song.url[cdn])).blob())
             document.getElementById("player").src = playBlob;
             setStatus(song.name, false)
-        }
-        const setStatus = (text, loading) => {
-
         }
     </script>
 </body>
