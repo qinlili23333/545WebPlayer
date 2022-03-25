@@ -32,7 +32,7 @@
 
         ::-webkit-scrollbar-thumb {
             width: 10px;
-            background-color: #DFAEFF;
+            background-color: #FADCBB;
             z-index: 12;
             border: 3px solid rgba(0, 0, 0, 0);
             background-clip: padding-box;
@@ -43,7 +43,7 @@
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background: #DFAEFF;
+            background: #FADCBB;
         }
 
         ::-webkit-scrollbar-corner {
@@ -154,6 +154,10 @@
             background-color: #999999
         }
 
+        .topBtn.active {
+            background-color: #FADCBB
+        }
+
         @media (min-width: 700px) {
             #listContainer {
                 display: flex !important;
@@ -219,8 +223,8 @@
                 <p id="tips">正在加载播放器</p>
             </div>
             <div id="buttons">
-                <img class="topBtn" id="randomBtn" src="./img/shuffle.svg">
-                <img class="topBtn" id="repeatBtn" src="./img/repeat.svg">
+                <img class="topBtn" id="shuffleBtn" onclick="switchShuffle();" src="./img/shuffle.svg">
+                <img class="topBtn" id="repeatBtn" onclick="switchRepeat();" src="./img/repeat.svg">
                 <img class="topBtn" id="settingBtn" onclick="document.location.href='./settings.html'"
                     src="./img/setting.svg">
             </div>
@@ -261,8 +265,30 @@
             audioList.style.display = "none"
             playList.style.display = "block"
         }
+        const random = (min, max) => {
+            return Math.round(Math.random() * (max - min)) + min;
+        }
     </script>
     <script>
+        window.repeatSwitch = localStorage.repeat || false;
+        window.shuffleSwitch = localStorage.shuffle || false;
+        if (repeatSwitch) {
+            document.getElementById("repeatBtn").className = "topBtn active";
+        }
+        if (shuffleSwitch) {
+            document.getElementById("shuffleBtn").className = "topBtn active";
+        }
+        const switchRepeat = () => {
+            window.repeatSwitch = repeatSwitch ? false : true;
+            localStorage.repeat = window.repeatSwitch;
+            document.getElementById("repeatBtn").className = window.repeatSwitch ? "topBtn active" : "topBtn";
+        }
+        const switchShuffle = () => {
+            window.shuffleSwitch = shuffleSwitch ? false : true;
+            localStorage.shuffle = window.shuffleSwitch;
+            document.getElementById("shuffleBtn").className = window.shuffleSwitch ? "topBtn active" : "topBtn";
+        }
+        const player = document.getElementById("player");
         const setStatus = (text, loading) => {
             document.getElementById("loading").style.display = loading ? "block" : "none";
             document.getElementById("tips").innerText = text;
@@ -439,7 +465,7 @@
             document.title = song.name + "-545在线";
             setStatus("正在下载" + song.name, true);
             let playBlob = URL.createObjectURL(await (await fetch(song.url[cdn])).blob())
-            document.getElementById("player").src = playBlob;
+            player.src = playBlob;
             setStatus(song.name, false);
             localStorage.lastPlay = JSON.stringify(song);
         }
@@ -450,11 +476,20 @@
                 document.title = song.name + "-545在线";
                 setStatus("正在下载" + song.name, true);
                 let playBlob = URL.createObjectURL(await (await fetch(song.url[cdn])).blob())
-                document.getElementById("player").src = playBlob;
+                player.src = playBlob;
                 setStatus(song.name, false);
             }
         }
         recoverPlay();
+        player.addEventListener("ended", () => {
+            if (repeatSwitch) {
+                player.play();
+            }
+            if (shuffleSwitch) {
+                //随机播放下一首
+                playNow(window.list[random(0, window.list.length - 1)]);
+            }
+        })
     </script>
 </body>
 

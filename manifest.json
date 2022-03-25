@@ -13,13 +13,11 @@
     "start_url": "/",
     "display": "standalone",
     "display_override": [
-        "fullscreen",
-        "minimal-ui"
     ],
     "id": "/",
     "lang": "cn",
-    "orientation": "landscape-primary",
-    "background_color": "#9EA6E5",
-    "theme_color": "#9EA6E5",
+    "orientation": "portrait-primary",
+    "background_color": "#FADCBB",
+    "theme_color": "#FADCBB",
     "description": "随时随地在线补充塔能量"
 }
