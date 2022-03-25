@@ -1,4 +1,4 @@
-var APP_PREFIX = '塔'
+var APP_PREFIX = '545在线'
 var VERSION = '20220325'
 var VERSION_AZUSA_PATCH_USE = 'NOTHING'
 var AZUSA_PATCH_SKIP_LIST = []
@@ -10,6 +10,9 @@ var URLS = [
 const getCacheName = url => {
     if (url.indexOf("bcebos.com") > 0) {
         return "MusicCache";
+    }
+    if (url.indexOf("hdslb.com") > 0) {
+        return "ImageCache";
     }
     return CACHE_NAME;
 }
