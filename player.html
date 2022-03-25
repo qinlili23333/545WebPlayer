@@ -153,6 +153,19 @@
         .topBtn:active {
             background-color: #999999
         }
+
+        @media (min-width: 700px) {
+            #listContainer {
+                display: flex !important;
+                flex-direction: row-reverse !important;
+            }
+
+            #audioList,
+            #playList {
+                display: block !important;
+                width: 50vw;
+            }
+        }
     </style>
     <script>
         document.title = "载入播放器中..."
@@ -215,20 +228,22 @@
         <audio controls autoplay id="player" style="width: 100%;height:32px;"></audio>
     </div>
     <div style="height:48px;"></div>
-    <div id="audioList" style="display:none;">
-        <ul id="audioFolderModule" class="mdc-list mdc-list--two-line mdc-list--avatar-list">
-        </ul>
-        <ul id="audioFilesModule" style="display:none;" class="mdc-list mdc-list--two-line mdc-list--avatar-list">
-        </ul>
-    </div>
-    <div id="playList">
-        <div id="empty">
-            <img src="./img/bai.png">
-            <H2>播放列表空了,所以摆了</H2>
-            <H3>去全部歌单里添加一些吧</H3>
+    <div id="listContainer">
+        <div id="audioList" style="display:none;">
+            <ul id="audioFolderModule" class="mdc-list mdc-list--two-line mdc-list--avatar-list">
+            </ul>
+            <ul id="audioFilesModule" style="display:none;" class="mdc-list mdc-list--two-line mdc-list--avatar-list">
+            </ul>
         </div>
-        <ul id="audioListModule" class="mdc-list mdc-list--two-line mdc-list--avatar-list">
-        </ul>
+        <div id="playList">
+            <div id="empty">
+                <img src="./img/bai.png">
+                <H2>播放列表空了,所以摆了</H2>
+                <H3>去全部歌单里添加一些吧</H3>
+            </div>
+            <ul id="audioListModule" class="mdc-list mdc-list--two-line mdc-list--avatar-list">
+            </ul>
+        </div>
     </div>
     <script>
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay))
