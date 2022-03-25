@@ -1,0 +1,35 @@
+{
+    "success": true,
+    "version": "20220325",
+    "songs": [
+        {
+            "type": "塔宝投稿",
+            "list": [
+                {
+                    "name": "大喜",
+                    "url": "https://bj.bcebos.com/yunpanx/%E5%A4%A7%E5%96%9C_20220325122827_12379.ogg",
+                    "quality": "OPUS192",
+                    "full_title": "『笙歌』年夜饭不得不听的《大喜》｜祝大家新年快乐！",
+                    "origin": "https://www.bilibili.com/video/BV1ba41127Fn",
+                    "source_quality": "AAC320"
+                },
+                {
+                    "name": "虚拟paradise",
+                    "url": "https://bj.bcebos.com/yunpanx/%E8%99%9A%E6%8B%9Fparadise_20220325124722_60749.ogg",
+                    "quality": "OPUS96",
+                    "full_title": "原创曲生日作【虚拟paradise】—笙歌 ｜有没有被虚拟主播治愈过的瞬间",
+                    "origin": "https://www.bilibili.com/video/BV1Fr4y1i7g5",
+                    "source_quality": "AAC128"
+                },
+                {
+                    "name": "红叶寺",
+                    "url": "https://bj.bcebos.com/yunpanx/%E7%BA%A2%E5%8F%B6%E5%AF%BA_20220325124721_6771.ogg",
+                    "quality": "OPUS96",
+                    "full_title": "【红叶寺】笙歌——就问你们够不够御姐是不是心魔！",
+                    "origin": "https://www.bilibili.com/video/BV1kC4y1h717",
+                    "source_quality": "AAC128"
+                }
+            ]
+        }
+    ]
+}

@@ -44,6 +44,15 @@
 <body style="text-align: center">
     正在加载播放器...
     <script>
+        const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay))
+        const getAudioList = async () => {
+            let jsonData = await (await fetch("audioInfo.json")).json()
+            if (jsonData && jsonData.success) {
+                return jsonData.songs;
+            }
+            return false;
+        }
+
     </script>
 </body>
 
