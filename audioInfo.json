@@ -51,6 +51,31 @@
                     "source_quality": "AAC192"
                 }
             ]
+        },
+        {
+            "type": "合唱投稿",
+            "description": "塔宝参与联合投稿的合唱",
+            "list": []
+        },
+        {
+            "type": "水友合唱",
+            "description": "boba和塔宝的直播合唱歌切",
+            "list": []
+        },
+        {
+            "type": "精修歌切",
+            "description": "经过精修的直播歌切",
+            "list": []
+        },
+        {
+            "type": "纯享歌切",
+            "description": "较为原始的直播歌切",
+            "list": []
+        },
+        {
+            "type": "非歌曲",
+            "description": "收录防空警报等声音",
+            "list": []
         }
     ]
 }
