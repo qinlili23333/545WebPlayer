@@ -79,7 +79,7 @@
 
         #audioList,
         #playList {
-            padding-top: 48px;
+            text-align: left;
             overflow-y: scroll;
             height: calc(100vh - 112px);
             margin-bottom: 64px;
@@ -96,8 +96,9 @@
         }
 
         #empty {
+            display: none;
             margin: auto;
-            padding-top:32px;
+            padding-top: 32px;
             height: auto;
             text-align: center;
         }
@@ -149,8 +150,10 @@
         </div>
         <audio controls autoplay id="player" style="width: 100%;"></audio>
     </div>
+    <div style="height:48px;"></div>
     <div id="audioList" style="display:none;">
-
+        <ul id="audioFolderModule" class="mdc-list mdc-list--two-line mdc-list--avatar-list">
+        </ul>
     </div>
     <div id="playList">
         <div id="empty">
@@ -175,6 +178,33 @@
         }
     </script>
     <script>
+        const makeItem = (name, info, avatar) => {
+            let newItem = document.createElement("li");
+            newItem.className = "mdc-list-item";
+            let rippleSpan = document.createElement("span");
+            rippleSpan.className = "mdc-list-item__ripple";
+            newItem.appendChild(rippleSpan);
+            let avatarSpan = document.createElement("span");
+            avatarSpan.className = "mdc-list-item__graphic";
+            let imgItem = document.createElement("img");
+            imgItem.src = avatar;
+            imgItem.style.height = "100%";
+            imgItem.style.width = "100%";
+            avatarSpan.appendChild(imgItem);
+            newItem.appendChild(avatarSpan);
+            let textSpan = document.createElement("span");
+            textSpan.className = "mdc-list-item__text";
+            let nameSpan = document.createElement("span");
+            nameSpan.className = "mdc-list-item__primary-text";
+            nameSpan.innerText = name;
+            textSpan.appendChild(nameSpan);
+            let infoSpan = document.createElement("span");
+            infoSpan.className = "mdc-list-item__secondary-text";
+            infoSpan.innerText = info;
+            textSpan.appendChild(infoSpan);
+            newItem.appendChild(textSpan);
+            return newItem;
+        }
         document.title = "读取歌单..."
         const renderAudioList = async force => {
             const getAudioList = async () => {
@@ -198,6 +228,20 @@
             console.log(audioList);
             window.audioList = audioList;
             //渲染全部歌单
+            const audioFolderModule = document.getElementById("audioFolderModule");
+            audioListModule.innerHTML = "";
+            audioList.forEach(folderInfo => {
+                //分类渲染
+                let folder = makeItem(folderInfo.type, folderInfo.description, "./img/folder.svg");
+                audioFolderModule.appendChild(folder);
+                //渲染子项目
+                folderInfo.songs.forEach(songInfo => {
+
+                })
+                folder.addEventListener("click", () => {
+                    //展开文件夹
+                })
+            })
         }
         renderAudioList(false);
         PullToRefresh.init({
@@ -208,7 +252,7 @@
         });
         const renderPlayList = () => {
             const empty = () => {
-
+                document.getElementById("empty").style.display = "block";
             }
             if (localStorage.playList) {
                 if (JSON.parse(localStorage.playList).length) {
@@ -221,6 +265,7 @@
                 empty();
             }
         }
+        renderPlayList();
     </script>
 </body>
 

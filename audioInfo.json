@@ -4,6 +4,7 @@
     "songs": [
         {
             "type": "塔宝投稿",
+            "description": "塔宝投稿的独唱歌曲",
             "list": [
                 {
                     "name": "大喜",
