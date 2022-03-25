@@ -77,10 +77,29 @@
             box-shadow: 0px -2px 2px 1px rgba(0, 0, 0, 0.5);
         }
 
-        #audioList {
+        #audioList,
+        #playList {
+            padding-top: 48px;
             overflow-y: scroll;
-            min-height: 100vh;
+            height: calc(100vh - 112px);
             margin-bottom: 64px;
+        }
+
+        #tabBar {
+            z-index: 999;
+            position: fixed;
+            height: auto;
+            width: auto;
+            left: 0px;
+            right: 0px;
+            top: 0px;
+        }
+
+        #empty {
+            margin: auto;
+            padding-top:32px;
+            height: auto;
+            text-align: center;
         }
     </style>
     <script>
@@ -96,17 +115,66 @@
 </head>
 
 <body style="text-align: center">
+    <div class="mdc-tab-bar" id="tabBar" role="tablist">
+        <div class="mdc-tab-scroller">
+            <div class="mdc-tab-scroller__scroll-area">
+                <div class="mdc-tab-scroller__scroll-content">
+                    <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0"
+                        onclick="switchPlaylist();">
+                        <span class="mdc-tab__content">
+                            <span class="mdc-tab__text-label">播放列表</span>
+                        </span>
+                        <span class="mdc-tab-indicator mdc-tab-indicator--active">
+                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                        </span>
+                        <span class="mdc-tab__ripple"></span>
+                    </button>
+                    <button class="mdc-tab mdc-tab" role="tab" aria-selected="false" tabindex="1"
+                        onclick="switchAudioList();">
+                        <span class="mdc-tab__content">
+                            <span class="mdc-tab__text-label">全部歌单</span>
+                        </span>
+                        <span class="mdc-tab-indicator mdc-tab-indicator">
+                            <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                        </span>
+                        <span class="mdc-tab__ripple"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="playPanel">
+        <div id="controls">
+
+        </div>
         <audio controls autoplay id="player" style="width: 100%;"></audio>
     </div>
-    <div id="audioList">
+    <div id="audioList" style="display:none;">
 
+    </div>
+    <div id="playList">
+        <div id="empty">
+            <img src="./img/bai.png">
+            <H2>播放列表空了,所以摆了</H2>
+            <H3>去全部歌单里添加一些吧</H3>
+        </div>
     </div>
     <script>
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay))
-        let config = {
-            cdnPriority: ['yuketang', 'cloudflare', 'chaoxing', 'p2p']
+        window.MDCTabBar = mdc.tabBar.MDCTabBar;
+        const tabBar = new MDCTabBar(document.querySelector('.mdc-tab-bar'));
+        const audioList = document.getElementById("audioList");
+        const playList = document.getElementById("playList");
+        const switchAudioList = () => {
+            audioList.style.display = "block"
+            playList.style.display = "none"
         }
+        const switchPlaylist = () => {
+            audioList.style.display = "none"
+            playList.style.display = "block"
+        }
+    </script>
+    <script>
         document.title = "读取歌单..."
         const renderAudioList = async force => {
             const getAudioList = async () => {
@@ -129,6 +197,7 @@
             }
             console.log(audioList);
             window.audioList = audioList;
+            //渲染全部歌单
         }
         renderAudioList(false);
         PullToRefresh.init({
@@ -137,6 +206,21 @@
                 renderAudioList(true);
             }
         });
+        const renderPlayList = () => {
+            const empty = () => {
+
+            }
+            if (localStorage.playList) {
+                if (JSON.parse(localStorage.playList).length) {
+                    //渲染播放列表
+
+                } else {
+                    empty();
+                }
+            } else {
+                empty();
+            }
+        }
     </script>
 </body>
 
