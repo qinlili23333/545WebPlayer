@@ -68,7 +68,7 @@
         <label for="imageCache">图片缓存</label>
     </div>
     <br>
-    <button class="mdc-button mdc-button--raised mdc-button--leading" style="width:80%;margin:16px;">
+    <button class="mdc-button mdc-button--raised mdc-button--leading" style="width:80%;margin:16px;" id="cleanBtn">
         <span class="mdc-button__ripple"></span>
         <i class="material-icons mdc-button__icon" aria-hidden="true">delete</i>
         <span class="mdc-button__label">清理</span>
@@ -83,6 +83,23 @@
         document.querySelectorAll('.mdc-checkbox').forEach(element => {
             new MDCCheckbox(element);
         });
+        document.getElementById("cleanBtn").addEventListener("click", async () => {
+            if (document.getElementById("programCache").checked) {
+                let currentVersion = await (await fetch("getVersionWorker")).text();
+                if (!(currentVersion.length == 8)) {
+                    //版本号异常
+                    currentVersion = false;
+                }
+                await caches.delete("545在线" + currentVersion);
+            };
+            if (document.getElementById("musicCache").checked) {
+                await caches.delete("MusicCache");
+            };
+            if (document.getElementById("imageCache").checked) {
+                await caches.delete("ImageCache");
+            }
+            window.parent.postMessage("close");
+        })
     </script>
 </body>
 

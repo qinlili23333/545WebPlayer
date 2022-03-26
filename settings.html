@@ -50,6 +50,8 @@
         }
 
         #closeBtn {
+            width: 32px;
+            height: 32px;
             border-radius: 5px;
             position: absolute;
             right: 0px;
@@ -104,7 +106,7 @@
 
     <div id="settings" style="height:calc(100vh - 36px);overflow-y:scroll;">
         <ul class="mdc-list mdc-list--two-line" style="height:200vh;">
-            <li class="mdc-list-item" tabindex="0" onclick="">
+            <li class="mdc-list-item" tabindex="0" onclick="showFrameSet('settingFrame/sortcdn/sortcdn.html')">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">CDN设置（暂未开放）</span>
@@ -177,15 +179,21 @@
             }
             document.body.appendChild(ip);
         }
+        window.addEventListener("message", (event) => {
+            console.log(event.data)
+            if (event.data == "close") {
+                document.getElementById("floatMenuContainer").style.display = "none";
+            }
+        }, false);
+        document.getElementById("setFrame").addEventListener("load", () => {
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("setFrame").style.padding = "0px";
+        })
         const showFrameSet = url => {
             //使用iframe渲染设置
             document.getElementById("floatMenuContainer").style.display = "block";
             document.getElementById("loading").style.display = "block";
             document.getElementById("setFrame").style.padding = "100%";
-            document.getElementById("setFrame").addEventListener("load", () => {
-                document.getElementById("loading").style.display = "none";
-                document.getElementById("setFrame").style.padding = "0px";
-            })
             setFrame.src = url;
         }
         document.getElementById("closeBtn").addEventListener("click", (event) => {
