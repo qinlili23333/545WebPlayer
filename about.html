@@ -66,7 +66,11 @@
     </div>
 
     <div id="settings">
-
+        <img src="icon.png" style="margin-top:10vh;width:50vw;max-width:384px;border-radius: 20px ;">
+        <H2>545在线</H2>
+        <H4 id="update" style="padding:10px;">正在检查更新...</H4>
+        <H5>程序：琴梨梨</H5>
+        <H6 style="padding:10px;">可以不关注琴梨梨，但请一定要关注帅比笙歌超可爱OvO，直播房间号545，准时收看国风温柔可爱铸币的塔宝直播！</H6>
     </div>
     <script>
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
@@ -75,6 +79,33 @@
             mdc.ripple.MDCRipple.attachTo(element);
         });
         document.title = "545在线-关于";
+        const checkUpdate = async () => {
+            let versionJson = await (await fetch("version.json?ForceNoCache=1")).json();
+            let currentVersion=await (await fetch("getVersionWorker")).text();
+            if(!(currentVersion.length==8)){
+                //版本号异常
+                currentVersion=false;
+            }
+            if (versionJson.success) {
+                if(versionJson.latest==currentVersion){
+                    document.getElementById("update").innerText = "当前已经是最新版本:" + currentVersion;
+                }else{
+                    if(versionJson.azusa_patch_avaliable==currentVersion){
+                        document.getElementById("update").innerText = "可省流量更新到:" + versionJson.latest;
+                    }else{
+                        document.getElementById("update").innerText = "可全量更新到:" + versionJson.latest;
+                    }
+                    //显示更新按钮
+                }
+            } else {
+                if (currentVersion) {
+                    document.getElementById("update").innerText = "检查更新失败,当前版本为:" + currentVersion;
+                }else{
+                    document.getElementById("update").innerText = "检查更新失败,当前版本不是正式版本,请删除本站全部缓存重新加载";
+                }
+            }
+        }
+        checkUpdate();
     </script>
 </body>
 

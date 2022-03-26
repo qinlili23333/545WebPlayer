@@ -17,6 +17,11 @@ const getCacheName = url => {
     return CACHE_NAME;
 }
 self.addEventListener('fetch', event => {
+    if(event.request.url.indexOf("getVersionWorker")>0){
+        console.log(event.request.url);
+        event.respondWith(new Response(VERSION));
+        return;
+    }
     if (event.request.method == "GET" && (event.request.url.indexOf("http") == 0) && (event.request.url.indexOf("ForceNoCache") == -1)) {
         event.respondWith(
             caches.open(getCacheName(event.request.url)).then(async cache => {

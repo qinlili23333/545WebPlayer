@@ -503,6 +503,7 @@
         player.addEventListener("ended", () => {
             if (repeatSwitch) {
                 player.play();
+                return;
             }
             if (shuffleSwitch) {
                 //随机播放下一首

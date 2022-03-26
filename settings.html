@@ -13,7 +13,37 @@
     <link rel="icon" href="./icon.png">
     <title>545在线-设置</title>
     <style>
+        ::-webkit-scrollbar {
+            height: 12px;
+            width: 8px;
+            background: transparent;
+            z-index: 12;
+            overflow: visible;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            width: 10px;
+            background-color: #FADCBB;
+            z-index: 12;
+            border: 3px solid rgba(0, 0, 0, 0);
+            background-clip: padding-box;
+            transition: background-color .32s ease-in-out;
+            margin: 4px;
+            min-height: 32px;
+            min-width: 32px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FADCBB;
+        }
+
+        ::-webkit-scrollbar-corner {
+            background: #202020;
+        }
+
         * {
+            -webkit-user-select: none;
+            user-select: none;
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -51,10 +81,10 @@
     <script crossorigin="anonymous"
         integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
         src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
-    <script src="./lib/pullrefresh.js"></script>
+    <script src="./lib/base64.js"></script>
 </head>
 
-<body style="text-align: center">
+<body style="position:fixed;">
     <div class="navbar">
         <button onclick="document.location.href='./player.html'" class="mdc-button foo-button">
             <div class="mdc-button__ripple"></div>
@@ -67,8 +97,30 @@
         </button>
     </div>
 
-    <div id="settings">
-
+    <div id="settings" style="height:100vh;overflow-y:scroll;">
+        <ul class="mdc-list mdc-list--two-line" style="height:200vh;">
+            <li class="mdc-list-item" tabindex="0" onclick="">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">CDN设置（暂未开放）</span>
+                    <span class="mdc-list-item__secondary-text">修改CDN优先级</span>
+                </span>
+            </li>
+            <li class="mdc-list-item" onclick="">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">缓存管理</span>
+                    <span class="mdc-list-item__secondary-text">清除缓存以释放设备空间</span>
+                </span>
+            </li>
+            <li class="mdc-list-item" onclick="debugInfo();">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">诊断信息</span>
+                    <span class="mdc-list-item__secondary-text">获取用于辅助琴梨梨修Bug的诊断信息</span>
+                </span>
+            </li>
+        </ul>
     </div>
     <script>
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
@@ -76,7 +128,29 @@
         document.querySelectorAll('.foo-button').forEach(element => {
             mdc.ripple.MDCRipple.attachTo(element);
         });
+        const MDCList = mdc.list.MDCList;
+        const MDCRipple = mdc.ripple.MDCRipple;
+        const list = new MDCList(document.querySelector('.mdc-list'));
+        const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
         document.title = "545在线-设置";
+        const debugInfo = () => {
+            let ip = document.createElement("script");
+            ip.src = "https://pv.sohu.com/cityjson";
+            ip.onload = () => {
+                let copyInfo = {
+                    UA: navigator.userAgent,
+                    network: returnCitySN
+                }
+                try{
+                    navigator.clipboard.writeText(Base64.encode(JSON.stringify(copyInfo)))
+                    alert("成功复制诊断数据，请发送给琴梨梨！")
+                }catch(e){
+                    console.log(e)
+                    alert("写入诊断数据到剪贴板失败！")
+                }
+            }
+            document.body.appendChild(ip);
+        }
     </script>
 </body>
 
