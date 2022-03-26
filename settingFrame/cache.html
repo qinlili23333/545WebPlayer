@@ -19,16 +19,69 @@
     <script crossorigin="anonymous"
         integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
         src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
-    <script src="./lib/pullrefresh.js"></script>
+    <link crossorigin="anonymous"
+        integrity="sha512-y9glprRcVESvYY3suAqBUYXx0ySbQNvbzzgvLy9F2o38Y7XCNeq/No2gnHjV3+Rjyq5ijoPZRMXotpdw6jcG4g=="
+        href="https://lib.baomitu.com/material-design-icons/3.0.2/iconfont/material-icons.min.css" rel="stylesheet">
 </head>
 
 <body style="text-align: center">
-    
+    <H4 style="padding:16px;">请选择你需要清理的部分</H4>
+    <div class="mdc-form-field">
+        <div class="mdc-checkbox">
+            <input type="checkbox" class="mdc-checkbox__native-control" id="programCache" />
+            <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                    <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+            </div>
+            <div class="mdc-checkbox__ripple"></div>
+        </div>
+        <label for="programCache">程序缓存</label>
+    </div>
+    <br>
+    <div class="mdc-form-field">
+        <div class="mdc-checkbox">
+            <input type="checkbox" class="mdc-checkbox__native-control" id="musicCache" />
+            <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                    <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+            </div>
+            <div class="mdc-checkbox__ripple"></div>
+        </div>
+        <label for="musicCache">音频缓存</label>
+    </div>
+    <br>
+    <div class="mdc-form-field">
+        <div class="mdc-checkbox">
+            <input type="checkbox" class="mdc-checkbox__native-control" id="imageCache" />
+            <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                    <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+            </div>
+            <div class="mdc-checkbox__ripple"></div>
+        </div>
+        <label for="imageCache">图片缓存</label>
+    </div>
+    <br>
+    <button class="mdc-button mdc-button--raised mdc-button--leading" style="width:80%;margin:16px;">
+        <span class="mdc-button__ripple"></span>
+        <i class="material-icons mdc-button__icon" aria-hidden="true">delete</i>
+        <span class="mdc-button__label">清理</span>
+    </button>
     <script>
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
         window.mdc.autoInit();
-        document.querySelectorAll('.foo-button').forEach(element => {
+        window.MDCCheckbox = mdc.checkbox.MDCCheckbox;
+        document.querySelectorAll('.mdc-button').forEach(element => {
             mdc.ripple.MDCRipple.attachTo(element);
+        });
+        document.querySelectorAll('.mdc-checkbox').forEach(element => {
+            new MDCCheckbox(element);
         });
     </script>
 </body>

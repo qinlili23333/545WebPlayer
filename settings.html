@@ -23,6 +23,70 @@
         integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
         src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
     <script src="./lib/base64.js"></script>
+    <style>
+        #floatMenuContainer {
+            display: none;
+            z-index: 9999;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            height: auto;
+            width: auto;
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+
+        #floatMenu {
+            width: calc(100% - 20vw);
+            height: calc(100% - 20vh);
+            border-radius: 5px;
+            backdrop-filter: blur(3px) brightness(100%);
+            background-color: rgba(255, 255, 255, 0.75);
+            margin-top: 10vh;
+            margin-bottom: 10vh;
+            margin-left: 10vw;
+            margin-right: 10vw;
+        }
+
+        #closeBtn {
+            border-radius: 5px;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            float: right;
+            transition: background-color 0.2s, transform 0.3s ease-in-out;
+        }
+
+        #closeBtn:hover {
+            transform: scale(1.1, 1.1);
+            background-color: #cccccc;
+        }
+
+        #closeBtn:active {
+            background-color: #999999
+        }
+
+        #closeBtn.active {
+            background-color: #FADCBB
+        }
+
+        #loading {
+            width: 32px;
+            position: absolute;
+            margin: auto;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+
+        #setFrame {
+            padding: 100%;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -47,7 +111,7 @@
                     <span class="mdc-list-item__secondary-text">修改CDN优先级</span>
                 </span>
             </li>
-            <li class="mdc-list-item" onclick="">
+            <li class="mdc-list-item" onclick="showFrameSet('settingFrame/cache.html')">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">缓存管理</span>
@@ -77,6 +141,13 @@
             </li>
         </ul>
     </div>
+    <div id="floatMenuContainer">
+        <div id="floatMenu">
+            <iframe id="setFrame" frameborder="0"></iframe>
+            <img id="closeBtn" src="./img/close.svg">
+            <img id="loading" src="./img/loading.svg">
+        </div>
+    </div>
     <script>
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
         window.mdc.autoInit();
@@ -96,19 +167,31 @@
                     UA: navigator.userAgent,
                     network: returnCitySN
                 }
-                try{
+                try {
                     navigator.clipboard.writeText(Base64.encode(JSON.stringify(copyInfo)))
                     alert("成功复制诊断数据，请发送给琴梨梨！")
-                }catch(e){
+                } catch (e) {
                     console.log(e)
                     alert("写入诊断数据到剪贴板失败！")
                 }
             }
             document.body.appendChild(ip);
         }
-        const showFrameSet=url=>{
+        const showFrameSet = url => {
             //使用iframe渲染设置
+            document.getElementById("floatMenuContainer").style.display = "block";
+            document.getElementById("loading").style.display = "block";
+            document.getElementById("setFrame").style.padding = "100%";
+            document.getElementById("setFrame").addEventListener("load", () => {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("setFrame").style.padding = "0px";
+            })
+            setFrame.src = url;
         }
+        document.getElementById("closeBtn").addEventListener("click", (event) => {
+            event.stopPropagation();
+            document.getElementById("floatMenuContainer").style.display = "none";
+        })
     </script>
 </body>
 
