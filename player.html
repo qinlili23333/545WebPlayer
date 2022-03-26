@@ -676,13 +676,37 @@
         }
         recoverPlay();
         player.addEventListener("ended", () => {
+            const getRandom = () => {
+                let num;
+                let randomMethod = localStorage.randomMethod || "default";
+                switch (randomMethod) {
+                    case "real": {
+                        //crypto真随机
+                        break;
+                    };
+                    case "list": {
+                        //队列随机
+                        break;
+                    };
+                    case "exclude": {
+                        //就近排除
+                        break;
+                    };
+                    case "default":
+                    default: {
+                        num = random(0, window.list.length - 1)
+                        break;
+                    }
+                }
+                return num;
+            }
             if (repeatSwitch) {
                 player.play();
                 return;
             }
             if (shuffleSwitch) {
                 //随机播放下一首
-                playNow(window.list[random(0, window.list.length - 1)]);
+                playNow(window.list[getRandom()]);
             }
         })
     </script>
