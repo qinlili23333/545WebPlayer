@@ -168,6 +168,36 @@
             height: 48px;
         }
 
+        #floatMenuContainer {
+            display: none;
+            z-index: 9999;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            height: auto;
+            width: auto;
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+
+        #floatMenu {
+            width: calc(100% - 20vw);
+            height: fit-content;
+            max-height: calc(100% - 20vh);
+            border-radius: 5px;
+            backdrop-filter: blur(7px) brightness(100%);
+            background-color: rgba(255, 255, 255, 0.75);
+            margin-top: 10vh;
+            margin-bottom: 10vh;
+            margin-left: 10vw;
+            margin-right: 10vw;
+        }
+
+        .mdc-list {
+            padding: 0 0 !important;
+        }
+
         @media (min-width: 700px) {
             #listContainer {
                 display: flex !important;
@@ -268,6 +298,13 @@
             </ul>
         </div>
     </div>
+    <div id="floatMenuContainer">
+        <div id="floatMenu">
+            <ul class="mdc-list" id="menuList">
+
+            </ul>
+        </div>
+    </div>
     <script>
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay))
         window.MDCTabBar = mdc.tabBar.MDCTabBar;
@@ -287,31 +324,53 @@
         const random = (min, max) => {
             return Math.round(Math.random() * (max - min)) + min;
         }
+        const dlFile = (link, name) => {
+            let eleLink = document.createElement('a');
+            eleLink.download = name;
+            eleLink.style.display = 'none';
+            eleLink.href = link;
+            document.body.appendChild(eleLink);
+            eleLink.click();
+            document.body.removeChild(eleLink);
+        }
     </script>
     <script>
+        //日后实现CDN切换
+        const cdn = "yuketang";
         window.repeatSwitch = localStorage.repeat || false;
         window.shuffleSwitch = localStorage.shuffle || false;
         if (repeatSwitch) {
             document.getElementById("repeatBtn").className = "topBtn active";
-        }
+        };
         if (shuffleSwitch) {
             document.getElementById("shuffleBtn").className = "topBtn active";
-        }
+        };
         const switchRepeat = () => {
             window.repeatSwitch = repeatSwitch ? false : true;
             localStorage.repeat = window.repeatSwitch;
             document.getElementById("repeatBtn").className = window.repeatSwitch ? "topBtn active" : "topBtn";
-        }
+        };
         const switchShuffle = () => {
             window.shuffleSwitch = shuffleSwitch ? false : true;
             localStorage.shuffle = window.shuffleSwitch;
             document.getElementById("shuffleBtn").className = window.shuffleSwitch ? "topBtn active" : "topBtn";
-        }
+        };
+        const menuList = document.getElementById("menuList");
+        const showMenu = () => {
+            document.getElementById("floatMenuContainer").style.display = "block";
+        };
+        const hideMenu = () => {
+            document.getElementById("floatMenuContainer").style.display = "none";
+        };
+        document.getElementById("floatMenuContainer").addEventListener("click", (event) => {
+            event.stopPropagation();
+            hideMenu();
+        })
         const player = document.getElementById("player");
         const setStatus = (text, loading) => {
             document.getElementById("loading").style.display = loading ? "block" : "none";
             document.getElementById("tips").innerText = text;
-        }
+        };
         const makeItem = (name, info, avatar, menuCallback) => {
             let newItem = document.createElement("li");
             newItem.className = "mdc-list-item";
@@ -349,6 +408,18 @@
                 newItem.appendChild(menu);
             }
             return newItem;
+        }
+        const makeMenu = (text) => {
+            let menuItem = document.createElement("li");
+            menuItem.className = "mdc-list-item";
+            let ripple = document.createElement("span");
+            ripple.className == "mdc-list-item__ripple";
+            menuItem.appendChild(ripple);
+            let textItem = document.createElement("span");
+            textItem.className = "mdc-list-item__text";
+            textItem.innerText = text;
+            menuItem.appendChild(textItem);
+            return menuItem;
         }
         document.title = "读取歌单...";
         const renderAudioList = async force => {
@@ -403,6 +474,36 @@
                         let song = makeItem(songInfo.name, songInfo.full_title, songInfo.cover, (event) => {
                             //歌曲菜单
                             event.stopPropagation();
+                            showMenu();
+                            menuList.innerHTML = "";
+                            let dlMenu = makeMenu("下载");
+                            dlMenu.addEventListener("click", async () => {
+                                setStatus("正在下载" + songInfo.name, true);
+                                let playBlob = URL.createObjectURL(await (await fetch(songInfo.url[cdn])).blob());
+                                dlFile(playBlob, songInfo.name + ".ogg");
+                                setStatus("下载" + songInfo.name + "成功", false);
+                            });
+                            menuList.appendChild(dlMenu);
+                            let goMenu = makeMenu("查看原始投稿");
+                            goMenu.addEventListener("click", () => {
+                                window.open(songInfo.origin, "_blank")
+                            });
+                            menuList.appendChild(goMenu);
+                            let shareMenu = makeMenu("分享");
+                            shareMenu.addEventListener("click", () => {
+                                if (navigator.share) {
+                                    navigator.share({
+                                        title: "545在线",
+                                        text: "我正在用545在线(545.qinlili.bid)收听塔宝的" + songInfo.name + "，你可以点击此链接直接在线播放" + songInfo.url[cdn] + " 或使用545在线更方便的省流量播放",
+                                        url: "https://545.qinlili.bid"
+                                    });
+                                } else {
+                                    alert("你使用的浏览器不支持分享");
+                                }
+                            });
+                            menuList.appendChild(shareMenu);
+                            const list = new MDCList(menuList);
+                            const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
                         });
                         song.addEventListener("click", () => {
                             addToPlayList(songInfo);
@@ -423,6 +524,7 @@
         });
         const renderPlayList = () => {
             const empty = () => {
+                audioListModule.innerHTML = "";
                 document.getElementById("empty").style.display = "block";
             }
             if (localStorage.playList) {
@@ -436,6 +538,7 @@
                         let song = makeItem(songInfo.name, songInfo.full_title, songInfo.cover, (event) => {
                             //歌曲菜单
                             event.stopPropagation();
+                            showMenu();
                         });
                         song.addEventListener("click", () => {
                             //立即播放
@@ -448,6 +551,8 @@
                         })
                         audioListModule.appendChild(song);
                     })
+                    const list = new MDCList(audioListModule);
+                    const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
                 } else {
                     empty();
                 }
@@ -479,8 +584,6 @@
             renderPlayList();
         }
         const playNow = async song => {
-            //为日后多CDN切换做准备
-            const cdn = "yuketang";
             document.title = song.name + "-545在线";
             setStatus("正在下载" + song.name, true);
             let playBlob = URL.createObjectURL(await (await fetch(song.url[cdn])).blob())
@@ -491,7 +594,6 @@
         const recoverPlay = async () => {
             if (localStorage.lastPlay) {
                 let song = JSON.parse(localStorage.lastPlay)
-                const cdn = "yuketang";
                 document.title = song.name + "-545在线";
                 setStatus("正在下载" + song.name, true);
                 let playBlob = URL.createObjectURL(await (await fetch(song.url[cdn])).blob())
