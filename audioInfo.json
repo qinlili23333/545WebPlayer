@@ -1,6 +1,6 @@
 {
     "success": true,
-    "version": "20220325",
+    "version": "20220326",
     "songs": [
         {
             "type": "塔宝投稿",
@@ -15,7 +15,8 @@
                     "quality": "OPUS192",
                     "full_title": "『笙歌』年夜饭不得不听的《大喜》｜祝大家新年快乐！",
                     "origin": "https://www.bilibili.com/video/BV1ba41127Fn",
-                    "source_quality": "AAC320"
+                    "source_quality": "AAC320",
+                    "release_date":"2022-01-31"
                 },
                 {
                     "name": "虚拟paradise",
@@ -26,7 +27,8 @@
                     "quality": "OPUS96",
                     "full_title": "原创曲生日作【虚拟paradise】—笙歌 ｜有没有被虚拟主播治愈过的瞬间",
                     "origin": "https://www.bilibili.com/video/BV1Fr4y1i7g5",
-                    "source_quality": "AAC128"
+                    "source_quality": "AAC128",
+                    "release_date":"2022-01-16"
                 },
                 {
                     "name": "红叶寺",
@@ -37,7 +39,8 @@
                     "quality": "OPUS96",
                     "full_title": "【红叶寺】笙歌——就问你们够不够御姐是不是心魔！",
                     "origin": "https://www.bilibili.com/video/BV1kC4y1h717",
-                    "source_quality": "AAC128"
+                    "source_quality": "AAC128",
+                    "release_date":"2020-07-21"
                 },
                 {
                     "name": "人间不值得",
@@ -48,14 +51,40 @@
                     "quality": "OPUS128",
                     "full_title": "温柔女声超好听戏腔【人间不值得】（cover：黄诗扶）——笙歌",
                     "origin": "https://www.bilibili.com/audio/au1045251",
-                    "source_quality": "AAC192"
+                    "source_quality": "AAC192",
+                    "release_date":"2019-09-05"
+                }, 
+                {
+                    "name": "芒种",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E8%8A%92%E7%A7%8D_20220326173651_85598.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/112ab6a3dfaf08d4e5db98793d96c0bbec96c136.jpg",
+                    "quality": "OPUS192",
+                    "full_title": "【芒种】超甜少女版原创PV「一想你我就啊哈哈哈哈哈哈」",
+                    "origin": "https://www.bilibili.com/video/BV1G4411r7Yj",
+                    "source_quality": "AAC320",
+                    "release_date":"2019-08-23"
                 }
             ]
         },
         {
             "type": "合唱投稿",
             "description": "塔宝参与联合投稿的合唱",
-            "list": []
+            "list": [
+                {
+                    "name": "绝世舞姬(&午哞哞)",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BB%9D%E4%B8%96%E8%88%9E%E5%A7%ACx%E5%8D%88%E5%93%9E%E5%93%9E_20220326173048_48056.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/d2d133f6e9cd670e8ce79e2950955c6c2a1d3198.jpg",
+                    "quality": "OPUS128",
+                    "full_title": "【笙歌x午哞哞】双御翻唱│又美又飒的《绝世舞姬》",
+                    "origin": "https://www.bilibili.com/video/BV1nb4y1276n",
+                    "source_quality": "AAC256",
+                    "release_date":"2021-09-10"
+                }
+            ]
         },
         {
             "type": "云合唱",
