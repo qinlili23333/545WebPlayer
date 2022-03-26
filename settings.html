@@ -84,7 +84,7 @@
     <script src="./lib/base64.js"></script>
 </head>
 
-<body style="position:fixed;">
+<body>
     <div class="navbar">
         <button onclick="document.location.href='./player.html'" class="mdc-button foo-button">
             <div class="mdc-button__ripple"></div>
@@ -97,7 +97,7 @@
         </button>
     </div>
 
-    <div id="settings" style="height:100vh;overflow-y:scroll;">
+    <div id="settings" style="height:calc(100vh - 36px);overflow-y:scroll;">
         <ul class="mdc-list mdc-list--two-line" style="height:200vh;">
             <li class="mdc-list-item" tabindex="0" onclick="">
                 <span class="mdc-list-item__ripple"></span>
@@ -118,6 +118,20 @@
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">诊断信息</span>
                     <span class="mdc-list-item__secondary-text">获取用于辅助琴梨梨修Bug的诊断信息</span>
+                </span>
+            </li>
+            <li class="mdc-list-item" onclick="document.location.href='./privacy.html'">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">隐私须知</span>
+                    <span class="mdc-list-item__secondary-text">了解琴梨梨将如何使用你的数据</span>
+                </span>
+            </li>
+            <li class="mdc-list-item" onclick="document.location.href='./source.html'">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">开源许可</span>
+                    <span class="mdc-list-item__secondary-text">了解有关本项目的开源信息</span>
                 </span>
             </li>
         </ul>
@@ -150,6 +164,9 @@
                 }
             }
             document.body.appendChild(ip);
+        }
+        const showFrameSet=url=>{
+            //使用iframe渲染设置
         }
     </script>
 </body>

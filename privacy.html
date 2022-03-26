@@ -6,12 +6,12 @@
     <meta name="description" content="545在线，随时补充塔能量！笙歌牌播放器，支持智能缓存本地播放，由琴梨梨驱动" />
     <meta name="robots" content="noindex">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-    <link rel="canonical" href="https://545.qinlili.bid/about.html" />
+    <link rel="canonical" href="https://545.qinlili.bid/privacy.html" />
     <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#9EA6E5">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="icon" href="./icon.png">
-    <title>545在线-关于</title>
+    <title>545在线-隐私须知</title>
     <style>
         ::-webkit-scrollbar {
             height: 12px;
@@ -73,7 +73,7 @@
         }
     </style>
     <script>
-        document.title = "载入关于中..."
+        document.title = "载入中..."
     </script>
     <link crossorigin="anonymous"
         integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ=="
@@ -84,23 +84,24 @@
     <script src="./lib/pullrefresh.js"></script>
 </head>
 
-<body style="text-align: center">
+<body>
     <div class="navbar">
         <button onclick="document.location.href='./settings.html'" class="mdc-button foo-button">
             <div class="mdc-button__ripple"></div>
             <span class="mdc-button__label">
                 返回</span>
         </button>
-        <H3 style="margin:auto;">关于</H3>
+        <H3 style="margin:auto;">隐私须知</H3>
         <span style="width:64px;"></span>
     </div>
 
-    <div id="settings" style="height:calc(100vh - 36px);overflow-y:scroll;">
-        <img src="icon.png" style="margin-top:10vh;width:50vw;max-width:384px;border-radius: 20px ;">
-        <H2>545在线</H2>
-        <H4 id="update" style="padding:10px;">正在检查更新...</H4>
-        <H5>程序：琴梨梨</H5>
-        <H6 style="padding:10px;">可以不关注琴梨梨，但请一定要关注帅比笙歌超可爱OvO，直播房间号545，准时收看国风温柔可爱铸币的塔宝直播！</H6>
+    <div id="settings" style="height:calc(100vh - 36px);overflow-y:scroll;padding:10px;">
+        <H4>了解琴梨梨将如何收集并使用你的数据</H4>
+        <p>本项目使用Cloudflare Analysis进行数据收集，数据收集分为两个部分：本地回传和云端统计。</p>
+        <p>本地回传的数据包括页面加载速度和渲染性能等信息，不包含任何可关联具体设备的标识符，所有信息均完全匿名回传。</p>
+        <p>云端统计信息包括网络地址及基于网络地址推断出的国家，浏览器的UserAgent，设备类型等信息，所有信息都是完全匿名收集的。</p>
+        <p>这些信息收集后将用于改善本站的性能和服务质量，信息均存储于Cloudflare并不定期下载至琴梨梨的设备，琴梨梨不会使用这些信息用于任何商业目的，也不会向任何个人或团体分享这些信息。</p>
+        <p>由于信息是完全匿名的，你无法申请导出你的任何信息。</p>
     </div>
     <script>
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
@@ -108,34 +109,7 @@
         document.querySelectorAll('.foo-button').forEach(element => {
             mdc.ripple.MDCRipple.attachTo(element);
         });
-        document.title = "545在线-关于";
-        const checkUpdate = async () => {
-            let versionJson = await (await fetch("version.json?ForceNoCache=1")).json();
-            let currentVersion = await (await fetch("getVersionWorker")).text();
-            if (!(currentVersion.length == 8)) {
-                //版本号异常
-                currentVersion = false;
-            }
-            if (versionJson.success) {
-                if (versionJson.latest == currentVersion) {
-                    document.getElementById("update").innerText = "当前已经是最新版本:" + currentVersion;
-                } else {
-                    if (versionJson.azusa_patch_avaliable == currentVersion) {
-                        document.getElementById("update").innerText = "可省流量更新到:" + versionJson.latest;
-                    } else {
-                        document.getElementById("update").innerText = "可全量更新到:" + versionJson.latest;
-                    }
-                    //显示更新按钮
-                }
-            } else {
-                if (currentVersion) {
-                    document.getElementById("update").innerText = "检查更新失败,当前版本为:" + currentVersion;
-                } else {
-                    document.getElementById("update").innerText = "检查更新失败,当前版本不是正式版本,请删除本站全部缓存重新加载";
-                }
-            }
-        }
-        checkUpdate();
+        document.title = "545在线-隐私须知";
     </script>
 </body>
 
