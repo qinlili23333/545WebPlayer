@@ -422,6 +422,18 @@
             menuItem.appendChild(textItem);
             return menuItem;
         }
+        const saveImgMenu = url => {
+            showMenu();
+            menuList.innerHTML = "";
+            let imgItem = document.createElement("img");
+            imgItem.src = url;
+            imgItem.style = "width:100%;height:auto;object-fit:contain;border-radius: 5px 5px 0px 0px;";
+            menuList.appendChild(imgItem);
+            let textTip = document.createElement("p");
+            textTip.innerText = "长按或右键图片保存";
+            textTip.style = "width:100%;text-align:center;"
+            menuList.appendChild(textTip);
+        }
         document.title = "读取歌单...";
         const renderAudioList = async force => {
             const getAudioList = async () => {
@@ -492,6 +504,12 @@
                                 setStatus("下载" + songInfo.name + "成功", false);
                             });
                             menuList.appendChild(dlMenu);
+                            let coverMenu = makeMenu("保存封面");
+                            coverMenu.addEventListener("click", (event) => {
+                                event.stopPropagation();
+                                saveImgMenu(songInfo.cover);
+                            });
+                            menuList.appendChild(coverMenu)
                             let goMenu = makeMenu("查看原始投稿");
                             goMenu.addEventListener("click", () => {
                                 window.open(songInfo.origin, "_blank")
@@ -567,6 +585,12 @@
                                 setStatus("下载" + songInfo.name + "成功", false);
                             });
                             menuList.appendChild(dlMenu);
+                            let coverMenu = makeMenu("保存封面");
+                            coverMenu.addEventListener("click", (event) => {
+                                event.stopPropagation();
+                                saveImgMenu(songInfo.cover);
+                            });
+                            menuList.appendChild(coverMenu);
                             let goMenu = makeMenu("查看原始投稿");
                             goMenu.addEventListener("click", () => {
                                 window.open(songInfo.origin, "_blank")
