@@ -62,6 +62,22 @@
         <label for="imageCache">图片缓存</label>
     </div>
     <br>
+    <div class="mdc-form-field">
+        <div class="mdc-checkbox">
+            <input type="checkbox" class="mdc-checkbox__native-control" id="listCache" />
+            <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                    <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+            </div>
+            <div class="mdc-checkbox__ripple"></div>
+        </div>
+        <label for="listCache">歌单缓存</label>
+    </div>
+    <br>
+    <H6>冷知识：其实下拉刷新也可以强制更新歌单</H6>
+    <br>
     <button class="mdc-button mdc-button--raised mdc-button--leading" style="width:80%;margin:16px;" id="cleanBtn">
         <span class="mdc-button__ripple"></span>
         <i class="material-icons mdc-button__icon" aria-hidden="true">delete</i>
@@ -90,6 +106,9 @@
             };
             if (document.getElementById("imageCache").checked) {
                 await caches.delete("ImageCache");
+            }
+            if (document.getElementById("listCache").checked) {
+                localStorage.removeItem("cacheSong")
             }
             window.parent.postMessage("close");
         })
