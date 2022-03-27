@@ -105,7 +105,7 @@
     </div>
 
     <div id="settings" style="height:calc(100vh - 36px);overflow-y:scroll;">
-        <ul class="mdc-list mdc-list--two-line" style="height:200vh;">
+        <ul class="mdc-list mdc-list--two-line">
             <li class="mdc-list-item" tabindex="0" onclick="showFrameSet('settingFrame/sortcdn/sortcdn.html')">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
@@ -118,6 +118,13 @@
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">缓存管理</span>
                     <span class="mdc-list-item__secondary-text">清除缓存以释放设备空间</span>
+                </span>
+            </li>
+            <li class="mdc-list-item" onclick="showFrameSet('settingFrame/import.html')">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">播放列表导入导出</span>
+                    <span class="mdc-list-item__secondary-text">可用于分享或跨设备同步</span>
                 </span>
             </li>
             <li class="mdc-list-item" onclick="debugInfo();">
