@@ -65,6 +65,10 @@
             background-color: #cccccc;
         }
 
+        .mdc-list {
+            padding: 0 0 !important;
+        }
+
         #closeBtn:active {
             background-color: #999999
         }
@@ -105,8 +109,28 @@
     </div>
 
     <div id="settings" style="height:calc(100vh - 36px);overflow-y:scroll;">
-        <ul class="mdc-list mdc-list--two-line">
-            <li class="mdc-list-item" tabindex="0" onclick="showFrameSet('settingFrame/sortcdn/sortcdn.html')">
+        <ul class="mdc-list mdc-list--two-line checkBoxList">
+            <li class="mdc-list-item" tabindex="0" id="blurCheck">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">全屏模糊模式</span>
+                    <span class="mdc-list-item__secondary-text">使用全屏模糊替代菜单局部模糊，有性能损失</span>
+                </span>
+                <div class="mdc-checkbox" style="position:absolute;float:right;right:0px;">
+                    <input type="checkbox" class="mdc-checkbox__native-control" id="blurCheckbox" />
+                    <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                            <path class="mdc-checkbox__checkmark-path" fill="none"
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                    </div>
+                    <div class="mdc-checkbox__ripple"></div>
+                </div>
+            </li>
+        </ul>
+        <ul class="mdc-list mdc-list--two-line menuList">
+            <li class="mdc-list-item" onclick="showFrameSet('settingFrame/sortcdn/sortcdn.html')">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">CDN设置（暂未开放）</span>
@@ -165,8 +189,15 @@
         });
         const MDCList = mdc.list.MDCList;
         const MDCRipple = mdc.ripple.MDCRipple;
-        const list = new MDCList(document.querySelector('.mdc-list'));
-        const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
+        const MDCSwitch = mdc.switchControl.MDCSwitch;
+        window.MDCCheckbox = mdc.checkbox.MDCCheckbox;
+        document.querySelectorAll('.mdc-checkbox').forEach(element => {
+            new MDCCheckbox(element);
+        });
+        let list = new MDCList(document.querySelector('.checkBoxList'));
+        list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
+        list = new MDCList(document.querySelector('.menuList'));
+        list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
         document.title = "545在线-设置";
         const debugInfo = () => {
             let ip = document.createElement("script");
@@ -195,7 +226,10 @@
         document.getElementById("setFrame").addEventListener("load", () => {
             document.getElementById("loading").style.display = "none";
             document.getElementById("setFrame").style.padding = "0px";
-        })
+        });
+        if (localStorage.fullBlur && JSON.parse(localStorage.fullBlur)) {
+            document.getElementById("floatMenuContainer").style.backdropFilter = "blur(3px) brightness(100%)";
+        };
         const showFrameSet = url => {
             //使用iframe渲染设置
             document.getElementById("floatMenuContainer").style.display = "block";
@@ -207,6 +241,12 @@
             event.stopPropagation();
             document.getElementById("floatMenuContainer").style.display = "none";
         })
+        if (localStorage.fullBlur) {
+            document.getElementById("blurCheckbox").checked = JSON.parse(localStorage.fullBlur);
+        }
+        document.getElementById("blurCheckbox").addEventListener("change", () => {
+            localStorage.fullBlur = document.getElementById("blurCheckbox").checked;
+        }, false)
     </script>
 </body>
 

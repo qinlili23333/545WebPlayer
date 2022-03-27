@@ -357,6 +357,9 @@
             document.getElementById("shuffleBtn").className = window.shuffleSwitch ? "topBtn active" : "topBtn";
         };
         const menuList = document.getElementById("menuList");
+        if (localStorage.fullBlur && JSON.parse(localStorage.fullBlur)) {
+            document.getElementById("floatMenuContainer").style.backdropFilter="blur(3px) brightness(100%)";
+        }
         const showMenu = () => {
             document.getElementById("floatMenuContainer").style.display = "block";
         };
