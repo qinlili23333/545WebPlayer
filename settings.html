@@ -25,6 +25,8 @@
     <script src="./lib/base64.js"></script>
     <style>
         #floatMenuContainer {
+            transition: opacity 0.2s ease-in;
+            opacity: 0;
             display: none;
             z-index: 9999;
             top: 0px;
@@ -235,9 +237,11 @@
             }
             document.body.appendChild(ip);
         }
-        window.addEventListener("message", (event) => {
+        window.addEventListener("message", async (event) => {
             console.log(event.data)
             if (event.data == "close") {
+                document.getElementById("floatMenuContainer").style.opacity = 0;
+                await sleep(200);
                 document.getElementById("floatMenuContainer").style.display = "none";
             }
         }, false);
@@ -248,15 +252,19 @@
         if (localStorage.fullBlur && JSON.parse(localStorage.fullBlur)) {
             document.getElementById("floatMenuContainer").style.backdropFilter = "blur(3px) brightness(100%)";
         };
-        const showFrameSet = url => {
+        const showFrameSet = async url => {
             //使用iframe渲染设置
             document.getElementById("floatMenuContainer").style.display = "block";
+            await sleep(1);
+            document.getElementById("floatMenuContainer").style.opacity = 1;
             document.getElementById("loading").style.display = "block";
             document.getElementById("setFrame").style.padding = "100%";
             setFrame.src = url;
         }
-        document.getElementById("closeBtn").addEventListener("click", (event) => {
+        document.getElementById("closeBtn").addEventListener("click", async (event) => {
             event.stopPropagation();
+            document.getElementById("floatMenuContainer").style.opacity = 0;
+            await sleep(200);
             document.getElementById("floatMenuContainer").style.display = "none";
         })
         if (localStorage.fullBlur) {

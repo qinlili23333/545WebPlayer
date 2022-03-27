@@ -171,6 +171,8 @@
         }
 
         #floatMenuContainer {
+            transition: opacity 0.2s ease-in;
+            opacity: 0;
             display: none;
             z-index: 9999;
             top: 0px;
@@ -360,10 +362,14 @@
         if (localStorage.fullBlur && JSON.parse(localStorage.fullBlur)) {
             document.getElementById("floatMenuContainer").style.backdropFilter = "blur(3px) brightness(100%)";
         }
-        const showMenu = () => {
+        const showMenu = async () => {
             document.getElementById("floatMenuContainer").style.display = "block";
+            await sleep(1);
+            document.getElementById("floatMenuContainer").style.opacity = 1;
         };
-        const hideMenu = () => {
+        const hideMenu = async () => {
+            document.getElementById("floatMenuContainer").style.opacity = 0;
+            await sleep(200);
             document.getElementById("floatMenuContainer").style.display = "none";
         };
         document.getElementById("floatMenuContainer").addEventListener("click", (event) => {
