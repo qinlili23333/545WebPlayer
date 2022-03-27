@@ -1,9 +1,4 @@
 # 545WebPlayer
- 随时随地在线补充塔能量
-
-
-
-### 本项目使用以下开源项目  
-https://code-boxx.com/drag-drop-sortable-list-javascript/  
-https://www.codeproject.com/Articles/1091766/Add-support-for-standard-HTML-Drag-and-Drop-operat  
-https://material.io/components?platform=web  
+ 随时随地在线补充塔能量  
+一个强大的在线音乐播放器，使用PWA技术  
+你可以访问[这里](https://545.qinlili.bid)体验  

@@ -24,7 +24,7 @@
         src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
 </head>
 
-<body style="text-align: center">
+<body>
     <div class="navbar">
         <button onclick="document.location.href='./settings.html'" class="mdc-button foo-button">
             <div class="mdc-button__ripple"></div>
@@ -35,8 +35,21 @@
         <span style="width:64px;"></span>
     </div>
 
-    <div id="settings">
-        <H4 id="update" style="padding:10px;">页面建设中</H4>
+    <div id="settings" style="height:calc(100vh - 36px);overflow-y:scroll;padding:10px;">
+        <H4 style="padding:10px;">琴梨梨致力于支持开源生态发展</H4>
+        <p>本项目已在Github开源，请访问<a href="https://github.com/qinlili23333/545WebPlayer">Github</a>获取。</p>
+        <p>请感到自由的使用本项目的源码吧，你可以将本项目的源码随意使用在一切非营利项目中！</p>
+        <p>本项目的成功也离不开这些开源项目:</p>
+        <p><a href="https://material.io/components?platform=web">Material Components Web</a></p>
+        <p><a href="https://www.codeproject.com/Articles/1091766/Add-support-for-standard-HTML-Drag-and-Drop-operat">Add support for standard HTML5 Drag and Drop operations on Mobile Devices</a></p>
+        <p><a href="https://code-boxx.com/drag-drop-sortable-list-javascript/">Drag and Drop Sortable List With Javascript</a></p>
+        <p><a href="https://www.boxfactura.com/pulltorefresh.js/">PulltoRefresh.js</a></p>
+        <p>琴梨梨使用了一些开源软件用于开发:</p>
+        <p><a href="https://code.visualstudio.com/">Visual Studio Code</a></p>
+        <p><a href="https://www.chromium.org/">Chromium</a></p>
+        <p>琴梨梨使用了一些开源软件处理音频:</p>
+        <p><a href="https://ffmpeg.org/"></a>FFmpeg</p>
+        <p><a href="https://www.audacityteam.org/">Audacity</a></p>
     </div>
     <script>
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
