@@ -659,10 +659,13 @@
         const playNow = async song => {
             document.title = song.name + "-545在线";
             setStatus("正在下载" + song.name, true);
+            window.currentPlay = song.name;
             let playBlob = URL.createObjectURL(await (await fetch(song.url[cdn])).blob())
-            player.src = playBlob;
-            setStatus(song.name, false);
-            localStorage.lastPlay = JSON.stringify(song);
+            if (window.currentPlay == song.name) {
+                player.src = playBlob;
+                setStatus(song.name, false);
+                localStorage.lastPlay = JSON.stringify(song);
+            }
         }
         const recoverPlay = async () => {
             if (localStorage.lastPlay) {
