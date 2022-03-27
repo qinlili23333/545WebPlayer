@@ -338,8 +338,8 @@
     <script>
         //日后实现CDN切换
         const cdn = "yuketang";
-        window.repeatSwitch = localStorage.repeat || false;
-        window.shuffleSwitch = localStorage.shuffle || false;
+        window.repeatSwitch = localStorage.repeat ? JSON.parse(localStorage.repeat) : false;
+        window.shuffleSwitch = localStorage.shuffle ? JSON.parse(localStorage.shuffle) : false;
         if (repeatSwitch) {
             document.getElementById("repeatBtn").className = "topBtn active";
         };
