@@ -18,7 +18,6 @@ const getCacheName = url => {
 }
 self.addEventListener('fetch', event => {
     if(event.request.url.indexOf("getVersionWorker")>0){
-        console.log(event.request.url);
         event.respondWith(new Response(VERSION));
         return;
     }

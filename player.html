@@ -358,7 +358,7 @@
         };
         const menuList = document.getElementById("menuList");
         if (localStorage.fullBlur && JSON.parse(localStorage.fullBlur)) {
-            document.getElementById("floatMenuContainer").style.backdropFilter="blur(3px) brightness(100%)";
+            document.getElementById("floatMenuContainer").style.backdropFilter = "blur(3px) brightness(100%)";
         }
         const showMenu = () => {
             document.getElementById("floatMenuContainer").style.display = "block";
@@ -692,6 +692,26 @@
                     };
                     case "list": {
                         //队列随机
+                        if (window.order && window.order.length) {
+                            num = window.order.pop();
+                        } else {
+                            //生成随机列表
+                            let listLength = window.list.length;
+                            let tempArray = []
+                            let order = [];
+                            for (let i = 0; i < listLength; i++) {
+                                tempArray[i] = i;
+                            };
+                            for (let i = 0; i < listLength; i++) {
+                                let pick = random(0, tempArray.length - 1)
+                                order[i] = tempArray[pick];
+                                tempArray.splice(pick, 1)
+                            }
+                            window.order = order;
+                            console.log("生成了新的播放列表");
+                            console.log(order);
+                            num = window.order.pop();
+                        }
                         break;
                     };
                     case "exclude": {
