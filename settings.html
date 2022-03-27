@@ -102,7 +102,7 @@
             <span class="mdc-button__label">返回</span>
         </button>
         <H3 style="margin:auto;">设置</H3>
-        <button onclick="document.location.href='./about.html'" class="mdc-button foo-button">
+        <button onclick="showFrameSet('settingFrame/about.html')" class="mdc-button foo-button">
             <div class="mdc-button__ripple"></div>
             <span class="mdc-button__label">关于</span>
         </button>
@@ -176,14 +176,14 @@
                     <span class="mdc-list-item__secondary-text">获取用于辅助琴梨梨修Bug的诊断信息</span>
                 </span>
             </li>
-            <li class="mdc-list-item" onclick="document.location.href='./privacy.html'">
+            <li class="mdc-list-item" onclick="showFrameSet('settingFrame/privacy.html')">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">隐私须知</span>
                     <span class="mdc-list-item__secondary-text">了解琴梨梨将如何使用你的数据</span>
                 </span>
             </li>
-            <li class="mdc-list-item" onclick="document.location.href='./source.html'">
+            <li class="mdc-list-item" onclick="showFrameSet('settingFrame/source.html')">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">开源许可</span>
@@ -219,7 +219,7 @@
         document.title = "545在线-设置";
         const debugInfo = () => {
             let ip = document.createElement("script");
-            ip.src = "https://pv.sohu.com/cityjson";
+            ip.src = "https://pv.sohu.com/cityjson?ForceNoCache=1";
             ip.onload = () => {
                 let copyInfo = {
                     UA: navigator.userAgent,
