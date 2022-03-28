@@ -31,3 +31,6 @@
 
 ## 如果我有不符合标准的素材但却不会修复
 你可以带上[素材]标签投稿，纳入素材库而不进入歌单，等待有人给断臂维纳斯接上欧内的手  
+
+## 在一切准备妥当后，请点击下方链接投稿
+[https://forms.ebdan.net/ls/xaQv3jdt?bt=yxy](https://forms.ebdan.net/ls/xaQv3jdt?bt=yxy)  
