@@ -11,7 +11,7 @@
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E5%A4%A7%E5%96%9C_20220325122827_12379.ogg"
                     },
-                    "cover": "https://i0.hdslb.com/bfs/archive/c751c763a22e662ccaefc1cd934b906cd082ccc2.jpg",
+                    "cover": "https://i0.hdslb.com/bfs/archive/c751c763a22e662ccaefc1cd934b906cd082ccc2.jpg@.webp",
                     "quality": "OPUS192",
                     "full_title": "『笙歌』年夜饭不得不听的《大喜》｜祝大家新年快乐！",
                     "origin": "https://www.bilibili.com/video/BV1ba41127Fn",
@@ -23,7 +23,7 @@
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E8%99%9A%E6%8B%9Fparadise_20220325124722_60749.ogg"
                     },
-                    "cover": "https://i0.hdslb.com/bfs/archive/4234c855581f6d2be0799cbebb09b9f9b0b32023.jpg",
+                    "cover": "https://i0.hdslb.com/bfs/archive/4234c855581f6d2be0799cbebb09b9f9b0b32023.jpg@.webp",
                     "quality": "OPUS96",
                     "full_title": "原创曲生日作【虚拟paradise】—笙歌 ｜有没有被虚拟主播治愈过的瞬间",
                     "origin": "https://www.bilibili.com/video/BV1Fr4y1i7g5",
@@ -31,11 +31,47 @@
                     "release_date": "2022-01-16"
                 },
                 {
+                    "name": "难过233秒",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E9%9A%BE%E8%BF%87233%E7%A7%92_20220328102409_62707.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/fbe77d53971c1113b3d8862cafd0ec7afde8c5cb.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "【笙歌】难过233秒",
+                    "origin": "https://www.bilibili.com/video/BV1cg411L7pp",
+                    "source_quality": "AAC320",
+                    "release_date": "2021-08-22"
+                },
+                {
+                    "name": "for you 写给你的歌",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E5%86%99%E7%BB%99%E4%BD%A0%E7%9A%84%E6%AD%8C_20220328103223_6451.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/05f7d0a05a150dfd7e8f1ef97bb36a80862459ef.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "【笙歌】周年小作文和《for you 写给你的歌》(cover 泠鸢)",
+                    "origin": "https://www.bilibili.com/video/BV1hK4y1G72m?p=2",
+                    "source_quality": "AAC320",
+                    "release_date": "2021-05-22"
+                },
+                {
+                    "name": "天地劫",
+                    "url": {
+                        "yuketang": "https://yunpanx.bj.bcebos.com/v1/22765_20220328104355_39616.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/8a66ea444e032871929a5978ae35a1e97305e48b.jpg@.webp",
+                    "quality": "OPUS96",
+                    "full_title": "【笙歌x王老九】带rap男女双版本高燃翻唱——《天地劫》",
+                    "origin": "https://www.bilibili.com/video/BV1By4y1x7Ms?p=2",
+                    "source_quality": "AAC128",
+                    "release_date": "2021-04-01"
+                },
+                {
                     "name": "红叶寺",
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BA%A2%E5%8F%B6%E5%AF%BA_20220325124721_6771.ogg"
                     },
-                    "cover": "https://i0.hdslb.com/bfs/archive/7e91258b4423201f8618ed6d21fd90333af371b0.jpg",
+                    "cover": "https://i0.hdslb.com/bfs/archive/7e91258b4423201f8618ed6d21fd90333af371b0.jpg@.webp",
                     "quality": "OPUS96",
                     "full_title": "【红叶寺】笙歌——就问你们够不够御姐是不是心魔！",
                     "origin": "https://www.bilibili.com/video/BV1kC4y1h717",
@@ -47,7 +83,7 @@
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BA%BA%E9%97%B4%E4%B8%8D%E5%80%BC%E5%BE%97_20220325140311_31095.ogg"
                     },
-                    "cover": "https://i0.hdslb.com/bfs/music/a2b38aba10aa7243ce12a8cc08cad3942d49ca23.jpg",
+                    "cover": "https://i0.hdslb.com/bfs/music/a2b38aba10aa7243ce12a8cc08cad3942d49ca23.jpg@.webp",
                     "quality": "OPUS128",
                     "full_title": "温柔女声超好听戏腔【人间不值得】（cover：黄诗扶）——笙歌",
                     "origin": "https://www.bilibili.com/audio/au1045251",
@@ -59,7 +95,7 @@
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E8%8A%92%E7%A7%8D_20220326173651_85598.ogg"
                     },
-                    "cover": "https://i0.hdslb.com/bfs/archive/112ab6a3dfaf08d4e5db98793d96c0bbec96c136.jpg",
+                    "cover": "https://i0.hdslb.com/bfs/archive/112ab6a3dfaf08d4e5db98793d96c0bbec96c136.jpg@.webp",
                     "quality": "OPUS192",
                     "full_title": "【芒种】超甜少女版原创PV「一想你我就啊哈哈哈哈哈哈」",
                     "origin": "https://www.bilibili.com/video/BV1G4411r7Yj",
@@ -73,11 +109,23 @@
             "description": "塔宝参与联合投稿的合唱",
             "list": [
                 {
+                    "name": "琴师x倾尽天下(&王老九)",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E7%90%B4%E5%B8%88%E5%80%BE%E5%B0%BD%E5%A4%A9%E4%B8%8Bx%E7%8E%8B%E8%80%81%E4%B9%9D_20220328103708_913.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/d3c40e1ee322bc203a9b456c7c6bc0703287f23f.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "梦回经典古风歌《琴师x倾尽天下》—水墨画风│男女合唱『笙歌＆王老九』",
+                    "origin": "https://www.bilibili.com/video/BV1uT4y12782",
+                    "source_quality": "AAC320",
+                    "release_date": "2022-01-20"
+                },
+                {
                     "name": "绝世舞姬(&午哞哞)",
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BB%9D%E4%B8%96%E8%88%9E%E5%A7%ACx%E5%8D%88%E5%93%9E%E5%93%9E_20220326173048_48056.ogg"
                     },
-                    "cover": "https://i0.hdslb.com/bfs/archive/d2d133f6e9cd670e8ce79e2950955c6c2a1d3198.jpg",
+                    "cover": "https://i0.hdslb.com/bfs/archive/d2d133f6e9cd670e8ce79e2950955c6c2a1d3198.jpg@.webp",
                     "quality": "OPUS128",
                     "full_title": "【笙歌x午哞哞】双御翻唱│又美又飒的《绝世舞姬》",
                     "origin": "https://www.bilibili.com/video/BV1nb4y1276n",
@@ -85,11 +133,35 @@
                     "release_date": "2021-09-10"
                 },
                 {
+                    "name": "天地劫(&王老九)",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E5%A4%A9%E5%9C%B0%E5%8A%ABx%E7%8E%8B%E8%80%81%E4%B9%9D_20220328104137_31418.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/8a66ea444e032871929a5978ae35a1e97305e48b.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "【笙歌x王老九】带rap男女双版本高燃翻唱——《天地劫》",
+                    "origin": "https://www.bilibili.com/video/BV1By4y1x7Ms",
+                    "source_quality": "AAC320",
+                    "release_date": "2021-04-01"
+                },
+                {
+                    "name": "女驸马丨她与她的花烛前(&兰音)",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E5%A5%B3%E9%A9%B8%E9%A9%ACx%E5%85%B0%E9%9F%B3_20220328102846_73415.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/e93cb0b539e059250f3a307d25c52e21083813d1.jpg@.webp",
+                    "quality": "OPUS128",
+                    "full_title": "【笙歌x午哞哞】双御翻唱│又美又飒的《绝世舞姬》",
+                    "origin": "https://www.bilibili.com/video/BV1WQ4y1m7Uq",
+                    "source_quality": "AAC256",
+                    "release_date": "2021-08-21"
+                },
+                {
                     "name": "汉江恋(&阿梓)",
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B1%89%E6%B1%9F%E6%81%8Bx%E9%98%BF%E6%A2%93_20220327110835_62862.ogg"
                     },
-                    "cover": "https://i0.hdslb.com/bfs/archive/eaacb90c6b2a8f975fe8c4926f60d8ad3b0e9bf1.jpg",
+                    "cover": "https://i0.hdslb.com/bfs/archive/eaacb90c6b2a8f975fe8c4926f60d8ad3b0e9bf1.jpg@.webp",
                     "quality": "OPUS192",
                     "full_title": "【笙歌阿梓】汉江恋【原创曲】",
                     "origin": "https://www.bilibili.com/video/BV1Mg4y167hS",
@@ -101,7 +173,7 @@
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E5%8B%BE%E6%8C%87%E8%B5%B7%E8%AA%93(%E5%9C%B0%E4%B8%89%E9%B2%9C)_20220327111251_40992.ogg"
                     },
-                    "cover": "https://i0.hdslb.com/bfs/archive/84740995d55eda5909dc6948b89613f024fc05ce.jpg",
+                    "cover": "https://i0.hdslb.com/bfs/archive/84740995d55eda5909dc6948b89613f024fc05ce.jpg@.webp",
                     "quality": "OPUS192",
                     "full_title": "【阿梓x小可x笙歌】当三个不同声线的女生唱《勾指起誓》会产生什么反应！",
                     "origin": "https://www.bilibili.com/video/BV1bb411x7fb",
