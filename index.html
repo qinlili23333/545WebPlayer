@@ -32,13 +32,16 @@
         document.body.innerHTML = "你正在64位操作系统上使用32位浏览器!为了更快的访问速度请改用64位浏览器!"
         await sleep(3000)
       }
-      let liveStatus = await (await fetch("https://bililive.qinlili.workers.dev/status?uid=15641218&ForceNoCache=1")).json();
+      let liveStatus = await (await fetch("https://bililive.qinlili.workers.dev/status?uid=15641218&ForceNoCache=1").catch(error => {
+        alert("检测直播状态失败！\n点击确定直接进入播放器")
+        location.href = "player.html";
+        return;
+      })).json();
       if (liveStatus.data && (liveStatus.data.status == 1) && confirm("塔宝正在直播，不去看直播？\n（点击确定即可快速跳转到直播间，点击取消继续前往播放器）")) {
         location.href = "https://live.bilibili.com/545"
         return;
       }
       document.body.innerHTML = "正在加载播放器...";
-      location.href = "player.html"
     }
     init();
   </script>
