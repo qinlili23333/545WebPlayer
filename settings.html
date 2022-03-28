@@ -93,6 +93,7 @@
             padding: 100%;
             width: 100%;
             height: 100%;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -178,6 +179,13 @@
                     <span class="mdc-list-item__secondary-text">获取用于辅助琴梨梨修Bug的诊断信息</span>
                 </span>
             </li>
+            <li class="mdc-list-item" onclick="showFrameSet('settingFrame/quality.html')">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">音频质量指南</span>
+                    <span class="mdc-list-item__secondary-text">了解本项目的音频质量及投稿须知</span>
+                </span>
+            </li>
             <li class="mdc-list-item" onclick="showFrameSet('settingFrame/privacy.html')">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
@@ -243,6 +251,10 @@
                 document.getElementById("floatMenuContainer").style.opacity = 0;
                 await sleep(200);
                 document.getElementById("floatMenuContainer").style.display = "none";
+            }
+            if (event.data == "load") {
+                document.getElementById("loading").style.display = "block";
+                document.getElementById("setFrame").style.padding = "100%";
             }
         }, false);
         document.getElementById("setFrame").addEventListener("load", () => {

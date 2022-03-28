@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>545在线-开源许可</title>
+    <link href="../public.css" rel="stylesheet">
+    <link crossorigin="anonymous"
+        integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ=="
+        href="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.css" rel="stylesheet">
+    <script crossorigin="anonymous"
+        integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
+        src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
+    <link crossorigin="anonymous"
+        integrity="sha512-y9glprRcVESvYY3suAqBUYXx0ySbQNvbzzgvLy9F2o38Y7XCNeq/No2gnHjV3+Rjyq5ijoPZRMXotpdw6jcG4g=="
+        href="https://lib.baomitu.com/material-design-icons/3.0.2/iconfont/material-icons.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="settings" style="padding:10px;">
+        <h1>545在线音频质量指南</h1>
+        <h2>本站使用的音频格式</h2>
+        <p>本站全部使用目前最先进的opus音频编码，这种格式已经在YouTube这样的巨型视频网站上得到了充分验证，能以极低的码率提供优质的音质。
+            <br>琴梨梨按照下面的表格执行编码转换
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>aac原始码率</th>
+                    <th>opus转码码率</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>320k-无损</td>
+                    <td>192k</td>
+                </tr>
+                <tr>
+                    <td>192-319k</td>
+                    <td>128k</td>
+                </tr>
+                <tr>
+                    <td>191k以内</td>
+                    <td>96k</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <h2>如何给本站提供新的高质量音频</h2>
+        <h3>尽可能选择高质量的的原始音频做处理</h3>
+        <p>如果是直播录制，请尽可能录制真原画下的320k音频（而不是叔叔二压后的，只要Encode为Lavf那就是叔叔二压的，陈睿你妈什么时候死啊）。如果是投稿视频的音频，请下载最高画质下对应的音频，并采用直接提取的办法，不要转码！反复转码也会影响音质。
+            <br>而在精修等工作中，请尽可能使用无损的伴奏等素材，越高质量的素材可以得到越高质量的成品。
+        </p>
+        <br>
+        <h3>后期处理过程中不要使用有损格式</h3>
+        <p>如果你的后期处理包括多项处理，避免使用有损格式作为中间格式，比如A软件调整后转入B软件调整，每一次有损压缩都会产生质量损失，请使用wav或flac等无损格式作为中间格式，最后导出成品时一次性转换为有损压缩格式。</p>
+        <br>
+        <h3>不要为了假装高音质反向升级码率</h3>
+        <p>把128k的音频直接转换为256k并不会带来任何音质升级，只会浪费空间。如果你只有低码率的音频，请使用一些专业软件来升级音质，比如Magix Video Sound Cleaning Lab。</p>
+        <br>
+        <h3>避免过高的响度</h3>
+        <p>请控制你的音频整体响度，不要陷入响度战争。虽然提高响度有时候能改善主观听觉感受，但这是不可取的。</p>
+        <br>
+        <br>
+        <h2>本站接受的音频标准</h2>
+        <p>格式：首选opus/flac，次推荐wav/ape/高码率aac，请不要使用落后的mp3格式
+            <br>完整性：应该具有完整的伴奏长度，不应该掐头去尾，如果录制过程不慎缺少头尾，请自行寻找伴奏修复。本站暂不接受没唱完的歌投稿，除非节目效果溢出的情况
+            <br>说话声：不应该出现塔宝的非歌唱性说话声音，你可以使用原始伴奏进行覆盖，当然一些过于具有节目效果的说话声，以及一些可以和谐融入歌曲的说话声可以保留
+            <br>歌唱质量：请不要投稿含有混摆寄部分的音频，你可以选取多次的音频进行精修后投稿
+            <br>重复性：一首歌的一种版本只应该存在一次，但你可以投稿更高质量的音频覆盖旧的，一首歌的不同版本可以同时存在（不同版本指伴奏版本不同/合唱人不同等，比如要抱抱原版与要抱抱柔情版可以共存，和小可合唱版本与和阿梓合唱版本可以共存）
+        </p>
+        <h2>如果我有不符合标准的素材但却不会修复</h2>
+        <p>你可以带上[素材]标签投稿，纳入素材库而不进入歌单，等待有人给断臂维纳斯接上欧内的手 </p>
+        <br>
+        <h2>在一切准备妥当后，请点击下方按钮投稿</h2>
+
+        <br>
+        <button class="mdc-button mdc-button--raised mdc-button--leading" style="width:100%;padding:16px;" id="sendBtn">
+            <span class="mdc-button__ripple"></span>
+            <i class="material-icons mdc-button__icon" aria-hidden="true">send</i>
+            <span class="mdc-button__label">投稿</span>
+        </button>
+        <script>
+            document.querySelectorAll('.mdc-button').forEach(element => {
+                mdc.ripple.MDCRipple.attachTo(element);
+            });
+            document.getElementById("sendBtn").addEventListener("click", () => {
+                window.parent.postMessage("load");
+                location.href = "https://forms.ebdan.net/ls/xaQv3jdt?bt=yxy";
+            })
+        </script>
+    </div>
+</body>
+
+</html>
