@@ -1,6 +1,6 @@
 {
     "success": true,
-    "version": "2022032801",
+    "version": "2022032802",
     "songs": [
         {
             "type": "塔宝投稿",
@@ -127,6 +127,18 @@
                     "release_date": "2019-12-22"
                 },
                 {
+                    "name": "沿花路前行",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B2%BF%E8%8A%B1%E8%B7%AF%E5%89%8D%E8%A1%8C_20220328125721_356.ogg"
+                    },
+                    "cover": "https://i1.hdslb.com/bfs/archive/d91e7a837f4ae358ca760234c3b4995bc32ce845.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "【笙歌】音之守护者2.0主题曲《沿花路前行》翻唱——这次不是怨妇音，是你没听过的甜美治愈！",
+                    "origin": "https://www.bilibili.com/video/BV1TE411a7Fi",
+                    "source_quality": "AAC320",
+                    "release_date": "2019-10-30"
+                },
+                {
                     "name": "人间不值得",
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BA%BA%E9%97%B4%E4%B8%8D%E5%80%BC%E5%BE%97_20220325140311_31095.ogg"
@@ -149,6 +161,42 @@
                     "origin": "https://www.bilibili.com/video/BV1G4411r7Yj",
                     "source_quality": "AAC320",
                     "release_date": "2019-08-23"
+                },
+                {
+                    "name": "人间白首",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BA%BA%E9%97%B4%E7%99%BD%E9%A6%96_20220328141641_17375.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/65eebd7d41759f6dcead95f48f9fd2fca91dc6ed.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "带念白催泪向剪辑——狐妖竹业篇【人间白首】怨气女声翻唱",
+                    "origin": "https://www.bilibili.com/video/BV1H4411V73k",
+                    "source_quality": "AAC320",
+                    "release_date": "2019-06-14"
+                },
+                {
+                    "name": "食色",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E9%A3%9F%E8%89%B2_20220328143655_4057.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/b11eaf981b003b0bda7e3f265a4f35fee77a31dd.jpg@.webp",
+                    "quality": "OPUS128",
+                    "full_title": "⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄第一次投稿这种风格的歌——『食色』，“幸”也。",
+                    "origin": "https://www.bilibili.com/video/BV1z4411M7JH",
+                    "source_quality": "AAC256",
+                    "release_date": "2019-06-06"
+                },
+                {
+                    "name": "是你依然在",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E6%98%AF%E4%BD%A0%E4%BE%9D%E7%84%B6%E5%9C%A8_20220328144027_48064.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/505582930c3a241afd233eca776851c6ddbf829e.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "【是你依然在】两周年投稿—感谢每一个能听我唱歌的人",
+                    "origin": "https://www.bilibili.com/video/BV16441157bB",
+                    "source_quality": "AAC320",
+                    "release_date": "2019-05-22"
                 }
             ]
         },
@@ -167,6 +215,18 @@
                     "origin": "https://www.bilibili.com/video/BV1uT4y12782",
                     "source_quality": "AAC320",
                     "release_date": "2022-01-20"
+                },
+                {
+                    "name": "美丽之物(&红晓音)",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BE%8E%E4%B8%BD%E4%B9%8B%E7%89%A9(&%E7%BA%A2%E6%99%93%E9%9F%B3)_20220328144448_14033.ogg"
+                    },
+                    "cover": "https://i2.hdslb.com/bfs/archive/e4a599b0de6eaa4977f70bb0ea704797e29c4f55.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "中日双语版超经典歌曲《美丽之物》「红晓音＆笙歌」",
+                    "origin": "https://www.bilibili.com/video/BV1TR4y137Jk",
+                    "source_quality": "AAC320",
+                    "release_date": "2021-12-31"
                 },
                 {
                     "name": "绝世舞姬(&午哞哞)",
@@ -229,6 +289,18 @@
                     "release_date": "2020-05-02"
                 },
                 {
+                    "name": "是风动(&Halo)",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E6%98%AF%E9%A3%8E%E5%8A%A8xHalo_20220328120850_50596.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/410a3760a2c7dde11b849edeb8de279fa64e0dca.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "【Halo&笙歌】男女声合唱《是风动》， 见你如是才无憾",
+                    "origin": "https://www.bilibili.com/video/BV1mJ411v72d",
+                    "source_quality": "AAC320",
+                    "release_date": "2020-05-02"
+                },
+                {
                     "name": "勾指起誓(地三鲜)",
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E5%8B%BE%E6%8C%87%E8%B5%B7%E8%AA%93(%E5%9C%B0%E4%B8%89%E9%B2%9C)_20220327111251_40992.ogg"
@@ -239,6 +311,30 @@
                     "origin": "https://www.bilibili.com/video/BV1bb411x7fb",
                     "source_quality": "AAC320",
                     "release_date": "2019-03-28"
+                },
+                {
+                    "name": "藏(&小拍子)",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E8%97%8F(&%E5%B0%8F%E6%8B%8D%E5%AD%90)_20220328144737_18199.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/b168fceb3f4b022f3af5d38b02ae1a53d6b44972.jpg@.webp",
+                    "quality": "OPUS96",
+                    "full_title": "【小拍子x笙歌】藏——超“甜美”男女声合唱",
+                    "origin": "https://www.bilibili.com/video/BV1sb41187LP",
+                    "source_quality": "AAC128",
+                    "release_date": "2019-03-28"
+                },
+                {
+                    "name": "知否知否(&王老九)",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E7%9F%A5%E5%90%A6%E7%9F%A5%E5%90%A6(&%E7%8E%8B%E8%80%81%E4%B9%9D)_20220328150216_75773.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/d243ab23abfd776d468b8ea6c97e5bd96a7407cf.jpg@.webp",
+                    "quality": "OPUS128",
+                    "full_title": "【王老九x笙歌】知否知否——应是绿肥红瘦",
+                    "origin": "https://www.bilibili.com/video/BV1Wt41187zn",
+                    "source_quality": "AAC256",
+                    "release_date": "2019-01-20"
                 }
             ]
         },
