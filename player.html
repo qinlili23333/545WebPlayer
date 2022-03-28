@@ -76,6 +76,8 @@
         }
 
         * {
+            scrollbar-width: thin;
+            scrollbar-color: #FADCBB transparent;
             --mdc-theme-primary: #F4C39D;
             --mdc-theme-secondary: #FADCBB;
             box-sizing: border-box;
@@ -217,6 +219,7 @@
 
         #floatMenu {
             width: calc(100% - 20vw);
+            height: -moz-fit-content;
             height: fit-content;
             max-height: calc(100% - 20vh);
             border-radius: 5px;
