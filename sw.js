@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '20220327'
-var VERSION_AZUSA_PATCH_USE = '20220326'
+var VERSION = '20220328'
+var VERSION_AZUSA_PATCH_USE = '20220327'
 var AZUSA_PATCH_SKIP_LIST = []
 var CACHE_NAME = APP_PREFIX + VERSION
 var AZUSA_CACHE = APP_PREFIX + VERSION_AZUSA_PATCH_USE
@@ -11,13 +11,13 @@ const getCacheName = url => {
     if (url.indexOf("bcebos.com") > 0) {
         return "MusicCache";
     }
-    if (url.indexOf("hdslb.com") > 0) {
+    if ((url.indexOf("hdslb.com") > 0) || (url.indexOf("zhimg.com") > 0)) {
         return "ImageCache";
     }
     return CACHE_NAME;
 }
 self.addEventListener('fetch', event => {
-    if(event.request.url.indexOf("getVersionWorker")>0){
+    if (event.request.url.indexOf("getVersionWorker") > 0) {
         event.respondWith(new Response(VERSION));
         return;
     }
