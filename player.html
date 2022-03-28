@@ -161,11 +161,15 @@
             flex-direction: row;
             height: 32px;
             padding-left: 4px;
+            max-width: calc(100vw - 100px);
         }
 
         #tips {
             margin: auto;
             font-size: 1.1em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         #loading {
@@ -701,7 +705,15 @@
             document.title = song.name + "-545在线";
             setStatus("正在下载" + song.name, true);
             window.currentPlay = song.name;
-            let playBlob = URL.createObjectURL(await (await fetch(song.url[cdn])).blob())
+            let playBlob = URL.createObjectURL(await (await fetch(song.url[cdn]).catch(error => {
+                setStatus("下载失败" + song.name, false);
+                if (!navigator.onLine) {
+                    //断网跳过未下载歌曲
+                    player.dispatchEvent(new CustomEvent("ended"));
+                } else {
+                    playNow(song);
+                }
+            })).blob())
             if (window.currentPlay == song.name) {
                 player.src = playBlob;
                 setStatus(song.name, false);
@@ -713,7 +725,15 @@
                 let song = JSON.parse(localStorage.lastPlay)
                 document.title = song.name + "-545在线";
                 setStatus("正在下载" + song.name, true);
-                let playBlob = URL.createObjectURL(await (await fetch(song.url[cdn])).blob())
+                let playBlob = URL.createObjectURL(await (await fetch(song.url[cdn]).catch(error => {
+                    setStatus("下载失败" + song.name, false);
+                    if (!navigator.onLine) {
+                        //断网跳过未下载歌曲
+                        player.dispatchEvent(new CustomEvent("ended"));
+                    } else {
+                        recoverPlay();
+                    }
+                })).blob())
                 player.src = playBlob;
                 setStatus(song.name, false);
             }
