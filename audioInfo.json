@@ -1,6 +1,6 @@
 {
     "success": true,
-    "version": "20220326",
+    "version": "2022032801",
     "songs": [
         {
             "type": "塔宝投稿",
@@ -79,6 +79,54 @@
                     "release_date": "2020-07-21"
                 },
                 {
+                    "name": "鲸",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E9%B2%B8_20220328110647_50920.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/521932e1a4b1d2fdb36782a83e2337c55099c655.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "【鲸】歌声空灵，能直击心脏让人泪下的翻唱——生而为鲸，死而为寂 体验不一样的深海。",
+                    "origin": "https://www.bilibili.com/video/BV1af4y1R7yZ",
+                    "source_quality": "AAC320",
+                    "release_date": "2020-07-14"
+                },
+                {
+                    "name": "好字唯之",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E5%A5%BD%E5%AD%97%E5%94%AF%E4%B9%8B_20220328111258_54818.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/d07890b6b209821a7c42157ca3a2bd6c6bd736a4.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "【笙歌】温柔洒脱女声翻唱《好字唯之》——忘川风华录",
+                    "origin": "https://www.bilibili.com/video/BV1E54y1q7ve",
+                    "source_quality": "AAC320",
+                    "release_date": "2020-07-12"
+                },
+                {
+                    "name": "慢冷",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E6%85%A2%E5%86%B7_20220328114339_22683.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/1a7075eeb4d37bf8014a8c644eb5f2bca9043006.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "【慢冷】六岁怨妇女声翻唱梁静茹情歌啦！！！",
+                    "origin": "https://www.bilibili.com/video/BV1mJ411L7nk",
+                    "source_quality": "AAC320",
+                    "release_date": "2020-01-05"
+                },
+                {
+                    "name": "破裂",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E7%A0%B4%E8%A3%82_20220328114643_15196.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/12149ff7a7a7ba6a22598b7a052bf7dfaa2ec83f.jpg@.webp",
+                    "quality": "OPUS128",
+                    "full_title": "【破裂】音阙诗听翻唱姬——有PV不摇头版气质女声温柔致郁翻唱（cover王梓钰）",
+                    "origin": "https://www.bilibili.com/video/BV1rJ41147gf",
+                    "source_quality": "AAC192",
+                    "release_date": "2019-12-22"
+                },
+                {
                     "name": "人间不值得",
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BA%BA%E9%97%B4%E4%B8%8D%E5%80%BC%E5%BE%97_20220325140311_31095.ogg"
@@ -143,6 +191,18 @@
                     "origin": "https://www.bilibili.com/video/BV1By4y1x7Ms",
                     "source_quality": "AAC320",
                     "release_date": "2021-04-01"
+                },
+                {
+                    "name": "君子如歌(&叁夜子/Braska/真是怪怪的)",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E5%90%9B%E5%AD%90%E5%A6%82%E6%AD%8Cx%E5%8F%81%E5%A4%9C%E5%AD%90xBraskax%E7%9C%9F%E6%98%AF%E6%80%AA%E6%80%AA%E7%9A%84_20220328105053_55828.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/07f62e436b0310a1b5a3255157bb3bb2758e76c1.jpg@.webp",
+                    "quality": "OPUS128",
+                    "full_title": "【梅兰竹菊】《君子如歌》「超好听的清新甜美电子国风曲带你迎接万物复苏之春」",
+                    "origin": "https://www.bilibili.com/video/BV1rN411Q7A6",
+                    "source_quality": "AAC256",
+                    "release_date": "2021-03-13"
                 },
                 {
                     "name": "女驸马丨她与她的花烛前(&兰音)",
