@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '20220328'
-var VERSION_AZUSA_PATCH_USE = '20220327'
+var VERSION = '20220329'
+var VERSION_AZUSA_PATCH_USE = '20220328'
 var AZUSA_PATCH_SKIP_LIST = []
 var CACHE_NAME = APP_PREFIX + VERSION
 var AZUSA_CACHE = APP_PREFIX + VERSION_AZUSA_PATCH_USE
@@ -59,6 +59,7 @@ self.addEventListener('install', e => {
             return cache.addAll(URLS)
         })
     )
+    self.skipWaiting();
 })
 self.addEventListener('activate', e => {
     e.waitUntil(

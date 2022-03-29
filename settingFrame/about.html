@@ -31,11 +31,11 @@
                     document.getElementById("update").innerText = "当前已经是最新版本:" + currentVersion;
                 } else {
                     if (versionJson.azusa_patch_avaliable == currentVersion) {
-                        document.getElementById("update").innerText = "可省流量更新到:" + versionJson.latest;
+                        document.getElementById("update").innerText = "正在尝试省流量更新到:" + versionJson.latest;
                     } else {
-                        document.getElementById("update").innerText = "可全量更新到:" + versionJson.latest;
+                        document.getElementById("update").innerText = "正在尝试全量更新到:" + versionJson.latest;
                     }
-                    //显示更新按钮
+                    await navigator.serviceWorker.register('./sw.js', { scope: '/' });
                 }
             } else {
                 if (currentVersion) {
