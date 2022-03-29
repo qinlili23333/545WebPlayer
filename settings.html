@@ -250,7 +250,8 @@
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
         const playOutAnim = async () => {
             document.body.style.animation = "rightout 0.12s";
-            await sleep(100);
+            document.body.style.marginLeft = "100%";
+            await sleep(75);
             history.back();
         }
         window.mdc.autoInit();
