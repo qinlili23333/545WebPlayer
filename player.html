@@ -143,6 +143,7 @@
             overflow-y: scroll;
             height: calc(100vh - 112px);
             margin-bottom: 64px;
+            transition: width 0.2s ease-in;
         }
 
         #playList {
@@ -535,6 +536,7 @@
             window.audioList = audioList;
             //渲染全部歌单
             const audioFolderModule = document.getElementById("audioFolderModule");
+            audioFolderModule.style.display = "none";
             audioFolderModule.innerHTML = "";
             audioList.forEach(folderInfo => {
                 //分类渲染
@@ -619,6 +621,7 @@
             })
             const list = new MDCList(audioFolderModule);
             const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
+            audioFolderModule.style.display = "block";
         }
         renderAudioList(false);
         const renderPlayList = () => {
@@ -632,6 +635,7 @@
                     document.getElementById("empty").style.display = "none";
                     window.list = JSON.parse(localStorage.playList);
                     const audioListModule = document.getElementById("audioListModule");
+                    audioListModule.style.display = "none";
                     audioListModule.innerHTML = "";
                     window.list.forEach(songInfo => {
                         let song = makeItem(songInfo.name, songInfo.full_title, songInfo.cover, (event) => {
@@ -693,6 +697,7 @@
                     })
                     const list = new MDCList(audioListModule);
                     const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
+                    audioListModule.style.display = "block";
                 } else {
                     empty();
                 }
