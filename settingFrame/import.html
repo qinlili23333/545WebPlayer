@@ -20,6 +20,13 @@
 </head>
 
 <body style="text-align: center">
+    <H4 style="padding:16px;">提前全部缓存</H4>
+    <button class="mdc-button mdc-button--raised mdc-button--leading" style="width:80%;margin:16px;" id="downBtn">
+        <span class="mdc-button__ripple"></span>
+        <i class="material-icons mdc-button__icon" aria-hidden="true">cloud_download</i>
+        <span class="mdc-button__label">全部缓存</span>
+    </button>
+    <p id="cacheStatus"></p>
     <H4 style="padding:16px;">下方文本框内容即为你的播放列表信息</H4>
     <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label"
         style="padding:10px;height:auto;width:100%;">
@@ -64,6 +71,32 @@
             } catch {
                 alert("解析播放列表失败，请检查你的输入！");
             }
+        });
+        const cdn = "yuketang"
+        document.getElementById("downBtn").addEventListener("click", () => {
+            const setStatus = (success, fail, total) => {
+                document.getElementById("cacheStatus").innerText = "总计" + total + "首,已缓存" + success + "首,失败" + fail + "首";
+            }
+            let playList = JSON.parse(localStorage.playList);
+            let success = 0;
+            let fail = 0;
+            let total = playList.length;
+            const addFail = () => {
+                fail++;
+                setStatus(success, fail, total);
+            }
+            const addSuccess = () => {
+                success++;
+                setStatus(success, fail, total);
+            }
+            playList.forEach(async song => {
+                await (await fetch(song.url[cdn]).catch(error => {
+                    addFail();
+                })).blob().catch(error => {
+                    addFail();
+                })
+                addSuccess();
+            })
         })
     </script>
 </body>
