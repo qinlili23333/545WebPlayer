@@ -35,6 +35,26 @@
                 margin-left: 0;
             }
         }
+
+        @keyframes bottomup {
+            from {
+                bottom: -100%;
+            }
+
+            to {
+                bottom: 0;
+            }
+        }
+
+        @keyframes bottomdown {
+            from {
+                bottom: 0;
+            }
+
+            to {
+                bottom: -100%;
+            }
+        }
     </style>
     <style>
         audio::-webkit-media-controls-play-button,
@@ -90,11 +110,12 @@
         html,
         body {
             overflow: hidden;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
         }
 
         #playPanel {
+            animation: bottomup 0.3s;
             z-index: 999;
             position: fixed;
             height: auto;
@@ -262,7 +283,7 @@
         }
     </style>
     <script>
-        document.title = "载入播放器中..."
+        document.title = "载入播放器中...";
     </script>
     <link crossorigin="anonymous"
         integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ=="
@@ -313,7 +334,7 @@
             <div id="buttons">
                 <img class="topBtn" id="shuffleBtn" onclick="switchShuffle();" src="./img/shuffle.svg">
                 <img class="topBtn" id="repeatBtn" onclick="switchRepeat();" src="./img/repeat.svg">
-                <img class="topBtn" id="settingBtn" onclick="document.location.href='./settings.html'"
+                <img class="topBtn" id="settingBtn" onclick="bottomdown();document.location.href='./settings.html'"
                     src="./img/setting.svg">
             </div>
         </div>
@@ -371,6 +392,9 @@
             document.body.appendChild(eleLink);
             eleLink.click();
             document.body.removeChild(eleLink);
+        }
+        const bottomdown = () => {
+            document.getElementById("playPanel").style.animation = "bottomdown 0.15s";
         }
     </script>
     <script>

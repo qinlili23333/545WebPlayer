@@ -24,6 +24,37 @@
         src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
     <script src="./lib/base64.js"></script>
     <style>
+        @keyframes leftin {
+            from {
+                margin-left: -100%;
+            }
+
+            to {
+                margin-left: 0;
+            }
+        }
+
+        @keyframes rightin {
+            from {
+                margin-left: 100%;
+            }
+
+            to {
+                margin-left: 0;
+            }
+        }
+
+        @keyframes rightout {
+            from {
+                margin-left: 0;
+            }
+
+            to {
+                margin-left: 100%;
+            }
+        }
+    </style>
+    <style>
         #floatMenuContainer {
             transition: opacity 0.2s ease-in;
             opacity: 0;
@@ -95,12 +126,18 @@
             height: 100%;
             border-radius: 5px;
         }
+
+        body {
+            overflow-x: hidden;
+            width: 100vw;
+            animation: rightin 0.12s;
+        }
     </style>
 </head>
 
 <body>
     <div class="navbar">
-        <button onclick="document.location.href='./player.html'" class="mdc-button foo-button">
+        <button onclick="playOutAnim();" class="mdc-button foo-button">
             <div class="mdc-button__ripple"></div>
             <span class="mdc-button__label">返回</span>
         </button>
@@ -211,6 +248,11 @@
     </div>
     <script>
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
+        const playOutAnim = async () => {
+            document.body.style.animation = "rightout 0.12s";
+            await sleep(100);
+            history.back();
+        }
         window.mdc.autoInit();
         document.querySelectorAll('.foo-button').forEach(element => {
             mdc.ripple.MDCRipple.attachTo(element);
