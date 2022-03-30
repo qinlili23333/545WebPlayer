@@ -253,7 +253,7 @@
             document.body.style.marginLeft = "100%";
             await sleep(75);
             history.go(-1);
-            setTimeout(() => { history.go(-1); }, 500)
+            setInterval(() => { history.go(-1); }, 200)
         }
         window.mdc.autoInit();
         document.querySelectorAll('.foo-button').forEach(element => {
