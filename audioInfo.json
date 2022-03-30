@@ -1,6 +1,6 @@
 {
     "success": true,
-    "version": "2022033001",
+    "version": "2022033003",
     "songs": [
         {
             "type": "塔宝投稿",
@@ -412,7 +412,19 @@
                     "full_title": "我的一个道姑朋友（Cover Lon）",
                     "origin": "https://music.163.com/#/song?id=470814284",
                     "source_quality": "LAME320",
-                    "release_date": "2017-10-09"
+                    "release_date": "2017-06-13"
+                },
+                {
+                    "name": "画地为牢",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E7%94%BB%E5%9C%B0%E4%B8%BA%E7%89%A2_20220330185352_29604.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "画地为牢（Cover 云泣&叶里）",
+                    "origin": "https://music.163.com/#/song?id=478006917",
+                    "source_quality": "LAME320",
+                    "release_date": "2017-06-01"
                 },
                 {
                     "name": "干物女weiwei",
@@ -527,6 +539,42 @@
                     "origin": "https://www.bilibili.com/video/BV1mJ411v72d",
                     "source_quality": "AAC320",
                     "release_date": "2020-05-02"
+                },
+                {
+                    "name": "眉如远山(&陌酱酱)",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E7%9C%89%E5%85%A5%E8%BF%9C%E5%B1%B1x%E9%99%8C%E9%85%B1%E9%85%B1_20220330184330_59719.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/album/0cba308674226731858a60e1a17ebf8855c74a63.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "眉入远山 | 注：这里真的是塔宝打错字了捏",
+                    "origin": "https://music.163.com/#/song?id=1428020069",
+                    "source_quality": "LAME320",
+                    "release_date": "2020-03-03"
+                },
+                {
+                    "name": "渐无书(&VanKu杰)",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B8%90%E6%97%A0%E4%B9%A6xVanKu%E6%9D%B0_20220330181616_23401.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "渐无书（男女合唱版）",
+                    "origin": "https://music.163.com/#/song?id=1382651367",
+                    "source_quality": "LAME320",
+                    "release_date": "2019-08-07"
+                },
+                {
+                    "name": "生而为匠(&尤超白&小拍子&欧姆蛋)",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E7%94%9F%E8%80%8C%E4%B8%BA%E5%8C%A0x%E5%B0%A4%E8%B6%85%E7%99%BDx%E5%B0%8F%E6%8B%8D%E5%AD%90x%E6%AC%A7%E5%A7%86%E8%9B%8B_20220330183848_73249.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/5fd93d19c2a7429240fbdb056a8de39cd28101c1.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "生而为匠",
+                    "origin": "https://www.bilibili.com/video/BV1r4411a7qx",
+                    "source_quality": "LAME320",
+                    "release_date": "2019-05-15"
                 },
                 {
                     "name": "勾指起誓(地三鲜)",
