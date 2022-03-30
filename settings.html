@@ -252,7 +252,8 @@
             document.body.style.animation = "rightout 0.12s";
             document.body.style.marginLeft = "100%";
             await sleep(75);
-            history.back();
+            history.go(-1);
+            setTimeout(() => { history.go(-1); }, 500)
         }
         window.mdc.autoInit();
         document.querySelectorAll('.foo-button').forEach(element => {
