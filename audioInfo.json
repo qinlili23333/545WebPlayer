@@ -199,6 +199,30 @@
                     "release_date": "2019-05-22"
                 },
                 {
+                    "name": "九万字",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B9%9D%E4%B8%87%E5%AD%97_20220330173043_33989.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/music/af6319677da966ab21509bb2c2919b2eeb2df33a.jpg@.webp",
+                    "quality": "OPUS128",
+                    "full_title": "【九万字】——笙歌（cover：黄诗扶）",
+                    "origin": "https://www.bilibili.com/audio/au702402",
+                    "source_quality": "AAC192",
+                    "release_date": "2019-01-19"
+                },
+                {
+                    "name": "中毒",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B8%AD%E6%AF%92_20220330173744_85205.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/music/113d94e2722f4afd9356852d3c46cce5df4f13ac.jpg@.webp",
+                    "quality": "OPUS128",
+                    "full_title": "《中毒》怨妇女声在线中毒——笙歌",
+                    "origin": "https://www.bilibili.com/audio/au668615",
+                    "source_quality": "AAC192",
+                    "release_date": "2018-12-22"
+                },
+                {
                     "name": "人美路子野",
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BA%BA%E7%BE%8E%E8%B7%AF%E5%AD%90%E9%87%8E_20220330150243_14574.ogg"
@@ -208,6 +232,30 @@
                     "full_title": "【人美路子野】快来听社会宝儿姐啦！——笙歌",
                     "origin": "https://www.bilibili.com/video/BV1Qt411i7EX",
                     "source_quality": "AAC320",
+                    "release_date": "2018-12-09"
+                },
+                {
+                    "name": "一爱难求",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B8%80%E7%88%B1%E9%9A%BE%E6%B1%82_20220330175502_15453.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.webp",
+                    "quality": "OPUS128",
+                    "full_title": "《一爱难求》—笙歌",
+                    "origin": "https://www.bilibili.com/audio/au419042",
+                    "source_quality": "AAC192",
+                    "release_date": "2018-12-09"
+                },
+                {
+                    "name": "浮木",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%AE%E6%9C%A8_20220330175500_80830.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.webp",
+                    "quality": "OPUS128",
+                    "full_title": "《浮木》——笙歌",
+                    "origin": "https://www.bilibili.com/audio/au572735",
+                    "source_quality": "AAC192",
                     "release_date": "2018-12-09"
                 },
                 {
@@ -527,6 +575,30 @@
                     "origin": "https://www.bilibili.com/video/BV1xt411v7U9",
                     "source_quality": "AAC320",
                     "release_date": "2018-12-19"
+                },
+                {
+                    "name": "凉凉(&王老九)",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E5%87%89%E5%87%89x%E7%8E%8B%E8%80%81%E4%B9%9D_20220330174921_53435.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.webp",
+                    "quality": "OPUS128",
+                    "full_title": "《凉凉》——笙歌&王老九",
+                    "origin": "https://www.bilibili.com/audio/au653717",
+                    "source_quality": "AAC192",
+                    "release_date": "2018-12-09"
+                },
+                {
+                    "name": "清明梦(&小可)",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B8%85%E6%98%8E%E6%A2%A6x%E5%B0%8F%E5%8F%AF_20220330175218_80389.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.webp",
+                    "quality": "OPUS128",
+                    "full_title": "《清明梦》—笙歌&小可",
+                    "origin": "https://www.bilibili.com/audio/au653849",
+                    "source_quality": "AAC192",
+                    "release_date": "2018-12-09"
                 },
                 {
                     "name": "倩音流年(&黯尘)",
