@@ -680,7 +680,20 @@
         {
             "type": "纯享歌切",
             "description": "较为原始的直播歌切",
-            "list": []
+            "list": [
+                {
+                    "name": "青媚狐",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E9%9D%92%E5%AA%9A%E7%8B%90_20220331211938_3007.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/18d8bac9216a0242574cfe48b9d7f989b5a940cc.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "切歌:杏仁没有核|优化:琴梨梨",
+                    "origin": "https://www.bilibili.com/video/BV1tY4y1W7VW",
+                    "source_quality": "LAME320",
+                    "release_date": "2022-03-31"
+                }
+            ]
         },
         {
             "type": "非歌曲",
