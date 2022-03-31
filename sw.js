@@ -1,7 +1,19 @@
 var APP_PREFIX = '545在线'
-var VERSION = '20220329'
-var VERSION_AZUSA_PATCH_USE = '20220328'
-var AZUSA_PATCH_SKIP_LIST = []
+var VERSION = '20220331'
+var VERSION_AZUSA_PATCH_USE = '20220329'
+var AZUSA_PATCH_SKIP_LIST = [
+    './img/bai.png',
+    './img/close.svg',
+    './img/folder.svg',
+    './img/loading.svg',
+    './img/repeat.svg',
+    './img/setting.svg',
+    './img/shuffle.svg',
+    './lib/base64.js',
+    './icon.png',
+    './lib/base64.js',
+    './public.css',
+]
 var CACHE_NAME = APP_PREFIX + VERSION
 var AZUSA_CACHE = APP_PREFIX + VERSION_AZUSA_PATCH_USE
 var URLS = [
