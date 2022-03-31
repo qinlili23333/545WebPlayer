@@ -538,6 +538,78 @@
             const audioFolderModule = document.getElementById("audioFolderModule");
             audioFolderModule.style.display = "none";
             audioFolderModule.innerHTML = "";
+            let searchItem = makeItem("搜索", "本地歌单搜索，搜不到请设置内更新歌单", "./img/search.svg");
+            searchItem.addEventListener("click", () => {
+                let searchValue = prompt("请输入关键字，支持歌名/完整标题");
+                const audioFilesModule = document.getElementById("audioFilesModule");
+                audioFilesModule.innerHTML = "";
+                audioFolderModule.style.display = "none";
+                let backItem = makeItem("...", "返回歌单列表", "./img/folder.svg")
+                audioFilesModule.appendChild(backItem);
+                backItem.addEventListener("click", () => {
+                    audioFolderModule.style.display = "block";
+                    audioFilesModule.style.display = "none";
+                })
+                //逐一匹配
+                audioList.forEach(folderInfo => {
+                    folderInfo.list.forEach(songInfo => {
+                        if ((songInfo.name.indexOf(searchValue) >= 0) || (songInfo.full_title.indexOf(searchValue) >= 0)) {
+                            let song = makeItem(songInfo.name, songInfo.full_title, songInfo.cover, (event) => {
+                                //歌曲菜单
+                                event.stopPropagation();
+                                showMenu();
+                                menuList.innerHTML = "";
+                                let dlMenu = makeMenu("下载");
+                                dlMenu.addEventListener("click", async () => {
+                                    setStatus("正在下载" + songInfo.name, true);
+                                    let playBlob = URL.createObjectURL(await (await fetch(songInfo.url[cdn])).blob());
+                                    dlFile(playBlob, songInfo.name + ".ogg");
+                                    setStatus("下载" + songInfo.name + "成功", false);
+                                });
+                                menuList.appendChild(dlMenu);
+                                let coverMenu = makeMenu("保存封面");
+                                coverMenu.addEventListener("click", (event) => {
+                                    event.stopPropagation();
+                                    saveImgMenu(songInfo.cover);
+                                });
+                                menuList.appendChild(coverMenu)
+                                let goMenu = makeMenu("查看原始投稿");
+                                goMenu.addEventListener("click", () => {
+                                    window.open(songInfo.origin, "_blank")
+                                });
+                                menuList.appendChild(goMenu);
+                                let shareMenu = makeMenu("分享");
+                                shareMenu.addEventListener("click", () => {
+                                    if (navigator.share) {
+                                        navigator.share({
+                                            title: "545在线",
+                                            text: "我正在用545在线(545.qinlili.bid)收听塔宝的" + songInfo.name + "，你可以点击此链接直接在线播放" + songInfo.url[cdn] + " 或使用545在线更方便的省流量播放",
+                                            url: "https://545.qinlili.bid"
+                                        });
+                                    } else {
+                                        alert("你使用的浏览器不支持分享");
+                                    }
+                                });
+                                menuList.appendChild(shareMenu);
+                                let qualityMenu = makeMenu("播放音质:" + songInfo.quality + "/原始音质:" + songInfo.source_quality);
+                                menuList.appendChild(qualityMenu);
+                                let timeMenu = makeMenu("发布时间:" + songInfo.release_date);
+                                menuList.appendChild(timeMenu);
+                                const list = new MDCList(menuList);
+                                const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
+                            });
+                            song.addEventListener("click", () => {
+                                addToPlayList(songInfo);
+                            })
+                            audioFilesModule.appendChild(song);
+                        }
+                    })
+                })
+                const list = new MDCList(audioFilesModule);
+                const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
+                audioFilesModule.style.display = "block";
+            });
+            audioFolderModule.appendChild(searchItem);
             audioList.forEach(folderInfo => {
                 //分类渲染
                 let folder = makeItem(folderInfo.type, folderInfo.description, "./img/folder.svg", (event) => {
@@ -559,7 +631,6 @@
                     const audioFilesModule = document.getElementById("audioFilesModule");
                     audioFilesModule.innerHTML = "";
                     audioFolderModule.style.display = "none";
-                    audioFilesModule.style.display = "block";
                     let backItem = makeItem("...", "返回上一级目录", "./img/folder.svg")
                     audioFilesModule.appendChild(backItem);
                     backItem.addEventListener("click", () => {
@@ -617,6 +688,7 @@
                         })
                         audioFilesModule.appendChild(song);
                     })
+                    audioFilesModule.style.display = "block";
                 })
             })
             const list = new MDCList(audioFolderModule);
