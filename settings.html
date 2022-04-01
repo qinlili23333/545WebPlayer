@@ -23,6 +23,7 @@
         integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
         src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
     <script src="./lib/base64.js"></script>
+    <script src="./lib/long-press.min.js"></script>
     <style>
         @keyframes leftin {
             from {
@@ -209,7 +210,7 @@
                     <span class="mdc-list-item__secondary-text">导入导出/全部缓存</span>
                 </span>
             </li>
-            <li class="mdc-list-item" onclick="debugInfo();">
+            <li class="mdc-list-item" onclick="debugInfo();" id="debugMode">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">诊断信息</span>
@@ -289,6 +290,18 @@
             }
             document.body.appendChild(ip);
         }
+        document.getElementById("debugMode").addEventListener('long-press', () => {
+            if (confirm("你真的要进行性能测试么？\n测试过程中设备将一段时间不会响应操作\n性能测试只代表设备性能，不能协助解决非性能问题")) {
+                let startTime = Date.now()
+                for (let i = 0; i <= 10000; i++) {
+                    let temp = document.createElement("canvas");
+                    let ctx = temp.getContext("2d");
+                    ctx.fillText("琴梨梨", 0, 0);
+                }
+                let endTime = Date.now();
+                alert("性能测试完成，用时" + (endTime - startTime) + "ms");
+            }
+        });
         window.addEventListener("message", async (event) => {
             console.log(event.data)
             if (event.data == "close") {
