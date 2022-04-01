@@ -1,12 +1,13 @@
 var APP_PREFIX = '545在线'
-var VERSION = '20220331'
-var VERSION_AZUSA_PATCH_USE = '20220329'
+var VERSION = '20220401'
+var VERSION_AZUSA_PATCH_USE = '20220331'
 var AZUSA_PATCH_SKIP_LIST = [
     './img/bai.png',
     './img/close.svg',
     './img/folder.svg',
     './img/loading.svg',
     './img/repeat.svg',
+    './img/search.svg',
     './img/setting.svg',
     './img/shuffle.svg',
     './lib/base64.js',
@@ -38,7 +39,7 @@ self.addEventListener('fetch', event => {
             caches.open(getCacheName(event.request.url)).then(async cache => {
                 return cache.match(event.request).then(response => {
                     return response || fetch(event.request).then(response => {
-                        if (response.status < 300) {
+                        if (response.status < 400) {
                             cache.put(event.request, response.clone());
                             console.log('file cached : ' + event.request.url)
                         }
