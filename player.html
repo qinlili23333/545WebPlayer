@@ -186,7 +186,8 @@
             max-width: calc(100vw - 100px);
         }
 
-        #tips {
+        #tips,
+        .tips32 {
             margin: auto;
             font-size: 1.1em;
             white-space: nowrap;
@@ -244,6 +245,7 @@
         }
 
         #floatMenu {
+            overflow-y: scroll;
             width: calc(100% - 20vw);
             height: -moz-fit-content;
             height: fit-content;
@@ -503,6 +505,19 @@
             textTip.innerText = "长按或右键图片保存";
             textTip.style = "width:100%;text-align:center;"
             menuList.appendChild(textTip);
+        }
+        const loadMenu = text => {
+            let loadDiv = document.createElement("div");
+            loadDiv.style = "display:flex;flex-direction:row;text-align:center;width:100%;justify-content: space-around;";
+            let loadSvg = document.createElement("img");
+            loadSvg.src = "./img/loading.svg";
+            loadSvg.style = "width:32px;height:32px;padding:4px;";
+            loadDiv.appendChild(loadSvg);
+            let loadText = document.createElement("p");
+            loadText.className = "tips32";
+            loadText.innerText = text;
+            loadDiv.appendChild(loadText);
+            return loadDiv;
         }
         document.title = "读取歌单...";
         const renderAudioList = async force => {
@@ -840,6 +855,19 @@
             }
         }
         recoverPlay();
+        const detectLive = async () => {
+            showMenu();
+            menuList.innerHTML = "";
+            menuList.appendChild(loadMenu("正在检测塔宝直播状态..."));
+            let liveStatus = await (await fetch("https://bililive.qinlili.workers.dev/status?uid=15641218&ForceNoCache=1").catch(error => {
+                //检测失败
+            })).json();
+            if (liveStatus.data && (liveStatus.data.status == 1) && confirm("塔宝正在直播，不去看直播？\n（点击确定即可快速打开直播间）")) {
+                window.open("https://live.bilibili.com/545", "_blank");
+            }
+            hideMenu();
+        }
+        detectLive();
         player.addEventListener("ended", () => {
             const getRandom = () => {
                 let num;
