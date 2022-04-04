@@ -140,7 +140,8 @@
         #playList {
             width: 100vw;
             text-align: left;
-            overflow-y: scroll;
+            overflow-y: auto;
+            overflow-y: overlay;
             height: calc(100vh - 112px);
             margin-bottom: 64px;
             transition: width 0.2s ease-in;
@@ -245,7 +246,8 @@
         }
 
         #floatMenu {
-            overflow-y: scroll;
+            overflow-y: auto;
+            overflow-y: overlay;
             width: calc(100% - 20vw);
             height: -moz-fit-content;
             height: fit-content;

@@ -1,6 +1,6 @@
 {
     "success": true,
-    "version": "2022033003",
+    "version": "2022040401",
     "songs": [
         {
             "type": "塔宝投稿",
@@ -511,7 +511,7 @@
                     },
                     "cover": "https://i0.hdslb.com/bfs/archive/e93cb0b539e059250f3a307d25c52e21083813d1.jpg@.webp",
                     "quality": "OPUS128",
-                    "full_title": "【笙歌x午哞哞】双御翻唱│又美又飒的《绝世舞姬》",
+                    "full_title": "【女驸马】橘势大好丨她与她的花烛前【笙歌×兰音】",
                     "origin": "https://www.bilibili.com/video/BV1WQ4y1m7Uq",
                     "source_quality": "AAC256",
                     "release_date": "2021-08-21"
@@ -565,7 +565,7 @@
                     "release_date": "2019-08-07"
                 },
                 {
-                    "name": "生而为匠(&尤超白&小拍子&欧姆蛋)",
+                    "name": "生而为匠(&尤超白/小拍子/欧姆蛋)",
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E7%94%9F%E8%80%8C%E4%B8%BA%E5%8C%A0x%E5%B0%A4%E8%B6%85%E7%99%BDx%E5%B0%8F%E6%8B%8D%E5%AD%90x%E6%AC%A7%E5%A7%86%E8%9B%8B_20220330183848_73249.ogg"
                     },
