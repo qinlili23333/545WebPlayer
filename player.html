@@ -557,7 +557,44 @@
             audioFolderModule.innerHTML = "";
             let searchItem = makeItem("搜索", "本地歌单搜索，搜不到请设置内更新歌单", "./img/search.svg");
             searchItem.addEventListener("click", () => {
-                let searchValue = prompt("请输入关键字，支持歌名/完整标题");
+                let searchValue = prompt("请输入关键字，支持歌名/完整标题\n留空为显示全部歌曲");
+                if (searchValue == null) {
+                    return;
+                }
+                if (searchValue == "奥利安费") {
+                    //开启隐藏终端模式
+                    let terminalItem = makeItem("韭菜盒子", "运行一些能补充营养的指令", "./img/terminal.svg");
+                    audioFolderModule.insertBefore(terminalItem, searchItem);
+                    terminalItem.addEventListener("click", () => {
+                        //处理终端命令
+                        let command = prompt("太监传话");
+                        if (command == null) {
+                            return;
+                        }
+                        switch (command) {
+                            case "addSong": {
+                                let songInfo = prompt("输入符合格式的歌曲信息");
+                                try {
+                                    addToPlayList(JSON.parse(songInfo));
+                                } catch {
+                                    alert("解析失败");
+                                }
+                                break;
+                            };
+                            case "emptyList": {
+                                localStorage.removeItem("playList");
+                                location.reload();
+                                break;
+                            };
+                            default: {
+                                alert("营养缺失了")
+                                break;
+                            }
+                        }
+
+                    })
+                    return;
+                }
                 const audioFilesModule = document.getElementById("audioFilesModule");
                 audioFilesModule.innerHTML = "";
                 audioFolderModule.style.display = "none";
