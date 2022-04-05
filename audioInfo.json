@@ -1,11 +1,23 @@
 {
     "success": true,
-    "version": "2022040401",
+    "version": "2022040501",
     "songs": [
         {
             "type": "塔宝投稿",
             "description": "塔宝投稿的独唱歌曲",
             "list": [
+                {
+                    "name": "letting go",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/letting_go_20220405202529_28054.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/2b77144108c6782fe751ee3adf3d3cd1dc378772.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "随便唱了下《letting go》随便发一下",
+                    "origin": "https://www.bilibili.com/video/BV1A94y1Z7s8",
+                    "source_quality": "AAC320",
+                    "release_date": "2022-04-05"
+                },
                 {
                     "name": "大喜",
                     "url": {

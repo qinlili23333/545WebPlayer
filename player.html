@@ -522,7 +522,7 @@
             return loadDiv;
         }
         document.title = "读取歌单...";
-        const renderAudioList = async force => {
+        const renderAudioList = async (force, update) => {
             const getAudioList = async () => {
                 let jsonData = await (await fetch("audioInfo.json?ForceNoCache=1")).json()
                 if (jsonData && jsonData.success) {
@@ -531,12 +531,13 @@
                 return false;
             }
             let audioList;
-            if (localStorage.cacheSong && !force) {
+            if (localStorage.cacheSong && !force && update) {
                 audioList = JSON.parse(localStorage.cacheSong);
                 //异步更新歌单
                 getAudioList().then(songs => {
                     if (songs) {
-                        localStorage.cacheSong = JSON.stringify(audioList);
+                        localStorage.cacheSong = JSON.stringify(songs);
+                        window.audioList = songs;
                     }
                 })
             } else {
@@ -544,7 +545,7 @@
                 if (audioList) {
                     localStorage.cacheSong = JSON.stringify(audioList);
                 } else {
-                    alert("读取歌单失败！请尝试刷新页面重试！")
+                    alert("读取歌单失败！请尝试刷新页面重试！");
                 }
             }
             setStatus("就绪", false)
@@ -749,7 +750,7 @@
             const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
             audioFolderModule.style.display = "block";
         }
-        renderAudioList(false);
+        renderAudioList(false, true);
         const renderPlayList = () => {
             const empty = () => {
                 audioListModule.innerHTML = "";
