@@ -456,9 +456,7 @@
             avatarSpan.className = "mdc-list-item__graphic";
             let imgItem = document.createElement("img");
             imgItem.src = avatar;
-            imgItem.style.objectFit = "contain"
-            imgItem.style.height = "100%";
-            imgItem.style.width = "100%";
+            imgItem.style = "object-fit: cover;border-radius: 4px;height: 100%;width: 100%;";
             avatarSpan.appendChild(imgItem);
             newItem.appendChild(avatarSpan);
             let textSpan = document.createElement("span");
