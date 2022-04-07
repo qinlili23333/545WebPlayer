@@ -23,10 +23,20 @@
         return;
       }
       if (navigator.serviceWorker && !navigator.serviceWorker.controller) {
-        document.body.innerHTML = "安装Service Worker...安装成功后将自动刷新页面";
-        await navigator.serviceWorker.register('./sw.js', { scope: '/' });
-        await sleep(3000)
-        document.location.reload();
+        document.body.innerHTML = "加载Service Worker...";
+        await (await fetch("./sw.js")).blob();
+        document.body.innerHTML = "读取版本信息...";
+        let versionJson = await (await fetch("../version.json?ForceNoCache=1")).json();
+        if (versionJson.success) {
+          document.body.innerHTML = `安装Service Worker...
+安装成功后将自动刷新页面
+版本号：`+ versionJson.latest;
+          await navigator.serviceWorker.register('./sw.js', { scope: '/' });
+          await sleep(3000)
+          document.location.reload();
+        } else {
+          document.body.innerHTML = "读取版本失败！";
+        }
         return;
       }
       if (navigator.userAgent.indexOf("WOW64") > 1) {

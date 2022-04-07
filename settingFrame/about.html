@@ -36,6 +36,7 @@
                         document.getElementById("update").innerText = "正在尝试全量更新到:" + versionJson.latest;
                     }
                     await navigator.serviceWorker.register('./sw.js', { scope: '/' });
+                    checkUpdate();
                 }
             } else {
                 if (currentVersion) {
