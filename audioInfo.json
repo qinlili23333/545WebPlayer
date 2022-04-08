@@ -1,6 +1,6 @@
 {
     "success": true,
-    "version": "2022040501",
+    "version": "2022040801",
     "songs": [
         {
             "type": "塔宝投稿",
@@ -677,7 +677,20 @@
         {
             "type": "云合唱",
             "description": "使用后期缝合的塔宝与他人的合唱",
-            "list": []
+            "list": [
+                {
+                    "name": "浪人琵琶(&小可)",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%AA%E4%BA%BA%E7%90%B5%E7%90%B6(&%E5%B0%8F%E5%8F%AF)_%E7%90%B4%E6%A2%A8%E6%A2%A8_20220408143650_45626.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/2e92b48e9ebe0277613e20e3ad5ef10aaf6e89b7.jpg@.webp",
+                    "quality": "OPUS320",
+                    "full_title": "制作:琴梨梨",
+                    "origin": "https://www.bilibili.com/video/BV1A94y1Z7s8",
+                    "source_quality": "WAV24Bit",
+                    "release_date": "2022-04-08"
+                }
+            ]
         },
         {
             "type": "水友合唱",
