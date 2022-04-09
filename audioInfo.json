@@ -679,6 +679,18 @@
             "description": "使用后期缝合的塔宝与他人的合唱",
             "list": [
                 {
+                    "name": "红叶寺(&阿梓)",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BA%A2%E5%8F%B6%E5%AF%BA(&%E9%98%BF%E6%A2%93)_%E7%90%B4%E6%A2%A8%E6%A2%A8_20220409205911_89774.ogg"
+                    },
+                    "cover": "./img/loading.svg",
+                    "quality": "OPUS320",
+                    "full_title": "制作:琴梨梨",
+                    "origin": "data:text/html,<script>alert('Not Ready...');history.go(-1);</script>",
+                    "source_quality": "WAV24Bit",
+                    "release_date": "2022-04-09"
+                },
+                {
                     "name": "浪人琵琶(&小可)",
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%AA%E4%BA%BA%E7%90%B5%E7%90%B6(&%E5%B0%8F%E5%8F%AF)_%E7%90%B4%E6%A2%A8%E6%A2%A8_20220408143650_45626.ogg"
