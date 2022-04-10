@@ -199,6 +199,24 @@
                     <div class="mdc-checkbox__ripple"></div>
                 </div>
             </li>
+            <li class="mdc-list-item" id="codecCheck">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">Codec Boost(测试)</span>
+                    <span class="mdc-list-item__secondary-text">在部分设备上减少播放卡顿，但增大内存消耗且无法控制播放进度</span>
+                </span>
+                <div class="mdc-checkbox" style="position:absolute;float:right;right:0px;">
+                    <input type="checkbox" class="mdc-checkbox__native-control" id="codecCheckbox" />
+                    <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                            <path class="mdc-checkbox__checkmark-path" fill="none"
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                    </div>
+                    <div class="mdc-checkbox__ripple"></div>
+                </div>
+            </li>
         </ul>
         <ul class="mdc-list mdc-list--two-line menuList">
             <li class="mdc-list-item" onclick="showFrameSet('settingFrame/sortcdn/sortcdn.html')">
@@ -364,6 +382,12 @@
                 localStorage.randomMethod = "default";
             }
         }, false)
+        if (localStorage.codecBoost) {
+            document.getElementById("codecCheckbox").checked = JSON.parse(localStorage.codecBoost);
+        }
+        document.getElementById("codecCheckbox").addEventListener("change", () => {
+            localStorage.codecBoost = document.getElementById("codecCheckbox").checked;
+        }, false);
     </script>
 </body>
 
