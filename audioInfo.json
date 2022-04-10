@@ -1,6 +1,6 @@
 {
     "success": true,
-    "version": "2022040801",
+    "version": "2022041001",
     "songs": [
         {
             "type": "塔宝投稿",
@@ -683,10 +683,10 @@
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BA%A2%E5%8F%B6%E5%AF%BA(&%E9%98%BF%E6%A2%93)_%E7%90%B4%E6%A2%A8%E6%A2%A8_20220409205911_89774.ogg"
                     },
-                    "cover": "./img/loading.svg",
+                    "cover": "https://i0.hdslb.com/bfs/music/94df73695e0875261479f7d1614650717bea9501.jpg@.webp",
                     "quality": "OPUS320",
                     "full_title": "制作:琴梨梨",
-                    "origin": "data:text/html,<script>alert('Not Ready...');history.go(-1);</script>",
+                    "origin": "https://www.bilibili.com/video/BV1xL4y157HY",
                     "source_quality": "WAV24Bit",
                     "release_date": "2022-04-09"
                 },
