@@ -96,6 +96,7 @@
         }
 
         * {
+            -webkit-tap-highlight-color: transparent;
             scrollbar-width: thin;
             scrollbar-color: #FADCBB transparent;
             --mdc-theme-primary: #F4C39D;
@@ -173,7 +174,7 @@
             text-align: center;
         }
 
-        #controls {
+        .controls {
             justify-content: space-between;
             display: flex;
             flex-direction: row;
@@ -200,7 +201,7 @@
             margin: 4px;
         }
 
-        #buttons {
+        .buttons {
             display: flex;
             flex-direction: row;
         }
@@ -331,12 +332,12 @@
         </div>
     </div>
     <div id="playPanel">
-        <div id="controls">
+        <div id="controls" class="controls">
             <div id="status">
                 <img src="./img/loading.svg" id="loading">
                 <p id="tips">正在加载播放器</p>
             </div>
-            <div id="buttons">
+            <div id="buttons" class="buttons">
                 <img class="topBtn" id="shuffleBtn" onclick="switchShuffle();" src="./img/shuffle.svg">
                 <img class="topBtn" id="repeatBtn" onclick="switchRepeat();" src="./img/repeat.svg">
                 <img class="topBtn" id="settingBtn" onclick="bottomdown();document.location.href='./settings.html'"
@@ -344,6 +345,13 @@
             </div>
         </div>
         <audio controls autoplay id="player" style="width: 100%;height:32px;"></audio>
+        <div id="backupControls" class="controls" style="display:none;">
+            <div id="backupButtons" class="buttons">
+                <img class="topBtn" id="playBtn" onclick="switchPlay();" src="./img/play.svg">
+                <img class="topBtn" id="nextBtn" onclick="player.dispatchEvent(new CustomEvent('ended'));"
+                    src="./img/next.svg">
+            </div>
+        </div>
     </div>
     <div id="padding"></div>
     <div id="listContainer">
@@ -433,6 +441,26 @@
             localStorage.shuffle = window.shuffleSwitch;
             document.getElementById("shuffleBtn").className = window.shuffleSwitch ? "topBtn active" : "topBtn";
         };
+        const switchPlay = () => {
+            if (window.wasmPlayer) {
+                document.getElementById("playBtn").className = document.querySelector("#player").paused ? "topBtn active" : "topBtn";
+                document.querySelector("#player").paused ? document.querySelector("#player").play() : document.querySelector("#player").pause()
+            };
+            if (window.codecBoost) {
+                document.getElementById("playBtn").className = (audioCtx.state == "running") ? "topBtn" : "topBtn active";
+                (audioCtx.state == "running") ? audioCtx.suspend() : audioCtx.resume();
+            };
+        }
+        const useBackupControl = () => {
+            player.style.display = "none";
+            document.getElementById("backupControls").style.display = "flex";
+            player.addEventListener("play", () => {
+                document.getElementById('playBtn').className = 'topBtn active';
+            });
+            player.addEventListener("pause", () => {
+                document.getElementById('playBtn').className = 'topBtn';
+            });
+        }
         const menuList = document.getElementById("menuList");
         if (localStorage.fullBlur && JSON.parse(localStorage.fullBlur)) {
             document.getElementById("floatMenuContainer").style.backdropFilter = "blur(3px) brightness(100%)";
@@ -457,6 +485,12 @@
         };
         let player = document.getElementById("player");
         (async () => {
+            if (window.codecBoost && window.wasmPlayer) {
+                alert("播放器初始化失败！\n请勿同时启用Codec Boost和WASM播放器！");
+                bottomdown();
+                document.location.href = './settings.html';
+                return;
+            }
             if (window.wasmPlayer) {
                 setStatus("加载WASM播放器");
                 await loadScriptAsync("./lib/ogvjs/ogv.js");
@@ -467,9 +501,14 @@
                 player.id = "player";
                 player.style = "width: 100%;height:32px;";
                 document.getElementById("playPanel").appendChild(player);
+                useBackupControl();
                 patchEnd();
-                recoverPlay();
-            }
+                return;
+            };
+            if (window.codecBoost) {
+                useBackupControl();
+                return;
+            };
         })();
         const makeItem = (name, info, avatar, menuCallback) => {
             let newItem = document.createElement("li");
@@ -898,7 +937,6 @@
                     setStatus("解码音频中", true);
                     if (!window.audioCtx) {
                         window.audioCtx = new AudioContext();
-                        window.audioSource = audioCtx.createMediaElementSource(player);
                     }
                     let decodeBuffer = await window.audioCtx.decodeAudioData(await playBlob.arrayBuffer());
                     let source = audioCtx.createBufferSource();
@@ -909,6 +947,7 @@
                     source.buffer = decodeBuffer;
                     source.connect(window.audioCtx.destination);
                     source.start(0);
+                    document.getElementById("playBtn").className = (audioCtx.state == "running") ? "topBtn active" : "topBtn";
                     source.onended = () => {
                         player.dispatchEvent(new CustomEvent("ended"));
                     }
@@ -929,7 +968,7 @@
                 playNow(song);
             }
         }
-        if (!window.wasmPlayer) {
+        if (!window.wasmPlayer && !window.codecBoost) {
             recoverPlay();
         }
         //检测直播
