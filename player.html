@@ -401,6 +401,14 @@
         const bottomdown = () => {
             document.getElementById("playPanel").style.animation = "bottomdown 0.15s";
         }
+        const loadScriptAsync = link => {
+            return new Promise(resolve => {
+                let script = document.createElement("script");
+                script.src = link;
+                script.onload = resolve;
+                document.body.appendChild(script);
+            });
+        }
     </script>
     <script>
         //日后实现CDN切换
@@ -408,6 +416,7 @@
         window.repeatSwitch = localStorage.repeat ? JSON.parse(localStorage.repeat) : false;
         window.shuffleSwitch = localStorage.shuffle ? JSON.parse(localStorage.shuffle) : false;
         window.codecBoost = localStorage.codecBoost ? JSON.parse(localStorage.codecBoost) : false;
+        window.wasmPlayer = localStorage.wasmPlayer ? JSON.parse(localStorage.wasmPlayer) : false;
         if (repeatSwitch) {
             document.getElementById("repeatBtn").className = "topBtn active";
         };
@@ -442,11 +451,26 @@
             event.stopPropagation();
             hideMenu();
         })
-        const player = document.getElementById("player");
         const setStatus = (text, loading) => {
             document.getElementById("loading").style.display = loading ? "block" : "none";
             document.getElementById("tips").innerText = text;
         };
+        let player = document.getElementById("player");
+        (async () => {
+            if (window.wasmPlayer) {
+                setStatus("加载WASM播放器");
+                await loadScriptAsync("./lib/ogvjs/ogv.js");
+                document.getElementById("playPanel").removeChild(player);
+                player = new ogvjs.OGVPlayer();
+                player.controls = true;
+                player.autoplay = true;
+                player.id = "player";
+                player.style = "width: 100%;height:32px;";
+                document.getElementById("playPanel").appendChild(player);
+                patchEnd();
+                recoverPlay();
+            }
+        })();
         const makeItem = (name, info, avatar, menuCallback) => {
             let newItem = document.createElement("li");
             newItem.className = "mdc-list-item";
@@ -878,7 +902,7 @@
                     }
                     let decodeBuffer = await window.audioCtx.decodeAudioData(await playBlob.arrayBuffer());
                     let source = audioCtx.createBufferSource();
-                    if(window.currentSource){
+                    if (window.currentSource) {
                         window.currentSource.disconnect(window.audioCtx.destination);
                     }
                     window.currentSource = source;
@@ -892,85 +916,93 @@
                     localStorage.lastPlay = JSON.stringify(song);
                 } else {
                     player.src = URL.createObjectURL(playBlob);
+                    player.play();
                     setStatus(song.name, false);
                     localStorage.lastPlay = JSON.stringify(song);
                 }
             }
         }
-        const recoverPlay = async () => {
+        //恢复播放
+        const recoverPlay = () => {
             if (localStorage.lastPlay) {
                 let song = JSON.parse(localStorage.lastPlay)
                 playNow(song);
             }
         }
-        recoverPlay();
-        const detectLive = async () => {
+        if (!window.wasmPlayer) {
+            recoverPlay();
+        }
+        //检测直播
+        (async () => {
             showMenu();
             menuList.innerHTML = "";
             menuList.appendChild(loadMenu("正在检测塔宝直播状态..."));
             let liveStatus = await (await fetch("https://bililive.qinlili.workers.dev/status?uid=15641218&ForceNoCache=1").catch(error => {
                 //检测失败
+                hideMenu();
             })).json();
             if (liveStatus.data && (liveStatus.data.status == 1) && confirm("塔宝正在直播，不去看直播？\n（点击确定即可快速打开直播间）")) {
                 window.open("https://live.bilibili.com/545", "_blank");
             }
             hideMenu();
-        }
-        detectLive();
-        player.addEventListener("ended", () => {
-            const getRandom = () => {
-                let num;
-                let randomMethod = localStorage.randomMethod || "default";
-                switch (randomMethod) {
-                    case "real": {
-                        //crypto真随机
-                        break;
-                    };
-                    case "list": {
-                        //队列随机
-                        if (window.order && window.order.length) {
-                            num = window.order.pop();
-                        } else {
-                            //生成随机列表
-                            let listLength = window.list.length;
-                            let tempArray = []
-                            let order = [];
-                            for (let i = 0; i < listLength; i++) {
-                                tempArray[i] = i;
-                            };
-                            for (let i = 0; i < listLength; i++) {
-                                let pick = random(0, tempArray.length - 1)
-                                order[i] = tempArray[pick];
-                                tempArray.splice(pick, 1)
+        })();
+        const patchEnd = () => {
+            player.addEventListener("ended", () => {
+                const getRandom = () => {
+                    let num;
+                    let randomMethod = localStorage.randomMethod || "default";
+                    switch (randomMethod) {
+                        case "real": {
+                            //crypto真随机
+                            break;
+                        };
+                        case "list": {
+                            //队列随机
+                            if (window.order && window.order.length) {
+                                num = window.order.pop();
+                            } else {
+                                //生成随机列表
+                                let listLength = window.list.length;
+                                let tempArray = []
+                                let order = [];
+                                for (let i = 0; i < listLength; i++) {
+                                    tempArray[i] = i;
+                                };
+                                for (let i = 0; i < listLength; i++) {
+                                    let pick = random(0, tempArray.length - 1)
+                                    order[i] = tempArray[pick];
+                                    tempArray.splice(pick, 1)
+                                }
+                                window.order = order;
+                                console.log("生成了新的播放列表");
+                                console.log(order);
+                                num = window.order.pop();
                             }
-                            window.order = order;
-                            console.log("生成了新的播放列表");
-                            console.log(order);
-                            num = window.order.pop();
+                            break;
+                        };
+                        case "exclude": {
+                            //就近排除
+                            break;
+                        };
+                        case "default":
+                        default: {
+                            num = random(0, window.list.length - 1)
+                            break;
                         }
-                        break;
-                    };
-                    case "exclude": {
-                        //就近排除
-                        break;
-                    };
-                    case "default":
-                    default: {
-                        num = random(0, window.list.length - 1)
-                        break;
                     }
+                    return num;
                 }
-                return num;
-            }
-            if (repeatSwitch) {
-                player.play();
-                return;
-            }
-            if (shuffleSwitch) {
-                //随机播放下一首
-                playNow(window.list[getRandom()]);
-            }
-        })
+                if (repeatSwitch) {
+                    player.play();
+                    return;
+                }
+                if (shuffleSwitch) {
+                    //随机播放下一首
+                    playNow(window.list[getRandom()]);
+                }
+            })
+        };
+        patchEnd();
     </script>
 </body>
 
