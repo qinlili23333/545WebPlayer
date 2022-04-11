@@ -235,6 +235,24 @@
                     <div class="mdc-checkbox__ripple"></div>
                 </div>
             </li>
+            <li class="mdc-list-item" id="fileCheck">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">分享文件</span>
+                    <span class="mdc-list-item__secondary-text">分享音频文件而不是链接</span>
+                </span>
+                <div class="mdc-checkbox" style="position:absolute;float:right;right:0px;">
+                    <input type="checkbox" class="mdc-checkbox__native-control" id="fileCheckbox" />
+                    <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                            <path class="mdc-checkbox__checkmark-path" fill="none"
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                    </div>
+                    <div class="mdc-checkbox__ripple"></div>
+                </div>
+            </li>
         </ul>
         <ul class="mdc-list mdc-list--two-line menuList">
             <li class="mdc-list-item" onclick="showFrameSet('settingFrame/sortcdn/sortcdn.html')">
@@ -417,6 +435,13 @@
         }
         document.getElementById("wasmCheckbox").addEventListener("change", () => {
             localStorage.wasmPlayer = document.getElementById("wasmCheckbox").checked;
+            checkBoth();
+        }, false);
+        if (localStorage.fileShare) {
+            document.getElementById("fileCheckbox").checked = JSON.parse(localStorage.fileShare);
+        }
+        document.getElementById("fileCheckbox").addEventListener("change", () => {
+            localStorage.fileShare = document.getElementById("fileCheckbox").checked;
             checkBoth();
         }, false);
     </script>

@@ -425,6 +425,7 @@
         window.shuffleSwitch = localStorage.shuffle ? JSON.parse(localStorage.shuffle) : false;
         window.codecBoost = localStorage.codecBoost ? JSON.parse(localStorage.codecBoost) : false;
         window.wasmPlayer = localStorage.wasmPlayer ? JSON.parse(localStorage.wasmPlayer) : false;
+        window.fileShare = localStorage.fileShare ? JSON.parse(localStorage.fileShare) : false;
         if (repeatSwitch) {
             document.getElementById("repeatBtn").className = "topBtn active";
         };
@@ -583,6 +584,26 @@
             loadDiv.appendChild(loadText);
             return loadDiv;
         }
+        const shareSong = async songInfo => {
+            if (navigator.share) {
+                if (window.fileShare) {
+                    navigator.share({
+                        title: songInfo.name,
+                        text: "我正在用545在线(545.qinlili.bid)分享给你塔宝的" + songInfo.name,
+                        url: "https://545.qinlili.bid",
+                        files: [new File([await (await fetch(songInfo.url[cdn])).blob()], songInfo.name + ".ogg", {type: "audio/ogg"})]
+                    });
+                } else {
+                    navigator.share({
+                        title: "545在线",
+                        text: "我正在用545在线(545.qinlili.bid)收听塔宝的" + songInfo.name + "，你可以点击此链接直接在线播放" + songInfo.url[cdn] + " 或使用545在线更方便的省流量播放",
+                        url: "https://545.qinlili.bid"
+                    });
+                }
+            } else {
+                alert("你使用的浏览器不支持分享");
+            }
+        }
         document.title = "读取歌单...";
         const renderAudioList = async (force, update) => {
             const getAudioList = async () => {
@@ -708,15 +729,7 @@
                                 menuList.appendChild(goMenu);
                                 let shareMenu = makeMenu("分享");
                                 shareMenu.addEventListener("click", () => {
-                                    if (navigator.share) {
-                                        navigator.share({
-                                            title: "545在线",
-                                            text: "我正在用545在线(545.qinlili.bid)收听塔宝的" + songInfo.name + "，你可以点击此链接直接在线播放" + songInfo.url[cdn] + " 或使用545在线更方便的省流量播放",
-                                            url: "https://545.qinlili.bid"
-                                        });
-                                    } else {
-                                        alert("你使用的浏览器不支持分享");
-                                    }
+                                    shareSong(songInfo);
                                 });
                                 menuList.appendChild(shareMenu);
                                 let qualityMenu = makeMenu("播放音质:" + songInfo.quality + "/原始音质:" + songInfo.source_quality);
@@ -793,15 +806,7 @@
                             menuList.appendChild(goMenu);
                             let shareMenu = makeMenu("分享");
                             shareMenu.addEventListener("click", () => {
-                                if (navigator.share) {
-                                    navigator.share({
-                                        title: "545在线",
-                                        text: "我正在用545在线(545.qinlili.bid)收听塔宝的" + songInfo.name + "，你可以点击此链接直接在线播放" + songInfo.url[cdn] + " 或使用545在线更方便的省流量播放",
-                                        url: "https://545.qinlili.bid"
-                                    });
-                                } else {
-                                    alert("你使用的浏览器不支持分享");
-                                }
+                                shareSong(songInfo);
                             });
                             menuList.appendChild(shareMenu);
                             let qualityMenu = makeMenu("播放音质:" + songInfo.quality + "/原始音质:" + songInfo.source_quality);
@@ -871,15 +876,7 @@
                             menuList.appendChild(goMenu);
                             let shareMenu = makeMenu("分享");
                             shareMenu.addEventListener("click", () => {
-                                if (navigator.share) {
-                                    navigator.share({
-                                        title: "545在线",
-                                        text: "我正在用545在线(545.qinlili.bid)收听塔宝的" + songInfo.name + "，你可以点击此链接直接在线播放" + songInfo.url[cdn] + " 或使用545在线更方便的省流量播放",
-                                        url: "https://545.qinlili.bid"
-                                    });
-                                } else {
-                                    alert("你使用的浏览器不支持分享");
-                                }
+                                shareSong(songInfo);
                             });
                             menuList.appendChild(shareMenu);
                             let qualityMenu = makeMenu("播放音质:" + songInfo.quality + "/原始音质:" + songInfo.source_quality);
