@@ -628,7 +628,7 @@
                     //开启隐藏终端模式
                     let terminalItem = makeItem("韭菜盒子", "运行一些能补充营养的指令", "./img/terminal.svg");
                     audioFolderModule.insertBefore(terminalItem, searchItem);
-                    terminalItem.addEventListener("click", () => {
+                    terminalItem.addEventListener("click", async () => {
                         //处理终端命令
                         let command = prompt("太监传话");
                         if (command == null) {
@@ -649,6 +649,17 @@
                                 location.reload();
                                 break;
                             };
+                            case "connectDevice": {
+                                const device = await navigator.usb.requestDevice({ filters: [] });
+                                if (device) {
+                                    await device.open();
+                                    alert("连接外置声卡成功！\n制造厂商：" + device.manufacturerName + "\n设备型号：" + device.productName);
+                                    await device.close();
+                                } else {
+                                    alert("连接到外置声卡失败！");
+                                }
+                                break;
+                            }
                             default: {
                                 alert("营养缺失了")
                                 break;
