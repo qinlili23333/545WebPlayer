@@ -1,6 +1,6 @@
 {
     "success": true,
-    "version": "2022041001",
+    "version": "2022041101",
     "songs": [
         {
             "type": "塔宝投稿",
@@ -729,6 +729,18 @@
                     "origin": "https://www.bilibili.com/video/BV1tY4y1W7VW",
                     "source_quality": "LAME320",
                     "release_date": "2022-03-31"
+                },
+                {
+                    "name": "舞娘",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E8%88%9E%E5%A8%98_20220411141546_61901.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/e1d96912c9a5a31e473346d78e4d5d5b52ea414b.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "切歌:皇珈頂碗人|优化:琴梨梨",
+                    "origin": "https://www.bilibili.com/video/BV1s34y1t73v",
+                    "source_quality": "AAC174",
+                    "release_date": "2022-03-15"
                 }
             ]
         },
