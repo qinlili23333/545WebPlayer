@@ -584,6 +584,38 @@
             loadDiv.appendChild(loadText);
             return loadDiv;
         }
+        const makeSongMenu = songInfo => {
+            let dlMenu = makeMenu("下载");
+            dlMenu.addEventListener("click", async () => {
+                setStatus("正在下载" + songInfo.name, true);
+                let playBlob = URL.createObjectURL(await (await fetch(songInfo.url[cdn])).blob());
+                dlFile(playBlob, songInfo.name + ".ogg");
+                setStatus("下载" + songInfo.name + "成功", false);
+            });
+            menuList.appendChild(dlMenu);
+            let coverMenu = makeMenu("保存封面");
+            coverMenu.addEventListener("click", (event) => {
+                event.stopPropagation();
+                saveImgMenu(songInfo.cover);
+            });
+            menuList.appendChild(coverMenu)
+            let goMenu = makeMenu("查看原始投稿");
+            goMenu.addEventListener("click", () => {
+                window.open(songInfo.origin, "_blank")
+            });
+            menuList.appendChild(goMenu);
+            let shareMenu = makeMenu("分享");
+            shareMenu.addEventListener("click", () => {
+                shareSong(songInfo);
+            });
+            menuList.appendChild(shareMenu);
+            let qualityMenu = makeMenu("播放音质:" + songInfo.quality + "/原始音质:" + songInfo.source_quality);
+            menuList.appendChild(qualityMenu);
+            let timeMenu = makeMenu("发布时间:" + songInfo.release_date);
+            menuList.appendChild(timeMenu);
+            const list = new MDCList(menuList);
+            const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
+        }
         const shareSong = async songInfo => {
             if (navigator.share) {
                 if (window.fileShare) {
@@ -591,7 +623,7 @@
                         title: songInfo.name,
                         text: "我正在用545在线(545.qinlili.bid)分享给你塔宝的" + songInfo.name,
                         url: "https://545.qinlili.bid",
-                        files: [new File([await (await fetch(songInfo.url[cdn])).blob()], songInfo.name + ".ogg", {type: "audio/ogg"})]
+                        files: [new File([await (await fetch(songInfo.url[cdn])).blob()], songInfo.name + ".ogg", { type: "audio/ogg" })]
                     });
                 } else {
                     navigator.share({
@@ -708,36 +740,7 @@
                                 event.stopPropagation();
                                 showMenu();
                                 menuList.innerHTML = "";
-                                let dlMenu = makeMenu("下载");
-                                dlMenu.addEventListener("click", async () => {
-                                    setStatus("正在下载" + songInfo.name, true);
-                                    let playBlob = URL.createObjectURL(await (await fetch(songInfo.url[cdn])).blob());
-                                    dlFile(playBlob, songInfo.name + ".ogg");
-                                    setStatus("下载" + songInfo.name + "成功", false);
-                                });
-                                menuList.appendChild(dlMenu);
-                                let coverMenu = makeMenu("保存封面");
-                                coverMenu.addEventListener("click", (event) => {
-                                    event.stopPropagation();
-                                    saveImgMenu(songInfo.cover);
-                                });
-                                menuList.appendChild(coverMenu)
-                                let goMenu = makeMenu("查看原始投稿");
-                                goMenu.addEventListener("click", () => {
-                                    window.open(songInfo.origin, "_blank")
-                                });
-                                menuList.appendChild(goMenu);
-                                let shareMenu = makeMenu("分享");
-                                shareMenu.addEventListener("click", () => {
-                                    shareSong(songInfo);
-                                });
-                                menuList.appendChild(shareMenu);
-                                let qualityMenu = makeMenu("播放音质:" + songInfo.quality + "/原始音质:" + songInfo.source_quality);
-                                menuList.appendChild(qualityMenu);
-                                let timeMenu = makeMenu("发布时间:" + songInfo.release_date);
-                                menuList.appendChild(timeMenu);
-                                const list = new MDCList(menuList);
-                                const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
+                                makeSongMenu(songInfo);
                             });
                             song.addEventListener("click", () => {
                                 addToPlayList(songInfo);
@@ -785,36 +788,7 @@
                             event.stopPropagation();
                             showMenu();
                             menuList.innerHTML = "";
-                            let dlMenu = makeMenu("下载");
-                            dlMenu.addEventListener("click", async () => {
-                                setStatus("正在下载" + songInfo.name, true);
-                                let playBlob = URL.createObjectURL(await (await fetch(songInfo.url[cdn])).blob());
-                                dlFile(playBlob, songInfo.name + ".ogg");
-                                setStatus("下载" + songInfo.name + "成功", false);
-                            });
-                            menuList.appendChild(dlMenu);
-                            let coverMenu = makeMenu("保存封面");
-                            coverMenu.addEventListener("click", (event) => {
-                                event.stopPropagation();
-                                saveImgMenu(songInfo.cover);
-                            });
-                            menuList.appendChild(coverMenu)
-                            let goMenu = makeMenu("查看原始投稿");
-                            goMenu.addEventListener("click", () => {
-                                window.open(songInfo.origin, "_blank")
-                            });
-                            menuList.appendChild(goMenu);
-                            let shareMenu = makeMenu("分享");
-                            shareMenu.addEventListener("click", () => {
-                                shareSong(songInfo);
-                            });
-                            menuList.appendChild(shareMenu);
-                            let qualityMenu = makeMenu("播放音质:" + songInfo.quality + "/原始音质:" + songInfo.source_quality);
-                            menuList.appendChild(qualityMenu);
-                            let timeMenu = makeMenu("发布时间:" + songInfo.release_date);
-                            menuList.appendChild(timeMenu);
-                            const list = new MDCList(menuList);
-                            const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
+                            makeSongMenu(songInfo);
                         });
                         song.addEventListener("click", () => {
                             addToPlayList(songInfo);
@@ -855,36 +829,7 @@
                                 }
                             });
                             menuList.appendChild(deleteMenu);
-                            let dlMenu = makeMenu("下载");
-                            dlMenu.addEventListener("click", async () => {
-                                setStatus("正在下载" + songInfo.name, true);
-                                let playBlob = URL.createObjectURL(await (await fetch(songInfo.url[cdn])).blob());
-                                dlFile(playBlob, songInfo.name + ".ogg");
-                                setStatus("下载" + songInfo.name + "成功", false);
-                            });
-                            menuList.appendChild(dlMenu);
-                            let coverMenu = makeMenu("保存封面");
-                            coverMenu.addEventListener("click", (event) => {
-                                event.stopPropagation();
-                                saveImgMenu(songInfo.cover);
-                            });
-                            menuList.appendChild(coverMenu);
-                            let goMenu = makeMenu("查看原始投稿");
-                            goMenu.addEventListener("click", () => {
-                                window.open(songInfo.origin, "_blank")
-                            });
-                            menuList.appendChild(goMenu);
-                            let shareMenu = makeMenu("分享");
-                            shareMenu.addEventListener("click", () => {
-                                shareSong(songInfo);
-                            });
-                            menuList.appendChild(shareMenu);
-                            let qualityMenu = makeMenu("播放音质:" + songInfo.quality + "/原始音质:" + songInfo.source_quality);
-                            menuList.appendChild(qualityMenu);
-                            let timeMenu = makeMenu("发布时间:" + songInfo.release_date);
-                            menuList.appendChild(timeMenu);
-                            const list = new MDCList(menuList);
-                            const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
+                            makeSongMenu(songInfo);
                         });
                         song.addEventListener("click", () => {
                             //立即播放

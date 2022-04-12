@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '20220411'
-var VERSION_AZUSA_PATCH_USE = '20220410'
+var VERSION = '20220412'
+var VERSION_AZUSA_PATCH_USE = '20220411'
 var AZUSA_PATCH_SKIP_LIST = [
     './img/bai.png',
     './img/close.svg',
@@ -11,9 +11,17 @@ var AZUSA_PATCH_SKIP_LIST = [
     './img/setting.svg',
     './img/shuffle.svg',
     './img/terminal.svg',
-    './lib/base64.js',
+    './img/play.svg',
+    './img/next.svg',
     './icon.png',
     './lib/base64.js',
+    './lib/long-press.min.js',
+    './lib/ogvjs/ogv.js',
+    './lib/ogvjs/ogv-decoder-audio-opus-wasm.js',
+    './lib/ogvjs/ogv-decoder-audio-opus-wasm.wasm',
+    './lib/ogvjs/ogv-demuxer-ogg-wasm.js',
+    './lib/ogvjs/ogv-demuxer-ogg-wasm.wasm',
+    './lib/ogvjs/ogv-worker-audio.js',
     './public.css',
 ]
 var CACHE_NAME = APP_PREFIX + VERSION
