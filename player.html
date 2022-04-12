@@ -347,9 +347,9 @@
         <audio controls autoplay id="player" style="width: 100%;height:32px;"></audio>
         <div id="backupControls" class="controls" style="display:none;">
             <div id="backupButtons" class="buttons">
-                <img class="topBtn" id="playBtn" onclick="switchPlay();" src="./img/play.svg">
-                <img class="topBtn" id="nextBtn" onclick="player.dispatchEvent(new CustomEvent('ended'));"
-                    src="./img/next.svg">
+                <img class="topBtn" id="playBtn" loading="lazy" onclick="switchPlay();" src="./img/play.svg">
+                <img class="topBtn" id="nextBtn" loading="lazy"
+                    onclick="player.dispatchEvent(new CustomEvent('ended'));" src="./img/next.svg">
             </div>
         </div>
     </div>
@@ -542,7 +542,11 @@
             avatarSpan.className = "mdc-list-item__graphic";
             let imgItem = document.createElement("img");
             imgItem.src = avatar;
-            imgItem.style = "object-fit: cover;border-radius: 4px;height: 100%;width: 100%;";
+            imgItem.loading = "lazy";
+            imgItem.style = "object-fit: cover;border-radius: 4px;height: 100%;width: 100%;opacity:0;transition: opacity 0.5s;";
+            imgItem.onload = () => {
+                imgItem.style.opacity = 1;
+            }
             avatarSpan.appendChild(imgItem);
             newItem.appendChild(avatarSpan);
             let textSpan = document.createElement("span");
