@@ -585,7 +585,7 @@
             menuList.innerHTML = "";
             let imgItem = document.createElement("img");
             imgItem.src = url;
-            imgItem.style = "width:100%;height:auto;object-fit:contain;border-radius: 5px 5px 0px 0px;";
+            imgItem.style = "max-height:calc(80vh - 32px);width:100%;height:auto;object-fit:cover;border-radius: 5px 5px 0px 0px;";
             menuList.appendChild(imgItem);
             let textTip = document.createElement("p");
             textTip.innerText = "长按或右键图片保存";
