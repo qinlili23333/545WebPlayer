@@ -453,6 +453,7 @@
             };
         }
         const useBackupControl = () => {
+            window.backupControl = true;
             player.style.display = "none";
             document.getElementById("backupControls").style.display = "flex";
             player.addEventListener("play", () => {
@@ -511,6 +512,26 @@
                 return;
             };
         })();
+        //初始化媒体控制
+        if ('mediaSession' in navigator) {
+            navigator.mediaSession.setActionHandler('play', function () {
+                if (window.backupControl) {
+                    switchPlay();
+                } else {
+                    player.play();
+                }
+            });
+            navigator.mediaSession.setActionHandler('pause', function () {
+                if (window.backupControl) {
+                    switchPlay();
+                } else {
+                    player.pause();
+                }
+            });
+            navigator.mediaSession.setActionHandler('nexttrack', function () {
+                playNext();
+            });
+        }
         const makeItem = (name, info, avatar, menuCallback) => {
             let newItem = document.createElement("li");
             newItem.className = "mdc-list-item";
@@ -874,6 +895,18 @@
         }
         const playNow = async song => {
             document.title = song.name + "-545在线";
+            if ('mediaSession' in navigator) {
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title: song.name,
+                    artist: "帅比笙歌超可爱OvO",
+                    album: "545在线",
+                    artwork: [{
+                        sizes: "320x180",// <- MUST BE EXACTLY!
+                        src: song.cover,
+                        type: ""
+                    }]
+                });
+            }
             setStatus("正在下载" + song.name, true);
             window.currentPlay = song.name;
             let playBlob = await (await fetch(song.url[cdn]).catch(error => {
@@ -938,59 +971,63 @@
             }
             hideMenu();
         })();
+        const playNext = () => {
+            //随机播放下一首
+            const getRandom = () => {
+                let num;
+                let randomMethod = localStorage.randomMethod || "default";
+                switch (randomMethod) {
+                    case "real": {
+                        //crypto真随机
+                        break;
+                    };
+                    case "list": {
+                        //队列随机
+                        if (window.order && window.order.length) {
+                            num = window.order.pop();
+                        } else {
+                            //生成随机列表
+                            let listLength = window.list.length;
+                            let tempArray = []
+                            let order = [];
+                            for (let i = 0; i < listLength; i++) {
+                                tempArray[i] = i;
+                            };
+                            for (let i = 0; i < listLength; i++) {
+                                let pick = random(0, tempArray.length - 1)
+                                order[i] = tempArray[pick];
+                                tempArray.splice(pick, 1)
+                            }
+                            window.order = order;
+                            console.log("生成了新的播放列表");
+                            console.log(order);
+                            num = window.order.pop();
+                        }
+                        break;
+                    };
+                    case "exclude": {
+                        //就近排除
+                        break;
+                    };
+                    case "default":
+                    default: {
+                        num = random(0, window.list.length - 1)
+                        break;
+                    }
+                }
+                return num;
+            }
+            playNow(window.list[getRandom()]);
+        }
         const patchEnd = () => {
             player.addEventListener("ended", () => {
-                const getRandom = () => {
-                    let num;
-                    let randomMethod = localStorage.randomMethod || "default";
-                    switch (randomMethod) {
-                        case "real": {
-                            //crypto真随机
-                            break;
-                        };
-                        case "list": {
-                            //队列随机
-                            if (window.order && window.order.length) {
-                                num = window.order.pop();
-                            } else {
-                                //生成随机列表
-                                let listLength = window.list.length;
-                                let tempArray = []
-                                let order = [];
-                                for (let i = 0; i < listLength; i++) {
-                                    tempArray[i] = i;
-                                };
-                                for (let i = 0; i < listLength; i++) {
-                                    let pick = random(0, tempArray.length - 1)
-                                    order[i] = tempArray[pick];
-                                    tempArray.splice(pick, 1)
-                                }
-                                window.order = order;
-                                console.log("生成了新的播放列表");
-                                console.log(order);
-                                num = window.order.pop();
-                            }
-                            break;
-                        };
-                        case "exclude": {
-                            //就近排除
-                            break;
-                        };
-                        case "default":
-                        default: {
-                            num = random(0, window.list.length - 1)
-                            break;
-                        }
-                    }
-                    return num;
-                }
+
                 if (repeatSwitch) {
                     player.play();
                     return;
                 }
                 if (shuffleSwitch) {
-                    //随机播放下一首
-                    playNow(window.list[getRandom()]);
+                    playNext();
                 }
             })
         };
