@@ -7,13 +7,13 @@
         {
             "src": "icon.png",
             "sizes": "950x950",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         }
     ],
     "start_url": "/",
     "display": "standalone",
-    "display_override": [
-    ],
+    "display_override": [],
     "id": "/",
     "lang": "cn",
     "orientation": "portrait-primary",
