@@ -741,6 +741,18 @@
                     "origin": "https://www.bilibili.com/video/BV1s34y1t73v",
                     "source_quality": "AAC174",
                     "release_date": "2022-03-15"
+                },
+                {
+                    "name": "要抱抱",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E8%A6%81%E6%8A%B1%E6%8A%B1_20220414201107_57359.ogg"
+                    },
+                    "cover": "https://i2.hdslb.com/bfs/archive/2ccdc50f8d9ddb2ff09576cad444ba5979d44a02.jpg@.webp",
+                    "quality": "OPUS320",
+                    "full_title": "切歌:樱乃笙曦大铸币|优化:琴梨梨",
+                    "origin": "https://www.bilibili.com/video/BV1r3411W7bV",
+                    "source_quality": "AAC320",
+                    "release_date": "2022-03-14"
                 }
             ]
         },
