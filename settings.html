@@ -402,12 +402,6 @@
             await sleep(200);
             document.getElementById("floatMenuContainer").style.display = "none";
         })
-        if (localStorage.fullBlur) {
-            document.getElementById("blurCheckbox").checked = JSON.parse(localStorage.fullBlur);
-        }
-        document.getElementById("blurCheckbox").addEventListener("change", () => {
-            localStorage.fullBlur = document.getElementById("blurCheckbox").checked;
-        }, false);
         if (localStorage.randomMethod == "list") {
             document.getElementById("randomCheckbox").checked = true;
         }
@@ -423,27 +417,19 @@
                 alert("Codec Boost和WASM播放器是互斥的\n同时勾选两者会导致播放异常");
             }
         }
-        if (localStorage.codecBoost) {
-            document.getElementById("codecCheckbox").checked = JSON.parse(localStorage.codecBoost);
-        }
-        document.getElementById("codecCheckbox").addEventListener("change", () => {
-            localStorage.codecBoost = document.getElementById("codecCheckbox").checked;
-            checkBoth()
-        }, false);
-        if (localStorage.wasmPlayer) {
-            document.getElementById("wasmCheckbox").checked = JSON.parse(localStorage.wasmPlayer);
-        }
-        document.getElementById("wasmCheckbox").addEventListener("change", () => {
-            localStorage.wasmPlayer = document.getElementById("wasmCheckbox").checked;
-            checkBoth();
-        }, false);
-        if (localStorage.fileShare) {
-            document.getElementById("fileCheckbox").checked = JSON.parse(localStorage.fileShare);
-        }
-        document.getElementById("fileCheckbox").addEventListener("change", () => {
-            localStorage.fileShare = document.getElementById("fileCheckbox").checked;
-            checkBoth();
-        }, false);
+        const initCheckbox = (storageName, boxName) => {
+            if (localStorage[storageName]) {
+                document.getElementById(boxName).checked = JSON.parse(localStorage[storageName]);
+            }
+            document.getElementById(boxName).addEventListener("change", () => {
+                localStorage[storageName] = document.getElementById(boxName).checked;
+                checkBoth()
+            }, false);
+        };
+        initCheckbox("fullBlur", "blurCheckbox");
+        initCheckbox("codecBoost", "codecCheckbox");
+        initCheckbox("wasmPlayer", "wasmCheckbox");
+        initCheckbox("fileShare", "fileCheckbox");
     </script>
 </body>
 
