@@ -255,6 +255,13 @@
             </li>
         </ul>
         <ul class="mdc-list mdc-list--two-line menuList">
+            <li class="mdc-list-item" id="quizItem" style="display:none;background-color: blanchedalmond;">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">你有一份新的问卷可参与</span>
+                    <span class="mdc-list-item__secondary-text">你的建议可以帮助545在线做得更好</span>
+                </span>
+            </li>
             <li class="mdc-list-item" onclick="showFrameSet('settingFrame/sortcdn/sortcdn.html')">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
@@ -430,6 +437,20 @@
         initCheckbox("codecBoost", "codecCheckbox");
         initCheckbox("wasmPlayer", "wasmCheckbox");
         initCheckbox("fileShare", "fileCheckbox");
+        (async () => {
+            let quizJson = await (await fetch("./quiz.json?ForceNoCache=1")).json();
+            if (quizJson.success) {
+                if (!(localStorage.lastQuiz == quizJson.quiz_ver)) {
+                    let quizItem = document.getElementById("quizItem");
+                    quizItem.style.display = "block";
+                    quizItem.addEventListener("click", () => {
+                        showFrameSet(quizJson.quiz_url);
+                        localStorage.lastQuiz = quizJson.quiz_ver;
+                        quizItem.style.display = "none";
+                    })
+                }
+            }
+        })()
     </script>
 </body>
 
