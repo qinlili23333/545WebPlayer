@@ -1,6 +1,6 @@
 {
     "success": true,
-    "version": "2022041502",
+    "version": "2022041503",
     "songs": [
         {
             "type": "塔宝投稿",
@@ -767,6 +767,18 @@
                     "release_date": "2022-03-31"
                 },
                 {
+                    "name": "清平误",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B8%85%E5%B9%B3%E8%AF%AF_20220415214042_69439.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/e1d96912c9a5a31e473346d78e4d5d5b52ea414b.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "切歌:皇珈頂碗人",
+                    "origin": "https://www.bilibili.com/video/BV1hL411A7BX",
+                    "source_quality": "AAC174",
+                    "release_date": "2022-03-28"
+                },
+                {
                     "name": "海海海",
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%B7%E6%B5%B7%E6%B5%B7_20220415194656_23666.ogg"
@@ -803,6 +815,18 @@
                     "release_date": "2022-03-20"
                 },
                 {
+                    "name": "绝世舞姬",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BB%9D%E4%B8%96%E8%88%9E%E5%A7%AC_20220415212813_23407.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/9cb6ec4dc7e808fde52a4042df9790f83d896ad2.png@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "切歌:樱乃笙曦大铸币",
+                    "origin": "https://www.bilibili.com/video/BV1Ku411z74N",
+                    "source_quality": "AAC320",
+                    "release_date": "2022-03-16"
+                },
+                {
                     "name": "舞娘",
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E8%88%9E%E5%A8%98_20220411141546_61901.ogg"
@@ -812,6 +836,18 @@
                     "full_title": "切歌:皇珈頂碗人|优化:琴梨梨",
                     "origin": "https://www.bilibili.com/video/BV1s34y1t73v",
                     "source_quality": "AAC174",
+                    "release_date": "2022-03-15"
+                },
+                {
+                    "name": "特务J",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E7%89%B9%E5%8A%A1J_20220415213215_89013.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/e1d96912c9a5a31e473346d78e4d5d5b52ea414b.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "切歌:樱乃笙曦大铸币",
+                    "origin": "https://www.bilibili.com/video/BV1oY411J7rc",
+                    "source_quality": "AAC320",
                     "release_date": "2022-03-15"
                 },
                 {
