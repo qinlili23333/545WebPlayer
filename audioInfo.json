@@ -1,6 +1,6 @@
 {
     "success": true,
-    "version": "2022041503",
+    "version": "2022041601",
     "songs": [
         {
             "type": "塔宝投稿",
@@ -873,6 +873,18 @@
                     "origin": "https://www.bilibili.com/video/BV1hi4y1r7jW",
                     "source_quality": "AAC320",
                     "release_date": "2022-03-14"
+                },
+                {
+                    "name": "学猫叫",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E5%AD%A6%E7%8C%AB%E5%8F%AB_20220416211300_52289.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/026d61ec54bab65543a97df26d48603a91ae8f2e.png@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "切歌:樱乃笙曦大铸币",
+                    "origin": "https://www.bilibili.com/video/BV1MS4y167hv",
+                    "source_quality": "AAC320",
+                    "release_date": "2022-02-21"
                 }
             ]
         },
@@ -891,6 +903,30 @@
                     "origin": "https://www.bilibili.com/video/BV1Dr4y1i7xG",
                     "source_quality": "AAC320",
                     "release_date": "2022-03-14"
+                },
+                {
+                    "name": "哈哈哈哈哈哈哈哈哈哈",
+                    "url": {
+                        "yuketang": "https://yunpanx.bj.bcebos.com/v1/80272_20220416204857_10990.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/09d56baa975fd712abdd32c76c7c51a3f2bd5555.png@.webp",
+                    "quality": "OPUS128",
+                    "full_title": "素材:孙小花",
+                    "origin": "https://www.bilibili.com/video/BV1nU4y1G76y",
+                    "source_quality": "AAC192",
+                    "release_date": "2021-06-14"
+                },
+                {
+                    "name": "本草纲目",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E6%9C%AC%E8%8D%89%E7%BA%B2%E7%9B%AE_20220416211735_22076.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/68c05eb4867effa29ceaaa2036472db069d89fc0.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "【笙歌-本草纲目】冒死从直播间偷出来的主播黑历史",
+                    "origin": "https://www.bilibili.com/video/BV1CK4y1S7Lw",
+                    "source_quality": "AAC320",
+                    "release_date": "2021-02-128"
                 }
             ]
         }
