@@ -917,7 +917,19 @@
                     "release_date": "2021-06-14"
                 },
                 {
-                    "name": "200舰感谢小作文",
+                    "name": "周年小作文",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E5%91%A8%E5%B9%B4%E5%B0%8F%E4%BD%9C%E6%96%87_20220417213747_9443.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/05f7d0a05a150dfd7e8f1ef97bb36a80862459ef.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "【笙歌】周年小作文和《for you 写给你的歌》(cover 泠鸢)",
+                    "origin": "https://www.bilibili.com/video/BV1hK4y1G72m",
+                    "source_quality": "AAC320",
+                    "release_date": "2021-05-22"
+                },
+                {
+                    "name": "200舰小作文",
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/200%E8%88%B0%E5%B0%8F%E4%BD%9C%E6%96%87_20220417213334_43344.ogg"
                     },
