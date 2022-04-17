@@ -3,15 +3,19 @@
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>545在线-播放</title>
-    <meta name="description" content="545在线，随时补充塔能量！笙歌牌播放器，支持智能缓存本地播放，由琴梨梨驱动" />
+    <meta name="description" content="545在线，电子雷峰塔，随时补充塔能量！笙歌牌播放器，采用PWA技术，支持智能缓存本地播放，可完全断网使用，由琴梨梨驱动" />
     <meta name="robots" content="noindex">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     <link rel="canonical" href="https://545.qinlili.bid/player.html" />
     <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#FADCBB">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="icon" href="./icon.png">
+    <meta name="apple-mobile-web-app-title" content="545在线">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="referrer" content="no-referrer" />
     <link rel="preconnect" href="https://i0.hdslb.com">
     <link rel="preconnect" href="https://bj.bcebos.com">
@@ -99,7 +103,7 @@
             -webkit-tap-highlight-color: transparent;
             scrollbar-width: thin;
             scrollbar-color: #FADCBB transparent;
-            --mdc-theme-primary: #F4C39D;
+            --mdc-theme-primary: #DCAC89;
             --mdc-theme-secondary: #FADCBB;
             box-sizing: border-box;
             margin: 0;
@@ -208,9 +212,9 @@
 
         .topBtn {
             border-radius: 2px;
-            height: auto;
+            height: 24px;
             margin: 4px;
-            width: auto;
+            width: 24px;
             transition: background-color 0.2s, transform 0.3s ease-in-out;
         }
 
@@ -317,7 +321,7 @@
                         </span>
                         <span class="mdc-tab__ripple"></span>
                     </button>
-                    <button class="mdc-tab mdc-tab" role="tab" aria-selected="false" tabindex="1"
+                    <button class="mdc-tab mdc-tab" role="tab" aria-selected="false" tabindex="-1"
                         onclick="switchAudioList();">
                         <span class="mdc-tab__content">
                             <span class="mdc-tab__text-label">全部歌单</span>
@@ -338,18 +342,18 @@
                 <p id="tips">正在加载播放器</p>
             </div>
             <div id="buttons" class="buttons">
-                <img class="topBtn" id="shuffleBtn" onclick="switchShuffle();" src="./img/shuffle.svg">
-                <img class="topBtn" id="repeatBtn" onclick="switchRepeat();" src="./img/repeat.svg">
+                <img class="topBtn" id="shuffleBtn" onclick="switchShuffle();" alt="随机播放" src="./img/shuffle.svg">
+                <img class="topBtn" id="repeatBtn" onclick="switchRepeat();" alt="循环播放" src="./img/repeat.svg">
                 <img class="topBtn" id="settingBtn" onclick="bottomdown();document.location.href='./settings.html'"
-                    src="./img/setting.svg">
+                    alt="设置" src="./img/setting.svg">
             </div>
         </div>
         <audio controls autoplay id="player" style="width: 100%;height:32px;"></audio>
         <div id="backupControls" class="controls" style="display:none;">
             <div id="backupButtons" class="buttons">
-                <img class="topBtn" id="playBtn" loading="lazy" onclick="switchPlay();" src="./img/play.svg">
+                <img class="topBtn" id="playBtn" loading="lazy" onclick="switchPlay();" alt="播放" src="./img/play.svg">
                 <img class="topBtn" id="nextBtn" loading="lazy"
-                    onclick="player.dispatchEvent(new CustomEvent('ended'));" src="./img/next.svg">
+                    onclick="player.dispatchEvent(new CustomEvent('ended'));" alt="下一曲" src="./img/next.svg">
             </div>
         </div>
     </div>
@@ -541,8 +545,12 @@
             let avatarSpan = document.createElement("span");
             avatarSpan.className = "mdc-list-item__graphic";
             let imgItem = document.createElement("img");
+            if (avatar.indexOf(".hdslb.") > 0) {
+                avatar = avatar.replace("@.webp", "@120h.webp")
+            };
             imgItem.src = avatar;
             imgItem.loading = "lazy";
+            imgItem.alt = name;
             imgItem.style = "object-fit: cover;border-radius: 4px;height: 100%;width: 100%;opacity:0;transition: opacity 0.5s;";
             imgItem.onload = () => {
                 imgItem.style.opacity = 1;

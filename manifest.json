@@ -8,16 +8,28 @@
             "src": "icon.png",
             "sizes": "950x950",
             "type": "image/png",
-            "purpose": "any maskable"
+            "purpose": "any"
+        },
+        {
+            "src": "icon_mask.png",
+            "sizes": "950x950",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icon_mono.png",
+            "sizes": "256x256",
+            "type": "image/png",
+            "purpose": "monochrome"
         }
     ],
     "start_url": "/",
     "display": "standalone",
     "display_override": [],
     "id": "/",
-    "lang": "cn",
-    "orientation": "portrait-primary",
+    "lang": "zh-cn",
+    "orientation": "any",
     "background_color": "#FADCBB",
     "theme_color": "#FADCBB",
-    "description": "随时随地在线补充塔能量"
+    "description": "545在线，电子雷峰塔，随时补充塔能量！笙歌牌播放器，采用PWA技术，支持智能缓存本地播放，可完全断网使用，由琴梨梨驱动"
 }
