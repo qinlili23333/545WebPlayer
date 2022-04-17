@@ -917,6 +917,18 @@
                     "release_date": "2021-06-14"
                 },
                 {
+                    "name": "200舰感谢小作文",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/200%E8%88%B0%E5%B0%8F%E4%BD%9C%E6%96%87_20220417213334_43344.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/edf9dbb55b44b7f839dfea4ea9223622a3f02bad.jpg@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "《200舰感谢小作文》",
+                    "origin": "https://www.bilibili.com/video/BV1Jy4y1a7n7",
+                    "source_quality": "AAC320",
+                    "release_date": "2021-03-01"
+                },
+                {
                     "name": "本草纲目",
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E6%9C%AC%E8%8D%89%E7%BA%B2%E7%9B%AE_20220416211735_22076.ogg"
@@ -926,7 +938,7 @@
                     "full_title": "【笙歌-本草纲目】冒死从直播间偷出来的主播黑历史",
                     "origin": "https://www.bilibili.com/video/BV1CK4y1S7Lw",
                     "source_quality": "AAC320",
-                    "release_date": "2021-02-128"
+                    "release_date": "2021-02-28"
                 }
             ]
         }
