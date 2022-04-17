@@ -24,7 +24,7 @@
     <button class="mdc-button mdc-button--raised mdc-button--leading" style="width:80%;margin:16px;" id="downBtn">
         <span class="mdc-button__ripple"></span>
         <i class="material-icons mdc-button__icon" aria-hidden="true">cloud_download</i>
-        <span class="mdc-button__label">全部缓存</span>
+        <span class="mdc-button__label" id="downBtnLabel">全部缓存</span>
     </button>
     <p id="cacheStatus"></p>
     <H4 style="padding:16px;">下方文本框内容即为你的播放列表信息</H4>
@@ -74,8 +74,14 @@
         });
         const cdn = "yuketang"
         document.getElementById("downBtn").addEventListener("click", () => {
+            document.getElementById("downBtn").disabled = true;
+            document.getElementById("downBtnLabel").innerText = "正在缓存...";
             const setStatus = (success, fail, total) => {
                 document.getElementById("cacheStatus").innerText = "总计" + total + "首,已缓存" + success + "首,失败" + fail + "首";
+                if ((success + fail) == total) {
+                    document.getElementById("downBtn").disabled = false;
+                    document.getElementById("downBtnLabel").innerText = "缓存完成";
+                }
             }
             let playList = JSON.parse(localStorage.playList);
             let success = 0;
