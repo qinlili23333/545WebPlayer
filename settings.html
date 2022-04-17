@@ -160,7 +160,7 @@
             <span class="mdc-button__label">返回</span>
         </button>
         <H3 style="margin:auto;">设置</H3>
-        <button onclick="showFrameSet('settingFrame/about.html')" class="mdc-button foo-button">
+        <button onclick="showFrameSet('settingFrame/about.html');" class="mdc-button foo-button">
             <div class="mdc-button__ripple"></div>
             <span class="mdc-button__label">关于</span>
         </button>
@@ -332,7 +332,7 @@
             document.body.style.marginLeft = "100%";
             await sleep(75);
             history.go(-1);
-            setInterval(() => { history.go(-1); }, 200)
+            setTimeout(() => { location.replace("./") }, 200)
         }
         window.mdc.autoInit();
         document.querySelectorAll('.foo-button').forEach(element => {
