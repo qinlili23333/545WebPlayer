@@ -11,7 +11,7 @@
             "purpose": "any"
         },
         {
-            "src": "icon_mask.png",
+            "src": "icon.png",
             "sizes": "950x950",
             "type": "image/png",
             "purpose": "maskable"
