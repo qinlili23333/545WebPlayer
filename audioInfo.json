@@ -1,6 +1,6 @@
 {
     "success": true,
-    "version": "2022042001",
+    "version": "2022042101",
     "songs": [
         {
             "type": "塔宝投稿",
@@ -755,6 +755,18 @@
             "description": "较为原始的直播歌切",
             "list": [
                 {
+                    "name": "暗号",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E6%9A%97%E5%8F%B7_20220421213153_49015.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/9cb6ec4dc7e808fde52a4042df9790f83d896ad2.png@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "切歌:樱乃笙曦大铸币",
+                    "origin": "https://www.bilibili.com/video/BV1FY41177Tu",
+                    "source_quality": "AAC320",
+                    "release_date": "2022-04-16"
+                },
+                {
                     "name": "青媚狐",
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E9%9D%92%E5%AA%9A%E7%8B%90_20220331211938_3007.ogg"
@@ -897,6 +909,30 @@
                     "origin": "https://www.bilibili.com/video/BV1MS4y167hv",
                     "source_quality": "AAC320",
                     "release_date": "2022-02-21"
+                },
+                {
+                    "name": "流光记",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%81%E5%85%89%E8%AE%B0_20220421220942_66575.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/026d61ec54bab65543a97df26d48603a91ae8f2e.png@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "切歌:樱乃笙曦大铸币|优化:琴梨梨",
+                    "origin": "https://www.bilibili.com/video/BV11b4y177hi",
+                    "source_quality": "AAC320",
+                    "release_date": "2022-02-12"
+                },
+                {
+                    "name": "苏公堤",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E8%8B%8F%E5%85%AC%E5%A0%A4_20220421213903_50577.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/026d61ec54bab65543a97df26d48603a91ae8f2e.png@.webp",
+                    "quality": "OPUS192",
+                    "full_title": "切歌:樱乃笙曦大铸币",
+                    "origin": "https://www.bilibili.com/video/BV1wq4y187FK",
+                    "source_quality": "AAC320",
+                    "release_date": "2022-02-11"
                 }
             ]
         },
