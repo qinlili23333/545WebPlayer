@@ -77,30 +77,26 @@
         }
 
         #floatMenu {
-            width: calc(100% - 20vw);
-            height: calc(100% - 20vh);
-            border-radius: 5px;
+            width: 100vw;
+            height: 90vh;
+            border-radius: 10px 10px 0px 0px;
             backdrop-filter: blur(3px) brightness(100%);
             background-color: rgba(255, 255, 255, 0.75);
-            margin-top: 10vh;
-            margin-bottom: 10vh;
-            margin-left: 10vw;
-            margin-right: 10vw;
+            margin-top: 100vh;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            transition: margin-top 0.5s ease-out;
         }
 
         #closeBtn {
-            width: 32px;
+            width: 100vw;
             height: 32px;
-            border-radius: 5px;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-            float: right;
+            border-radius: 10px 10px 0px 0px;
             transition: background-color 0.2s, transform 0.3s ease-in-out;
         }
 
         #closeBtn:hover {
-            transform: scale(1.1, 1.1);
             background-color: #cccccc;
         }
 
@@ -127,9 +123,10 @@
         }
 
         #setFrame {
+            margin: auto;
             padding: 100%;
             width: 100%;
-            height: 100%;
+            height: calc(100% - 32px);
             border-radius: 5px;
         }
 
@@ -320,8 +317,8 @@
     </div>
     <div id="floatMenuContainer">
         <div id="floatMenu">
+            <img id="closeBtn" src="./img/expand.svg">
             <iframe id="setFrame" frameborder="0"></iframe>
-            <img id="closeBtn" src="./img/close.svg">
             <img id="loading" src="./img/loading.svg">
         </div>
     </div>
@@ -384,7 +381,8 @@
             console.log(event.data)
             if (event.data == "close") {
                 document.getElementById("floatMenuContainer").style.opacity = 0;
-                await sleep(200);
+                document.getElementById("floatMenu").style.marginTop = "100vh";
+                await sleep(500);
                 document.getElementById("floatMenuContainer").style.display = "none";
             }
             if (event.data == "load") {
@@ -404,14 +402,16 @@
             document.getElementById("floatMenuContainer").style.display = "block";
             await sleep(1);
             document.getElementById("floatMenuContainer").style.opacity = 1;
+            document.getElementById("floatMenu").style.marginTop = "10vh";
             document.getElementById("loading").style.display = "block";
             document.getElementById("setFrame").style.padding = "100%";
             setFrame.src = url;
         }
         document.getElementById("closeBtn").addEventListener("click", async (event) => {
             event.stopPropagation();
+            document.getElementById("floatMenu").style.marginTop = "100vh";
             document.getElementById("floatMenuContainer").style.opacity = 0;
-            await sleep(200);
+            await sleep(500);
             document.getElementById("floatMenuContainer").style.display = "none";
         })
         if (localStorage.randomMethod == "list") {
