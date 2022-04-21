@@ -1,6 +1,6 @@
 {
     "success": true,
-    "version": "2022042101",
+    "version": "2022042102",
     "songs": [
         {
             "type": "塔宝投稿",
@@ -933,6 +933,18 @@
                     "origin": "https://www.bilibili.com/video/BV1wq4y187FK",
                     "source_quality": "AAC320",
                     "release_date": "2022-02-11"
+                },
+                {
+                    "name": "空心",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E7%A9%BA%E5%BF%83_20220421223528_10384.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/e3dea42d955891735b2aae1ba79d31032aca73d7.png@.webp",
+                    "quality": "OPUS128",
+                    "full_title": "切歌:孙小花",
+                    "origin": "https://www.bilibili.com/video/BV18h411H7EJ",
+                    "source_quality": "AAC192",
+                    "release_date": "2021-10-04"
                 }
             ]
         },
