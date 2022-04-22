@@ -43,6 +43,7 @@
         }
 
         #baseImg {
+            object-fit: cover;
             position: absolute;
             height: 41.02564102564103vw;
             width: 100vw;
@@ -56,7 +57,7 @@
             top: 5.8vw;
             line-height: 3.7vw;
             font-size: 3.7vw;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .infotext {
@@ -90,7 +91,8 @@
         #date {
             font-family: 'Noto Sans SC', sans-serif;
             font-weight: 400;
-            color: rgba(255,255,255,0.9);;
+            color: rgba(255, 255, 255, 0.9);
+            ;
             position: absolute;
             left: 3.4vw;
             top: 36.2vw;
@@ -123,7 +125,7 @@
         </button>
     </div>
     <script>
-        if(window.self === window.top){
+        if (window.self === window.top) {
             location.replace("/settings?cardmake")
         }
         const today = new Date()
