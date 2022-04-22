@@ -123,6 +123,9 @@
         </button>
     </div>
     <script>
+        if(window.self === window.top){
+            location.replace("/settings?cardmake")
+        }
         const today = new Date()
         document.getElementById("date").innerText = today.getFullYear() + "/" + (today.getMonth() + 1).toString().padStart(2, "0") + "/" + today.getDate().toString().padStart(2, "0");
         document.getElementById("saveBtn").addEventListener("click", () => {
