@@ -116,7 +116,7 @@
             <img id="headImg" src="../icon.png">
             <span id="username" contenteditable="true">帅比笙歌超可爱OvO</span>
             <span class="infotext" id="fansinfo">FANS NO.</span>
-            <span id="num" contenteditable="true">114514</span>
+            <span id="num" contenteditable="true">000000</span>
             <span class="infotext" id="dateinfo">DATE</span>
             <span id="date">2021/12/30</span>
         </div>
@@ -159,6 +159,11 @@
         document.getElementById("headImg").addEventListener("click", () => {
             document.getElementById("hiddenImgUploader").click();
         });
+        fetch("https://biliapi.qinlili.bid/follow?uid=15641218&ForceNoCache=1").then(resp => resp.json().then(json => {
+            if (json.code == 0) {
+                document.getElementById("num").innerText = json.data.follower.toString().padStart(6, "0");
+            }
+        }).catch()).catch()
     </script>
 </body>
 
