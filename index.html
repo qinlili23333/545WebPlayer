@@ -344,8 +344,7 @@
             <div id="buttons" class="buttons">
                 <img class="topBtn" id="shuffleBtn" onclick="switchShuffle();" alt="随机播放" src="./img/shuffle.svg">
                 <img class="topBtn" id="repeatBtn" onclick="switchRepeat();" alt="循环播放" src="./img/repeat.svg">
-                <img class="topBtn" id="settingBtn" onclick="bottomdown();document.location.href='./settings'"
-                    alt="设置" src="./img/setting.svg">
+                <img class="topBtn" id="settingBtn" onclick="functionMenu()" alt="菜单" src="./img/menu.svg">
             </div>
         </div>
         <audio controls autoplay id="player" style="width: 100%;height:32px;"></audio>
@@ -580,12 +579,18 @@
             }
             return newItem;
         }
-        const makeMenu = (text) => {
+        const makeMenu = (text, icon) => {
             let menuItem = document.createElement("li");
             menuItem.className = "mdc-list-item";
             let ripple = document.createElement("span");
             ripple.className == "mdc-list-item__ripple";
             menuItem.appendChild(ripple);
+            if (icon) {
+                let iconItem = document.createElement("img");
+                iconItem.src = icon;
+                iconItem.className = "mdc-list-item__graphic material-icons";
+                menuItem.appendChild(iconItem);
+            }
             let textItem = document.createElement("span");
             textItem.className = "mdc-list-item__text";
             textItem.innerText = text;
@@ -593,7 +598,6 @@
             return menuItem;
         }
         const saveImgMenu = url => {
-            showMenu();
             menuList.innerHTML = "";
             let imgItem = document.createElement("img");
             imgItem.src = url;
@@ -603,6 +607,7 @@
             textTip.innerText = "长按或右键图片保存";
             textTip.style = "width:100%;text-align:center;"
             menuList.appendChild(textTip);
+            showMenu();
         }
         const loadMenu = text => {
             let loadDiv = document.createElement("div");
@@ -621,7 +626,7 @@
             return loadDiv;
         }
         const makeSongMenu = songInfo => {
-            let dlMenu = makeMenu("下载");
+            let dlMenu = makeMenu("下载", "./img/download.svg");
             dlMenu.addEventListener("click", async () => {
                 setStatus("正在下载" + songInfo.name, true);
                 let playBlob = URL.createObjectURL(await (await fetch(songInfo.url[cdn])).blob());
@@ -629,25 +634,25 @@
                 setStatus("下载" + songInfo.name + "成功", false);
             });
             menuList.appendChild(dlMenu);
-            let coverMenu = makeMenu("保存封面");
+            let coverMenu = makeMenu("保存封面", "./img/cover.svg");
             coverMenu.addEventListener("click", (event) => {
                 event.stopPropagation();
                 saveImgMenu(songInfo.cover);
             });
             menuList.appendChild(coverMenu)
-            let goMenu = makeMenu("查看原始投稿");
+            let goMenu = makeMenu("查看原始投稿", "./img/link.svg");
             goMenu.addEventListener("click", () => {
                 window.open(songInfo.origin, "_blank")
             });
             menuList.appendChild(goMenu);
-            let shareMenu = makeMenu("分享");
+            let shareMenu = makeMenu("分享", "./img/share.svg");
             shareMenu.addEventListener("click", () => {
                 shareSong(songInfo);
             });
             menuList.appendChild(shareMenu);
-            let qualityMenu = makeMenu("播放音质:" + songInfo.quality + "/原始音质:" + songInfo.source_quality);
+            let qualityMenu = makeMenu("播放音质:" + songInfo.quality + "/原始音质:" + songInfo.source_quality, "./img/audiofile.svg");
             menuList.appendChild(qualityMenu);
-            let timeMenu = makeMenu("发布时间:" + songInfo.release_date);
+            let timeMenu = makeMenu("发布时间:" + songInfo.release_date, "./img/calendar.svg");
             menuList.appendChild(timeMenu);
             const list = new MDCList(menuList);
             const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
@@ -774,9 +779,9 @@
                             let song = makeItem(songInfo.name, songInfo.full_title, songInfo.cover, (event) => {
                                 //歌曲菜单
                                 event.stopPropagation();
-                                showMenu();
                                 menuList.innerHTML = "";
                                 makeSongMenu(songInfo);
+                                showMenu();
                             });
                             song.addEventListener("click", () => {
                                 addToPlayList(songInfo);
@@ -795,15 +800,15 @@
                 let folder = makeItem(folderInfo.type, folderInfo.description, "./img/folder.svg", (event) => {
                     //文件夹菜单
                     event.stopPropagation();
-                    showMenu();
                     menuList.innerHTML = "";
-                    let addMenu = makeMenu("全部添加到播放列表");
+                    let addMenu = makeMenu("全部添加到播放列表", "./img/addlist.svg");
                     addMenu.addEventListener("click", () => {
                         folderInfo.list.forEach(addToPlayList);
                     });
                     menuList.appendChild(addMenu);
                     const list = new MDCList(menuList);
                     const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
+                    showMenu();
                 });
                 audioFolderModule.appendChild(folder);
                 folder.addEventListener("click", () => {
@@ -822,9 +827,9 @@
                         let song = makeItem(songInfo.name, songInfo.full_title, songInfo.cover, (event) => {
                             //歌曲菜单
                             event.stopPropagation();
-                            showMenu();
                             menuList.innerHTML = "";
                             makeSongMenu(songInfo);
+                            showMenu();
                         });
                         song.addEventListener("click", () => {
                             addToPlayList(songInfo);
@@ -855,9 +860,8 @@
                         let song = makeItem(songInfo.name, songInfo.full_title, songInfo.cover, (event) => {
                             //歌曲菜单
                             event.stopPropagation();
-                            showMenu();
                             menuList.innerHTML = "";
-                            let deleteMenu = makeMenu("从播放列表里删除");
+                            let deleteMenu = makeMenu("从播放列表里删除","./img/delete.svg");
                             deleteMenu.addEventListener("click", async () => {
                                 if (confirm("你想要从播放列表删除 " + songInfo.name + " 吗？")) {
                                     removeFromPlayList(songInfo);
@@ -865,6 +869,7 @@
                             });
                             menuList.appendChild(deleteMenu);
                             makeSongMenu(songInfo);
+                            showMenu();
                         });
                         song.addEventListener("click", () => {
                             //立即播放
@@ -1017,7 +1022,6 @@
         }
         const patchEnd = () => {
             player.addEventListener("ended", () => {
-
                 if (repeatSwitch) {
                     player.play();
                     return;
@@ -1027,6 +1031,32 @@
                 }
             })
         };
+        const functionMenu = () => {
+            menuList.innerHTML = "";
+            //功能菜单
+            let settingMenu = makeMenu("设置", "./img/setting.svg");
+            settingMenu.addEventListener("click", () => {
+                bottomdown();
+                document.location.href = './settings';
+            })
+            menuList.appendChild(settingMenu);
+            let toolMenu = makeMenu("工具箱", "./img/tool.svg");
+            toolMenu.addEventListener("click", () => {
+                bottomdown();
+                document.location.href = './tools';
+            })
+            menuList.appendChild(toolMenu);
+            if (history.length == 1) {
+                let exitMenu = makeMenu("退出", "./img/exit.svg");
+                exitMenu.addEventListener("click", () => {
+                    window.close();
+                })
+                menuList.appendChild(exitMenu);
+            }
+            const list = new MDCList(menuList);
+            const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
+            showMenu();
+        }
         if (!navigator.serviceWorker) {
             alert("你的浏览器不支持Service Worker，你应该换个浏览器了");
         }
@@ -1035,10 +1065,10 @@
         }
         if (navigator.serviceWorker && !navigator.serviceWorker.controller) {
             const install = async () => {
-                showMenu();
                 menuList.innerHTML = "";
                 let tip = loadMenu("正在准备Service Worker...");
                 menuList.appendChild(tip);
+                showMenu();
                 await (await fetch("./sw.js")).blob();
                 tip.setText("读取版本信息...");
                 let versionJson = await (await fetch("../version.json?ForceNoCache=1")).json();

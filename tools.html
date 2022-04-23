@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="545在线，电子雷峰塔，随时补充塔能量！笙歌牌播放器，采用PWA技术，支持智能缓存本地播放，可完全断网使用，由琴梨梨驱动" />
+    <meta name="robots" content="noindex">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <link rel="canonical" href="https://545.qinlili.bid/tools" />
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#FADCBB">
+    <link rel="icon" href="./icon.png">
+    <link rel="apple-touch-icon" href="./icon.png">
+    <meta name="apple-mobile-web-app-title" content="545在线">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>545在线-工具箱</title>
+    <link href="./public.css" rel="stylesheet">
+    <script>
+        document.title = "载入工具箱中..."
+    </script>
+    <link crossorigin="anonymous"
+        integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ=="
+        href="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.css" rel="stylesheet">
+    <script crossorigin="anonymous"
+        integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
+        src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
+    <style>
+        @keyframes leftin {
+            from {
+                margin-left: -100%;
+            }
+
+            to {
+                margin-left: 0;
+            }
+        }
+
+        @keyframes rightin {
+            from {
+                margin-left: 100%;
+            }
+
+            to {
+                margin-left: 0;
+            }
+        }
+
+        @keyframes rightout {
+            from {
+                margin-left: 0;
+            }
+
+            to {
+                margin-left: 100%;
+            }
+        }
+    </style>
+    <style>
+        #floatMenuContainer {
+            transition: opacity 0.2s ease-in;
+            opacity: 0;
+            display: none;
+            z-index: 9999;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            height: auto;
+            width: auto;
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+
+        #floatMenu {
+            text-align: center;
+            width: 100vw;
+            height: 90vh;
+            border-radius: 10px 10px 0px 0px;
+            backdrop-filter: blur(3px) brightness(100%);
+            background-color: rgba(255, 255, 255, 0.75);
+            margin-top: 100vh;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            transition: margin-top 0.5s ease-out;
+        }
+
+        #closeBtn {
+            width: 100vw;
+            height: 32px;
+            border-radius: 10px 10px 0px 0px;
+            transition: background-color 0.2s, transform 0.3s ease-in-out;
+        }
+
+        #closeBtn:hover {
+            background-color: #cccccc;
+        }
+
+        .mdc-list {
+            padding: 0 0 !important;
+        }
+
+        #closeBtn:active {
+            background-color: #999999
+        }
+
+        #closeBtn.active {
+            background-color: #FADCBB
+        }
+
+        #loading {
+            width: 32px;
+            position: absolute;
+            margin: auto;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+
+        #setFrame {
+            max-width: 600px;
+            margin: auto;
+            padding: 100%;
+            width: 100%;
+            height: calc(100% - 32px);
+        }
+
+        body {
+            overflow-x: hidden;
+            width: 100vw;
+            animation: rightin 0.12s;
+        }
+
+        .bigBackground {
+            background-image: url(./img/大塔.webp);
+            background-repeat: no-repeat;
+            background-size: auto 100vh;
+            background-position: center;
+        }
+
+        @media (min-width: 700px) {
+            #settings {
+                display: flex !important;
+                flex-direction: row !important;
+            }
+
+            .checkBoxList,
+            .menuList {
+                width: 50vw !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <button onclick="playOutAnim();" class="mdc-button foo-button">
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">返回</span>
+        </button>
+        <H3 style="margin:auto;">工具箱</H3>
+        <div style="width:64px;"></div>
+    </div>
+
+    <div id="settings" style="height:calc(100vh - 36px);overflow-y: auto;overflow-y: overlay;">
+        <ul class="mdc-list mdc-list--two-line menuList">
+            <li class="mdc-list-item" onclick="showFrameSet('settingFrame/cardmake')">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">制作装扮卡片</span>
+                    <span class="mdc-list-item__secondary-text">编号默认为粉丝数量</span>
+                </span>
+            </li>
+        </ul>
+    </div>
+    <div id="floatMenuContainer">
+        <div id="floatMenu">
+            <img id="closeBtn" src="./img/expand.svg">
+            <iframe id="setFrame" frameborder="0"></iframe>
+            <img id="loading" src="./img/loading.svg">
+        </div>
+    </div>
+    <script>
+        const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
+        const playOutAnim = async () => {
+            document.body.style.animation = "rightout 0.12s";
+            document.body.style.marginLeft = "100%";
+            await sleep(75);
+            history.go(-1);
+            setTimeout(() => { location.replace("./") }, 200)
+        }
+        window.mdc.autoInit();
+        document.querySelectorAll('.foo-button').forEach(element => {
+            mdc.ripple.MDCRipple.attachTo(element);
+        });
+        const MDCList = mdc.list.MDCList;
+        const MDCRipple = mdc.ripple.MDCRipple;
+        const MDCSwitch = mdc.switchControl.MDCSwitch;
+        window.MDCCheckbox = mdc.checkbox.MDCCheckbox;
+        document.querySelectorAll('.mdc-checkbox').forEach(element => {
+            new MDCCheckbox(element);
+        });
+        let list = new MDCList(document.querySelector('.menuList'));
+        list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
+        document.title = "545在线-工具箱";
+        window.addEventListener("message", async (event) => {
+            console.log(event.data)
+            if (event.data == "close") {
+                document.getElementById("floatMenuContainer").style.opacity = 0;
+                document.getElementById("floatMenu").style.marginTop = "100vh";
+                await sleep(500);
+                document.getElementById("floatMenuContainer").style.display = "none";
+            }
+            if (event.data == "load") {
+                document.getElementById("loading").style.display = "block";
+                document.getElementById("setFrame").style.padding = "100%";
+            }
+        }, false);
+        document.getElementById("setFrame").addEventListener("load", () => {
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("setFrame").style.padding = "0px";
+        });
+        if (localStorage.fullBlur && JSON.parse(localStorage.fullBlur)) {
+            document.getElementById("floatMenuContainer").style.backdropFilter = "blur(3px) brightness(100%)";
+        };
+        const showFrameSet = async url => {
+            //使用iframe渲染设置
+            document.getElementById("floatMenuContainer").style.display = "block";
+            await sleep(1);
+            document.getElementById("floatMenuContainer").style.opacity = 1;
+            document.getElementById("floatMenu").style.marginTop = "10vh";
+            document.getElementById("loading").style.display = "block";
+            document.getElementById("setFrame").style.padding = "100%";
+            setFrame.src = url;
+        }
+        document.getElementById("closeBtn").addEventListener("click", async (event) => {
+            event.stopPropagation();
+            document.getElementById("floatMenu").style.marginTop = "100vh";
+            document.getElementById("floatMenuContainer").style.opacity = 0;
+            await sleep(500);
+            document.getElementById("floatMenuContainer").style.display = "none";
+        })
+        window.titleCount = 0;
+        document.getElementById("titleText").addEventListener("click", () => {
+            window.titleCount++;
+            if (window.titleCount == 5) {
+                document.getElementById("settings").className = "bigBackground";
+            }
+        });
+        if (location.search.length) {
+            showFrameSet("toolFrame/" + location.search.substr(1))
+        }
+    </script>
+</body>
+
+</html>

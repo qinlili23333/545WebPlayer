@@ -1,17 +1,28 @@
 var APP_PREFIX = '545在线'
-var VERSION = '20220423'
-var VERSION_AZUSA_PATCH_USE = '20220422'
+var VERSION = '20220423v2'
+var VERSION_AZUSA_PATCH_USE = '20220423'
 var AZUSA_PATCH_SKIP_LIST = [
+    './img/addlist.svg',
+    './img/audiofile.svg',
     './img/bai.png',
     './img/close.svg',
+    './img/cover.svg',
+    './img/calendar.svg',
+    './img/download.svg',
+    './img/delete.svg',
     './img/expand.svg',
+    './img/exit.svg',
     './img/folder.svg',
     './img/loading.svg',
+    './img/link.svg',
+    './img/menu.svg',
     './img/repeat.svg',
+    './img/share.svg',
     './img/search.svg',
     './img/setting.svg',
     './img/shuffle.svg',
     './img/terminal.svg',
+    './img/tool.svg',
     './img/play.svg',
     './img/next.svg',
     './icon.png',
