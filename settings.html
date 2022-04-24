@@ -263,6 +263,24 @@
                     <div class="mdc-checkbox__ripple"></div>
                 </div>
             </li>
+            <li class="mdc-list-item" id="erudaCheck">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">开启Eruda调试器</span>
+                    <span class="mdc-list-item__secondary-text">在移动设备上更方便的进行调试</span>
+                </span>
+                <div class="mdc-checkbox" style="position:absolute;float:right;right:0px;">
+                    <input type="checkbox" class="mdc-checkbox__native-control" id="erudaCheckbox" />
+                    <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                            <path class="mdc-checkbox__checkmark-path" fill="none"
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                    </div>
+                    <div class="mdc-checkbox__ripple"></div>
+                </div>
+            </li>
         </ul>
         <ul class="mdc-list mdc-list--two-line menuList">
             <li class="mdc-list-item" id="quizItem" style="display:none;background-color: blanchedalmond;">
@@ -450,6 +468,7 @@
         initCheckbox("codecBoost", "codecCheckbox");
         initCheckbox("wasmPlayer", "wasmCheckbox");
         initCheckbox("fileShare", "fileCheckbox");
+        initCheckbox("erudaEnabled", "erudaCheckbox");
         window.titleCount = 0;
         document.getElementById("titleText").addEventListener("click", () => {
             window.titleCount++;
@@ -471,9 +490,17 @@
                 }
             }
         })();
+        (() => {
+            if (localStorage.erudaEnabled && JSON.parse(localStorage.erudaEnabled)) {
+                let script = document.createElement('script');
+                script.src = "https://lib.baomitu.com/eruda/2.4.1/eruda.min.js";
+                document.body.appendChild(script);
+                script.onload = function () { eruda.init() }
+            }
+        })();
         if (location.search.length) {
             showFrameSet("settingFrame/" + location.search.substr(1))
-        }
+        };
     </script>
 </body>
 

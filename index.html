@@ -19,6 +19,18 @@
     <meta name="referrer" content="no-referrer" />
     <link rel="preconnect" href="https://i0.hdslb.com">
     <link rel="preconnect" href="https://bj.bcebos.com">
+    <script>
+        document.title = "载入播放器中...";
+    </script>
+    <link crossorigin="anonymous"
+        integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ=="
+        href="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.css" rel="stylesheet">
+    <script crossorigin="anonymous"
+        integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
+        src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
+    <link crossorigin="anonymous"
+        integrity="sha512-y9glprRcVESvYY3suAqBUYXx0ySbQNvbzzgvLy9F2o38Y7XCNeq/No2gnHjV3+Rjyq5ijoPZRMXotpdw6jcG4g=="
+        href="https://lib.baomitu.com/material-design-icons/3.0.2/iconfont/material-icons.min.css" rel="stylesheet">
     <style>
         @keyframes leftin {
             from {
@@ -292,18 +304,6 @@
             }
         }
     </style>
-    <script>
-        document.title = "载入播放器中...";
-    </script>
-    <link crossorigin="anonymous"
-        integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ=="
-        href="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.css" rel="stylesheet">
-    <script crossorigin="anonymous"
-        integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
-        src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
-    <link crossorigin="anonymous"
-        integrity="sha512-y9glprRcVESvYY3suAqBUYXx0ySbQNvbzzgvLy9F2o38Y7XCNeq/No2gnHjV3+Rjyq5ijoPZRMXotpdw6jcG4g=="
-        href="https://lib.baomitu.com/material-design-icons/3.0.2/iconfont/material-icons.min.css" rel="stylesheet">
 </head>
 
 <body style="text-align: center">
@@ -861,7 +861,7 @@
                             //歌曲菜单
                             event.stopPropagation();
                             menuList.innerHTML = "";
-                            let deleteMenu = makeMenu("从播放列表里删除","./img/delete.svg");
+                            let deleteMenu = makeMenu("从播放列表里删除", "./img/delete.svg");
                             deleteMenu.addEventListener("click", async () => {
                                 if (confirm("你想要从播放列表删除 " + songInfo.name + " 吗？")) {
                                     removeFromPlayList(songInfo);
@@ -1114,6 +1114,14 @@
         patchEnd();
         renderAudioList(false, true);
         renderPlayList();
+        (() => {
+            if (localStorage.erudaEnabled && JSON.parse(localStorage.erudaEnabled)) {
+                let script = document.createElement('script');
+                script.src = "https://lib.baomitu.com/eruda/2.4.1/eruda.min.js";
+                document.body.appendChild(script);
+                script.onload = function () { eruda.init() }
+            }
+        })();
     </script>
 </body>
 

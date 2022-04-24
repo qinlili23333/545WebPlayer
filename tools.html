@@ -251,9 +251,17 @@
                 document.getElementById("settings").className = "bigBackground";
             }
         });
+        (() => {
+            if (localStorage.erudaEnabled && JSON.parse(localStorage.erudaEnabled)) {
+                let script = document.createElement('script');
+                script.src = "https://lib.baomitu.com/eruda/2.4.1/eruda.min.js";
+                document.body.appendChild(script);
+                script.onload = function () { eruda.init() }
+            }
+        })();
         if (location.search.length) {
             showFrameSet("toolFrame/" + location.search.substr(1))
-        }
+        };
     </script>
 </body>
 
