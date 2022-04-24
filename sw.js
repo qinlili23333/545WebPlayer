@@ -97,7 +97,7 @@ self.addEventListener('install', e => {
         })
     )
     self.skipWaiting();
-})
+});
 self.addEventListener('activate', e => {
     e.waitUntil(
         caches.keys().then((keyList) => {
@@ -115,4 +115,17 @@ self.addEventListener('activate', e => {
             }))
         })
     )
-})
+});
+self.addEventListener('notificationclick', function (event) {
+    event.notification.close();
+    console.log(event)
+    switch (event.notification.tag) {
+        case "直播推送": {
+            clients.openWindow("https://live.bilibili.com/545");
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+}, false);

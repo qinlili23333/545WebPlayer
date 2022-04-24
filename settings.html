@@ -209,6 +209,24 @@
                     <div class="mdc-checkbox__ripple"></div>
                 </div>
             </li>
+            <li class="mdc-list-item" id="pushCheck">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">直播推送模式（测试）</span>
+                    <span class="mdc-list-item__secondary-text">隐藏检测界面，直接推送通知</span>
+                </span>
+                <div class="mdc-checkbox" style="position:absolute;float:right;right:0px;">
+                    <input type="checkbox" class="mdc-checkbox__native-control" id="pushCheckbox" />
+                    <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                            <path class="mdc-checkbox__checkmark-path" fill="none"
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                    </div>
+                    <div class="mdc-checkbox__ripple"></div>
+                </div>
+            </li>
             <li class="mdc-list-item" id="codecCheck">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
@@ -466,6 +484,7 @@
         };
         initCheckbox("fullBlur", "blurCheckbox");
         initCheckbox("codecBoost", "codecCheckbox");
+        initCheckbox("livePush", "pushCheckbox");
         initCheckbox("wasmPlayer", "wasmCheckbox");
         initCheckbox("fileShare", "fileCheckbox");
         initCheckbox("erudaEnabled", "erudaCheckbox");

@@ -1095,17 +1095,36 @@
         } else {
             //检测直播
             (async () => {
-                showMenu();
-                menuList.innerHTML = "";
-                menuList.appendChild(loadMenu("正在检测塔宝直播状态..."));
-                let liveStatus = await (await fetch("https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => {
-                    //检测失败
+                if (localStorage.livePush && JSON.parse(localStorage.livePush)) {
+                    if (Notification.permission == "default") {
+                        await Notification.requestPermission();
+                    };
+                    setInterval(async () => {
+                        let liveStatus = await (await fetch("https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => { })).json();
+                        if (liveStatus.data && (liveStatus.data.status == 1)) {
+                            navigator.serviceWorker.ready.then(function (registration) {
+                                registration.showNotification('塔宝正在直播！', {
+                                    body: '赶紧去直播间补充塔能量吧',
+                                    badge: './icon_mono.png',
+                                    icon: './icon.png',
+                                    tag: '直播推送'
+                                });
+                            });
+                        }
+                    }, 300000)
+                } else {
+                    showMenu();
+                    menuList.innerHTML = "";
+                    menuList.appendChild(loadMenu("正在检测塔宝直播状态..."));
+                    let liveStatus = await (await fetch("https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => {
+                        //检测失败
+                        hideMenu();
+                    })).json();
+                    if (liveStatus.data && (liveStatus.data.status == 1) && confirm("塔宝正在直播，不去看直播？\n（点击确定即可快速打开直播间）")) {
+                        window.open("https://live.bilibili.com/545", "_blank");
+                    }
                     hideMenu();
-                })).json();
-                if (liveStatus.data && (liveStatus.data.status == 1) && confirm("塔宝正在直播，不去看直播？\n（点击确定即可快速打开直播间）")) {
-                    window.open("https://live.bilibili.com/545", "_blank");
                 }
-                hideMenu();
             })();
             if (!window.wasmPlayer && !window.codecBoost) {
                 recoverPlay();
