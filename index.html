@@ -1098,7 +1098,7 @@
                 showMenu();
                 menuList.innerHTML = "";
                 menuList.appendChild(loadMenu("正在检测塔宝直播状态..."));
-                let liveStatus = await (await fetch("https://bililive.qinlili.workers.dev/status?uid=15641218&ForceNoCache=1").catch(error => {
+                let liveStatus = await (await fetch("https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => {
                     //检测失败
                     hideMenu();
                 })).json();
