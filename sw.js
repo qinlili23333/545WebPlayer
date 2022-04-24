@@ -26,6 +26,8 @@ var AZUSA_PATCH_SKIP_LIST = [
     './img/play.svg',
     './img/next.svg',
     './icon.png',
+    './icon_mask.png',
+    './icon_mono.png',
     './lib/base64.js',
     './lib/long-press.min.js',
     './lib/ogvjs/ogv.js',
