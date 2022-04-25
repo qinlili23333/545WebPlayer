@@ -1034,25 +1034,59 @@
         const functionMenu = () => {
             menuList.innerHTML = "";
             //功能菜单
-            let settingMenu = makeMenu("设置", "./img/setting.svg");
-            settingMenu.addEventListener("click", () => {
-                bottomdown();
-                document.location.href = './settings';
+            let sleepMenu = makeMenu("睡眠模式", "./img/sleep.svg");
+            sleepMenu.addEventListener("click", () => {
+                let time = prompt("入睡需要多少时间捏？(单位：分钟，请输入一个整数，小数点后会被忽略)");
+                if (time == null || parseInt(time) == NaN) {
+                    alert("你没有输入有效数值");
+                    return;
+                };
+                alert("睡眠模式已启用！\n将在" + time + "分钟后停止播放");
+                setTimeout(() => {
+                    if (window.backupControl) {
+                        if (window.wasmPlayer) {
+                            document.querySelector("#player").pause();
+                        };
+                        if (window.codecBoost) {
+                            if (window.audioCtx) {
+                                window.audioCtx.suspend();
+                            }
+                        };
+                    } else {
+                        player.pause();
+                    };
+                    menuList.innerHTML = "";
+                    let imgItem = document.createElement("img");
+                    imgItem.src = "./img/wanan.png";
+                    imgItem.style = "height:256px;width:100%;object-fit:contain;border-radius: 5px 5px 0px 0px;";
+                    menuList.appendChild(imgItem);
+                    let textTip = document.createElement("p");
+                    textTip.innerText = "545晚安好梦，塔宝陪你做个梦";
+                    textTip.style = "width:100%;text-align:center;"
+                    menuList.appendChild(textTip);
+                    showMenu();
+                }, parseInt(time) * 60000)
             })
-            menuList.appendChild(settingMenu);
+            menuList.appendChild(sleepMenu);
             let toolMenu = makeMenu("工具箱", "./img/tool.svg");
             toolMenu.addEventListener("click", () => {
                 bottomdown();
                 document.location.href = './tools';
-            })
+            });
             menuList.appendChild(toolMenu);
+            let settingMenu = makeMenu("设置", "./img/setting.svg");
+            settingMenu.addEventListener("click", () => {
+                bottomdown();
+                document.location.href = './settings';
+            });
+            menuList.appendChild(settingMenu);
             if (history.length == 1) {
                 let exitMenu = makeMenu("退出", "./img/exit.svg");
                 exitMenu.addEventListener("click", () => {
                     window.close();
                 })
                 menuList.appendChild(exitMenu);
-            }
+            };
             const list = new MDCList(menuList);
             const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
             showMenu();

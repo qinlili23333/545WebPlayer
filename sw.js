@@ -1,10 +1,11 @@
 var APP_PREFIX = '545在线'
-var VERSION = '20220424'
-var VERSION_AZUSA_PATCH_USE = '20220423v2'
+var VERSION = '20220425'
+var VERSION_AZUSA_PATCH_USE = '20220424'
 var AZUSA_PATCH_SKIP_LIST = [
+    './img/bai.png',
+    './img/wanan.png',
     './img/addlist.svg',
     './img/audiofile.svg',
-    './img/bai.png',
     './img/close.svg',
     './img/cover.svg',
     './img/calendar.svg',
@@ -18,6 +19,7 @@ var AZUSA_PATCH_SKIP_LIST = [
     './img/menu.svg',
     './img/repeat.svg',
     './img/share.svg',
+    './img/sleep.svg',
     './img/search.svg',
     './img/setting.svg',
     './img/shuffle.svg',
@@ -93,10 +95,10 @@ self.addEventListener('install', e => {
                     })
                 })
             }
+            self.skipWaiting();
             return cache.addAll(URLS)
         })
     )
-    self.skipWaiting();
 });
 self.addEventListener('activate', e => {
     e.waitUntil(
