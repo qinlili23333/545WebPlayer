@@ -1,5 +1,5 @@
 var APP_PREFIX = '545在线'
-var VERSION = '20220425v2'
+var VERSION = '20220425v3'
 var VERSION_AZUSA_PATCH_USE = '20220424'
 var AZUSA_PATCH_SKIP_LIST = [
     './img/bai.png',
@@ -39,12 +39,24 @@ var AZUSA_PATCH_SKIP_LIST = [
     './lib/ogvjs/ogv-demuxer-ogg-wasm.wasm',
     './lib/ogvjs/ogv-worker-audio.js',
     './public.css',
-    './manifest.json'
+    './manifest.json',
+    './toolFrame/cardres/base.png',
+    './toolFrame/cardres/fansnum.ttf'
 ]
 var CACHE_NAME = APP_PREFIX + VERSION
 var AZUSA_CACHE = APP_PREFIX + VERSION_AZUSA_PATCH_USE
 var URLS = [
     './',
+    './settings',
+    './tools',
+    './settingFrame/about',
+    './settingFrame/cache',
+    './settingFrame/close',
+    './settingFrame/import',
+    './settingFrame/privacy',
+    './settingFrame/quality',
+    './settingFrame/source',
+    './toolFrame/cardmake'
 ]
 const getCacheName = url => {
     if (url.indexOf("bcebos.com") > 0) {
@@ -80,6 +92,7 @@ self.addEventListener('fetch', event => {
     }
 });
 self.addEventListener('install', e => {
+    self.skipWaiting();
     e.waitUntil(
         caches.open(CACHE_NAME).then(async cache => {
             console.log('installing cache : ' + CACHE_NAME)
@@ -95,10 +108,9 @@ self.addEventListener('install', e => {
                     })
                 })
             }
-            return cache.addAll(URLS)
+            return cache.addAll(AZUSA_PATCH_SKIP_LIST.concat(URLS));
         })
     );
-    self.skipWaiting();
 });
 self.addEventListener('activate', e => {
     e.waitUntil(
