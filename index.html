@@ -1133,7 +1133,7 @@
                     if (Notification.permission == "default") {
                         await Notification.requestPermission();
                     };
-                    setInterval(async () => {
+                    const detectLive = async () => {
                         let liveStatus = await (await fetch("https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => { })).json();
                         if (liveStatus.data && (liveStatus.data.status == 1)) {
                             navigator.serviceWorker.ready.then(function (registration) {
@@ -1144,8 +1144,12 @@
                                     tag: '直播推送'
                                 });
                             });
+                        } else {
+                            await sleep(300000);
+                            detectLive();
                         }
-                    }, 300000)
+                    };
+                    detectLive();
                 } else {
                     showMenu();
                     menuList.innerHTML = "";

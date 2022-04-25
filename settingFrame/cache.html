@@ -93,7 +93,7 @@
         document.getElementById("cleanBtn").addEventListener("click", async () => {
             if (document.getElementById("programCache").checked) {
                 let currentVersion = await (await fetch("getVersionWorker")).text();
-                if (!(currentVersion.length == 8)) {
+                if (!(currentVersion.length >= 8)) {
                     //版本号异常
                     currentVersion = false;
                 }
