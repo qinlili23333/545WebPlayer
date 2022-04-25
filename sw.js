@@ -1,5 +1,5 @@
 var APP_PREFIX = '545在线'
-var VERSION = '20220425v3'
+var VERSION = '20220425v4'
 var VERSION_AZUSA_PATCH_USE = '20220424'
 var AZUSA_PATCH_SKIP_LIST = [
     './img/bai.png',
@@ -108,7 +108,8 @@ self.addEventListener('install', e => {
                     })
                 })
             }
-            return cache.addAll(AZUSA_PATCH_SKIP_LIST.concat(URLS));
+            await cache.addAll(AZUSA_PATCH_SKIP_LIST.concat(URLS));
+            return true;
         })
     );
 });
