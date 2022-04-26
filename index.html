@@ -1098,11 +1098,13 @@
             alert("你正在64位操作系统上使用32位浏览器!为了更快的访问速度请改用64位浏览器!");
         }
         if (navigator.serviceWorker && !navigator.serviceWorker.controller) {
-            const install = async () => {
-                menuList.innerHTML = "";
+            const install = async (silent) => {
                 let tip = loadMenu("正在准备Service Worker...");
-                menuList.appendChild(tip);
-                showMenu();
+                if (!silent) {
+                    menuList.innerHTML = "";
+                    menuList.appendChild(tip);
+                    showMenu();
+                }
                 await (await fetch("./sw.js")).blob();
                 tip.setText("读取版本信息...");
                 let versionJson = await (await fetch("../version.json?ForceNoCache=1")).json();
@@ -1112,7 +1114,9 @@
                     await sleep(3000)
                     tip.setText("安装完成，刷新后生效");
                     localStorage.triedInstall = true;
-                    document.location.reload();
+                    if (!silent) {
+                        document.location.reload();
+                    }
                 } else {
                     if (confirm("读取版本失败！再试一次吗？")) {
                         install();
@@ -1122,9 +1126,7 @@
             if (!localStorage.triedInstall) {
                 install()
             } else {
-                if (confirm("上次安装Service Worker失败了，再试一次吗？")) {
-                    install();
-                }
+                install(true);
             }
         } else {
             //检测直播
@@ -1134,16 +1136,22 @@
                         await Notification.requestPermission();
                     };
                     const detectLive = async () => {
-                        let liveStatus = await (await fetch("https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => { })).json();
-                        if (liveStatus.data && (liveStatus.data.status == 1)) {
-                            navigator.serviceWorker.ready.then(function (registration) {
-                                registration.showNotification('塔宝正在直播！', {
-                                    body: '赶紧去直播间补充塔能量吧',
-                                    badge: './icon_mono.png',
-                                    icon: './icon.png',
-                                    tag: '直播推送'
+                        let time = new Date().getHours();
+                        if (time < 4 || time > 10) {
+                            let liveStatus = await (await fetch("https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => { })).json();
+                            if (liveStatus.data && (liveStatus.data.status == 1)) {
+                                navigator.serviceWorker.ready.then(function (registration) {
+                                    registration.showNotification('塔宝正在直播！', {
+                                        body: '赶紧去直播间补充塔能量吧',
+                                        badge: './icon_mono.png',
+                                        icon: './icon.png',
+                                        tag: '直播推送'
+                                    });
                                 });
-                            });
+                            } else {
+                                await sleep(300000);
+                                detectLive();
+                            }
                         } else {
                             await sleep(300000);
                             detectLive();
