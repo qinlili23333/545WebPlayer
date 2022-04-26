@@ -803,7 +803,19 @@
                     menuList.innerHTML = "";
                     let addMenu = makeMenu("全部添加到播放列表", "./img/addlist.svg");
                     addMenu.addEventListener("click", () => {
-                        folderInfo.list.forEach(addToPlayList);
+                        if (!window.list) {
+                            window.list = [];
+                        }
+                        folderInfo.list.forEach(song => {
+                            window.list.push(song);
+                        });
+                        window.list = window.list.filter((value, index, self) =>
+                            index === self.findIndex((t) => (
+                                t.place === value.place && t.name === value.name
+                            ))
+                        )
+                        localStorage.playList = JSON.stringify(window.list);
+                        renderPlayList();
                     });
                     menuList.appendChild(addMenu);
                     const list = new MDCList(menuList);
