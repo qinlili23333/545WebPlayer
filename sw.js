@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '20220426'
-var VERSION_AZUSA_PATCH_USE = '20220425v4'
+var VERSION = '20220428'
+var VERSION_AZUSA_PATCH_USE = '20220426'
 var AZUSA_PATCH_SKIP_LIST = [
     './img/bai.png',
     './img/wanan.png',
@@ -42,7 +42,12 @@ var AZUSA_PATCH_SKIP_LIST = [
     './public.css',
     './manifest.json',
     './toolFrame/cardres/base.png',
-    './toolFrame/cardres/fansnum.ttf'
+    './toolFrame/cardres/fansnum.ttf',
+    './toolFrame/audioCutter/',
+    './toolFrame/audioCutter/dist/index.js',
+    './toolFrame/audioCutter/dist/worker.js',
+    './toolFrame/audioCutter/vendor/Mp3LameEncoder.min.js',
+    './toolFrame/audioCutter/vendor/Mp3LameEncoder.min.js.mem',
 ]
 var CACHE_NAME = APP_PREFIX + VERSION
 var AZUSA_CACHE = APP_PREFIX + VERSION_AZUSA_PATCH_USE
@@ -94,25 +99,25 @@ self.addEventListener('fetch', event => {
 });
 self.addEventListener('install', e => {
     self.skipWaiting();
-    e.waitUntil(
-        caches.open(CACHE_NAME).then(async cache => {
-            console.log('installing cache : ' + CACHE_NAME)
-            if ((await caches.has(AZUSA_CACHE))) {
-                console.log("Found Old Cache! Azusa Patch Working...");
-                caches.open(AZUSA_CACHE).then(oldCache => {
-                    AZUSA_PATCH_SKIP_LIST.forEach(async url => {
-                        let tempResponse = await oldCache.match(url);
-                        if (tempResponse) {
-                            console.log("Azusa Success Transfer Old Cache : " + url)
-                            cache.put(url, tempResponse);
-                        }
-                    })
+    const install = async () => {
+        const cache = await caches.open(CACHE_NAME)
+        console.log('installing cache : ' + CACHE_NAME)
+        if ((await caches.has(AZUSA_CACHE))) {
+            console.log("Found Old Cache! Azusa Patch Working...");
+            caches.open(AZUSA_CACHE).then(oldCache => {
+                AZUSA_PATCH_SKIP_LIST.forEach(async url => {
+                    let tempResponse = await oldCache.match(url);
+                    if (tempResponse) {
+                        console.log("Azusa Success Transfer Old Cache : " + url)
+                        cache.put(url, tempResponse);
+                    }
                 })
-            }
-            await cache.addAll(AZUSA_PATCH_SKIP_LIST.concat(URLS));
-            return true;
-        })
-    );
+            })
+        }
+        await cache.addAll(AZUSA_PATCH_SKIP_LIST.concat(URLS));
+        return true;
+    }
+    e.waitUntil(install());
 });
 self.addEventListener('activate', e => {
     e.waitUntil(

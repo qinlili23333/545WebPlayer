@@ -175,6 +175,13 @@
                     <span class="mdc-list-item__secondary-text">编号默认为粉丝数量</span>
                 </span>
             </li>
+            <li class="mdc-list-item" onclick="showFrameSet('toolFrame/audioCutter/',true)">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">铃声裁剪器</span>
+                    <span class="mdc-list-item__secondary-text">裁剪当前播放的歌曲</span>
+                </span>
+            </li>
         </ul>
     </div>
     <div id="floatMenuContainer">
@@ -214,6 +221,7 @@
                 document.getElementById("floatMenu").style.marginTop = "100vh";
                 await sleep(500);
                 document.getElementById("floatMenuContainer").style.display = "none";
+                setFrame.src = "about:blank";
             }
             if (event.data == "load") {
                 document.getElementById("loading").style.display = "block";
@@ -227,7 +235,7 @@
         if (localStorage.fullBlur && JSON.parse(localStorage.fullBlur)) {
             document.getElementById("floatMenuContainer").style.backdropFilter = "blur(3px) brightness(100%)";
         };
-        const showFrameSet = async url => {
+        const showFrameSet = async (url, wide) => {
             //使用iframe渲染设置
             document.getElementById("floatMenuContainer").style.display = "block";
             await sleep(1);
@@ -236,6 +244,11 @@
             document.getElementById("loading").style.display = "block";
             document.getElementById("setFrame").style.padding = "100%";
             setFrame.src = url;
+            if (wide) {
+                setFrame.style.maxWidth = "100vw";
+            } else {
+                setFrame.style.maxWidth = "600px";
+            }
         }
         document.getElementById("closeBtn").addEventListener("click", async (event) => {
             event.stopPropagation();
@@ -243,6 +256,7 @@
             document.getElementById("floatMenuContainer").style.opacity = 0;
             await sleep(500);
             document.getElementById("floatMenuContainer").style.display = "none";
+            setFrame.src = "about:blank";
         })
         window.titleCount = 0;
         document.getElementById("titleText").addEventListener("click", () => {

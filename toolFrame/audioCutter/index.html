@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=1080, initial-scale=0.5, maximum-scale=1.0" name="viewport" />
+  <title>Audio</title>
+  <style>
+    body {
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    window.addEventListener('resize', onWindowResize, false);
+    function onWindowResize() {
+      if (window.innerWidth < 1080) {
+        document.body.style.zoom = window.innerWidth / 1080
+      }
+    }
+  </script>
+  <div id="main"></div>
+  <script crossorigin="anonymous" integrity="sha384-GjSRThJn3fjCmKim4Jou04Ax7vvKfk76xSCKUo7/V70VNIlidvZd3ZnT9rtJk0KM"
+    src="https://lib.baomitu.com/react/15.3.1/react.min.js"></script>
+  <script crossorigin="anonymous" integrity="sha384-3AR/0xGUlR37VpbeHbKQhvizC4T8sNTU8t5GS9JC/4odeRePZuPYl5Pyv/zTeSd8"
+    src="https://lib.baomitu.com/react/15.3.1/react-dom.min.js"></script>
+  <script src="./dist/worker.js" type="text/js-worker" x-audio-encode></script>
+  <script src="./dist/index.js"></script>
+</body>
+
+</html>
