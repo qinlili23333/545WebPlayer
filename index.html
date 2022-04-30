@@ -1109,7 +1109,7 @@
         if (!navigator.serviceWorker) {
             alert("你的浏览器不支持Service Worker，你应该换个浏览器了");
         }
-        if (navigator.userAgent.indexOf("WOW64") > 1) {
+        if (navigator.userAgent.indexOf("WOW64") > 1 && window.self === window.top) {
             alert("你正在64位操作系统上使用32位浏览器!为了更快的访问速度请改用64位浏览器!");
         }
         if (navigator.serviceWorker && !navigator.serviceWorker.controller) {
@@ -1187,7 +1187,7 @@
                     hideMenu();
                 }
             })();
-            if (!window.wasmPlayer && !window.codecBoost) {
+            if (!window.wasmPlayer && !window.codecBoost && window.self === window.top) {
                 recoverPlay();
             }
         }

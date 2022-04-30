@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="545在线，电子雷峰塔，随时补充塔能量！笙歌牌播放器，采用PWA技术，支持智能缓存本地播放，可完全断网使用，由琴梨梨驱动" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <link rel="canonical" href="https://545.qinlili.bid/wallpaper" />
+    <link rel="manifest" href="./manifest.json">
+    <meta name="theme-color" content="#FADCBB">
+    <link rel="icon" href="./icon_mono.png">
+    <link rel="apple-touch-icon" href="./icon.png">
+    <meta name="apple-mobile-web-app-title" content="545在线">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>545在线-壁纸模式</title>
+    <style>
+        body {
+            margin: 0px;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            background-image: url(./img/wallpaper.webp);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        #playerFrame {
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgb(0 0 0 / 25%);
+            background-color: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(3px) brightness(100%);
+            position: absolute;
+            right: 5vw;
+            top: 10vh;
+            height: 80vh;
+            width: 30vw;
+            max-width: 600px;
+            min-width: 320px;
+        }
+    </style>
+</head>
+
+<body>
+    <iframe src="./" id="playerFrame" frameborder="0"></iframe>
+</body>
+
+</html>
