@@ -1083,6 +1083,14 @@
                 }, parseInt(time) * 60000)
             })
             menuList.appendChild(sleepMenu);
+            if (window.innerWidth > window.innerHeight && window.innerHeight > 600 && window.self === window.top) {
+                let wallpaperMenu = makeMenu("壁纸模式", "./img/fullscreen.svg");
+                wallpaperMenu.addEventListener("click", () => {
+                    bottomdown();
+                    document.location.href = './wallpaper';
+                });
+                menuList.appendChild(wallpaperMenu);
+            }
             let toolMenu = makeMenu("工具箱", "./img/tool.svg");
             toolMenu.addEventListener("click", () => {
                 bottomdown();
