@@ -19,6 +19,7 @@
     <title>545在线-壁纸模式</title>
     <style>
         body {
+            user-select: none;
             margin: 0px;
             overflow: hidden;
             width: 100vw;
@@ -38,10 +39,16 @@
             right: 32px;
             top: 10vh;
             height: 80vh;
-            width: 30vw;
-            max-width: 600px;
             min-width: 320px;
-            transition: right 1s ease-out;
+            transition: right 1s ease-out, width 2s ease-in-out, max-width 2s ease-in-out;
+        }
+
+        .musicFrame {
+            width: 30vw;
+        }
+
+        .liveFrame {
+            width: 80vw;
         }
 
         #displayBtn {
@@ -65,34 +72,145 @@
             transition: transform 0.5s ease-in-out;
             transform: rotate(270deg);
         }
+
+        #liveStatus {
+            cursor: pointer;
+            border-radius: 0px 0px 0px 10px;
+            display: flex;
+            filter: drop-shadow(3px 3px 2px rgba(255, 255, 255, .7));
+            flex-direction: row;
+            position: absolute;
+            top: 0px;
+            height: 40px;
+            width: 200px;
+            right: -160px;
+            transition: right 0.5s ease-in-out, box-shadow 0.5s, backdrop-filter 0.5s, background-color 0.5s;
+        }
+
+        #liveStatus:hover {
+            box-shadow: 0 0 20px rgb(0 0 0 / 25%);
+            backdrop-filter: blur(3px) brightness(100%);
+            background-color: rgba(255, 255, 255, .5);
+            right: 0px !important;
+        }
+
+        #liveIcon {
+            height: 32px;
+            width: 32px;
+            margin: 4px;
+            transition: filter 0.5s;
+            filter: invert(51%) sepia(1%) saturate(915%) hue-rotate(322deg) brightness(90%) contrast(86%);
+        }
+
+        #liveText {
+            height: 24px;
+            margin: 8px;
+            width: 144px;
+            line-height: 24px;
+            font-size: 24px;
+        }
     </style>
 </head>
 
 <body>
-    <iframe src="./" id="playerFrame" frameborder="0"></iframe>
+    <iframe src="./" id="playerFrame" class="musicFrame" frameborder="0" framespacing="0" scrolling="no"
+        allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
     <div id="displayBtn">
         <img id="displayBtnIcon" src="./img/expand.svg" alt="切换音频面板">
     </div>
+    <div id="liveStatus">
+        <img id="liveIcon" src="./img/broadcast.svg" alt="直播间">
+        <span id="liveText">连接中请稍等</span>
+    </div>
     <script>
+        const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
         (() => {
-            let displayMusic = true;
+            let displayPanel = true;
+            let isLive = false;
             document.getElementById("displayBtn").addEventListener("click", () => {
-                switch (displayMusic) {
+                switch (displayPanel) {
                     case false: {
-                        displayMusic = true;
+                        displayPanel = true;
                         document.getElementById("playerFrame").style.right = "32px";
                         document.getElementById("displayBtnIcon").style.transform = "rotate(270deg)";
                         break;
                     };
                     case true:
                     default: {
-                        displayMusic = false;
-                        document.getElementById("playerFrame").style.right = "-600px";
+                        displayPanel = false;
+                        document.getElementById("playerFrame").style.right = "-200vw";
                         document.getElementById("displayBtnIcon").style.transform = "rotate(90deg)";
                         break;
                     };
                 }
             });
+            document.getElementById("liveStatus").addEventListener("click", async () => {
+                //切换直播页面
+                switch (isLive) {
+                    case true: {
+                        isLive = false;
+                        document.getElementById("playerFrame").className = "musicFrame";
+                        document.getElementById("playerFrame").src = "about:blank";
+                        await sleep(1000);
+                        document.getElementById("playerFrame").src = "./";
+                        break;
+                    };
+                    case false:
+                    default: {
+                        isLive = true;
+                        document.getElementById("playerFrame").className = "liveFrame";
+                        document.getElementById("playerFrame").src = "https://www.bilibili.com/blackboard/live/live-activity-player.html?cid=573893&quality=10000";
+                        break;
+                    };
+                }
+                document.getElementById("liveText").innerText = "连接中请稍等";
+                detectLive();
+            });
+            const detectLive = async () => {
+                let time = new Date().getHours();
+                if (time < 4 || time > 10) {
+                    let liveStatus = await (await fetch("https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(async error => {
+                        await sleep(60000);
+                        detectLive();
+                    })).json().catch(async error => {
+                        await sleep(60000);
+                        detectLive();
+                    });
+                    if (liveStatus.data) {
+                        switch (liveStatus.data.status) {
+                            case 1: {
+                                document.getElementById("liveStatus").style.right = "0px";
+                                document.getElementById("liveStatus").style.backgroundColor = "rgba(255, 255, 255, .5)";
+                                if (isLive) {
+                                    document.getElementById("liveText").innerText = "返回音乐播放";
+                                } else {
+                                    document.getElementById("liveText").innerText = "塔宝正在直播";
+                                }
+                                document.getElementById("liveText").style.color = "rgba(0,200,0,1)";
+                                document.getElementById("liveIcon").style.filter = "invert(54%) sepia(37%) saturate(6074%) hue-rotate(89deg) brightness(112%) contrast(119%)";
+                                break;
+                            };
+                            case 2:
+                            case 0:
+                            default: {
+                                document.getElementById("liveStatus").style.right = "-160px";
+                                document.getElementById("liveStatus").style.backgroundColor = "";
+                                document.getElementById("liveText").innerText = "塔宝还没直播";
+                                document.getElementById("liveText").style.color = "black";
+                                document.getElementById("liveIcon").style.filter = "none";
+                                break;
+                            }
+                        }
+                    } else {
+                        await sleep(60000);
+                        detectLive();
+                    }
+                } else {
+                    await sleep(120000);
+                    detectLive();
+                }
+            };
+            detectLive();
         })()
     </script>
 </body>

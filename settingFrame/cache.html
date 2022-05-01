@@ -36,6 +36,20 @@
     <br>
     <div class="mdc-form-field">
         <div class="mdc-checkbox">
+            <input type="checkbox" class="mdc-checkbox__native-control" id="staticCache" />
+            <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                    <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+            </div>
+            <div class="mdc-checkbox__ripple"></div>
+        </div>
+        <label for="staticCache">静态缓存</label>
+    </div>
+    <br>
+    <div class="mdc-form-field">
+        <div class="mdc-checkbox">
             <input type="checkbox" class="mdc-checkbox__native-control" id="musicCache" />
             <div class="mdc-checkbox__background">
                 <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
@@ -98,6 +112,9 @@
                     currentVersion = false;
                 }
                 await caches.delete("545在线" + currentVersion);
+            };
+            if (document.getElementById("staticCache").checked && confirm("静态缓存正常情况没有清除的必要，只有当页面显示异常时才建议清除\n你真的要清除静态缓存吗？")) {
+                await caches.delete("StaticCache");
             };
             if (document.getElementById("musicCache").checked) {
                 await caches.delete("MusicCache");

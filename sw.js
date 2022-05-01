@@ -1,5 +1,5 @@
 var APP_PREFIX = '545在线'
-var VERSION = '20220501'
+var VERSION = '20220501v2'
 var VERSION_AZUSA_PATCH_USE = '20220430v2'
 var AZUSA_PATCH_SKIP_LIST = [
     './img/bai.png',
@@ -8,6 +8,7 @@ var AZUSA_PATCH_SKIP_LIST = [
     './img/wallpaper.webp',
     './img/addlist.svg',
     './img/audiofile.svg',
+    './img/broadcast.svg',
     './img/close.svg',
     './img/cover.svg',
     './img/calendar.svg',
@@ -70,10 +71,13 @@ var URLS = [
 const getCacheName = url => {
     if (url.indexOf("bcebos.com") > 0) {
         return "MusicCache";
-    }
-    if ((url.indexOf("hdslb.com") > 0) || (url.indexOf("zhimg.com") > 0)) {
+    };
+    if (url.indexOf("baomitu.com") > 0 || url.indexOf("googleapis.com") > 0 || url.indexOf("gstatic.com") > 0) {
+        return "StaticCache";
+    };
+    if (url.indexOf("hdslb.com") > 0 || url.indexOf("zhimg.com") > 0) {
         return "ImageCache";
-    }
+    };
     return CACHE_NAME;
 }
 self.addEventListener('fetch', event => {
@@ -91,6 +95,9 @@ self.addEventListener('fetch', event => {
                             console.log('file cached : ' + event.request.url)
                         }
                         return response;
+                    }).catch(error => {
+                        console.log("failed to fetch :" + event.request.url)
+                        console.log(error);
                     });
                 });
             })
@@ -130,6 +137,7 @@ self.addEventListener('activate', e => {
             })
             cacheWhitelist.push(CACHE_NAME);
             cacheWhitelist.push("MusicCache");
+            cacheWhitelist.push("StaticCache");
             cacheWhitelist.push("ImageCache");
             return Promise.all(keyList.map((key, i) => {
                 if (cacheWhitelist.indexOf(key) === -1) {
