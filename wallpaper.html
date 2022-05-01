@@ -35,18 +35,66 @@
             background-color: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(3px) brightness(100%);
             position: absolute;
-            right: 5vw;
+            right: 32px;
             top: 10vh;
             height: 80vh;
             width: 30vw;
             max-width: 600px;
             min-width: 320px;
+            transition: right 1s ease-out;
+        }
+
+        #displayBtn {
+            opacity: 0;
+            position: absolute;
+            right: 0px;
+            width: 32px;
+            top: 10vh;
+            height: 80vh;
+            transition: opacity 0.25s ease-in-out;
+        }
+
+        #displayBtn:hover {
+            opacity: 1;
+        }
+
+        #displayBtnIcon {
+            filter: drop-shadow(3px 3px 2px rgba(255, 255, 255, .7));
+            width: 32px;
+            height: 80vh;
+            transition: transform 0.5s ease-in-out;
+            transform: rotate(270deg);
         }
     </style>
 </head>
 
 <body>
     <iframe src="./" id="playerFrame" frameborder="0"></iframe>
+    <div id="displayBtn">
+        <img id="displayBtnIcon" src="./img/expand.svg" alt="切换音频面板">
+    </div>
+    <script>
+        (() => {
+            let displayMusic = true;
+            document.getElementById("displayBtn").addEventListener("click", () => {
+                switch (displayMusic) {
+                    case false: {
+                        displayMusic = true;
+                        document.getElementById("playerFrame").style.right = "32px";
+                        document.getElementById("displayBtnIcon").style.transform = "rotate(270deg)";
+                        break;
+                    };
+                    case true:
+                    default: {
+                        displayMusic = false;
+                        document.getElementById("playerFrame").style.right = "-600px";
+                        document.getElementById("displayBtnIcon").style.transform = "rotate(90deg)";
+                        break;
+                    };
+                }
+            });
+        })()
+    </script>
 </body>
 
 </html>
