@@ -202,7 +202,9 @@
                                 document.getElementById("liveIcon").style.filter = "none";
                                 break;
                             }
-                        }
+                        };
+                        await sleep(300000);
+                        detectLive();
                     } else {
                         await sleep(60000);
                         detectLive();
