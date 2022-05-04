@@ -1,6 +1,6 @@
 {
     "success": true,
-    "version": "2022042102",
+    "version": "2022050401",
     "songs": [
         {
             "type": "塔宝投稿",
@@ -953,6 +953,17 @@
             "description": "除了防空警报，也许还藏着些什么",
             "list": [
                 {
+                    "name": "十万粉好运来",
+                    "url": {
+                        "yuketang": "https://bj.bcebos.com/yunpanx/%E5%8D%81%E4%B8%87%E7%B2%89_20220504210925_21858.ogg"
+                    },
+                    "cover": "https://i0.hdslb.com/bfs/archive/3cf703766388e911e2005fcb603ba82c28b2ec4a.jpg@.webp",
+                    "quality": "OPUS128",
+                    "full_title": "这样庆祝自己十万粉了是可以的吗",
+                    "origin": "https://www.bilibili.com/video/BV1nT4y167KS",
+                    "source_quality": "AAC320",
+                    "release_date": "2022-05-04"
+                },{
                     "name": "防空警报",
                     "url": {
                         "yuketang": "https://bj.bcebos.com/yunpanx/%E9%98%B2%E7%A9%BA%E8%AD%A6%E6%8A%A5_20220415210541_64394.ogg"
