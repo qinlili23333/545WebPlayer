@@ -175,6 +175,11 @@
             animation: rightin 0.2s;
         }
 
+        #menuList {
+            display: flex;
+            flex-direction: column;
+        }
+
         #tabBar {
             z-index: 999;
             position: fixed;
@@ -483,6 +488,7 @@
             document.getElementById("floatMenuContainer").style.opacity = 0;
             await sleep(200);
             document.getElementById("floatMenuContainer").style.display = "none";
+            menuList.innerHTML = "";
         };
         document.getElementById("floatMenuContainer").addEventListener("click", (event) => {
             event.stopPropagation();
@@ -1098,6 +1104,39 @@
                 document.location.href = './tools';
             });
             menuList.appendChild(toolMenu);
+            let historyMenu = makeMenu("看录播", "./img/history.svg");
+            historyMenu.addEventListener("click", async e => {
+                e.stopPropagation();
+                const openLiveFrame = (aid, bvid) => {
+                    menuList.innerHTML = "";
+                    let liveFrame = document.createElement("iframe");
+                    liveFrame.frameBorder = 0;
+                    liveFrame.style = "width:80vw;height:45vw;max-height:80vh;"
+                    liveFrame.src = "https://www.bilibili.com/blackboard/html5mobileplayer.html?aid=" + aid + "&bvid=" + bvid + "&posterFirst=1";
+                    menuList.appendChild(liveFrame);
+                };
+                menuList.innerHTML = "";
+                menuList.appendChild(loadMenu("正在加载录播列表..."));
+                let historyList = await (await fetch("https://bililive.qinlili.workers.dev/archives?mid=15641218&sid=180061&ForceNoCache=1").catch(() => {
+                    alert("读取录播数据失败！");
+                    hideMenu();
+                })).json().catch(() => {
+                    alert("读取录播数据失败！");
+                    hideMenu();
+                });
+                menuList.innerHTML = "";
+                historyList.data.archives.forEach(live => {
+                    let liveMenu = makeMenu(live.title.replace("【直播回放】", ""))
+                    liveMenu.addEventListener("click", e => {
+                        e.stopPropagation();
+                        openLiveFrame(live.aid, live.bvid);
+                    })
+                    menuList.appendChild(liveMenu);
+                })
+                const list = new MDCList(menuList);
+                const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
+            });
+            menuList.appendChild(historyMenu);
             let settingMenu = makeMenu("设置", "./img/setting.svg");
             settingMenu.addEventListener("click", () => {
                 bottomdown();
