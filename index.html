@@ -1111,6 +1111,7 @@
                     menuList.innerHTML = "";
                     let liveFrame = document.createElement("iframe");
                     liveFrame.frameBorder = 0;
+                    liveFrame.allowFullscreen = true;
                     liveFrame.style = "width:80vw;height:45vw;max-height:80vh;"
                     liveFrame.src = "https://www.bilibili.com/blackboard/html5mobileplayer.html?aid=" + aid + "&bvid=" + bvid + "&posterFirst=1";
                     menuList.appendChild(liveFrame);
