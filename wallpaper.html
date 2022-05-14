@@ -18,6 +18,105 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <title>545在线-壁纸模式</title>
     <style>
+        @keyframes smallp {
+            0% {
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0;
+            }
+
+            25% {
+                opacity: 1;
+            }
+
+            45% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            75% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes smallm {
+            0% {
+                opacity: 1;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            25% {
+                opacity: 0;
+            }
+
+            45% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 1;
+            }
+
+            75% {
+                opacity: 0;
+            }
+
+            95% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes smalla {
+
+            0% {
+                opacity: 0;
+            }
+
+            25% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 0;
+            }
+
+            70% {
+                opacity: 0;
+            }
+
+            75% {
+                opacity: 1;
+            }
+
+            95% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
         body {
             user-select: none;
             margin: 0px;
@@ -41,7 +140,7 @@
             top: 10vh;
             height: 80vh;
             min-width: 320px;
-            transition: right 1s ease-out, width 2s ease-in-out, max-width 2s ease-in-out;
+            transition: right 1s ease-out, top 1s ease-out, width 2s ease-in-out, max-width 2s ease-in-out;
         }
 
         .musicFrame {
@@ -111,6 +210,22 @@
             line-height: 24px;
             font-size: 24px;
         }
+
+        #anim {
+            width: 128px;
+            height: 128px;
+            position: absolute;
+            right: 200px;
+            top: -128px;
+            transition: top 0.5s ease-out;
+        }
+
+        .smallAnim {
+            width: 128px;
+            height: 128px;
+            position: absolute;
+            transition: opacity 0.1s ease-in-out;
+        }
     </style>
 </head>
 
@@ -124,6 +239,14 @@
         <img id="liveIcon" src="./img/broadcast.svg" alt="直播间">
         <span id="liveText">连接中请稍等</span>
     </div>
+    <div id="anim">
+        <img class="smallAnim" id="smallp" style="animation: smallp 3s;animation-iteration-count: infinite;"
+            src="./img/smallp.webp">
+        <img class="smallAnim" id="smallm" style="animation: smallm 3s;animation-iteration-count: infinite;"
+            src="./img/smallm.webp">
+        <img class="smallAnim" id="smalla" style="animation: smalla 3s;animation-iteration-count: infinite;"
+            src="./img/smalla.webp">
+    </div>
     <script>
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
         (() => {
@@ -134,13 +257,15 @@
                     case false: {
                         displayPanel = true;
                         document.getElementById("playerFrame").style.right = "32px";
+                        document.getElementById("anim").style.top = "-128px";
                         document.getElementById("displayBtnIcon").style.transform = "rotate(270deg)";
                         break;
                     };
                     case true:
                     default: {
                         displayPanel = false;
-                        document.getElementById("playerFrame").style.right = "-200vw";
+                        document.getElementById("playerFrame").style.right = "calc(-100vw - 320px)";
+                        document.getElementById("anim").style.top = "0px";
                         document.getElementById("displayBtnIcon").style.transform = "rotate(90deg)";
                         break;
                     };
