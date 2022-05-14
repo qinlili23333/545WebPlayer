@@ -1,5 +1,5 @@
 var APP_PREFIX = '545在线'
-var VERSION = '20220514'
+var VERSION = '20220514v2'
 var VERSION_AZUSA_PATCH_USE = '20220506'
 var AZUSA_PATCH_SKIP_LIST = [
     './img/bai.png',
@@ -76,7 +76,7 @@ const getCacheName = url => {
     if (url.indexOf("bcebos.com") > 0) {
         return "MusicCache";
     };
-    if (url.indexOf("baomitu.com") > 0 || url.indexOf("googleapis.com") > 0 || url.indexOf("gstatic.com") > 0) {
+    if (url.indexOf("bytecdntp.com") > 0 || url.indexOf("googleapis.com") > 0 || url.indexOf("gstatic.com") > 0 || url.indexOf("baomitu.com") > 0) {
         return "StaticCache";
     };
     if (url.indexOf("hdslb.com") > 0 || url.indexOf("zhimg.com") > 0) {
