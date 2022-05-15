@@ -248,6 +248,12 @@
             src="./img/smalla.webp">
     </div>
     <script>
+        window.addEventListener("message", async (event) => {
+            console.log(event.data)
+            if (event.data == "exit") {
+                location.replace("./")
+            }
+        }, false);
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
         (() => {
             let displayPanel = true;

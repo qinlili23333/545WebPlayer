@@ -1097,7 +1097,7 @@
                     document.location.href = './wallpaper';
                 });
                 menuList.appendChild(wallpaperMenu);
-            }
+            };
             let toolMenu = makeMenu("工具箱", "./img/tool.svg");
             toolMenu.addEventListener("click", () => {
                 bottomdown();
@@ -1144,6 +1144,13 @@
                 document.location.href = './settings';
             });
             menuList.appendChild(settingMenu);
+            if (!(window.self === window.top)) {
+                let exitMenu = makeMenu("退出壁纸模式", "./img/exit.svg");
+                exitMenu.addEventListener("click", () => {
+                    window.parent.postMessage("exit");
+                })
+                menuList.appendChild(exitMenu);
+            }
             if (history.length == 1) {
                 let exitMenu = makeMenu("退出", "./img/exit.svg");
                 exitMenu.addEventListener("click", () => {
