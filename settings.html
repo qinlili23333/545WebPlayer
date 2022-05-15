@@ -421,6 +421,20 @@
                 alert("性能测试完成，用时" + (endTime - startTime) + "ms");
             }
         });
+        const rebuildFrame = url => {
+            if (document.getElementById("setFrame")) {
+                document.getElementById("floatMenu").removeChild(document.getElementById("setFrame"));
+            };
+            let newFrame = document.createElement("iframe");
+            newFrame.id = "setFrame";
+            newFrame.frameBorder = 0;
+            document.getElementById("closeBtn").insertAdjacentElement("afterend", newFrame)
+            newFrame.src = url;
+            newFrame.addEventListener("load", () => {
+                document.getElementById("loading").style.display = "none";
+                newFrame.style.padding = "0px";
+            });
+        }
         window.addEventListener("message", async (event) => {
             console.log(event.data)
             if (event.data == "close") {
@@ -429,15 +443,11 @@
                 await sleep(500);
                 document.getElementById("floatMenuContainer").style.display = "none";
             }
-            if (event.data == "load") {
+            if (event.data.startsWith("http")) {
                 document.getElementById("loading").style.display = "block";
-                document.getElementById("setFrame").style.padding = "100%";
+                rebuildFrame(event.data);
             }
         }, false);
-        document.getElementById("setFrame").addEventListener("load", () => {
-            document.getElementById("loading").style.display = "none";
-            document.getElementById("setFrame").style.padding = "0px";
-        });
         if (localStorage.fullBlur && JSON.parse(localStorage.fullBlur)) {
             document.getElementById("floatMenuContainer").style.backdropFilter = "blur(3px) brightness(100%)";
         };
@@ -448,8 +458,7 @@
             document.getElementById("floatMenuContainer").style.opacity = 1;
             document.getElementById("floatMenu").style.marginTop = "10vh";
             document.getElementById("loading").style.display = "block";
-            document.getElementById("setFrame").style.padding = "100%";
-            setFrame.src = url;
+            rebuildFrame(url);
         }
         document.getElementById("closeBtn").addEventListener("click", async (event) => {
             event.stopPropagation();

@@ -214,6 +214,20 @@
         let list = new MDCList(document.querySelector('.menuList'));
         list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
         document.title = "545在线-工具箱";
+        const rebuildFrame = url => {
+            if (document.getElementById("setFrame")) {
+                document.getElementById("floatMenu").removeChild(document.getElementById("setFrame"));
+            };
+            let newFrame = document.createElement("iframe");
+            newFrame.id = "setFrame";
+            newFrame.frameBorder = 0;
+            document.getElementById("closeBtn").insertAdjacentElement("afterend", newFrame)
+            newFrame.src = url;
+            newFrame.addEventListener("load", () => {
+                document.getElementById("loading").style.display = "none";
+                newFrame.style.padding = "0px";
+            });
+        };
         window.addEventListener("message", async (event) => {
             console.log(event.data)
             if (event.data == "close") {
@@ -221,17 +235,12 @@
                 document.getElementById("floatMenu").style.marginTop = "100vh";
                 await sleep(500);
                 document.getElementById("floatMenuContainer").style.display = "none";
-                setFrame.src = "about:blank";
             }
-            if (event.data == "load") {
+            if (event.data.startsWith("http")) {
                 document.getElementById("loading").style.display = "block";
-                document.getElementById("setFrame").style.padding = "100%";
+                rebuildFrame(event.data);
             }
         }, false);
-        document.getElementById("setFrame").addEventListener("load", () => {
-            document.getElementById("loading").style.display = "none";
-            document.getElementById("setFrame").style.padding = "0px";
-        });
         if (localStorage.fullBlur && JSON.parse(localStorage.fullBlur)) {
             document.getElementById("floatMenuContainer").style.backdropFilter = "blur(3px) brightness(100%)";
         };
@@ -242,12 +251,9 @@
             document.getElementById("floatMenuContainer").style.opacity = 1;
             document.getElementById("floatMenu").style.marginTop = "10vh";
             document.getElementById("loading").style.display = "block";
-            document.getElementById("setFrame").style.padding = "100%";
-            setFrame.src = url;
+            rebuildFrame(url);
             if (wide) {
-                setFrame.style.maxWidth = "100vw";
-            } else {
-                setFrame.style.maxWidth = "600px";
+                document.getElementById("setFrame").style.maxWidth = "100vw";
             }
         }
         document.getElementById("closeBtn").addEventListener("click", async (event) => {
@@ -256,7 +262,7 @@
             document.getElementById("floatMenuContainer").style.opacity = 0;
             await sleep(500);
             document.getElementById("floatMenuContainer").style.display = "none";
-            setFrame.src = "about:blank";
+            document.getElementById("floatMenu").removeChild(document.getElementById("setFrame"));
         })
         window.titleCount = 0;
         document.getElementById("titleText").addEventListener("click", () => {
