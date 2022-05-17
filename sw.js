@@ -89,11 +89,26 @@ self.addEventListener('fetch', event => {
         event.respondWith(new Response(VERSION));
         return;
     }
+    //针对Glitch和Vercel预处理网页
+    let alterRequest = false;
+    if (event.request.url.indexOf("545.glitch.qinlili.bid") > 1 || event.request.url.indexOf("545.vercel.qinlili.bid") > 1) {
+        if (event.request.url.substring(event.request.url.lastIndexOf("/")).indexOf(".") == -1) {
+            event.request.url += ".html";
+            console.log("processing url:" + event.request.url);
+            alterRequest = new Request(event.request.url + ".html", {
+                method: event.request.method,
+                headers: event.request.headers,
+                mode: 'same-origin',
+                credentials: event.request.credentials,
+                redirect: 'manual'
+            });
+        }
+    }
     if (event.request.method == "GET" && (event.request.url.indexOf("http") == 0) && (event.request.url.indexOf("ForceNoCache") == -1)) {
         event.respondWith(
             caches.open(getCacheName(event.request.url)).then(async cache => {
                 return cache.match(event.request).then(response => {
-                    return response || fetch(event.request).then(response => {
+                    return response || fetch(alterRequest ? alterRequest : event.request).then(response => {
                         if (response.status < 400) {
                             cache.put(event.request, response.clone());
                             console.log('file cached : ' + event.request.url)
