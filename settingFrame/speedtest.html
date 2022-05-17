@@ -98,7 +98,7 @@
                     info.innerText = domains[i] + "-" + latency + "MS-测试速度...";
                     if (canuse) {
                         let startTime = Date.now();
-                        await (await fetch("https://" + domains[i] + "/img/%E5%A4%A7%E5%A1%94.webp?ForceNoCache=1", { method: "GET", mode: "no-cors" }).catch(() => {
+                        await (await fetch("https://" + domains[i] + "/img/%E5%A4%A7%E5%A1%94.webp?ForceNoCache=1", { headers: { "cache-control": "no-cache" }, method: "GET", mode: "no-cors" }).catch(() => {
                             info.innerText = domains[i] + "-" + latency + "MS-速度测试失败";
                             info.style.color = "red";
                             canuse = false;
@@ -143,7 +143,7 @@
                     info.innerText = cdnDomains[i].name + "-" + latency + "MS-测试速度...";
                     if (canuse) {
                         let startTime = Date.now();
-                        await (await fetch(cdnDomains[i].file + "?ForceNoCache=1", { method: "GET", mode: "no-cors" }).catch(() => {
+                        await (await fetch(cdnDomains[i].file + "?ForceNoCache=1", { headers: { "cache-control": "no-cache" }, method: "GET", mode: "no-cors" }).catch(() => {
                             info.innerText = cdnDomains[i].name + "-" + latency + "MS-速度测试失败";
                             info.style.color = "red";
                             canuse = false;
