@@ -91,8 +91,8 @@ self.addEventListener('fetch', event => {
     }
     //针对Glitch和Vercel预处理网页
     let alterRequest = false;
-    if (event.request.url.indexOf("545.glitch.qinlili.bid") > 1 || event.request.url.indexOf("545.vercel.qinlili.bid") > 1) {
-        if (event.request.url.substring(event.request.url.lastIndexOf("/")).indexOf(".") == -1) {
+    if (event.request.url.indexOf("glitch") > 1 || event.request.url.indexOf("vercel") > 1) {
+        if (event.request.url.substring(event.request.url.lastIndexOf("/")).indexOf(".") == -1 && !event.request.url.endsWith("/")) {
             event.request.url += ".html";
             console.log("processing url:" + event.request.url);
             alterRequest = new Request(event.request.url + ".html", {
@@ -142,8 +142,12 @@ self.addEventListener('install', e => {
                     }
                 })
             })
+        };
+        if (self.location.host.indexOf("vercel") == -1 && self.location.host.indexOf("glitch") == -1) {
+            await cache.addAll(AZUSA_PATCH_SKIP_LIST.concat(URLS)).catch(() => { });
+        }else{
+            await cache.addAll(AZUSA_PATCH_SKIP_LIST).catch(() => { });
         }
-        await cache.addAll(AZUSA_PATCH_SKIP_LIST.concat(URLS)).catch(()=>{});
         return true;
     }
     e.waitUntil(install());
