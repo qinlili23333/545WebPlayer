@@ -143,7 +143,7 @@ self.addEventListener('install', e => {
                 })
             })
         }
-        await cache.addAll(AZUSA_PATCH_SKIP_LIST.concat(URLS));
+        await cache.addAll(AZUSA_PATCH_SKIP_LIST.concat(URLS)).catch(()=>{});
         return true;
     }
     e.waitUntil(install());
