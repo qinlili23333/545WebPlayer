@@ -1143,7 +1143,7 @@
                 })
                 menuList.appendChild(exitMenu);
             }
-            if (history.length == 1 && window.self === window.top) {
+            if ((history.length == 1 || navigator.userAgent === "545LocalPlayer") && window.self === window.top) {
                 let exitMenu = makeMenu("退出", "./img/exit.svg");
                 exitMenu.addEventListener("click", () => {
                     window.close();
