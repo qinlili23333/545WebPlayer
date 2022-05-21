@@ -558,6 +558,7 @@
                 avatar = avatar.replace("@.webp", "@120h.webp")
             };
             imgItem.src = avatar;
+            imgItem.crossOrigin = "anonymous";
             imgItem.loading = "lazy";
             imgItem.alt = name;
             imgItem.style = "object-fit: cover;border-radius: 4px;height: 100%;width: 100%;opacity:0;transition: opacity 0.5s;";
@@ -604,19 +605,48 @@
             let textItem = document.createElement("span");
             textItem.className = "mdc-list-item__text";
             textItem.innerText = text;
+            menuItem.setSpan = text => {
+                textItem.innerText = text;
+            }
             menuItem.appendChild(textItem);
             return menuItem;
         }
-        const saveImgMenu = url => {
+        const saveImgMenu = (url, name) => {
             menuList.innerHTML = "";
             let imgItem = document.createElement("img");
             imgItem.src = url;
-            imgItem.style = "max-height:calc(80vh - 32px);width:100%;height:auto;object-fit:cover;border-radius: 5px 5px 0px 0px;";
+            imgItem.crossOrigin = "anonymous";
+            imgItem.style = "max-height:calc(80vh - 96px);width:100%;height:auto;object-fit:cover;border-radius: 5px 5px 0px 0px;";
             menuList.appendChild(imgItem);
-            let textTip = document.createElement("p");
-            textTip.innerText = "长按或右键图片保存";
-            textTip.style = "width:100%;text-align:center;"
-            menuList.appendChild(textTip);
+            let saveMenu = makeMenu("保存图片", "./img/save.svg");
+            saveMenu.addEventListener("click", async (e) => {
+                //保存图片
+                e.stopPropagation();
+                saveMenu.setSpan("正在保存...");
+                dlFile(URL.createObjectURL(await (await fetch(url, { mode: "cors" })).blob()), name + "_封面.webp");
+                hideMenu();
+            });
+            menuList.appendChild(saveMenu);
+            let shareMenu = makeMenu("分享图片", "./img/share.svg");
+            shareMenu.addEventListener("click", async (e) => {
+                //保存图片
+                e.stopPropagation();
+                shareMenu.setSpan("正在准备分享...");
+                if (navigator.share) {
+                    navigator.share({
+                        title: name + "封面",
+                        text: "我正在用545在线(545.qinlili.bid)分享给你塔宝的" + name + "封面图片",
+                        url: "https://545.qinlili.bid",
+                        files: [new File([await (await fetch(url, { mode: "cors" })).blob()], name + "_封面.webp", { type: "image/webp" })]
+                    });
+                } else {
+                    alert("你使用的浏览器不支持分享");
+                }
+                hideMenu();
+            });
+            menuList.appendChild(shareMenu);
+            const list = new MDCList(menuList);
+            const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
             showMenu();
         }
         const loadMenu = text => {
@@ -644,10 +674,10 @@
                 setStatus("下载" + songInfo.name + "成功", false);
             });
             menuList.appendChild(dlMenu);
-            let coverMenu = makeMenu("保存封面", "./img/cover.svg");
+            let coverMenu = makeMenu("查看封面", "./img/cover.svg");
             coverMenu.addEventListener("click", (event) => {
                 event.stopPropagation();
-                saveImgMenu(songInfo.cover);
+                saveImgMenu(songInfo.cover, songInfo.name);
             });
             menuList.appendChild(coverMenu)
             let goMenu = makeMenu("查看原始投稿", "./img/link.svg");
@@ -727,52 +757,7 @@
                 let searchValue = prompt("请输入关键字，支持歌名/完整标题\n留空为显示全部歌曲");
                 if (searchValue == null) {
                     return;
-                }
-                if (searchValue == "奥利安费") {
-                    //开启隐藏终端模式
-                    let terminalItem = makeItem("韭菜盒子", "运行一些能补充营养的指令", "./img/terminal.svg");
-                    audioFolderModule.insertBefore(terminalItem, searchItem);
-                    terminalItem.addEventListener("click", async () => {
-                        //处理终端命令
-                        let command = prompt("太监传话");
-                        if (command == null) {
-                            return;
-                        }
-                        switch (command) {
-                            case "addSong": {
-                                let songInfo = prompt("输入符合格式的歌曲信息");
-                                try {
-                                    addToPlayList(JSON.parse(songInfo));
-                                } catch {
-                                    alert("解析失败");
-                                }
-                                break;
-                            };
-                            case "emptyList": {
-                                localStorage.removeItem("playList");
-                                location.reload();
-                                break;
-                            };
-                            case "connectDevice": {
-                                const device = await navigator.usb.requestDevice({ filters: [] });
-                                if (device) {
-                                    await device.open();
-                                    alert("连接外置声卡成功！\n制造厂商：" + device.manufacturerName + "\n设备型号：" + device.productName);
-                                    await device.close();
-                                } else {
-                                    alert("连接到外置声卡失败！");
-                                }
-                                break;
-                            }
-                            default: {
-                                alert("营养缺失了")
-                                break;
-                            }
-                        }
-
-                    })
-                    return;
-                }
+                };
                 const audioFilesModule = document.getElementById("audioFilesModule");
                 audioFilesModule.innerHTML = "";
                 audioFolderModule.style.display = "none";
@@ -935,18 +920,6 @@
         }
         const playNow = async song => {
             document.title = song.name + "-545在线";
-            if ('mediaSession' in navigator) {
-                navigator.mediaSession.metadata = new MediaMetadata({
-                    title: song.name,
-                    artist: "帅比笙歌超可爱OvO",
-                    album: "545在线",
-                    artwork: [{
-                        sizes: "320x180",// <- MUST BE EXACTLY!
-                        src: song.cover,
-                        type: ""
-                    }]
-                });
-            }
             setStatus("正在下载" + song.name, true);
             window.currentPlay = song.name;
             let playBlob = await (await fetch(song.url[cdn]).catch(error => {
@@ -985,7 +958,19 @@
                     setStatus(song.name, false);
                     localStorage.lastPlay = JSON.stringify(song);
                 }
-            }
+            };
+            if ('mediaSession' in navigator) {
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title: song.name,
+                    artist: "帅比笙歌超可爱OvO",
+                    album: "545在线",
+                    artwork: [{
+                        sizes: "320x180",// <- MUST BE EXACTLY!
+                        src: URL.createObjectURL(await (await fetch(song.cover, { mode: "cors" })).blob()),
+                        type: ""
+                    }]
+                });
+            };
         }
         //恢复播放
         const recoverPlay = () => {
@@ -1115,6 +1100,13 @@
                     liveFrame.style = "width:80vw;height:45vw;max-height:80vh;"
                     liveFrame.src = "https://www.bilibili.com/blackboard/html5mobileplayer.html?aid=" + aid + "&bvid=" + bvid + "&posterFirst=1";
                     menuList.appendChild(liveFrame);
+                    let openMenu = makeMenu("在新窗口打开", "./img/link.svg");
+                    openMenu.addEventListener("click", () => {
+                        window.open("https://www.bilibili.com/video/" + bvid, "_blank")
+                    })
+                    menuList.appendChild(openMenu);
+                    const list = new MDCList(menuList);
+                    const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
                 };
                 menuList.innerHTML = "";
                 menuList.appendChild(loadMenu("正在加载录播列表..."));
@@ -1258,6 +1250,47 @@
                 script.src = "https://lib.baomitu.com/eruda/2.4.1/eruda.min.js";
                 document.body.appendChild(script);
                 script.onload = function () { eruda.init() }
+                //开启隐藏终端模式
+                let terminalItem = makeItem("韭菜盒子", "运行一些能补充营养的指令", "./img/ottobox.svg");
+                audioFolderModule.insertAdjacentElement("afterbegin", terminalItem);
+                terminalItem.addEventListener("click", async () => {
+                    //处理终端命令
+                    let command = prompt("太监传话");
+                    if (command == null) {
+                        return;
+                    }
+                    switch (command) {
+                        case "addSong": {
+                            let songInfo = prompt("输入符合格式的歌曲信息");
+                            try {
+                                addToPlayList(JSON.parse(songInfo));
+                            } catch {
+                                alert("解析失败");
+                            }
+                            break;
+                        };
+                        case "emptyList": {
+                            localStorage.removeItem("playList");
+                            location.reload();
+                            break;
+                        };
+                        case "connectDevice": {
+                            const device = await navigator.usb.requestDevice({ filters: [] });
+                            if (device) {
+                                await device.open();
+                                alert("连接外置声卡成功！\n制造厂商：" + device.manufacturerName + "\n设备型号：" + device.productName);
+                                await device.close();
+                            } else {
+                                alert("连接到外置声卡失败！");
+                            }
+                            break;
+                        }
+                        default: {
+                            alert("营养缺失了")
+                            break;
+                        }
+                    }
+                })
             }
         })();
     </script>
