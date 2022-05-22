@@ -1200,7 +1200,10 @@
                             await Notification.requestPermission();
                         };
                         const detectLive = async () => {
-                            let time = new Date().getHours();
+                            let time = new Date().getHours() + (new Date().getTimezoneOffset() / 60 + 8);
+                            if (time < 0) {
+                                time += 24;
+                            }
                             if (time < 4 || time > 10) {
                                 let liveStatus = await (await fetch("https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => { })).json();
                                 if (liveStatus.data && (liveStatus.data.status == 1)) {
