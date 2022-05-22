@@ -7,6 +7,18 @@
       "description": "塔宝投稿的独唱歌曲",
       "list": [
         {
+          "name": "懒人",
+          "url": {
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%87%92%E4%BA%BA_20220522150354_62743.ogg"
+          },
+          "cover": "https://i0.hdslb.com/bfs/archive/564d24156eb77ccb714178448ba477bf5f4508be.jpg@.webp",
+          "quality": "OPUS96",
+          "full_title": "【笙歌】周年投稿 —《懒人》",
+          "origin": "https://www.bilibili.com/video/BV1bY4y1z7uu",
+          "source_quality": "AAC128",
+          "release_date": "2022-05-22"
+        },
+        {
           "name": "甜甜的",
           "url": {
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%94%9C%E7%94%9C%E7%9A%84_20220415195959_59765.ogg"
