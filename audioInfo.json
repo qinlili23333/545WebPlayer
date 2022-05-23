@@ -1,11 +1,23 @@
 {
   "success": true,
-  "version": "2022050401",
+  "version": "2022052301",
   "songs": [
     {
       "type": "塔宝投稿",
       "description": "塔宝投稿的独唱歌曲",
       "list": [
+        {
+          "name": "周大侠",
+          "url": {
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%91%A8%E5%A4%A7%E4%BE%A0_20220523195805_59650.ogg"
+          },
+          "cover": "https://i0.hdslb.com/bfs/archive/5894984fc7b608af6d83e1b7d10f4523c3d10af5.jpg@.webp",
+          "quality": "OPUS192",
+          "full_title": "《天天跳刘畊宏的管人唱的刚学会的周大侠》——锻炼身体 从我做起",
+          "origin": "https://www.bilibili.com/video/BV135411X7X3",
+          "source_quality": "AAC320",
+          "release_date": "2022-05-23"
+        },
         {
           "name": "懒人",
           "url": {
