@@ -1111,7 +1111,7 @@
                 };
                 menuList.innerHTML = "";
                 menuList.appendChild(loadMenu("正在加载录播列表..."));
-                let historyList = await (await fetch("https://bililive.qinlili.workers.dev/archives?mid=15641218&sid=180061&ForceNoCache=1").catch(() => {
+                let historyList = await (await fetch("https://biliapi.qinlili.bid/archives?mid=15641218&sid=180061&ForceNoCache=1").catch(() => {
                     alert("读取录播数据失败！");
                     hideMenu();
                 })).json().catch(() => {
