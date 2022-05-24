@@ -432,8 +432,7 @@
         }
     </script>
     <script>
-        //日后实现CDN切换
-        const cdn = "yuketang";
+        const cdn = localStorage.preferCDN ? localStorage.preferCDN : "yuketang";
         window.repeatSwitch = localStorage.repeat ? JSON.parse(localStorage.repeat) : false;
         window.shuffleSwitch = localStorage.shuffle ? JSON.parse(localStorage.shuffle) : false;
         window.codecBoost = localStorage.codecBoost ? JSON.parse(localStorage.codecBoost) : false;

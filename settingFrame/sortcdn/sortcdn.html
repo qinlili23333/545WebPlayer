@@ -3,30 +3,48 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="545在线，随时补充塔能量！笙歌牌播放器，支持智能缓存本地播放，由琴梨梨驱动" />
   <meta name="robots" content="noindex">
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
   <title>CDN排序</title>
-
+  <link href="../../public.css" rel="stylesheet">
   <!-- (A) LOAD CSS + JS -->
   <link rel="stylesheet" href="sort-list.css" />
   <script src="sort-list.js"></script>
   <script src="../../lib/DragDropTouch.js"></script>
+  <link crossorigin="anonymous"
+    integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ=="
+    href="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.css" rel="stylesheet">
+  <script crossorigin="anonymous"
+    integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
+    src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
+  <link crossorigin="anonymous"
+    href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/material-design-icons/3.0.2/iconfont/material-icons.min.css"
+    rel="stylesheet">
 </head>
 
 <body>
   <!-- (B) THE LIST -->
   <ul id="sortlist">
     <li key="yuketang">雨课堂</li>
-    <li key="cloudflare">Cloudflare（尚未开放）</li>
-    <li key="chaoxing">超星（尚未开放）</li>
-    <li key="github">Github（尚未开放）</li>
+    <li key="cloudflare">Cloudflare</li>
   </ul>
 
+  <div style="text-align:center;">
+    <H5>上下拖动排序，优先使用排在第一位的CDN</H5>
+    <button class="mdc-button mdc-button--raised mdc-button--leading" style="width:80%;margin:16px;" id="saveBtn">
+      <span class="mdc-button__ripple"></span>
+      <i class="material-icons mdc-button__icon" aria-hidden="true">save</i>
+      <span class="mdc-button__label">保存</span>
+    </button>
+  </div>
   <!-- (C) INIT ON PAGE LOAD -->
   <script>
     window.addEventListener("DOMContentLoaded", () => {
       slist(document.getElementById("sortlist"));
+    });
+    document.getElementById("saveBtn").addEventListener("click", () => {
+      localStorage.preferCDN = document.getElementById("sortlist").firstElementChild.getAttribute("key");
+      window.parent.postMessage("close");
     });
   </script>
 </body>

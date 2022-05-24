@@ -33,7 +33,7 @@
         <span class="mdc-text-field__ripple"></span>
         <span class="mdc-text-field__resizer" style="width:100%;">
             <textarea class="mdc-text-field__input" rows="8" cols="40" aria-label="Label" id="playList"
-                style="resize:none;"></textarea>
+                style="resize:none;overflow-x: hidden;"></textarea>
         </span>
         <span class="mdc-line-ripple"></span>
     </label>
@@ -72,7 +72,7 @@
                 alert("解析播放列表失败，请检查你的输入！");
             }
         });
-        const cdn = "yuketang"
+        const cdn = localStorage.preferCDN ? localStorage.preferCDN : "yuketang";
         document.getElementById("downBtn").addEventListener("click", () => {
             document.getElementById("downBtn").disabled = true;
             document.getElementById("downBtnLabel").innerText = "正在缓存...";

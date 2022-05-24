@@ -1,6 +1,6 @@
 {
   "success": true,
-  "version": "2022052301",
+  "version": "2022052501",
   "songs": [
     {
       "type": "塔宝投稿",
@@ -9,7 +9,8 @@
         {
           "name": "周大侠",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%91%A8%E5%A4%A7%E4%BE%A0_20220523195805_59650.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%91%A8%E5%A4%A7%E4%BE%A0_20220523195805_59650.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%91%A8%E5%A4%A7%E4%BE%A0.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/5894984fc7b608af6d83e1b7d10f4523c3d10af5.jpg@.webp",
           "quality": "OPUS192",
@@ -21,7 +22,8 @@
         {
           "name": "懒人",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%87%92%E4%BA%BA_20220522150354_62743.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%87%92%E4%BA%BA_20220522150354_62743.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E6%87%92%E4%BA%BA.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/564d24156eb77ccb714178448ba477bf5f4508be.jpg@.webp",
           "quality": "OPUS96",
@@ -33,7 +35,8 @@
         {
           "name": "甜甜的",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%94%9C%E7%94%9C%E7%9A%84_20220415195959_59765.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%94%9C%E7%94%9C%E7%9A%84_20220415195959_59765.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E7%94%9C%E7%94%9C%E7%9A%84.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/1fb9ea6efd090ac978dd0545afdd13e0ebd9432f.jpg@.webp",
           "quality": "OPUS192",
@@ -45,7 +48,8 @@
         {
           "name": "letting go",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/letting_go_20220405202529_28054.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/letting_go_20220405202529_28054.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/letting_go.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/2b77144108c6782fe751ee3adf3d3cd1dc378772.jpg@.webp",
           "quality": "OPUS192",
@@ -57,7 +61,8 @@
         {
           "name": "大喜",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%A4%A7%E5%96%9C_20220325122827_12379.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%A4%A7%E5%96%9C_20220325122827_12379.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%A4%A7%E5%96%9C.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/c751c763a22e662ccaefc1cd934b906cd082ccc2.jpg@.webp",
           "quality": "OPUS192",
@@ -69,7 +74,8 @@
         {
           "name": "虚拟paradise",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E8%99%9A%E6%8B%9Fparadise_20220325124722_60749.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E8%99%9A%E6%8B%9Fparadise_20220325124722_60749.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E8%99%9A%E6%8B%9Fparadise.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/4234c855581f6d2be0799cbebb09b9f9b0b32023.jpg@.webp",
           "quality": "OPUS96",
@@ -81,7 +87,8 @@
         {
           "name": "难过233秒",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E9%9A%BE%E8%BF%87233%E7%A7%92_20220328102409_62707.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E9%9A%BE%E8%BF%87233%E7%A7%92_20220328102409_62707.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E9%9A%BE%E8%BF%87233%E7%A7%92.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/fbe77d53971c1113b3d8862cafd0ec7afde8c5cb.jpg@.webp",
           "quality": "OPUS192",
@@ -93,7 +100,8 @@
         {
           "name": "for you 写给你的歌",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%86%99%E7%BB%99%E4%BD%A0%E7%9A%84%E6%AD%8C_20220328103223_6451.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%86%99%E7%BB%99%E4%BD%A0%E7%9A%84%E6%AD%8C_20220328103223_6451.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%86%99%E7%BB%99%E4%BD%A0%E7%9A%84%E6%AD%8C.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/05f7d0a05a150dfd7e8f1ef97bb36a80862459ef.jpg@.webp",
           "quality": "OPUS192",
@@ -105,7 +113,8 @@
         {
           "name": "天地劫",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/22765_20220328104355_39616.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/22765_20220328104355_39616.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%A4%A9%E5%9C%B0%E5%8A%AB.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/8a66ea444e032871929a5978ae35a1e97305e48b.jpg@.webp",
           "quality": "OPUS96",
@@ -117,7 +126,8 @@
         {
           "name": "红叶寺",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BA%A2%E5%8F%B6%E5%AF%BA_20220325124721_6771.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BA%A2%E5%8F%B6%E5%AF%BA_20220325124721_6771.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E7%BA%A2%E5%8F%B6%E5%AF%BA.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/7e91258b4423201f8618ed6d21fd90333af371b0.jpg@.webp",
           "quality": "OPUS96",
@@ -129,7 +139,8 @@
         {
           "name": "鲸",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E9%B2%B8_20220328110647_50920.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E9%B2%B8_20220328110647_50920.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E9%B2%B8.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/521932e1a4b1d2fdb36782a83e2337c55099c655.jpg@.webp",
           "quality": "OPUS192",
@@ -141,7 +152,8 @@
         {
           "name": "好字唯之",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%A5%BD%E5%AD%97%E5%94%AF%E4%B9%8B_20220328111258_54818.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%A5%BD%E5%AD%97%E5%94%AF%E4%B9%8B_20220328111258_54818.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%A5%BD%E5%AD%97%E5%94%AF%E4%B9%8B.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/d07890b6b209821a7c42157ca3a2bd6c6bd736a4.jpg@.webp",
           "quality": "OPUS192",
@@ -153,7 +165,8 @@
         {
           "name": "慢冷",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%85%A2%E5%86%B7_20220328114339_22683.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%85%A2%E5%86%B7_20220328114339_22683.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E6%85%A2%E5%86%B7.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/1a7075eeb4d37bf8014a8c644eb5f2bca9043006.jpg@.webp",
           "quality": "OPUS192",
@@ -165,7 +178,8 @@
         {
           "name": "破裂",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%A0%B4%E8%A3%82_20220328114643_15196.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%A0%B4%E8%A3%82_20220328114643_15196.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E7%A0%B4%E8%A3%82.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/12149ff7a7a7ba6a22598b7a052bf7dfaa2ec83f.jpg@.webp",
           "quality": "OPUS128",
@@ -177,7 +191,8 @@
         {
           "name": "沿花路前行",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B2%BF%E8%8A%B1%E8%B7%AF%E5%89%8D%E8%A1%8C_20220328125721_356.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B2%BF%E8%8A%B1%E8%B7%AF%E5%89%8D%E8%A1%8C_20220328125721_356.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E6%B2%BF%E8%8A%B1%E8%B7%AF%E5%89%8D%E8%A1%8C.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/d91e7a837f4ae358ca760234c3b4995bc32ce845.jpg@.webp",
           "quality": "OPUS192",
@@ -189,7 +204,8 @@
         {
           "name": "人间不值得",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BA%BA%E9%97%B4%E4%B8%8D%E5%80%BC%E5%BE%97_20220325140311_31095.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BA%BA%E9%97%B4%E4%B8%8D%E5%80%BC%E5%BE%97_20220325140311_31095.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%BA%BA%E9%97%B4%E4%B8%8D%E5%80%BC%E5%BE%97.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/music/a2b38aba10aa7243ce12a8cc08cad3942d49ca23.jpg@.webp",
           "quality": "OPUS128",
@@ -201,7 +217,8 @@
         {
           "name": "芒种",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E8%8A%92%E7%A7%8D_20220326173651_85598.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E8%8A%92%E7%A7%8D_20220326173651_85598.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E8%8A%92%E7%A7%8D.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/112ab6a3dfaf08d4e5db98793d96c0bbec96c136.jpg@.webp",
           "quality": "OPUS192",
@@ -213,7 +230,8 @@
         {
           "name": "人间白首",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BA%BA%E9%97%B4%E7%99%BD%E9%A6%96_20220328141641_17375.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BA%BA%E9%97%B4%E7%99%BD%E9%A6%96_20220328141641_17375.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%BA%BA%E9%97%B4%E7%99%BD%E9%A6%96.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/65eebd7d41759f6dcead95f48f9fd2fca91dc6ed.jpg@.webp",
           "quality": "OPUS192",
@@ -225,7 +243,8 @@
         {
           "name": "食色",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E9%A3%9F%E8%89%B2_20220328143655_4057.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E9%A3%9F%E8%89%B2_20220328143655_4057.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E9%A3%9F%E8%89%B2.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/b11eaf981b003b0bda7e3f265a4f35fee77a31dd.jpg@.webp",
           "quality": "OPUS128",
@@ -237,7 +256,8 @@
         {
           "name": "是你依然在",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%98%AF%E4%BD%A0%E4%BE%9D%E7%84%B6%E5%9C%A8_20220328144027_48064.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%98%AF%E4%BD%A0%E4%BE%9D%E7%84%B6%E5%9C%A8_20220328144027_48064.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E6%98%AF%E4%BD%A0%E4%BE%9D%E7%84%B6%E5%9C%A8.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/505582930c3a241afd233eca776851c6ddbf829e.jpg@.webp",
           "quality": "OPUS192",
@@ -249,7 +269,8 @@
         {
           "name": "九万字",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B9%9D%E4%B8%87%E5%AD%97_20220330173043_33989.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B9%9D%E4%B8%87%E5%AD%97_20220330173043_33989.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%B9%9D%E4%B8%87%E5%AD%97.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/music/af6319677da966ab21509bb2c2919b2eeb2df33a.jpg@.webp",
           "quality": "OPUS128",
@@ -261,7 +282,8 @@
         {
           "name": "中毒",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B8%AD%E6%AF%92_20220330173744_85205.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B8%AD%E6%AF%92_20220330173744_85205.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%B8%AD%E6%AF%92.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/music/113d94e2722f4afd9356852d3c46cce5df4f13ac.jpg@.webp",
           "quality": "OPUS128",
@@ -273,7 +295,8 @@
         {
           "name": "人美路子野",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BA%BA%E7%BE%8E%E8%B7%AF%E5%AD%90%E9%87%8E_20220330150243_14574.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BA%BA%E7%BE%8E%E8%B7%AF%E5%AD%90%E9%87%8E_20220330150243_14574.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%BA%BA%E7%BE%8E%E8%B7%AF%E5%AD%90%E9%87%8E.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/516ee936a60a82d1698cd55269ea089eaac4afc5.jpg@.webp",
           "quality": "OPUS192",
@@ -285,7 +308,8 @@
         {
           "name": "一爱难求",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B8%80%E7%88%B1%E9%9A%BE%E6%B1%82_20220330175502_15453.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B8%80%E7%88%B1%E9%9A%BE%E6%B1%82_20220330175502_15453.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%B8%80%E7%88%B1%E9%9A%BE%E6%B1%82.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.webp",
           "quality": "OPUS128",
@@ -297,7 +321,8 @@
         {
           "name": "浮木",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%AE%E6%9C%A8_20220330175500_80830.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%AE%E6%9C%A8_20220330175500_80830.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E6%B5%AE%E6%9C%A8.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.webp",
           "quality": "OPUS128",
@@ -309,7 +334,8 @@
         {
           "name": "此生与你不过相逢",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%AD%A4%E7%94%9F%E4%B8%8E%E4%BD%A0%E4%B8%8D%E8%BF%87%E7%9B%B8%E9%80%A2_20220330150514_29051.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%AD%A4%E7%94%9F%E4%B8%8E%E4%BD%A0%E4%B8%8D%E8%BF%87%E7%9B%B8%E9%80%A2_20220330150514_29051.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E6%AD%A4%E7%94%9F%E4%B8%8E%E4%BD%A0%E4%B8%8D%E8%BF%87%E7%9B%B8%E9%80%A2.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/37da3c33f305e79bfa3d1ed2892d893516663aab.jpg@.webp",
           "quality": "OPUS96",
@@ -321,7 +347,8 @@
         {
           "name": "浪人琵琶",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%AA%E4%BA%BA%E7%90%B5%E7%90%B6_20220330150703_65969.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%AA%E4%BA%BA%E7%90%B5%E7%90%B6_20220330150703_65969.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E6%B5%AA%E4%BA%BA%E7%90%B5%E7%90%B6.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/58af92ba541aa9b3a33635e676b99964408359cd.jpg@.webp",
           "quality": "OPUS96",
@@ -333,7 +360,8 @@
         {
           "name": "是风动",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%98%AF%E9%A3%8E%E5%8A%A8_20220330154652_23514.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%98%AF%E9%A3%8E%E5%8A%A8_20220330154652_23514.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E6%98%AF%E9%A3%8E%E5%8A%A8.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/963e50777faffeec6890d51c6b47f6489ec31cd0.jpg@.webp",
           "quality": "OPUS128",
@@ -345,7 +373,8 @@
         {
           "name": "何日重到苏澜桥",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BD%95%E6%97%A5%E9%87%8D%E5%88%B0%E8%8B%8F%E6%BE%9C%E6%A1%A5_20220330155714_37345.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BD%95%E6%97%A5%E9%87%8D%E5%88%B0%E8%8B%8F%E6%BE%9C%E6%A1%A5_20220330155714_37345.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%BD%95%E6%97%A5%E9%87%8D%E5%88%B0%E8%8B%8F%E6%BE%9C%E6%A1%A5.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/0da8e5300a9760cb0615db4e0ae3d855cf3d0c03.jpg@.webp",
           "quality": "OPUS128",
@@ -357,7 +386,8 @@
         {
           "name": "齐天",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E9%BD%90%E5%A4%A9_20220330160223_3534.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E9%BD%90%E5%A4%A9_20220330160223_3534.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E9%BD%90%E5%A4%A95.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/89cfcacc7796816c368f78e891fc0b6d7e26014b.jpg@.webp",
           "quality": "OPUS96",
@@ -369,7 +399,8 @@
         {
           "name": "寄明月",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%AF%84%E6%98%8E%E6%9C%88_20220330161453_46932.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%AF%84%E6%98%8E%E6%9C%88_20220330161453_46932.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%AF%84%E6%98%8E%E6%9C%88.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/5f1e7bbaca9ec877aa55a9473bce32001e6b7434.jpg@.webp",
           "quality": "OPUS128",
@@ -381,7 +412,9 @@
         {
           "name": "皎然记",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%9A%8E%E7%84%B6%E8%AE%B0_20220330162240_42488.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%9A%8E%E7%84%B6%E8%AE%B0_20220330162240_42488.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E7%9A%8E%E7%84%B6%E8%AE%B0.ogg"
+          },
           },
           "cover": "https://i0.hdslb.com/bfs/archive/8a6488b244d03ad4a728c534e06de597dd433198.jpg@.webp",
           "quality": "OPUS192",
@@ -393,7 +426,9 @@
         {
           "name": "封刀不为峥嵘",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%B0%81%E5%88%80%E4%B8%8D%E4%B8%BA%E5%B3%A5%E5%B5%98_20220330163908_38248.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%B0%81%E5%88%80%E4%B8%8D%E4%B8%BA%E5%B3%A5%E5%B5%98_20220330163908_38248.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%B0%81%E5%88%80%E4%B8%8D%E4%B8%BA%E5%B3%A5%E5%B5%98.ogg"
+          },
           },
           "cover": "https://i0.hdslb.com/bfs/archive/0158ab045f47a3df175e84aa50a22c810cc879a1.jpg@.webp",
           "quality": "OPUS192",
@@ -405,7 +440,8 @@
         {
           "name": "造梦者",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E9%80%A0%E6%A2%A6%E8%80%85_20220330164758_1737.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E9%80%A0%E6%A2%A6%E8%80%85_20220330164758_1737.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E9%80%A0%E6%A2%A6%E8%80%85.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/592e5648f809d2f52f3b85d59f4de21f5c781c15.jpg@.webp",
           "quality": "OPUS192",
@@ -417,7 +453,8 @@
         {
           "name": "你还要我怎样",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BD%A0%E8%BF%98%E8%A6%81%E6%88%91%E6%80%8E%E6%A0%B7_20220330165256_37436.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BD%A0%E8%BF%98%E8%A6%81%E6%88%91%E6%80%8E%E6%A0%B7_20220330165256_37436.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%BD%A0%E8%BF%98%E8%A6%81%E6%88%91%E6%80%8E%E6%A0%B7.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/6e2eba3e4fc897b926f1b7ec386ae58139edfea4.jpg@.webp",
           "quality": "OPUS128",
@@ -429,7 +466,8 @@
         {
           "name": "东风志",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B8%9C%E9%A3%8E%E5%BF%97_20220330165806_37686.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B8%9C%E9%A3%8E%E5%BF%97_20220330165806_37686.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%B8%9C%E9%A3%8E%E5%BF%97.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/60ab1059d8837bf2d1d9800796c665febfe4d244.jpg@.webp",
           "quality": "OPUS128",
@@ -441,7 +479,8 @@
         {
           "name": "世末歌者",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B8%96%E6%9C%AB%E6%AD%8C%E8%80%85_20220330165932_87804.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B8%96%E6%9C%AB%E6%AD%8C%E8%80%85_20220330165932_87804.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%B8%96%E6%9C%AB%E6%AD%8C%E8%80%85.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/57df0fb885806dac715b0a0fa338b83c24f5d29b.jpg@.webp",
           "quality": "OPUS128",
@@ -453,7 +492,8 @@
         {
           "name": "我的一个道姑朋友",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%88%91%E7%9A%84%E4%B8%80%E4%B8%AA%E9%81%93%E5%A7%91%E6%9C%8B%E5%8F%8B_20220330170243_58419.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%88%91%E7%9A%84%E4%B8%80%E4%B8%AA%E9%81%93%E5%A7%91%E6%9C%8B%E5%8F%8B_20220330170243_58419.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E6%88%91%E7%9A%84%E4%B8%80%E4%B8%AA%E9%81%93%E5%A7%91%E6%9C%8B%E5%8F%8B.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/1de3e799cb32721bab2ee7dc1e85b3cccb4aaca7.jpg@.webp",
           "quality": "OPUS192",
@@ -465,7 +505,8 @@
         {
           "name": "画地为牢",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%94%BB%E5%9C%B0%E4%B8%BA%E7%89%A2_20220330185352_29604.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%94%BB%E5%9C%B0%E4%B8%BA%E7%89%A2_20220330185352_29604.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E7%94%BB%E5%9C%B0%E4%B8%BA%E7%89%A2.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.webp",
           "quality": "OPUS192",
@@ -477,7 +518,8 @@
         {
           "name": "干物女weiwei",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%B9%B2%E7%89%A9%E5%A5%B3weiwei_20220330170431_48079.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%B9%B2%E7%89%A9%E5%A5%B3weiwei_20220330170431_48079.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%B9%B2%E7%89%A9%E5%A5%B3weiwei.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/43d21877870a351e550c3aa63addb3324c890163.jpg@.webp",
           "quality": "OPUS96",
@@ -716,8 +758,7 @@
         {
           "name": "倩音流年(&黯尘)",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%80%A9%E9%9F%B3%E6%B5%81%E5%B9%B4x%E9%BB%AF%E5%B0%98_20220330160605_22507.ogg",
-            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E5%80%A9%E9%9F%B3%E6%B5%81%E5%B9%B4x%E9%BB%AF%E5%B0%98.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%80%A9%E9%9F%B3%E6%B5%81%E5%B9%B4x%E9%BB%AF%E5%B0%98_20220330160605_22507.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/ace21b75046441f6c442cfac697e064f9cf3ac03.jpg@.webp",
           "quality": "OPUS128",
@@ -735,7 +776,8 @@
         {
           "name": "红叶寺(&阿梓)",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BA%A2%E5%8F%B6%E5%AF%BA(&%E9%98%BF%E6%A2%93)_%E7%90%B4%E6%A2%A8%E6%A2%A8_20220409205911_89774.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BA%A2%E5%8F%B6%E5%AF%BA(&%E9%98%BF%E6%A2%93)_%E7%90%B4%E6%A2%A8%E6%A2%A8_20220409205911_89774.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E4%BA%91%E5%90%88%E5%94%B1/%E7%BA%A2%E5%8F%B6%E5%AF%BA(&%E9%98%BF%E6%A2%93)_%E7%90%B4%E6%A2%A8%E6%A2%A8.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/music/94df73695e0875261479f7d1614650717bea9501.jpg@.webp",
           "quality": "OPUS320",
@@ -747,7 +789,8 @@
         {
           "name": "浪人琵琶(&小可)",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%AA%E4%BA%BA%E7%90%B5%E7%90%B6(&%E5%B0%8F%E5%8F%AF)_%E7%90%B4%E6%A2%A8%E6%A2%A8_20220408143650_45626.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%AA%E4%BA%BA%E7%90%B5%E7%90%B6(&%E5%B0%8F%E5%8F%AF)_%E7%90%B4%E6%A2%A8%E6%A2%A8_20220408143650_45626.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E4%BA%91%E5%90%88%E5%94%B1/%E6%B5%AA%E4%BA%BA%E7%90%B5%E7%90%B6(&%E5%B0%8F%E5%8F%AF)_%E7%90%B4%E6%A2%A8%E6%A2%A8.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/music/6d0214dd2f0adb40899cb79bc7679e56222719b9.jpg@.webp",
           "quality": "OPUS320",
@@ -759,7 +802,8 @@
         {
           "name": "危险派对(&内德维德)",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%8D%B1%E9%99%A9%E6%B4%BE%E5%AF%B9(&%E5%86%85%E5%BE%B7%E7%BB%B4%E5%BE%B7)_kami_20220415204454_43795.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%8D%B1%E9%99%A9%E6%B4%BE%E5%AF%B9(&%E5%86%85%E5%BE%B7%E7%BB%B4%E5%BE%B7)_kami_20220415204454_43795.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E4%BA%91%E5%90%88%E5%94%B1/%E5%8D%B1%E9%99%A9%E6%B4%BE%E5%AF%B9(&%E5%86%85%E5%BE%B7%E7%BB%B4%E5%BE%B7)_kami.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/9e066a5db97317400d77fa349e0403d16fcfe1a9.jpg@.webp",
           "quality": "OPUS96",
@@ -771,7 +815,8 @@
         {
           "name": "绝世舞姬(地三鲜)",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BB%9D%E4%B8%96%E8%88%9E%E5%A7%AC(%E5%9C%B0%E4%B8%89%E9%B2%9C)_20220415205221_39667.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BB%9D%E4%B8%96%E8%88%9E%E5%A7%AC(%E5%9C%B0%E4%B8%89%E9%B2%9C)_20220415205221_39667.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E4%BA%91%E5%90%88%E5%94%B1/%E7%BB%9D%E4%B8%96%E8%88%9E%E5%A7%AC(%E5%9C%B0%E4%B8%89%E9%B2%9C).ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/6b817a4786febf8e881c94ea317e77f00156ea9c.png@.webp",
           "quality": "OPUS96",
