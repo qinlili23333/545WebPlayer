@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '1.0.0.20220522'
-var VERSION_AZUSA_PATCH_USE = '0.9.9.20220517'
+var VERSION = '1.0.1.20220524'
+var VERSION_AZUSA_PATCH_USE = '1.0.0.20220522'
 var AZUSA_PATCH_SKIP_LIST = [
     './img/bai.png',
     './img/wanan.png',
@@ -37,6 +37,7 @@ var AZUSA_PATCH_SKIP_LIST = [
     './img/tool.svg',
     './img/play.svg',
     './img/next.svg',
+    './cursor/normal.png',
     './icon.png',
     './icon_mask.png',
     './icon_mono.png',
@@ -75,7 +76,7 @@ var URLS = [
     './toolFrame/cardmake'
 ]
 const getCacheName = url => {
-    if (url.indexOf("bcebos.com") > 0) {
+    if (url.indexOf("bcebos.com") > 0 || url.indexOf("cdn-cf.545.qinlili.bid") > 0) {
         return "MusicCache";
     };
     if (url.indexOf("bytecdntp.com") > 0 || url.indexOf("googleapis.com") > 0 || url.indexOf("gstatic.com") > 0 || url.indexOf("baomitu.com") > 0) {
