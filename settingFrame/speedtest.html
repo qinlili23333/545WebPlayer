@@ -25,6 +25,13 @@
         <span class="mdc-button__label" id="speedBtnLabel">测速</span>
     </button>
     <br>
+    <button class="mdc-button mdc-button--raised mdc-button--leading" style="width:80%;margin:16px;display: none;"
+        id="cfBtn">
+        <span class="mdc-button__ripple"></span>
+        <i class="material-icons mdc-button__icon" aria-hidden="true">network_check</i>
+        <span class="mdc-button__label">Cloudflare诊断</span>
+    </button>
+    <br>
     <div class="mdc-form-field">
         <div class="mdc-checkbox">
             <input type="checkbox" class="mdc-checkbox__native-control" id="otherDomain" />
@@ -39,6 +46,7 @@
         <label for="programCache">测试其他可用节点</label>
     </div>
     <br>
+    <div id="cfTrace"></div>
     <H4>程序节点</H4>
     <div id="mainDomain">
     </div>
@@ -55,7 +63,22 @@
         document.querySelectorAll('.mdc-checkbox').forEach(element => {
             new MDCCheckbox(element);
         });
+        let domain = (location.hostname == "127.0.0.1") ? "545.qinlili.bid" : location.host;
+        if (domain == "545.qinlili.bid") {
+            document.getElementById("cfBtn").style.display = "";
+            document.getElementById("cfBtn").addEventListener("click", async () => {
+                let cfTrace = (await (await fetch("https://" + domain + "/cdn-cgi/trace?ForceNoCache=1")).text()).split("\n");
+                console.log(cfTrace);
+                document.getElementById('cfTrace').innerHTML = "";
+                cfTrace.forEach(line => {
+                    let text = document.createElement("p");
+                    text.innerText = line.replace("=", ":");
+                    document.getElementById('cfTrace').appendChild(text);
+                })
+            })
+        }
         document.getElementById("speedBtn").addEventListener("click", async () => {
+            document.getElementById('cfTrace').innerHTML = "";
             document.getElementById("speedBtn").disabled = true;
             document.getElementById("speedBtnLabel").innerText = "正在测速...";
             document.getElementById("mainDomain").innerHTML = "";
