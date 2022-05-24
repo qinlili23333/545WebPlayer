@@ -75,6 +75,8 @@
         }
 
         #floatMenu {
+            display: flex;
+            flex-direction: column;
             text-align: center;
             width: 100vw;
             height: 90vh;
@@ -180,6 +182,13 @@
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">铃声裁剪器</span>
                     <span class="mdc-list-item__secondary-text">裁剪当前播放的歌曲，暂仅支持使用鼠标</span>
+                </span>
+            </li>
+            <li class="mdc-list-item" onclick="showFrameSet('toolFrame/calendar')">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">本月直播历史日历</span>
+                    <span class="mdc-list-item__secondary-text">这个月的目标...或许还没完成？</span>
                 </span>
             </li>
         </ul>

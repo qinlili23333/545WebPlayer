@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>545在线-装扮制作</title>
+    <link href="../public.css" rel="stylesheet">
+    <link crossorigin="anonymous"
+        integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ=="
+        href="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.css" rel="stylesheet">
+    <script crossorigin="anonymous"
+        integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
+        src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
+    <style>
+    </style>
+
+    <script src="../lib/html2canvas.min.js"></script>
+</head>
+
+<body style="overflow-x:hidden;">
+    <div id="settings" style="height:100vh;overflow-y:auto;overflow-y: overlay;">
+        <div style="text-align:center;">
+            <H4 id="status">正在加载直播日历...</H4>
+            <H4 id="info"></H4>
+        </div>
+        <div id="data" style="text-align:center;"></div>
+    </div>
+    <script>
+        (async () => {
+            const sec_to_time = s => {
+                let t;
+                if (s > -1) {
+                    let hour = Math.floor(s / 3600);
+                    let min = Math.floor(s / 60) % 60;
+                    let sec = s % 60;
+                    if (hour < 10) {
+                        t = '0' + hour + ":";
+                    } else {
+                        t = hour + ":";
+                    }
+
+                    if (min < 10) { t += "0"; }
+                    t += min + ":";
+                    if (sec < 10) { t += "0"; }
+                    t += sec.toFixed(0);
+                }
+                return t;
+            }
+            let historyList = await (await fetch("https://biliapi.qinlili.bid/archives?mid=15641218&sid=180061&length=100&ForceNoCache=1").catch(() => {
+                alert("读取直播历史失败！");
+                hideMenu();
+            })).json().catch(() => {
+                alert("读取直播历史失败！");
+                hideMenu();
+            });
+            let currentMonth = new Date().getMonth() + 1;
+            let currentDay = new Date().getDate();
+            let days = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
+            let liveHistory = [];
+            for (let i = 0; i < days; i++) {
+                liveHistory[i] = { day: i + 1, live: false };
+            };
+            historyList.data.archives.forEach(live => {
+                let parseTime = live.title.substring(live.title.indexOf("202"), live.title.indexOf("场"));
+                let month = parseTime.substring(parseTime.indexOf("年") + 1, parseTime.indexOf("月"));
+                if (month == currentMonth) {
+                    let day = parseTime.substring(parseTime.indexOf("月") + 1, parseTime.indexOf("日"));
+                    if (liveHistory[day - 1].live) {
+                        liveHistory[day - 1].time += live.duration;
+                    } else {
+                        liveHistory[day - 1].live = true;
+                        liveHistory[day - 1].time = live.duration;
+                    }
+                }
+            });
+            console.log(liveHistory);
+            let totalTime = 0;
+            let dataDiv = document.getElementById("data");
+            liveHistory.forEach(his => {
+                if (his.day <= currentDay) {
+                    if (his.live) {
+                        totalTime += his.time;
+                        let infoText = document.createElement("H6");
+                        infoText.innerText = currentMonth + "月" + his.day + "日  播了" + sec_to_time(his.time);
+                        dataDiv.appendChild(infoText);
+                    } else {
+                        if (his.day >= currentDay - 1) {
+                            let infoText = document.createElement("H6");
+                            infoText.innerText = currentMonth + "月" + his.day + "日  录播可能还没生成";
+                            dataDiv.appendChild(infoText);
+                        } else {
+                            let infoText = document.createElement("H6");
+                            infoText.innerText = currentMonth + "月" + his.day + "日  摆了";
+                            dataDiv.appendChild(infoText);
+                        }
+                    }
+                };
+
+            })
+            document.getElementById("status").innerText = "数据加载完成，仅统计已生成录播的直播信息";
+            document.getElementById("info").innerText = "塔宝本月直播时长为" + sec_to_time(totalTime);
+        })()
+    </script>
+</body>
+
+</html>
