@@ -1,6 +1,6 @@
 {
   "success": true,
-  "version": "2022052501",
+  "version": "2022052601",
   "songs": [
     {
       "type": "塔宝投稿",
@@ -415,7 +415,6 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%9A%8E%E7%84%B6%E8%AE%B0_20220330162240_42488.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E7%9A%8E%E7%84%B6%E8%AE%B0.ogg"
           },
-          },
           "cover": "https://i0.hdslb.com/bfs/archive/8a6488b244d03ad4a728c534e06de597dd433198.jpg@.webp",
           "quality": "OPUS192",
           "full_title": "祝大家元旦快乐！皎然记——『笙歌』",
@@ -428,7 +427,6 @@
           "url": {
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%B0%81%E5%88%80%E4%B8%8D%E4%B8%BA%E5%B3%A5%E5%B5%98_20220330163908_38248.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%B0%81%E5%88%80%E4%B8%8D%E4%B8%BA%E5%B3%A5%E5%B5%98.ogg"
-          },
           },
           "cover": "https://i0.hdslb.com/bfs/archive/0158ab045f47a3df175e84aa50a22c810cc879a1.jpg@.webp",
           "quality": "OPUS192",
@@ -844,7 +842,8 @@
         {
           "name": "暗号",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%9A%97%E5%8F%B7_20220421213153_49015.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%9A%97%E5%8F%B7_20220421213153_49015.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E6%9A%97%E5%8F%B7.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/9cb6ec4dc7e808fde52a4042df9790f83d896ad2.png@.webp",
           "quality": "OPUS192",
@@ -856,7 +855,8 @@
         {
           "name": "青媚狐",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E9%9D%92%E5%AA%9A%E7%8B%90_20220331211938_3007.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E9%9D%92%E5%AA%9A%E7%8B%90_20220331211938_3007.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E9%9D%92%E5%AA%9A%E7%8B%90.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/18d8bac9216a0242574cfe48b9d7f989b5a940cc.jpg@.webp",
           "quality": "OPUS192",
@@ -868,7 +868,8 @@
         {
           "name": "清平误",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B8%85%E5%B9%B3%E8%AF%AF_20220415214042_69439.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B8%85%E5%B9%B3%E8%AF%AF_20220415214042_69439.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E6%B8%85%E5%B9%B3%E8%AF%AF.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/e1d96912c9a5a31e473346d78e4d5d5b52ea414b.jpg@.webp",
           "quality": "OPUS192",
@@ -880,7 +881,8 @@
         {
           "name": "海海海",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%B7%E6%B5%B7%E6%B5%B7_20220415194656_23666.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%B7%E6%B5%B7%E6%B5%B7_20220415194656_23666.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E6%B5%B7%E6%B5%B7%E6%B5%B7.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/9cb6ec4dc7e808fde52a4042df9790f83d896ad2.png@.webp",
           "quality": "OPUS192",
@@ -892,7 +894,8 @@
         {
           "name": "宝贝",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%AE%9D%E8%B4%9D_20220415195119_13842.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%AE%9D%E8%B4%9D_20220415195119_13842.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E5%AE%9D%E8%B4%9D.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/9cb6ec4dc7e808fde52a4042df9790f83d896ad2.png@.webp",
           "quality": "OPUS192",
@@ -904,7 +907,8 @@
         {
           "name": "芒种",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E8%8A%92%E7%A7%8D_20220415204216_74787.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E8%8A%92%E7%A7%8D_20220415204216_74787.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E8%8A%92%E7%A7%8D.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/9cb6ec4dc7e808fde52a4042df9790f83d896ad2.png@.webp",
           "quality": "OPUS192",
@@ -916,7 +920,8 @@
         {
           "name": "还是你的笑容最可爱",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E8%BF%98%E6%98%AF%E4%BD%A0%E7%9A%84%E7%AC%91%E5%AE%B9%E6%9C%80%E5%8F%AF%E7%88%B1_20220417214712_77721.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E8%BF%98%E6%98%AF%E4%BD%A0%E7%9A%84%E7%AC%91%E5%AE%B9%E6%9C%80%E5%8F%AF%E7%88%B1_20220417214712_77721.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E8%BF%98%E6%98%AF%E4%BD%A0%E7%9A%84%E7%AC%91%E5%AE%B9%E6%9C%80%E5%8F%AF%E7%88%B1.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/a7b561a0cc9e09f829571e9f587d4923a2e5d740.png@.webp",
           "quality": "OPUS192",
@@ -928,7 +933,8 @@
         {
           "name": "绝世舞姬",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BB%9D%E4%B8%96%E8%88%9E%E5%A7%AC_20220415212813_23407.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BB%9D%E4%B8%96%E8%88%9E%E5%A7%AC_20220415212813_23407.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E7%BB%9D%E4%B8%96%E8%88%9E%E5%A7%AC.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/9cb6ec4dc7e808fde52a4042df9790f83d896ad2.png@.webp",
           "quality": "OPUS192",
@@ -940,7 +946,8 @@
         {
           "name": "舞娘",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E8%88%9E%E5%A8%98_20220411141546_61901.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E8%88%9E%E5%A8%98_20220411141546_61901.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E8%88%9E%E5%A8%98.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/e1d96912c9a5a31e473346d78e4d5d5b52ea414b.jpg@.webp",
           "quality": "OPUS192",
@@ -952,7 +959,8 @@
         {
           "name": "特务J",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%89%B9%E5%8A%A1J_20220415213215_89013.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%89%B9%E5%8A%A1J_20220415213215_89013.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E7%89%B9%E5%8A%A1J.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/e1d96912c9a5a31e473346d78e4d5d5b52ea414b.jpg@.webp",
           "quality": "OPUS192",
@@ -964,7 +972,8 @@
         {
           "name": "要抱抱",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E8%A6%81%E6%8A%B1%E6%8A%B1_20220414201107_57359.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E8%A6%81%E6%8A%B1%E6%8A%B1_20220414201107_57359.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E8%A6%81%E6%8A%B1%E6%8A%B1.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/2ccdc50f8d9ddb2ff09576cad444ba5979d44a02.jpg@.webp",
           "quality": "OPUS320",
@@ -976,7 +985,8 @@
         {
           "name": "危险派对",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%8D%B1%E9%99%A9%E6%B4%BE%E5%AF%B9_20220415192515_66976.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%8D%B1%E9%99%A9%E6%B4%BE%E5%AF%B9_20220415192515_66976.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E5%8D%B1%E9%99%A9%E6%B4%BE%E5%AF%B9.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/026d61ec54bab65543a97df26d48603a91ae8f2e.png@.webp",
           "quality": "OPUS192",
@@ -988,7 +998,8 @@
         {
           "name": "学猫叫",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%AD%A6%E7%8C%AB%E5%8F%AB_20220416211300_52289.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%AD%A6%E7%8C%AB%E5%8F%AB_20220416211300_52289.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E5%AD%A6%E7%8C%AB%E5%8F%AB.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/026d61ec54bab65543a97df26d48603a91ae8f2e.png@.webp",
           "quality": "OPUS192",
@@ -1000,7 +1011,8 @@
         {
           "name": "流光记",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%81%E5%85%89%E8%AE%B0_20220421220942_66575.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%81%E5%85%89%E8%AE%B0_20220421220942_66575.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E6%B5%81%E5%85%89%E8%AE%B0.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/026d61ec54bab65543a97df26d48603a91ae8f2e.png@.webp",
           "quality": "OPUS192",
@@ -1010,21 +1022,10 @@
           "release_date": "2022-02-12"
         },
         {
-          "name": "苏公堤",
-          "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E8%8B%8F%E5%85%AC%E5%A0%A4_20220421213903_50577.ogg"
-          },
-          "cover": "https://i0.hdslb.com/bfs/archive/026d61ec54bab65543a97df26d48603a91ae8f2e.png@.webp",
-          "quality": "OPUS192",
-          "full_title": "切歌:樱乃笙曦大铸币",
-          "origin": "https://www.bilibili.com/video/BV1wq4y187FK",
-          "source_quality": "AAC320",
-          "release_date": "2022-02-11"
-        },
-        {
           "name": "空心",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%A9%BA%E5%BF%83_20220421223528_10384.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%A9%BA%E5%BF%83_20220421223528_10384.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E7%A9%BA%E5%BF%83.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/e3dea42d955891735b2aae1ba79d31032aca73d7.png@.webp",
           "quality": "OPUS128",
@@ -1042,7 +1043,8 @@
         {
           "name": "十万粉好运来",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%8D%81%E4%B8%87%E7%B2%89_20220504210925_21858.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%8D%81%E4%B8%87%E7%B2%89_20220504210925_21858.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E6%95%B4%E6%B4%BB/%E5%8D%81%E4%B8%87%E7%B2%89.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/3cf703766388e911e2005fcb603ba82c28b2ec4a.jpg@.webp",
           "quality": "OPUS128",
@@ -1054,7 +1056,8 @@
         {
           "name": "防空警报",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E9%98%B2%E7%A9%BA%E8%AD%A6%E6%8A%A5_20220415210541_64394.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E9%98%B2%E7%A9%BA%E8%AD%A6%E6%8A%A5_20220415210541_64394.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E6%95%B4%E6%B4%BB/%E9%98%B2%E7%A9%BA%E8%AD%A6%E6%8A%A5.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/bb60ce1104429a2d73fe6350743c172f25894616.jpg@.webp",
           "quality": "OPUS128",
@@ -1066,7 +1069,8 @@
         {
           "name": "哈哈哈哈哈哈哈哈哈哈",
           "url": {
-            "yuketang": "https://yunpanx.bj.bcebos.com/v1/80272_20220416204857_10990.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/80272_20220416204857_10990.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E6%95%B4%E6%B4%BB/%E5%93%88%E5%93%88%E5%93%88%E5%93%88%E5%93%88%E5%93%88%E5%93%88%E5%93%88%E5%93%88%E5%93%88.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/09d56baa975fd712abdd32c76c7c51a3f2bd5555.png@.webp",
           "quality": "OPUS128",
@@ -1078,7 +1082,8 @@
         {
           "name": "周年小作文",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%91%A8%E5%B9%B4%E5%B0%8F%E4%BD%9C%E6%96%87_20220417213747_9443.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%91%A8%E5%B9%B4%E5%B0%8F%E4%BD%9C%E6%96%87_20220417213747_9443.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E6%95%B4%E6%B4%BB/%E5%91%A8%E5%B9%B4%E5%B0%8F%E4%BD%9C%E6%96%87.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/05f7d0a05a150dfd7e8f1ef97bb36a80862459ef.jpg@.webp",
           "quality": "OPUS192",
@@ -1090,7 +1095,8 @@
         {
           "name": "200舰小作文",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/200%E8%88%B0%E5%B0%8F%E4%BD%9C%E6%96%87_20220417213334_43344.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/200%E8%88%B0%E5%B0%8F%E4%BD%9C%E6%96%87_20220417213334_43344.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E6%95%B4%E6%B4%BB/200%E8%88%B0%E5%B0%8F%E4%BD%9C%E6%96%87.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/edf9dbb55b44b7f839dfea4ea9223622a3f02bad.jpg@.webp",
           "quality": "OPUS192",
@@ -1102,7 +1108,8 @@
         {
           "name": "本草纲目",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%9C%AC%E8%8D%89%E7%BA%B2%E7%9B%AE_20220416211735_22076.ogg"
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E6%9C%AC%E8%8D%89%E7%BA%B2%E7%9B%AE_20220416211735_22076.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E6%95%B4%E6%B4%BB/%E6%9C%AC%E8%8D%89%E7%BA%B2%E7%9B%AE.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/68c05eb4867effa29ceaaa2036472db069d89fc0.jpg@.webp",
           "quality": "OPUS192",
