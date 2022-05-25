@@ -719,6 +719,7 @@
         }
         document.title = "读取歌单...";
         const renderAudioList = async (force, update) => {
+            setStatus("加载歌单", true);
             const getAudioList = async () => {
                 let jsonData = await (await fetch("audioInfo.json?ForceNoCache=1")).json()
                 if (jsonData && jsonData.success) {
