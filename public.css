@@ -26,6 +26,11 @@
     background: #202020;
 }
 
+a {
+    color: darkorange;
+    text-decoration: none !important;
+}
+
 * {
     cursor: url('./cursor/normal.png'), default !important;
     scrollbar-width: thin;
