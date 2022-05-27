@@ -305,7 +305,7 @@
                     time += 24;
                 }
                 if (time < 4 || time > 10) {
-                    let liveStatus = await (await fetch("https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(async error => {
+                    let liveStatus = await (await fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.live.bilibili.com/bili/living_v2/15641218" : "https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(async error => {
                         await sleep(60000);
                         detectLive();
                     })).json().catch(async error => {

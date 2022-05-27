@@ -48,7 +48,7 @@
                 }
                 return t;
             }
-            let historyList = await (await fetch("https://biliapi.qinlili.bid/archives?mid=15641218&sid=180061&length=100&ForceNoCache=1").catch(() => {
+            let historyList = await (await fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.bilibili.com/x/series/archives?mid=15641218&&series_id=180061&only_normal=true&sort=desc&pn=1&ps=100&ForceNoCache=1" :"https://biliapi.qinlili.bid/archives?mid=15641218&sid=180061&length=100&ForceNoCache=1").catch(() => {
                 alert("读取直播历史失败！");
                 hideMenu();
             })).json().catch(() => {

@@ -159,7 +159,7 @@
         document.getElementById("headImg").addEventListener("click", () => {
             document.getElementById("hiddenImgUploader").click();
         });
-        fetch("https://biliapi.qinlili.bid/follow?uid=15641218&ForceNoCache=1").then(resp => resp.json().then(json => {
+        fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.bilibili.com/x/relation/stat?vmid=15641218&jsonp=jsonp&ForceNoCache=1" : "https://biliapi.qinlili.bid/follow?uid=15641218&ForceNoCache=1").then(resp => resp.json().then(json => {
             if (json.code == 0) {
                 document.getElementById("num").innerText = json.data.follower.toString().padStart(6, "0");
             }

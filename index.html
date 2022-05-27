@@ -1111,7 +1111,7 @@
                 };
                 menuList.innerHTML = "";
                 menuList.appendChild(loadMenu("正在加载录播列表..."));
-                let historyList = await (await fetch("https://biliapi.qinlili.bid/archives?mid=15641218&sid=180061&ForceNoCache=1").catch(() => {
+                let historyList = await (await fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.bilibili.com/x/series/archives?mid=15641218&&series_id=180061&only_normal=true&sort=desc&pn=1&ps=10000&ForceNoCache=1" : "https://biliapi.qinlili.bid/archives?mid=15641218&sid=180061&ForceNoCache=1").catch(() => {
                     alert("读取录播数据失败！");
                     hideMenu();
                 })).json().catch(() => {
@@ -1206,7 +1206,7 @@
                                 time += 24;
                             }
                             if (time < 4 || time > 10) {
-                                let liveStatus = await (await fetch("https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => { })).json();
+                                let liveStatus = await (await fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.live.bilibili.com/bili/living_v2/15641218" : "https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => { })).json();
                                 if (liveStatus.data && (liveStatus.data.status == 1)) {
                                     navigator.serviceWorker.ready.then(function (registration) {
                                         registration.showNotification('塔宝正在直播！', {
@@ -1230,7 +1230,7 @@
                         showMenu();
                         menuList.innerHTML = "";
                         menuList.appendChild(loadMenu("正在检测塔宝直播状态..."));
-                        let liveStatus = await (await fetch("https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => {
+                        let liveStatus = await (await fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.live.bilibili.com/bili/living_v2/15641218" : "https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => {
                             //检测失败
                             hideMenu();
                         })).json();
