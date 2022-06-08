@@ -74,7 +74,7 @@
             width: 100vw;
             height: 90vh;
             border-radius: 10px 10px 0px 0px;
-            backdrop-filter: blur(3px) brightness(100%);
+            backdrop-filter: blur(10px) brightness(100%);
             background-color: rgba(255, 255, 255, 0.75);
             margin-top: 100vh;
             margin-bottom: 0px;
@@ -125,6 +125,8 @@
         }
         
         body {
+            position: fixed;
+            height: 100%;
             overflow-x: hidden;
             width: 100vw;
             animation: rightin 0.12s;
@@ -163,7 +165,7 @@
         </button>
     </div>
 
-    <div id="settings" style="height:calc(100vh - 36px);overflow-y: auto;overflow-y: overlay;">
+    <div id="settings" style="padding-top:36px;height:100%;overflow-y: auto;overflow-y: overlay;">
         <ul class="mdc-list mdc-list--two-line checkBoxList">
             <li class="mdc-list-item" tabindex="0" id="blurCheck">
                 <span class="mdc-list-item__ripple"></span>
