@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '1.0.3.20220607'
-var VERSION_AZUSA_PATCH_USE = '1.0.2.20220527'
+var VERSION = '1.0.4.20220608'
+var VERSION_AZUSA_PATCH_USE = '1.0.3.20220607'
 var AZUSA_PATCH_SKIP_LIST = [
     './img/bai.png',
     './img/wanan.png',
@@ -131,7 +131,7 @@ self.addEventListener('fetch', event => {
 });
 self.addEventListener('install', e => {
     self.skipWaiting();
-    const install = async () => {
+    const install = async() => {
         const cache = await caches.open(CACHE_NAME)
         console.log('installing cache : ' + CACHE_NAME)
         if ((await caches.has(AZUSA_CACHE))) {
@@ -147,9 +147,9 @@ self.addEventListener('install', e => {
             })
         };
         if (self.location.host.indexOf("vercel") == -1 && self.location.host.indexOf("glitch") == -1) {
-            await cache.addAll(AZUSA_PATCH_SKIP_LIST.concat(URLS)).catch(() => { });
+            await cache.addAll(AZUSA_PATCH_SKIP_LIST.concat(URLS)).catch(() => {});
         } else {
-            await cache.addAll(AZUSA_PATCH_SKIP_LIST).catch(() => { });
+            await cache.addAll(AZUSA_PATCH_SKIP_LIST).catch(() => {});
         }
         return true;
     }
@@ -174,16 +174,23 @@ self.addEventListener('activate', e => {
         })
     )
 });
-self.addEventListener('notificationclick', function (event) {
+self.addEventListener('notificationclick', function(event) {
     event.notification.close();
     console.log(event)
     switch (event.notification.tag) {
-        case "直播推送": {
-            clients.openWindow("https://live.bilibili.com/545");
-            break;
-        }
-        default: {
-            break;
-        }
+        case "直播推送":
+            {
+                clients.openWindow("https://live.bilibili.com/545");
+                break;
+            };
+        case "直播推送客户端":
+            {
+                clients.openWindow("bilibili://live/545");
+                break;
+            };
+        default:
+            {
+                break;
+            }
     }
 }, false);

@@ -425,6 +425,7 @@
         window.codecBoost = localStorage.codecBoost ? JSON.parse(localStorage.codecBoost) : false;
         window.wasmPlayer = localStorage.wasmPlayer ? JSON.parse(localStorage.wasmPlayer) : false;
         window.fileShare = localStorage.fileShare ? JSON.parse(localStorage.fileShare) : false;
+        window.clientLive = localStorage.clientLive ? JSON.parse(localStorage.clientLive) : false;
         if (repeatSwitch) {
             document.getElementById("repeatBtn").className = "topBtn active";
         };
@@ -1216,7 +1217,7 @@
                                             body: '赶紧去直播间补充塔能量吧',
                                             badge: './icon_mono.png',
                                             icon: './icon.png',
-                                            tag: '直播推送'
+                                            tag: clientLive ? '直播推送客户端' : '直播推送'
                                         });
                                     });
                                 } else {
@@ -1238,7 +1239,7 @@
                             hideMenu();
                         })).json();
                         if (liveStatus.data && (liveStatus.data.status == 1) && confirm("塔宝正在直播，不去看直播？\n（点击确定即可快速打开直播间）")) {
-                            window.open("https://live.bilibili.com/545", "_blank");
+                            window.open(clientLive ? "bilibili://live/545" : "https://live.bilibili.com/545", "_blank");
                         }
                         hideMenu();
                     }
