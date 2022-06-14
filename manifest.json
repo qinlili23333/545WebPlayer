@@ -3,7 +3,12 @@
     "scope": "/",
     "name": "545在线",
     "short_name": "545在线",
-    "icons": [
+    "icons": [{
+            "src": "icon_badminton.webp",
+            "sizes": "1280x1280",
+            "type": "image/webp",
+            "purpose": "any"
+        },
         {
             "src": "icon.png",
             "sizes": "950x950",
