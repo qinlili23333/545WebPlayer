@@ -3,16 +3,29 @@
     "scope": "/",
     "name": "545在线",
     "short_name": "545在线",
-    "icons": [{
+    "icons": [
+        {
             "src": "icon_badminton.webp",
             "sizes": "1280x1280",
             "type": "image/webp",
             "purpose": "any"
         },
         {
+            "src": "icon_badminton.png",
+            "sizes": "1280x1280",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
             "src": "icon_badminton_mask.webp",
             "sizes": "1600x1600",
             "type": "image/webp",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icon_badminton_mask.png",
+            "sizes": "1600x1600",
+            "type": "image/png",
             "purpose": "maskable"
         },
         {
@@ -28,17 +41,26 @@
             "purpose": "maskable"
         },
         {
+            "src": "icon_badminton_mask_small.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
             "src": "icon_mono.png",
             "sizes": "256x256",
             "type": "image/png",
             "purpose": "monochrome"
         }
     ],
+    "launch_handler": {
+        "route_to": "existing-client",
+        "navigate_existing_client": "always"
+    },
     "start_url": "/",
     "display": "standalone",
     "display_override": [],
     "id": "/",
-    "lang": "zh-cn",
     "orientation": "any",
     "background_color": "#FADCBB",
     "theme_color": "#FADCBB",

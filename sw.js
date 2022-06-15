@@ -150,11 +150,6 @@ self.addEventListener('install', e => {
                 })
             })
         };
-        if (self.location.host.indexOf("vercel") == -1 && self.location.host.indexOf("glitch") == -1) {
-            await cache.addAll(AZUSA_PATCH_SKIP_LIST.concat(URLS)).catch(() => {});
-        } else {
-            await cache.addAll(AZUSA_PATCH_SKIP_LIST).catch(() => {});
-        }
         return true;
     }
     e.waitUntil(install());
