@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '1.0.4.20220608'
-var VERSION_AZUSA_PATCH_USE = '1.0.3.20220607'
+var VERSION = '1.0.5.20220615'
+var VERSION_AZUSA_PATCH_USE = '1.0.4.20220608'
 var AZUSA_PATCH_SKIP_LIST = [
     './img/bai.png',
     './img/wanan.png',
@@ -41,6 +41,10 @@ var AZUSA_PATCH_SKIP_LIST = [
     './icon.png',
     './icon_mask.png',
     './icon_mono.png',
+    './icon_badminton.webp',
+    './icon_badminton_mask.webp',
+    './icon_badminton_small.webp',
+    './icon_badminton_mask_small.webp',
     './lib/base64.js',
     './lib/long-press.min.js',
     './lib/ogvjs/ogv.js',

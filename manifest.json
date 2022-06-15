@@ -10,15 +10,21 @@
             "purpose": "any"
         },
         {
-            "src": "icon.png",
-            "sizes": "950x950",
-            "type": "image/png",
+            "src": "icon_badminton_mask.webp",
+            "sizes": "1600x1600",
+            "type": "image/webp",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icon_badminton_small.webp",
+            "sizes": "512x512",
+            "type": "image/webp",
             "purpose": "any"
         },
         {
-            "src": "icon.png",
-            "sizes": "950x950",
-            "type": "image/png",
+            "src": "icon_badminton_mask_small.webp",
+            "sizes": "512x512",
+            "type": "image/webp",
             "purpose": "maskable"
         },
         {
