@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>545在线-播放</title>
+    <title>545在线-帅比笙歌超可爱OvO-播放器-在线听歌-下载音频</title>
     <meta name="description" content="545在线，电子雷峰塔，随时补充塔能量！笙歌牌播放器，采用PWA技术，支持智能缓存本地播放，可完全断网使用，由琴梨梨驱动" />
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     <link rel="canonical" href="https://545.qinlili.bid/" />
@@ -22,41 +22,51 @@
     <script>
         document.title = "载入播放器中...";
     </script>
-    <link crossorigin="anonymous" integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ==" href="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.css" rel="stylesheet">
-    <script crossorigin="anonymous" integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ==" src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
-    <link crossorigin="anonymous" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/material-design-icons/3.0.2/iconfont/material-icons.min.css" rel="stylesheet">
+    <link crossorigin="anonymous"
+        integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ=="
+        href="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.css" rel="stylesheet">
+    <script crossorigin="anonymous"
+        integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
+        src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
+    <link crossorigin="anonymous"
+        href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/material-design-icons/3.0.2/iconfont/material-icons.min.css"
+        rel="stylesheet">
     <style>
         @keyframes leftin {
             from {
                 margin-left: -100%;
             }
+
             to {
                 margin-left: 0;
             }
         }
-        
+
         @keyframes rightin {
             from {
                 margin-left: 100%;
             }
+
             to {
                 margin-left: 0;
             }
         }
-        
+
         @keyframes bottomup {
             from {
                 bottom: -100%;
             }
+
             to {
                 bottom: 0;
             }
         }
-        
+
         @keyframes bottomdown {
             from {
                 bottom: 0;
             }
+
             to {
                 bottom: -100%;
             }
@@ -67,20 +77,24 @@
             background: transparent;
             border-radius: 0px;
         }
-        
+
         audio::-webkit-media-controls-panel {
             border-radius: 0px;
         }
-        
-         ::-webkit-scrollbar {
+
+        audio.player::class(controlBar) {
+            background-color: transparent;
+        }
+
+        ::-webkit-scrollbar {
             height: 12px;
             width: 8px;
             background: transparent;
             z-index: 12;
             overflow: visible;
         }
-        
-         ::-webkit-scrollbar-thumb {
+
+        ::-webkit-scrollbar-thumb {
             width: 10px;
             background-color: #FADCBB;
             z-index: 12;
@@ -91,19 +105,19 @@
             min-height: 32px;
             min-width: 32px;
         }
-        
-         ::-webkit-scrollbar-thumb:hover {
+
+        ::-webkit-scrollbar-thumb:hover {
             background: #FADCBB;
         }
-        
-         ::-webkit-scrollbar-corner {
+
+        ::-webkit-scrollbar-corner {
             background: #202020;
         }
-        
+
         *:focus {
             outline: none;
         }
-        
+
         * {
             cursor: url('./cursor/normal.png'), default !important;
             -webkit-tap-highlight-color: transparent;
@@ -117,7 +131,7 @@
             -webkit-user-select: none;
             user-select: none;
         }
-        
+
         html,
         body {
             position: fixed;
@@ -125,10 +139,11 @@
             width: 100vw;
             height: 100%;
         }
-        
+
         #playPanel {
-            backdrop-filter: blur(25px) brightness(100%);
-            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px) brightness(100%);
+            -webkit-backdrop-filter: blur(5px) brightness(100%);
+            background-color: rgba(255, 255, 255, 0.75);
             animation: bottomup 0.3s;
             z-index: 999;
             position: fixed;
@@ -138,18 +153,18 @@
             left: 0px;
             right: 0px;
             bottom: 0px;
-            padding: 2px;
-            background-color: transparent;
+            padding-top: 2px;
+            padding-bottom: 2px;
             box-shadow: 0px -2px 2px 1px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
         }
-        
+
         #listContainer {
             overflow: hidden;
             height: 100%;
         }
-        
+
         #audioList,
         #playList {
             width: 100vw;
@@ -160,20 +175,20 @@
             padding-bottom: 100px;
             transition: width 0.2s ease-in;
         }
-        
+
         #playList {
             animation: leftin 0.2s;
         }
-        
+
         #audioList {
             animation: rightin 0.2s;
         }
-        
+
         #menuList {
             display: flex;
             flex-direction: column;
         }
-        
+
         #tabBar {
             z-index: 999;
             position: fixed;
@@ -183,7 +198,7 @@
             right: 0px;
             top: 0px;
         }
-        
+
         #empty {
             display: none;
             margin: auto;
@@ -191,13 +206,15 @@
             height: auto;
             text-align: center;
         }
-        
+
         .controls {
             justify-content: space-between;
             display: flex;
             flex-direction: row;
+            padding-left: 2px;
+            padding-right: 2px;
         }
-        
+
         #status {
             display: flex;
             flex-direction: row;
@@ -205,7 +222,7 @@
             padding-left: 4px;
             max-width: calc(100vw - 100px);
         }
-        
+
         #tips,
         .tips32 {
             margin: auto;
@@ -213,17 +230,18 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            flex-shrink: 0;
         }
-        
+
         #loading {
             margin: 4px;
         }
-        
+
         .buttons {
             display: flex;
             flex-direction: row;
         }
-        
+
         .topBtn {
             cursor: pointer;
             border-radius: 2px;
@@ -232,24 +250,24 @@
             width: 24px;
             transition: background-color 0.2s, transform 0.3s ease-in-out;
         }
-        
+
         .topBtn:hover {
             transform: scale(1.1, 1.1);
             background-color: #cccccc;
         }
-        
+
         .topBtn:active {
             background-color: #999999
         }
-        
+
         .topBtn.active {
             background-color: #FADCBB
         }
-        
+
         #padding {
             height: 48px;
         }
-        
+
         #floatMenuContainer {
             transition: opacity 0.2s ease-in;
             opacity: 0;
@@ -264,7 +282,7 @@
             position: fixed;
             background-color: rgba(0, 0, 0, 0.15);
         }
-        
+
         #floatMenu {
             overflow-y: auto;
             overflow-y: overlay;
@@ -274,31 +292,35 @@
             max-height: calc(100% - 20vh);
             border-radius: 5px;
             backdrop-filter: blur(5px) brightness(100%);
+            -webkit-backdrop-filter: blur(5px) brightness(100%);
             background-color: rgba(255, 255, 255, 0.75);
             margin-top: 10vh;
             margin-bottom: 10vh;
             margin-left: 10vw;
             margin-right: 10vw;
         }
-        
+
         .mdc-list {
             padding: 0 0 !important;
         }
-        
+
         @media (min-width: 700px) {
             #listContainer {
                 display: flex !important;
                 flex-direction: row-reverse !important;
             }
+
             #padding {
                 height: 0px;
             }
+
             #audioList,
             #playList {
                 height: 100%;
                 display: block !important;
                 width: 50vw;
             }
+
             #tabBar {
                 display: none;
             }
@@ -311,7 +333,8 @@
         <div class="mdc-tab-scroller">
             <div class="mdc-tab-scroller__scroll-area">
                 <div class="mdc-tab-scroller__scroll-content">
-                    <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0" onclick="switchPlaylist();">
+                    <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0"
+                        onclick="switchPlaylist();">
                         <span class="mdc-tab__content">
                             <span class="mdc-tab__text-label">播放列表</span>
                         </span>
@@ -320,7 +343,8 @@
                         </span>
                         <span class="mdc-tab__ripple"></span>
                     </button>
-                    <button class="mdc-tab mdc-tab" role="tab" aria-selected="false" tabindex="-1" onclick="switchAudioList();">
+                    <button class="mdc-tab mdc-tab" role="tab" aria-selected="false" tabindex="-1"
+                        onclick="switchAudioList();">
                         <span class="mdc-tab__content">
                             <span class="mdc-tab__text-label">全部歌单</span>
                         </span>
@@ -349,7 +373,8 @@
         <div id="backupControls" class="controls" style="display:none;">
             <div id="backupButtons" class="buttons">
                 <img class="topBtn" id="playBtn" loading="lazy" onclick="switchPlay();" alt="播放" src="./img/play.svg">
-                <img class="topBtn" id="nextBtn" loading="lazy" onclick="player.dispatchEvent(new CustomEvent('ended'));" alt="下一曲" src="./img/next.svg">
+                <img class="topBtn" id="nextBtn" loading="lazy"
+                    onclick="player.dispatchEvent(new CustomEvent('ended'));" alt="下一曲" src="./img/next.svg">
             </div>
         </div>
     </div>
@@ -449,7 +474,7 @@
             };
             if (window.codecBoost) {
                 document.getElementById("playBtn").className = (audioCtx.state == "running") ? "topBtn" : "topBtn active";
-                (audioCtx.state == "running") ? audioCtx.suspend(): audioCtx.resume();
+                (audioCtx.state == "running") ? audioCtx.suspend() : audioCtx.resume();
             };
         }
         const useBackupControl = () => {
@@ -466,13 +491,15 @@
         const menuList = document.getElementById("menuList");
         if (localStorage.fullBlur && JSON.parse(localStorage.fullBlur)) {
             document.getElementById("floatMenuContainer").style.backdropFilter = "blur(3px) brightness(100%)";
+            document.getElementById("floatMenuContainer").setAttribute("style", document.getElementById("floatMenuContainer").getAttribute("style") + "-webkit-backdrop-filter:blur(3px) brightness(100%)");
+
         }
-        const showMenu = async() => {
+        const showMenu = async () => {
             document.getElementById("floatMenuContainer").style.display = "block";
             await sleep(1);
             document.getElementById("floatMenuContainer").style.opacity = 1;
         };
-        const hideMenu = async() => {
+        const hideMenu = async () => {
             document.getElementById("floatMenuContainer").style.opacity = 0;
             await sleep(200);
             document.getElementById("floatMenuContainer").style.display = "none";
@@ -487,7 +514,7 @@
             document.getElementById("tips").innerText = text;
         };
         let player = document.getElementById("player");
-        (async() => {
+        (async () => {
             if (window.codecBoost && window.wasmPlayer) {
                 alert("播放器初始化失败！\n请勿同时启用Codec Boost和WASM播放器！");
                 bottomdown();
@@ -515,21 +542,21 @@
         })();
         //初始化媒体控制
         if ('mediaSession' in navigator) {
-            navigator.mediaSession.setActionHandler('play', function() {
+            navigator.mediaSession.setActionHandler('play', function () {
                 if (window.backupControl) {
                     switchPlay();
                 } else {
                     player.play();
                 }
             });
-            navigator.mediaSession.setActionHandler('pause', function() {
+            navigator.mediaSession.setActionHandler('pause', function () {
                 if (window.backupControl) {
                     switchPlay();
                 } else {
                     player.pause();
                 }
             });
-            navigator.mediaSession.setActionHandler('nexttrack', function() {
+            navigator.mediaSession.setActionHandler('nexttrack', function () {
                 playNext();
             });
         }
@@ -607,7 +634,7 @@
             imgItem.style = "max-height:calc(80vh - 96px);width:100%;height:auto;object-fit:cover;border-radius: 5px 5px 0px 0px;";
             menuList.appendChild(imgItem);
             let saveMenu = makeMenu("保存图片", "./img/save.svg");
-            saveMenu.addEventListener("click", async(e) => {
+            saveMenu.addEventListener("click", async (e) => {
                 //保存图片
                 e.stopPropagation();
                 saveMenu.setSpan("正在保存...");
@@ -618,7 +645,7 @@
             });
             menuList.appendChild(saveMenu);
             let shareMenu = makeMenu("分享图片", "./img/share.svg");
-            shareMenu.addEventListener("click", async(e) => {
+            shareMenu.addEventListener("click", async (e) => {
                 //保存图片
                 e.stopPropagation();
                 shareMenu.setSpan("正在准备分享...");
@@ -661,7 +688,7 @@
         }
         const makeSongMenu = songInfo => {
             let dlMenu = makeMenu("下载", "./img/download.svg");
-            dlMenu.addEventListener("click", async() => {
+            dlMenu.addEventListener("click", async () => {
                 setStatus("正在下载" + songInfo.name, true);
                 let playBlob = URL.createObjectURL(await (await fetch(songInfo.url[cdn])).blob());
                 dlFile(playBlob, songInfo.name + ".ogg");
@@ -714,9 +741,9 @@
             }
         }
         document.title = "读取歌单...";
-        const renderAudioList = async(force, update) => {
+        const renderAudioList = async (force, update) => {
             setStatus("加载歌单", true);
-            const getAudioList = async() => {
+            const getAudioList = async () => {
                 let jsonData = await (await fetch("audioInfo.json?ForceNoCache=1")).json()
                 if (jsonData && jsonData.success) {
                     return jsonData.songs;
@@ -761,10 +788,10 @@
                 let backItem = makeItem("...", "返回歌单列表", "./img/folder.svg")
                 audioFilesModule.appendChild(backItem);
                 backItem.addEventListener("click", () => {
-                        audioFolderModule.style.display = "block";
-                        audioFilesModule.style.display = "none";
-                    })
-                    //逐一匹配
+                    audioFolderModule.style.display = "block";
+                    audioFilesModule.style.display = "none";
+                })
+                //逐一匹配
                 audioList.forEach(folderInfo => {
                     folderInfo.list.forEach(songInfo => {
                         if ((songInfo.name.indexOf(searchValue) >= 0) || (songInfo.full_title.indexOf(searchValue) >= 0)) {
@@ -823,10 +850,10 @@
                     let backItem = makeItem("...", "返回上一级目录", "./img/folder.svg")
                     audioFilesModule.appendChild(backItem);
                     backItem.addEventListener("click", () => {
-                            audioFolderModule.style.display = "block";
-                            audioFilesModule.style.display = "none";
-                        })
-                        //渲染子项目
+                        audioFolderModule.style.display = "block";
+                        audioFilesModule.style.display = "none";
+                    })
+                    //渲染子项目
                     folderInfo.list.forEach(songInfo => {
                         let song = makeItem(songInfo.name, songInfo.full_title, songInfo.cover, (event) => {
                             //歌曲菜单
@@ -866,7 +893,7 @@
                             event.stopPropagation();
                             menuList.innerHTML = "";
                             let deleteMenu = makeMenu("从播放列表里删除", "./img/delete.svg");
-                            deleteMenu.addEventListener("click", async() => {
+                            deleteMenu.addEventListener("click", async () => {
                                 if (confirm("你想要从播放列表删除 " + songInfo.name + " 吗？")) {
                                     removeFromPlayList(songInfo);
                                 }
@@ -916,62 +943,62 @@
             renderPlayList();
         }
         const playNow = async song => {
-                document.title = song.name + "-545在线";
-                setStatus("正在下载" + song.name, true);
-                window.currentPlay = song.name;
-                let playBlob = await (await fetch(song.url[cdn]).catch(error => {
-                    setStatus("下载失败" + song.name, false);
-                    if (!navigator.onLine) {
-                        //断网跳过未下载歌曲
+            document.title = song.name + "-545在线";
+            setStatus("正在下载" + song.name, true);
+            window.currentPlay = song.name;
+            let playBlob = await (await fetch(song.url[cdn]).catch(error => {
+                setStatus("下载失败" + song.name, false);
+                if (!navigator.onLine) {
+                    //断网跳过未下载歌曲
+                    player.dispatchEvent(new CustomEvent("ended"));
+                } else {
+                    playNow(song);
+                }
+            })).blob();
+            if (window.currentPlay == song.name) {
+                if (window.codecBoost) {
+                    setStatus("解码音频中", true);
+                    if (!window.audioCtx) {
+                        window.audioCtx = new AudioContext();
+                    }
+                    let decodeBuffer = await window.audioCtx.decodeAudioData(await playBlob.arrayBuffer());
+                    let source = audioCtx.createBufferSource();
+                    if (window.currentSource) {
+                        window.currentSource.disconnect(window.audioCtx.destination);
+                    }
+                    window.currentSource = source;
+                    source.buffer = decodeBuffer;
+                    source.connect(window.audioCtx.destination);
+                    source.start(0);
+                    document.getElementById("playBtn").className = (audioCtx.state == "running") ? "topBtn active" : "topBtn";
+                    source.onended = () => {
                         player.dispatchEvent(new CustomEvent("ended"));
-                    } else {
-                        playNow(song);
                     }
-                })).blob();
-                if (window.currentPlay == song.name) {
-                    if (window.codecBoost) {
-                        setStatus("解码音频中", true);
-                        if (!window.audioCtx) {
-                            window.audioCtx = new AudioContext();
-                        }
-                        let decodeBuffer = await window.audioCtx.decodeAudioData(await playBlob.arrayBuffer());
-                        let source = audioCtx.createBufferSource();
-                        if (window.currentSource) {
-                            window.currentSource.disconnect(window.audioCtx.destination);
-                        }
-                        window.currentSource = source;
-                        source.buffer = decodeBuffer;
-                        source.connect(window.audioCtx.destination);
-                        source.start(0);
-                        document.getElementById("playBtn").className = (audioCtx.state == "running") ? "topBtn active" : "topBtn";
-                        source.onended = () => {
-                            player.dispatchEvent(new CustomEvent("ended"));
-                        }
-                        setStatus(song.name, false);
-                        localStorage.lastPlay = JSON.stringify(song);
-                    } else {
-                        player.src = URL.createObjectURL(playBlob);
-                        player.play();
-                        setStatus(song.name, false);
-                        localStorage.lastPlay = JSON.stringify(song);
-                    }
-                };
-                if ('mediaSession' in navigator) {
-                    navigator.mediaSession.metadata = new MediaMetadata({
-                        title: song.name,
-                        artist: "帅比笙歌超可爱OvO",
-                        album: "545在线",
-                        artwork: [{
-                            sizes: "320x180", // <- MUST BE EXACTLY!
-                            src: URL.createObjectURL(await (await fetch(song.cover, {
-                                mode: "cors"
-                            })).blob()),
-                            type: ""
-                        }]
-                    });
-                };
-            }
-            //恢复播放
+                    setStatus(song.name, false);
+                    localStorage.lastPlay = JSON.stringify(song);
+                } else {
+                    player.src = URL.createObjectURL(playBlob);
+                    player.play();
+                    setStatus(song.name, false);
+                    localStorage.lastPlay = JSON.stringify(song);
+                }
+            };
+            if ('mediaSession' in navigator) {
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title: song.name,
+                    artist: "帅比笙歌超可爱OvO",
+                    album: "545在线",
+                    artwork: [{
+                        sizes: "320x180", // <- MUST BE EXACTLY!
+                        src: URL.createObjectURL(await (await fetch(song.cover, {
+                            mode: "cors"
+                        })).blob()),
+                        type: ""
+                    }]
+                });
+            };
+        }
+        //恢复播放
         const recoverPlay = () => {
             if (localStorage.lastPlay) {
                 let song = JSON.parse(localStorage.lastPlay)
@@ -1164,7 +1191,7 @@
             alert("你正在64位操作系统上使用32位浏览器!为了更快的访问速度请改用64位浏览器!");
         }
         if (navigator.serviceWorker && !navigator.serviceWorker.controller) {
-            const install = async(silent) => {
+            const install = async (silent) => {
                 let tip = loadMenu("正在准备Service Worker...");
                 if (!silent) {
                     menuList.innerHTML = "";
@@ -1199,20 +1226,20 @@
         } else {
             //检测直播
             if (window.self === window.top) {
-                (async() => {
+                (async () => {
                     if (localStorage.livePush && JSON.parse(localStorage.livePush)) {
                         if (Notification.permission == "default") {
                             await Notification.requestPermission();
                         };
-                        const detectLive = async() => {
+                        const detectLive = async () => {
                             let time = new Date().getHours() + (new Date().getTimezoneOffset() / 60 + 8);
                             if (time < 0) {
                                 time += 24;
                             }
                             if (time < 4 || time > 10) {
-                                let liveStatus = await (await fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.live.bilibili.com/bili/living_v2/15641218" : "https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => {})).json();
+                                let liveStatus = await (await fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.live.bilibili.com/bili/living_v2/15641218" : "https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => { })).json();
                                 if (liveStatus.data && (liveStatus.data.status == 1)) {
-                                    navigator.serviceWorker.ready.then(function(registration) {
+                                    navigator.serviceWorker.ready.then(function (registration) {
                                         registration.showNotification('塔宝正在直播！', {
                                             body: '赶紧去直播间补充塔能量吧',
                                             badge: './icon_mono.png',
@@ -1257,13 +1284,13 @@
                 let script = document.createElement('script');
                 script.src = "https://lib.baomitu.com/eruda/2.4.1/eruda.min.js";
                 document.body.appendChild(script);
-                script.onload = function() {
-                        eruda.init()
-                    }
-                    //开启隐藏终端模式
+                script.onload = function () {
+                    eruda.init()
+                }
+                //开启隐藏终端模式
                 let terminalItem = makeItem("韭菜盒子", "运行一些能补充营养的指令", "./img/ottobox.svg");
                 audioFolderModule.insertAdjacentElement("afterbegin", terminalItem);
-                terminalItem.addEventListener("click", async() => {
+                terminalItem.addEventListener("click", async () => {
                     //处理终端命令
                     let command = prompt("太监传话");
                     if (command == null) {

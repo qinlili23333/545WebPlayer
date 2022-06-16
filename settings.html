@@ -21,8 +21,12 @@
     <script>
         document.title = "载入设置中..."
     </script>
-    <link crossorigin="anonymous" integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ==" href="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.css" rel="stylesheet">
-    <script crossorigin="anonymous" integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ==" src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
+    <link crossorigin="anonymous"
+        integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ=="
+        href="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.css" rel="stylesheet">
+    <script crossorigin="anonymous"
+        integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
+        src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
     <script src="./lib/base64.js"></script>
     <script src="./lib/long-press.min.js"></script>
     <style>
@@ -30,24 +34,27 @@
             from {
                 margin-left: -100%;
             }
+
             to {
                 margin-left: 0;
             }
         }
-        
+
         @keyframes rightin {
             from {
                 margin-left: 100%;
             }
+
             to {
                 margin-left: 0;
             }
         }
-        
+
         @keyframes rightout {
             from {
                 margin-left: 0;
             }
+
             to {
                 margin-left: 100%;
             }
@@ -68,13 +75,14 @@
             position: fixed;
             background-color: rgba(0, 0, 0, 0.15);
         }
-        
+
         #floatMenu {
             text-align: center;
             width: 100vw;
             height: 90vh;
             border-radius: 10px 10px 0px 0px;
             backdrop-filter: blur(10px) brightness(100%);
+            -webkit-backdrop-filter: blur(10px) brightness(100%);
             background-color: rgba(255, 255, 255, 0.75);
             margin-top: 100vh;
             margin-bottom: 0px;
@@ -82,30 +90,30 @@
             margin-right: 0px;
             transition: margin-top 0.5s ease-out;
         }
-        
+
         #closeBtn {
             width: 100vw;
             height: 32px;
             border-radius: 10px 10px 0px 0px;
             transition: background-color 0.2s, transform 0.3s ease-in-out;
         }
-        
+
         #closeBtn:hover {
             background-color: #cccccc;
         }
-        
+
         .mdc-list {
             padding: 0 0 !important;
         }
-        
+
         #closeBtn:active {
             background-color: #999999
         }
-        
+
         #closeBtn.active {
             background-color: #FADCBB
         }
-        
+
         #loading {
             width: 32px;
             position: absolute;
@@ -115,7 +123,7 @@
             left: 0px;
             right: 0px;
         }
-        
+
         #setFrame {
             max-width: 600px;
             margin: auto;
@@ -123,7 +131,7 @@
             width: 100%;
             height: calc(100% - 32px);
         }
-        
+
         body {
             position: fixed;
             height: 100%;
@@ -131,19 +139,20 @@
             width: 100vw;
             animation: rightin 0.12s;
         }
-        
+
         .bigBackground {
             background-image: url(./img/大塔.webp);
             background-repeat: no-repeat;
             background-size: auto 100vh;
             background-position: center;
         }
-        
+
         @media (min-width: 700px) {
             #settings {
                 display: flex !important;
                 flex-direction: row !important;
             }
+
             .checkBoxList,
             .menuList {
                 width: 50vw !important;
@@ -171,7 +180,7 @@
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">全屏模糊模式</span>
-                <span class="mdc-list-item__secondary-text">使用全屏模糊替代菜单局部模糊，有性能损失</span>
+                    <span class="mdc-list-item__secondary-text">使用全屏模糊替代菜单局部模糊，有性能损失</span>
                 </span>
                 <div class="mdc-checkbox" style="position:absolute;float:right;right:0px;">
                     <input type="checkbox" class="mdc-checkbox__native-control" id="blurCheckbox" />
@@ -189,7 +198,7 @@
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">使用列表随机模式</span>
-                <span class="mdc-list-item__secondary-text">替代真随机模式，减少重复可能性</span>
+                    <span class="mdc-list-item__secondary-text">替代真随机模式，减少重复可能性</span>
                 </span>
                 <div class="mdc-checkbox" style="position:absolute;float:right;right:0px;">
                     <input type="checkbox" class="mdc-checkbox__native-control" id="randomCheckbox" />
@@ -207,7 +216,7 @@
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">直播推送模式</span>
-                <span class="mdc-list-item__secondary-text">隐藏检测界面，直接推送通知</span>
+                    <span class="mdc-list-item__secondary-text">隐藏检测界面，直接推送通知</span>
                 </span>
                 <div class="mdc-checkbox" style="position:absolute;float:right;right:0px;">
                     <input type="checkbox" class="mdc-checkbox__native-control" id="pushCheckbox" />
@@ -225,7 +234,7 @@
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">用客户端看直播</span>
-                <span class="mdc-list-item__secondary-text">调用B站APP/UWP客户端</span>
+                    <span class="mdc-list-item__secondary-text">调用B站APP/UWP客户端</span>
                 </span>
                 <div class="mdc-checkbox" style="position:absolute;float:right;right:0px;">
                     <input type="checkbox" class="mdc-checkbox__native-control" id="clientCheckbox" />
@@ -243,7 +252,7 @@
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">自动切换到直播（壁纸模式）</span>
-                <span class="mdc-list-item__secondary-text">直播开始时自动从播放器切换到直播</span>
+                    <span class="mdc-list-item__secondary-text">直播开始时自动从播放器切换到直播</span>
                 </span>
                 <div class="mdc-checkbox" style="position:absolute;float:right;right:0px;">
                     <input type="checkbox" class="mdc-checkbox__native-control" id="directLiveCheckbox" />
@@ -261,7 +270,7 @@
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">Codec Boost</span>
-                <span class="mdc-list-item__secondary-text">解决播放卡顿，只要不卡顿就别开</span>
+                    <span class="mdc-list-item__secondary-text">解决播放卡顿，只要不卡顿就别开</span>
                 </span>
                 <div class="mdc-checkbox" style="position:absolute;float:right;right:0px;">
                     <input type="checkbox" class="mdc-checkbox__native-control" id="codecCheckbox" />
@@ -279,7 +288,7 @@
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">WASM播放模式</span>
-                <span class="mdc-list-item__secondary-text">解决苹果系设备无法播放的问题</span>
+                    <span class="mdc-list-item__secondary-text">解决苹果系设备无法播放的问题</span>
                 </span>
                 <div class="mdc-checkbox" style="position:absolute;float:right;right:0px;">
                     <input type="checkbox" class="mdc-checkbox__native-control" id="wasmCheckbox" />
@@ -297,7 +306,7 @@
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">分享文件</span>
-                <span class="mdc-list-item__secondary-text">分享音频文件而不是链接</span>
+                    <span class="mdc-list-item__secondary-text">分享音频文件而不是链接</span>
                 </span>
                 <div class="mdc-checkbox" style="position:absolute;float:right;right:0px;">
                     <input type="checkbox" class="mdc-checkbox__native-control" id="fileCheckbox" />
@@ -315,7 +324,7 @@
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">开发者模式</span>
-                <span class="mdc-list-item__secondary-text">启用一些辅助开发的工具</span>
+                    <span class="mdc-list-item__secondary-text">启用一些辅助开发的工具</span>
                 </span>
                 <div class="mdc-checkbox" style="position:absolute;float:right;right:0px;">
                     <input type="checkbox" class="mdc-checkbox__native-control" id="erudaCheckbox" />
@@ -335,63 +344,63 @@
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">你有一份新的问卷可参与</span>
-                <span class="mdc-list-item__secondary-text">你的建议可以帮助545在线做得更好</span>
+                    <span class="mdc-list-item__secondary-text">你的建议可以帮助545在线做得更好</span>
                 </span>
             </li>
             <li class="mdc-list-item" onclick="showFrameSet('settingFrame/sortcdn/sortcdn')">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">CDN设置</span>
-                <span class="mdc-list-item__secondary-text">修改CDN优先级</span>
+                    <span class="mdc-list-item__secondary-text">修改CDN优先级</span>
                 </span>
             </li>
             <li class="mdc-list-item" onclick="showFrameSet('settingFrame/cache')">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">缓存管理</span>
-                <span class="mdc-list-item__secondary-text">清除缓存以释放设备空间</span>
+                    <span class="mdc-list-item__secondary-text">清除缓存以释放设备空间</span>
                 </span>
             </li>
             <li class="mdc-list-item" onclick="showFrameSet('settingFrame/import')">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">播放列表管理</span>
-                <span class="mdc-list-item__secondary-text">导入导出/全部缓存</span>
+                    <span class="mdc-list-item__secondary-text">导入导出/全部缓存</span>
                 </span>
             </li>
             <li class="mdc-list-item" onclick="showFrameSet('settingFrame/speedtest')">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">网络测速</span>
-                <span class="mdc-list-item__secondary-text">诊断网络问题并寻找最快节点</span>
+                    <span class="mdc-list-item__secondary-text">诊断网络问题并寻找最快节点</span>
                 </span>
             </li>
             <li class="mdc-list-item" onclick="showFrameSet('settingFrame/quality')">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">音频质量指南</span>
-                <span class="mdc-list-item__secondary-text">了解本项目的音频质量及投稿须知</span>
+                    <span class="mdc-list-item__secondary-text">了解本项目的音频质量及投稿须知</span>
                 </span>
             </li>
             <li class="mdc-list-item" onclick="showFrameSet('settingFrame/privacy')">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">隐私须知</span>
-                <span class="mdc-list-item__secondary-text">了解琴梨梨将如何使用你的数据</span>
+                    <span class="mdc-list-item__secondary-text">了解琴梨梨将如何使用你的数据</span>
                 </span>
             </li>
             <li class="mdc-list-item" onclick="showFrameSet('settingFrame/source')">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">开源许可</span>
-                <span class="mdc-list-item__secondary-text">了解有关本项目的开源信息</span>
+                    <span class="mdc-list-item__secondary-text">了解有关本项目的开源信息</span>
                 </span>
             </li>
             <li class="mdc-list-item" onclick="debugInfo();" id="debugMode">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">诊断信息</span>
-                <span class="mdc-list-item__secondary-text">获取用于辅助琴梨梨修Bug的诊断信息</span>
+                    <span class="mdc-list-item__secondary-text">获取用于辅助琴梨梨修Bug的诊断信息</span>
                 </span>
             </li>
         </ul>
@@ -405,7 +414,7 @@
     </div>
     <script>
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
-        const playOutAnim = async() => {
+        const playOutAnim = async () => {
             document.body.style.animation = "rightout 0.12s";
             document.body.style.marginLeft = "100%";
             await sleep(75);
@@ -448,7 +457,9 @@
             }
             document.body.appendChild(ip);
         }
-        document.getElementById("debugMode").addEventListener('long-press', () => {
+        document.getElementById("debugMode").addEventListener('long-press', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
             if (confirm("你真的要进行性能测试么？\n测试过程中设备将一段时间不会响应操作\n性能测试只代表设备性能，不能协助解决非性能问题")) {
                 let startTime = Date.now()
                 for (let i = 0; i <= 10000; i++) {
@@ -474,7 +485,7 @@
                 newFrame.style.padding = "0px";
             });
         }
-        window.addEventListener("message", async(event) => {
+        window.addEventListener("message", async (event) => {
             console.log(event.data)
             if (event.data == "close") {
                 document.getElementById("floatMenuContainer").style.opacity = 0;
@@ -489,6 +500,7 @@
         }, false);
         if (localStorage.fullBlur && JSON.parse(localStorage.fullBlur)) {
             document.getElementById("floatMenuContainer").style.backdropFilter = "blur(3px) brightness(100%)";
+            document.getElementById("floatMenuContainer").setAttribute("style", document.getElementById("floatMenuContainer").getAttribute("style") + "-webkit-backdrop-filter:blur(3px) brightness(100%)");
         };
         const showFrameSet = async url => {
             //使用iframe渲染设置
@@ -499,7 +511,7 @@
             document.getElementById("loading").style.display = "block";
             rebuildFrame(url);
         }
-        document.getElementById("closeBtn").addEventListener("click", async(event) => {
+        document.getElementById("closeBtn").addEventListener("click", async (event) => {
             event.stopPropagation();
             document.getElementById("floatMenu").style.marginTop = "100vh";
             document.getElementById("floatMenuContainer").style.opacity = 0;
@@ -554,7 +566,7 @@
                 document.getElementById("settings").className = "bigBackground";
             }
         });
-        (async() => {
+        (async () => {
             let quizJson = await (await fetch("./quiz.json?ForceNoCache=1")).json();
             if (quizJson.success) {
                 if (!(localStorage.lastQuiz == quizJson.quiz_ver)) {
@@ -573,7 +585,7 @@
                 let script = document.createElement('script');
                 script.src = "https://lib.baomitu.com/eruda/2.4.1/eruda.min.js";
                 document.body.appendChild(script);
-                script.onload = function() {
+                script.onload = function () {
                     eruda.init()
                 }
             }

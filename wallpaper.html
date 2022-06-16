@@ -22,80 +22,100 @@
             0% {
                 opacity: 0;
             }
+
             20% {
                 opacity: 0;
             }
+
             25% {
                 opacity: 1;
             }
+
             45% {
                 opacity: 1;
             }
+
             50% {
                 opacity: 0;
             }
+
             75% {
                 opacity: 0;
             }
+
             100% {
                 opacity: 0;
             }
         }
-        
+
         @keyframes smallm {
             0% {
                 opacity: 1;
             }
+
             20% {
                 opacity: 1;
             }
+
             25% {
                 opacity: 0;
             }
+
             45% {
                 opacity: 0;
             }
+
             50% {
                 opacity: 1;
             }
+
             70% {
                 opacity: 1;
             }
+
             75% {
                 opacity: 0;
             }
+
             95% {
                 opacity: 0;
             }
+
             100% {
                 opacity: 1;
             }
         }
-        
+
         @keyframes smalla {
             0% {
                 opacity: 0;
             }
+
             25% {
                 opacity: 0;
             }
+
             50% {
                 opacity: 0;
             }
+
             70% {
                 opacity: 0;
             }
+
             75% {
                 opacity: 1;
             }
+
             95% {
                 opacity: 1;
             }
+
             100% {
                 opacity: 0;
             }
         }
-        
+
         body {
             user-select: none;
             margin: 0px;
@@ -107,13 +127,14 @@
             background-size: cover;
             background-position: center;
         }
-        
+
         #playerFrame {
             z-index: 5;
             border-radius: 5px;
             box-shadow: 0 0 20px rgb(0 0 0 / 25%);
             background-color: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(3px) brightness(100%);
+            -webkit-backdrop-filter: blur(3px) brightness(100%);
             position: absolute;
             right: 32px;
             top: 10vh;
@@ -121,15 +142,15 @@
             min-width: 320px;
             transition: right 1s ease-out, top 1s ease-out, width 2s ease-in-out, max-width 2s ease-in-out;
         }
-        
+
         .musicFrame {
             width: 30vw;
         }
-        
+
         .liveFrame {
             width: 80vw;
         }
-        
+
         #displayBtn {
             z-index: 1;
             opacity: 0;
@@ -140,11 +161,11 @@
             height: 80vh;
             transition: opacity 0.25s ease-in-out;
         }
-        
+
         #displayBtn:hover {
             opacity: 1;
         }
-        
+
         #displayBtnIcon {
             filter: drop-shadow(3px 3px 2px rgba(255, 255, 255, .7));
             width: 32px;
@@ -152,7 +173,7 @@
             transition: transform 0.5s ease-in-out;
             transform: rotate(270deg);
         }
-        
+
         #liveStatus {
             cursor: pointer;
             border-radius: 0px 0px 0px 10px;
@@ -164,16 +185,17 @@
             height: 40px;
             width: 200px;
             right: -160px;
-            transition: right 0.5s ease-in-out, box-shadow 0.5s, backdrop-filter 0.5s, background-color 0.5s;
+            transition: right 0.5s ease-in-out, box-shadow 0.5s, backdrop-filter 0.5s, -webkit-backdrop-filter 0.5s, background-color 0.5s;
         }
-        
+
         #liveStatus:hover {
             box-shadow: 0 0 20px rgb(0 0 0 / 25%);
             backdrop-filter: blur(3px) brightness(100%);
+            -webkit-backdrop-filter: blur(3px) brightness(100%);
             background-color: rgba(255, 255, 255, .5);
             right: 0px !important;
         }
-        
+
         #liveIcon {
             height: 32px;
             width: 32px;
@@ -181,7 +203,7 @@
             transition: filter 0.5s;
             filter: invert(51%) sepia(1%) saturate(915%) hue-rotate(322deg) brightness(90%) contrast(86%);
         }
-        
+
         #liveText {
             height: 24px;
             margin: 8px;
@@ -189,7 +211,7 @@
             line-height: 24px;
             font-size: 24px;
         }
-        
+
         #anim {
             width: 128px;
             height: 128px;
@@ -198,7 +220,7 @@
             top: -128px;
             transition: top 0.5s ease-out;
         }
-        
+
         .smallAnim {
             width: 128px;
             height: 128px;
@@ -209,7 +231,8 @@
 </head>
 
 <body>
-    <iframe src="./" id="playerFrame" class="musicFrame" frameborder="0" framespacing="0" scrolling="no" allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
+    <iframe src="./" id="playerFrame" class="musicFrame" frameborder="0" framespacing="0" scrolling="no"
+        allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
     <div id="displayBtn">
         <img id="displayBtnIcon" src="./img/expand.svg" alt="切换音频面板">
     </div>
@@ -218,14 +241,17 @@
         <span id="liveText">连接中请稍等</span>
     </div>
     <div id="anim">
-        <img class="smallAnim" id="smallp" style="animation: smallp 3s;animation-iteration-count: infinite;" src="./img/smallp.webp">
-        <img class="smallAnim" id="smallm" style="animation: smallm 3s;animation-iteration-count: infinite;" src="./img/smallm.webp">
-        <img class="smallAnim" id="smalla" style="animation: smalla 3s;animation-iteration-count: infinite;" src="./img/smalla.webp">
+        <img class="smallAnim" id="smallp" style="animation: smallp 3s;animation-iteration-count: infinite;"
+            src="./img/smallp.webp">
+        <img class="smallAnim" id="smallm" style="animation: smallm 3s;animation-iteration-count: infinite;"
+            src="./img/smallm.webp">
+        <img class="smallAnim" id="smalla" style="animation: smalla 3s;animation-iteration-count: infinite;"
+            src="./img/smalla.webp">
     </div>
     <script>
         window.directLive = localStorage.directLive ? JSON.parse(localStorage.directLive) : false;
         window.autoLive = false;
-        window.addEventListener("message", async(event) => {
+        window.addEventListener("message", async (event) => {
             console.log(event.data)
             if (event.data == "exit") {
                 location.replace("./")
@@ -256,7 +282,7 @@
                         };
                 }
             });
-            document.getElementById("liveStatus").addEventListener("click", async() => {
+            document.getElementById("liveStatus").addEventListener("click", async () => {
                 //切换直播页面
                 switch (isLive) {
                     case true:
@@ -280,7 +306,7 @@
                 document.getElementById("liveText").innerText = "连接中请稍等";
                 detectLive();
             });
-            const detectLive = async() => {
+            const detectLive = async () => {
                 let time = new Date().getHours() + (new Date().getTimezoneOffset() / 60 + 8);
                 if (time < 0) {
                     time += 24;

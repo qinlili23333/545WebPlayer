@@ -61,6 +61,7 @@ a {
     width: 100vw;
     top: 0px;
     backdrop-filter: blur(10px) brightness(100%);
+    -webkit-backdrop-filter: blur(10px) brightness(100%);
     background-color: rgba(255, 255, 255, 0.75);
     z-index: 10;
     display: flex;

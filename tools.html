@@ -21,31 +21,38 @@
     <script>
         document.title = "载入工具箱中..."
     </script>
-    <link crossorigin="anonymous" integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ==" href="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.css" rel="stylesheet">
-    <script crossorigin="anonymous" integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ==" src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
+    <link crossorigin="anonymous"
+        integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ=="
+        href="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.css" rel="stylesheet">
+    <script crossorigin="anonymous"
+        integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
+        src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
     <style>
         @keyframes leftin {
             from {
                 margin-left: -100%;
             }
+
             to {
                 margin-left: 0;
             }
         }
-        
+
         @keyframes rightin {
             from {
                 margin-left: 100%;
             }
+
             to {
                 margin-left: 0;
             }
         }
-        
+
         @keyframes rightout {
             from {
                 margin-left: 0;
             }
+
             to {
                 margin-left: 100%;
             }
@@ -66,7 +73,7 @@
             position: fixed;
             background-color: rgba(0, 0, 0, 0.15);
         }
-        
+
         #floatMenu {
             display: flex;
             flex-direction: column;
@@ -75,6 +82,7 @@
             height: 90vh;
             border-radius: 10px 10px 0px 0px;
             backdrop-filter: blur(10px) brightness(100%);
+            -webkit-backdrop-filter: blur(10px) brightness(100%);
             background-color: rgba(255, 255, 255, 0.75);
             margin-top: 100vh;
             margin-bottom: 0px;
@@ -82,30 +90,30 @@
             margin-right: 0px;
             transition: margin-top 0.5s ease-out;
         }
-        
+
         #closeBtn {
             width: 100vw;
             height: 32px;
             border-radius: 10px 10px 0px 0px;
             transition: background-color 0.2s, transform 0.3s ease-in-out;
         }
-        
+
         #closeBtn:hover {
             background-color: #cccccc;
         }
-        
+
         .mdc-list {
             padding: 0 0 !important;
         }
-        
+
         #closeBtn:active {
             background-color: #999999
         }
-        
+
         #closeBtn.active {
             background-color: #FADCBB
         }
-        
+
         #loading {
             width: 32px;
             position: absolute;
@@ -115,7 +123,7 @@
             left: 0px;
             right: 0px;
         }
-        
+
         #setFrame {
             max-width: 600px;
             margin: auto;
@@ -123,7 +131,7 @@
             width: 100%;
             height: calc(100% - 32px);
         }
-        
+
         body {
             position: fixed;
             height: 100%;
@@ -131,19 +139,20 @@
             width: 100vw;
             animation: rightin 0.12s;
         }
-        
+
         .bigBackground {
             background-image: url(./img/大塔.webp);
             background-repeat: no-repeat;
             background-size: auto 100vh;
             background-position: center;
         }
-        
+
         @media (min-width: 700px) {
             #settings {
                 display: flex !important;
                 flex-direction: row !important;
             }
+
             .checkBoxList,
             .menuList {
                 width: 50vw !important;
@@ -168,21 +177,21 @@
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">制作装扮卡片</span>
-                <span class="mdc-list-item__secondary-text">编号默认为粉丝数量</span>
+                    <span class="mdc-list-item__secondary-text">编号默认为粉丝数量</span>
                 </span>
             </li>
             <li class="mdc-list-item" onclick="showFrameSet('toolFrame/audioCutter/',true)">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">铃声裁剪器</span>
-                <span class="mdc-list-item__secondary-text">裁剪当前播放的歌曲，暂仅支持使用鼠标</span>
+                    <span class="mdc-list-item__secondary-text">裁剪当前播放的歌曲，暂仅支持使用鼠标</span>
                 </span>
             </li>
             <li class="mdc-list-item" onclick="showFrameSet('toolFrame/calendar')">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">本月直播历史日历</span>
-                <span class="mdc-list-item__secondary-text">这个月的目标...或许还没完成？</span>
+                    <span class="mdc-list-item__secondary-text">这个月的目标...或许还没完成？</span>
                 </span>
             </li>
         </ul>
@@ -196,7 +205,7 @@
     </div>
     <script>
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
-        const playOutAnim = async() => {
+        const playOutAnim = async () => {
             document.body.style.animation = "rightout 0.12s";
             document.body.style.marginLeft = "100%";
             await sleep(75);
@@ -233,7 +242,7 @@
                 newFrame.style.padding = "0px";
             });
         };
-        window.addEventListener("message", async(event) => {
+        window.addEventListener("message", async (event) => {
             console.log(event.data)
             if (event.data == "close") {
                 document.getElementById("floatMenuContainer").style.opacity = 0;
@@ -248,8 +257,9 @@
         }, false);
         if (localStorage.fullBlur && JSON.parse(localStorage.fullBlur)) {
             document.getElementById("floatMenuContainer").style.backdropFilter = "blur(3px) brightness(100%)";
+            document.getElementById("floatMenuContainer").setAttribute("style", document.getElementById("floatMenuContainer").getAttribute("style") + "-webkit-backdrop-filter:blur(3px) brightness(100%)");
         };
-        const showFrameSet = async(url, wide) => {
+        const showFrameSet = async (url, wide) => {
             //使用iframe渲染设置
             document.getElementById("floatMenuContainer").style.display = "block";
             await sleep(1);
@@ -261,7 +271,7 @@
                 document.getElementById("setFrame").style.maxWidth = "100vw";
             }
         }
-        document.getElementById("closeBtn").addEventListener("click", async(event) => {
+        document.getElementById("closeBtn").addEventListener("click", async (event) => {
             event.stopPropagation();
             document.getElementById("floatMenu").style.marginTop = "100vh";
             document.getElementById("floatMenuContainer").style.opacity = 0;
@@ -281,7 +291,7 @@
                 let script = document.createElement('script');
                 script.src = "https://lib.baomitu.com/eruda/2.4.1/eruda.min.js";
                 document.body.appendChild(script);
-                script.onload = function() {
+                script.onload = function () {
                     eruda.init()
                 }
             }
