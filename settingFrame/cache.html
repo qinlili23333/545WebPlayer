@@ -118,7 +118,7 @@
 
             if (Math.abs(bytes) < thresh) {
                 return bytes + ' B';
-            }
+            };
 
             const units = si
                 ? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
@@ -163,11 +163,11 @@
             };
             if (document.getElementById("imageCache").checked) {
                 await caches.delete("ImageCache");
-            }
+            };
             if (document.getElementById("listCache").checked) {
                 localStorage.removeItem("cacheSong")
-            }
-            window.parent.postMessage("close");
+            };
+            window.parent.postMessage("close", "*");
         })
     </script>
 </body>
