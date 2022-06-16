@@ -404,6 +404,14 @@
         </div>
     </div>
     <script>
+        window.isBiliLite = false;
+        const $ = text => {
+            if (text == '.h5-download-bar') {
+                window.isBiliLite = true;
+                const biliLiteHook = { hide: () => { console.log("BiliLite detected, enable extension functions...") } };
+                return biliLiteHook;
+            }
+        }
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay))
         window.MDCTabBar = mdc.tabBar.MDCTabBar;
         window.MDCList = mdc.list.MDCList;
@@ -687,14 +695,16 @@
             return loadDiv;
         }
         const makeSongMenu = songInfo => {
-            let dlMenu = makeMenu("下载", "./img/download.svg");
-            dlMenu.addEventListener("click", async () => {
-                setStatus("正在下载" + songInfo.name, true);
-                let playBlob = URL.createObjectURL(await (await fetch(songInfo.url[cdn])).blob());
-                dlFile(playBlob, songInfo.name + ".ogg");
-                setStatus("下载" + songInfo.name + "成功", false);
-            });
-            menuList.appendChild(dlMenu);
+            if (!window.isBiliLite) {
+                let dlMenu = makeMenu("下载", "./img/download.svg");
+                dlMenu.addEventListener("click", async () => {
+                    setStatus("正在下载" + songInfo.name, true);
+                    let playBlob = URL.createObjectURL(await (await fetch(songInfo.url[cdn])).blob());
+                    dlFile(playBlob, songInfo.name + ".ogg");
+                    setStatus("下载" + songInfo.name + "成功", false);
+                });
+                menuList.appendChild(dlMenu);
+            }
             let coverMenu = makeMenu("查看封面", "./img/cover.svg");
             coverMenu.addEventListener("click", (event) => {
                 event.stopPropagation();
@@ -706,11 +716,13 @@
                 window.open(songInfo.origin, "_blank")
             });
             menuList.appendChild(goMenu);
-            let shareMenu = makeMenu("分享", "./img/share.svg");
-            shareMenu.addEventListener("click", () => {
-                shareSong(songInfo);
-            });
-            menuList.appendChild(shareMenu);
+            if (!window.isBiliLite) {
+                let shareMenu = makeMenu("分享", "./img/share.svg");
+                shareMenu.addEventListener("click", () => {
+                    shareSong(songInfo);
+                });
+                menuList.appendChild(shareMenu);
+            }
             let qualityMenu = makeMenu("播放音质:" + songInfo.quality + "/原始音质:" + songInfo.source_quality, "./img/audiofile.svg");
             menuList.appendChild(qualityMenu);
             let timeMenu = makeMenu("发布时间:" + songInfo.release_date, "./img/calendar.svg");
@@ -1105,7 +1117,7 @@
                 }, parseInt(time) * 60000)
             })
             menuList.appendChild(sleepMenu);
-            if (window.innerWidth > window.innerHeight && window.innerHeight > 600 && window.self === window.top) {
+            if (window.innerWidth > window.innerHeight && window.innerHeight > 600 && window.self === window.top && !window.isBiliLite) {
                 let wallpaperMenu = makeMenu("壁纸模式", "./img/fullscreen.svg");
                 wallpaperMenu.addEventListener("click", () => {
                     bottomdown();
@@ -1151,8 +1163,12 @@
                 historyList.data.archives.forEach(live => {
                     let liveMenu = makeMenu(live.title.replace("【直播回放】", ""))
                     liveMenu.addEventListener("click", e => {
-                        e.stopPropagation();
-                        openLiveFrame(live.aid, live.bvid);
+                        if (window.isBiliLite) {
+                            window.open("https://www.bilibili.com/video/" + live.bvid, "_blank")
+                        } else {
+                            e.stopPropagation();
+                            openLiveFrame(live.aid, live.bvid);
+                        }
                     })
                     menuList.appendChild(liveMenu);
                 })
@@ -1188,7 +1204,7 @@
             alert("你的浏览器不支持Service Worker，你应该换个浏览器了");
         }
         if (navigator.userAgent.indexOf("WOW64") > 1 && window.self === window.top) {
-            alert("你正在64位操作系统上使用32位浏览器!为了更快的访问速度请改用64位浏览器!");
+            alert(window.isBiliLite ? "为什么你要在64位操作系统上装32位的BiliLite？" : "你正在64位操作系统上使用32位浏览器!为了更快的访问速度请改用64位浏览器!");
         }
         if (navigator.serviceWorker && !navigator.serviceWorker.controller) {
             const install = async (silent) => {
@@ -1227,11 +1243,15 @@
             //检测直播
             if (window.self === window.top) {
                 (async () => {
+                    await sleep(100)
                     if (localStorage.livePush && JSON.parse(localStorage.livePush)) {
                         if (Notification.permission == "default") {
                             await Notification.requestPermission();
                         };
                         const detectLive = async () => {
+                            if (window.isBiliLite) {
+                                return false;
+                            }
                             let time = new Date().getHours() + (new Date().getTimezoneOffset() / 60 + 8);
                             if (time < 0) {
                                 time += 24;
@@ -1258,17 +1278,19 @@
                         };
                         detectLive();
                     } else {
-                        showMenu();
-                        menuList.innerHTML = "";
-                        menuList.appendChild(loadMenu("正在检测塔宝直播状态..."));
-                        let liveStatus = await (await fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.live.bilibili.com/bili/living_v2/15641218" : "https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => {
-                            //检测失败
+                        if (!window.isBiliLite) {
+                            showMenu();
+                            menuList.innerHTML = "";
+                            menuList.appendChild(loadMenu("正在检测塔宝直播状态..."));
+                            let liveStatus = await (await fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.live.bilibili.com/bili/living_v2/15641218" : "https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => {
+                                //检测失败
+                                hideMenu();
+                            })).json();
+                            if (liveStatus.data && (liveStatus.data.status == 1) && confirm("塔宝正在直播，不去看直播？\n（点击确定即可快速打开直播间）")) {
+                                window.open(clientLive ? "bilibili://live/545" : "https://live.bilibili.com/545", "_blank");
+                            }
                             hideMenu();
-                        })).json();
-                        if (liveStatus.data && (liveStatus.data.status == 1) && confirm("塔宝正在直播，不去看直播？\n（点击确定即可快速打开直播间）")) {
-                            window.open(clientLive ? "bilibili://live/545" : "https://live.bilibili.com/545", "_blank");
                         }
-                        hideMenu();
                     }
                 })();
             }

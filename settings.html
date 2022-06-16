@@ -234,7 +234,7 @@
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
                     <span class="mdc-list-item__primary-text">用客户端看直播</span>
-                    <span class="mdc-list-item__secondary-text">调用B站APP/UWP客户端</span>
+                    <span class="mdc-list-item__secondary-text" id="clientDescription">调用B站官方APP/UWP客户端</span>
                 </span>
                 <div class="mdc-checkbox" style="position:absolute;float:right;right:0px;">
                     <input type="checkbox" class="mdc-checkbox__native-control" id="clientCheckbox" />
@@ -413,6 +413,28 @@
         </div>
     </div>
     <script>
+        window.isBiliLite = false;
+        const $ = text => {
+            if (text == '.h5-download-bar') {
+                window.isBiliLite = true;
+                const biliLiteHook = {
+                    hide: () => {
+                        console.log("BiliLite detected, enable extension functions...")
+                        document.getElementById("clientCheckbox").checked = true;
+                        document.getElementById("clientCheckbox").disabled = true;
+                        document.getElementById("clientDescription").innerText = "已检测到BiliLite客户端";
+                        document.getElementById("clientCheck").addEventListener("click", (e) => {
+                            e.stopPropagation();
+                        }, true);
+                        document.getElementById("pushCheck").style.display = "none";
+                        document.getElementById("fileCheck").style.display = "none";
+                        document.getElementById("directLiveCheck").style.display = "none";
+                        window.removeEventListener('resize', showDirectLive);
+                    }
+                };
+                return biliLiteHook;
+            }
+        }
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
         const playOutAnim = async () => {
             document.body.style.animation = "rightout 0.12s";
