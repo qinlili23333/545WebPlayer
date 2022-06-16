@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '1.0.5.20220615'
-var VERSION_AZUSA_PATCH_USE = '1.0.4.20220608'
+var VERSION = '1.0.6.20220616'
+var VERSION_AZUSA_PATCH_USE = '1.0.5.20220615'
 var AZUSA_PATCH_SKIP_LIST = [
     './img/bai.png',
     './img/wanan.png',

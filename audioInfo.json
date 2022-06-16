@@ -1,6 +1,23 @@
 {
   "success": true,
-  "version": "2022053001",
+  "version": "2022061601",
+  "domains": {
+    "yuketang": [
+      "https://bj.bcebos.com/yunpanx/",
+      "https://yunpanx.bj.bcebos.com/v1/"
+    ],
+    "cloudflare": [
+      "https://cdn-cf.545.qinlili.bid/",
+      "https://545-cdn.pages.dev/"
+    ],
+    "biliimage": [
+      "https://i0.hdslb.com/bfs/",
+      "https://i1.hdslb.com/bfs/",
+      "https://i2.hdslb.com/bfs/",
+      "https://i3.hdslb.com/bfs/",
+      "https://i4.hdslb.com/bfs/",
+    ]
+  },
   "songs": [
     {
       "type": "塔宝投稿",

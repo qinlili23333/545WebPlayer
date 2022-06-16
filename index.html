@@ -1275,7 +1275,7 @@
                                 let songInfo = prompt("输入符合格式的歌曲信息");
                                 try {
                                     addToPlayList(JSON.parse(songInfo));
-                                } catch {
+                                } catch (e) {
                                     alert("解析失败");
                                 }
                                 break;

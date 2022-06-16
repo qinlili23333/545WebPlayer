@@ -7,15 +7,9 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href="../public.css" rel="stylesheet">
-    <link crossorigin="anonymous"
-        integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ=="
-        href="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.css" rel="stylesheet">
-    <script crossorigin="anonymous"
-        integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
-        src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
-    <link crossorigin="anonymous"
-        href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/material-design-icons/3.0.2/iconfont/material-icons.min.css"
-        rel="stylesheet">
+    <link crossorigin="anonymous" integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ==" href="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.css" rel="stylesheet">
+    <script crossorigin="anonymous" integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ==" src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
+    <link crossorigin="anonymous" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/material-design-icons/3.0.2/iconfont/material-icons.min.css" rel="stylesheet">
     <script src="../lib/base64.js"></script>
 </head>
 
@@ -28,8 +22,7 @@
     </button>
     <p id="cacheStatus"></p>
     <H4 style="padding:16px;">下方文本框内容即为你的播放列表信息</H4>
-    <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label"
-        style="padding:10px;height:auto;width:100%;">
+    <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label" style="padding:10px;height:auto;width:100%;">
         <span class="mdc-text-field__ripple"></span>
         <span class="mdc-text-field__resizer" style="width:100%;">
             <textarea class="mdc-text-field__input" rows="8" cols="40" aria-label="Label" id="playList"
@@ -68,7 +61,7 @@
                 } else {
                     alert("解析播放列表失败，请检查你的输入！");
                 }
-            } catch {
+            } catch (e) {
                 alert("解析播放列表失败，请检查你的输入！");
             }
         });
