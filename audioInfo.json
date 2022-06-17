@@ -1052,6 +1052,20 @@
           "release_date": "2022-02-12"
         },
         {
+          "name": "苏公堤",
+          "url": {
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E8%8B%8F%E5%85%AC%E5%A0%A4_20220617110634_6120.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E8%8B%8F%E5%85%AC%E5%A0%A4V2.ogg"
+          },
+          "cover": "https://i0.hdslb.com/bfs/archive/a67ec5eea83766d998c39dab3fa69645f079875c.png@.webp",
+          "quality": "OPUS256",
+          "full_title": "切歌:樱乃笙曦&孙小花|优化:琴梨梨[Hi-Res]",
+          "origin": "https://www.bilibili.com/video/BV1wq4y187FK",
+          "source_quality": "AAC320",
+          "release_date": "2022-02-11",
+          "hi_res_id": "8067059-598594023-9780a1"
+        },
+        {
           "name": "九张机",
           "url": {
             "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B9%9D%E5%BC%A0%E6%9C%BA_20220530153906_67681.ogg",

@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '1.0.6.20220616'
-var VERSION_AZUSA_PATCH_USE = '1.0.5.20220615'
+var VERSION = '1.0.7.20220617'
+var VERSION_AZUSA_PATCH_USE = '1.0.6.20220616'
 var AZUSA_PATCH_SKIP_LIST = [
     './img/bai.png',
     './img/wanan.png',
@@ -111,7 +111,7 @@ self.addEventListener('fetch', event => {
             });
         }
     }
-    if (event.request.method == "GET" && (event.request.url.indexOf("http") == 0) && (event.request.url.indexOf("ForceNoCache") == -1)) {
+    if (event.request.method == "GET" && (event.request.url.indexOf("http") == 0) && (event.request.url.indexOf("ForceNoCache") == -1) && (event.request.url.indexOf("webapi.ctfile.com") == -1)) {
         event.respondWith(
             caches.open(getCacheName(event.request.url)).then(async cache => {
                 return cache.match(event.request).then(response => {
@@ -135,7 +135,7 @@ self.addEventListener('fetch', event => {
 });
 self.addEventListener('install', e => {
     self.skipWaiting();
-    const install = async() => {
+    const install = async () => {
         const cache = await caches.open(CACHE_NAME)
         console.log('installing cache : ' + CACHE_NAME)
         if ((await caches.has(AZUSA_CACHE))) {
@@ -173,7 +173,7 @@ self.addEventListener('activate', e => {
         })
     )
 });
-self.addEventListener('notificationclick', function(event) {
+self.addEventListener('notificationclick', function (event) {
     event.notification.close();
     console.log(event)
     switch (event.notification.tag) {
