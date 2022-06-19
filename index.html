@@ -826,6 +826,7 @@
                     if (songs) {
                         localStorage.cacheSong = JSON.stringify(songs);
                         window.audioList = songs;
+                        renderAudioList(false, false)
                     }
                 })
             } else {
@@ -842,7 +843,6 @@
             window.audioList = audioList;
             //渲染全部歌单
             const audioFolderModule = document.getElementById("audioFolderModule");
-            audioFolderModule.style.display = "none";
             audioFolderModule.innerHTML = "";
             let searchItem = makeItem("搜索", "本地歌单搜索，搜不到请设置内更新歌单", "./img/search.svg");
             searchItem.addEventListener("click", () => {
@@ -940,7 +940,6 @@
             })
             const list = new MDCList(audioFolderModule);
             const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
-            audioFolderModule.style.display = "block";
         }
         const renderPlayList = () => {
             const empty = () => {

@@ -24,6 +24,19 @@
       "description": "塔宝投稿的独唱歌曲",
       "list": [
         {
+          "name": "三月雨",
+          "url": {
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B8%89%E6%9C%88%E9%9B%A8_20220619180925_24246.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%B8%89%E6%9C%88%E9%9B%A8.ogg"
+          },
+          "cover": "https://i0.hdslb.com/bfs/archive/5efa5779f351f3077801bf0ef883663c109ff044.jpg@.webp",
+          "quality": "OPUS128",
+          "full_title": "【三月雨】国风温柔带你重温超经典歌曲——「笙歌」",
+          "origin": "https://www.bilibili.com/video/BV1et4y1h7F1",
+          "source_quality": "AAC192",
+          "release_date": "2022-06-19"
+        },
+        {
           "name": "周大侠",
           "url": {
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%91%A8%E5%A4%A7%E4%BE%A0_20220523195805_59650.ogg",
@@ -34,7 +47,8 @@
           "full_title": "《天天跳刘畊宏的管人唱的刚学会的周大侠》——锻炼身体 从我做起",
           "origin": "https://www.bilibili.com/video/BV135411X7X3",
           "source_quality": "AAC320",
-          "release_date": "2022-05-23"
+          "release_date": "2022-05-23",
+          "half": true
         },
         {
           "name": "懒人",
@@ -60,7 +74,8 @@
           "full_title": "送给大家《甜甜的》保持好心情！",
           "origin": "https://www.bilibili.com/video/BV1VY4y1p7kU",
           "source_quality": "AAC320",
-          "release_date": "2022-04-15"
+          "release_date": "2022-04-15",
+          "half": true
         },
         {
           "name": "letting go",
