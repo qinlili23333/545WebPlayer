@@ -412,6 +412,28 @@
                 return biliLiteHook;
             }
         }
+        const loadScriptAsync = link => {
+            return new Promise(resolve => {
+                let script = document.createElement("script");
+                script.src = link;
+                script.onload = resolve;
+                document.body.appendChild(script);
+            });
+        }
+        (async () => {
+            if (localStorage.skipSplash ? JSON.parse(localStorage.skipSplash) : false) {
+                return;
+            };
+            const hamoodConfig = {
+                data: "./hamood.json?ForceNoCache=1",
+                forceSkipPreload: false,
+                showLoadingTip: false
+            }
+            let startTime = Date.now();
+            await loadScriptAsync("https://gen2.qinlili.bid/libs/hamood.min.js");
+            let loadUseTime = Date.now() - startTime;
+            Hamood.init(hamoodConfig, (loadUseTime >= 500));
+        })();
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay))
         window.MDCTabBar = mdc.tabBar.MDCTabBar;
         window.MDCList = mdc.list.MDCList;
@@ -441,14 +463,6 @@
         }
         const bottomdown = () => {
             document.getElementById("playPanel").style.animation = "bottomdown 0.15s";
-        }
-        const loadScriptAsync = link => {
-            return new Promise(resolve => {
-                let script = document.createElement("script");
-                script.src = link;
-                script.onload = resolve;
-                document.body.appendChild(script);
-            });
         }
     </script>
     <script>
@@ -1032,7 +1046,7 @@
                     localStorage.lastPlay = JSON.stringify(song);
                 } else {
                     player.src = URL.createObjectURL(playBlob);
-                    player.play();
+                    player.play().catch(() => { "Need user action first." });
                     setStatus(song.name, false);
                     localStorage.lastPlay = JSON.stringify(song);
                 }

@@ -1,0 +1,15 @@
+{
+    "splash": [
+        {
+            "minRatio": 0.3,
+            "maxRatio": 0.75,
+            "pic": "./img/hamood/default.webp?ForceNoCache=1",
+            "name": "default_splash",
+            "maxRepeat": 20,
+            "maxDailyRepeat": 3,
+            "link": "https://space.bilibili.com/15641218/",
+            "showTime": 3,
+            "text": "关注塔宝喵关注塔宝谢谢喵"
+        }
+    ]
+}

@@ -320,6 +320,24 @@
                     <div class="mdc-checkbox__ripple"></div>
                 </div>
             </li>
+            <li class="mdc-list-item" id="splashCheck">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">跳过开屏</span>
+                    <span class="mdc-list-item__secondary-text">不再显示开屏页面</span>
+                </span>
+                <div class="mdc-checkbox" style="position:absolute;float:right;right:0px;">
+                    <input type="checkbox" class="mdc-checkbox__native-control" id="splashCheckbox" />
+                    <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                            <path class="mdc-checkbox__checkmark-path" fill="none"
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                    </div>
+                    <div class="mdc-checkbox__ripple"></div>
+                </div>
+            </li>
             <li class="mdc-list-item" id="erudaCheck">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
@@ -572,6 +590,7 @@
         initCheckbox("erudaEnabled", "erudaCheckbox");
         initCheckbox("directLive", "directLiveCheckbox");
         initCheckbox("clientLive", "clientCheckbox");
+        initCheckbox("skipSplash", "splashCheckbox");
         const showDirectLive = () => {
             if (window.innerWidth > window.innerHeight && window.innerHeight > 600 || !(window.self === window.top)) {
                 document.getElementById("directLiveCheck").style.display = "flex";
