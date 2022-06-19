@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>545在线-春联制作</title>
+    <link href="../public.css" rel="stylesheet">
+    <!--从b站css里抄来的字体-->
+    <style>
+        @font-face {
+            font-family: YRDZST;
+            src: url(../font/YRDZST-Heavy.woff2);
+        }
+    </style>
+    <link crossorigin="anonymous"
+        integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ=="
+        href="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.css" rel="stylesheet">
+    <script crossorigin="anonymous"
+        integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
+        src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
+    <link crossorigin="anonymous"
+        href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/material-design-icons/3.0.2/iconfont/material-icons.min.css"
+        rel="stylesheet">
+    <style>
+        #cardContainer {
+            aspect-ratio: 792/1102;
+            margin-left: 15vw;
+            width: 70vw;
+        }
+
+        #baseImg {
+            object-fit: cover;
+            position: absolute;
+            width: 70vw;
+        }
+
+        #text {
+            font-size: 12.5vw;
+            writing-mode: vertical-lr;
+            position: absolute;
+            font-family: 'YRDZST';
+            color: black;
+            word-wrap: break-word;
+            top: 36vw;
+            left: 53vw;
+            -webkit-text-stroke: 0.3px gold;
+        }
+
+        [contenteditable] {
+            user-select: text;
+            -webkit-user-select: text;
+        }
+    </style>
+
+    <script src="../lib/html2canvas.min.js"></script>
+</head>
+
+<body style="overflow-x:hidden;">
+    <div id="settings" style="height:100vh;overflow-y:auto;overflow-y: overlay;">
+        <div id="cardContainer">
+            <img id="baseImg" src="../img/chunlian.webp">
+            <span id="text" contenteditable="true">奥利安费</span>
+        </div>
+        <H4 style="padding-top:12px;width:100vw;text-align: center;">点击春联编辑</H4>
+        <input type="file" style="display:none;" id="hiddenImgUploader">
+        <button class="mdc-button mdc-button--raised mdc-button--leading"
+            style="width:80%;margin-left:10vw;margin-top:24px;" id="saveBtn">
+            <span class="mdc-button__ripple"></span>
+            <i class="material-icons mdc-button__icon" aria-hidden="true">cloud_download</i>
+            <span class="mdc-button__label" id="downBtnLabel">保存图片</span>
+        </button>
+    </div>
+    <script>
+        if (window.self === window.top) {
+            location.replace("/tools?chunlian")
+        }
+        document.getElementById("saveBtn").addEventListener("click", () => {
+            html2canvas(document.querySelector("#cardContainer")).then(canvas => {
+                let eleLink = document.createElement('a');
+                eleLink.download = "春联.webp";
+                eleLink.style.display = 'none';
+                eleLink.href = canvas.toDataURL("image/webp", 1.0);;
+                document.body.appendChild(eleLink);
+                eleLink.click();
+                document.body.removeChild(eleLink);
+            });
+        });
+    </script>
+</body>
+
+</html>

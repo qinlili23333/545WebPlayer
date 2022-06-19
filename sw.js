@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '1.0.7.20220617'
-var VERSION_AZUSA_PATCH_USE = '1.0.6.20220616'
+var VERSION = '1.0.8.20220619'
+var VERSION_AZUSA_PATCH_USE = '1.0.7.20220617'
 var AZUSA_PATCH_SKIP_LIST = [
     './img/bai.png',
     './img/wanan.png',
@@ -13,6 +13,7 @@ var AZUSA_PATCH_SKIP_LIST = [
     './img/audiofile.svg',
     './img/broadcast.svg',
     './img/close.svg',
+    './img/chunlian.webp',
     './img/cover.svg',
     './img/calendar.svg',
     './img/download.svg',
@@ -58,10 +59,13 @@ var AZUSA_PATCH_SKIP_LIST = [
     './toolFrame/cardres/base.png',
     './toolFrame/cardres/fansnum.ttf',
     './toolFrame/audioCutter/',
-    './toolFrame/audioCutter/dist/index.js',
-    './toolFrame/audioCutter/dist/worker.js',
+    //'./toolFrame/audioCutter/dist/index.js',
+    //'./toolFrame/audioCutter/dist/worker.js',
     './toolFrame/audioCutter/vendor/Mp3LameEncoder.min.js',
     './toolFrame/audioCutter/vendor/Mp3LameEncoder.min.js.mem',
+    './font/YRDZST-Heavy.woff2',
+    'https://gen2.qinlili.bid/libs/hamood.min.js',
+    'https://ctfile.qinlili.bid/ctget.js'
 ]
 var CACHE_NAME = APP_PREFIX + VERSION
 var AZUSA_CACHE = APP_PREFIX + VERSION_AZUSA_PATCH_USE
@@ -77,7 +81,9 @@ var URLS = [
     './settingFrame/privacy',
     './settingFrame/quality',
     './settingFrame/source',
-    './toolFrame/cardmake'
+    './toolFrame/cardmake',
+    './toolFrame/calendar',
+    './toolFrame/chunlian'
 ]
 const getCacheName = url => {
     if (url.indexOf("bcebos.com") > 0 || url.indexOf("cdn-cf.545.qinlili.bid") > 0) {
