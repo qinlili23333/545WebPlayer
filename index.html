@@ -582,7 +582,7 @@
                 playNext();
             });
         }
-        const makeItem = (name, info, avatar, menuCallback) => {
+        const makeItem = (name, info, avatar, menuCallback, redDot) => {
             let newItem = document.createElement("li");
             newItem.className = "mdc-list-item";
             let rippleSpan = document.createElement("span");
@@ -622,6 +622,9 @@
                 menuBtn.innerText = "more_vert"
                 menuBtn.addEventListener("click", menuCallback);
                 menuBtn.className = "mdc-icon-button material-icons";
+                if (redDot) {
+                    menuBtn.style.color = "red";
+                };
                 menu.appendChild(menuBtn);
                 newItem.appendChild(menu);
             }
@@ -768,6 +771,7 @@
             });
             menuList.appendChild(coverMenu)
             let goMenu = makeMenu("查看原始投稿", "./img/link.svg");
+            goMenu.id = "goMenu";
             goMenu.addEventListener("click", () => {
                 window.open(songInfo.origin, "_blank")
             });
@@ -809,8 +813,10 @@
             }
         }
         document.title = "读取歌单...";
-        const renderAudioList = async (force, update) => {
-            setStatus("加载歌单", true);
+        const renderAudioList = async (force, update, silent) => {
+            if (!silent) {
+                setStatus("加载歌单", true);
+            };
             const getAudioList = async () => {
                 let jsonData = await (await fetch("audioInfo.json?ForceNoCache=1")).json()
                 if (jsonData && jsonData.success) {
@@ -826,7 +832,7 @@
                     if (songs) {
                         localStorage.cacheSong = JSON.stringify(songs);
                         window.audioList = songs;
-                        renderAudioList(false, false)
+                        renderAudioList(false, false, true)
                     }
                 })
             } else {
@@ -837,8 +843,10 @@
                     alert("读取歌单失败！请尝试刷新页面重试！");
                 }
             }
-            setStatus("就绪", false)
-            document.title = "545在线-播放";
+            if (!silent) {
+                setStatus("就绪", false)
+                document.title = "545在线-播放";
+            }
             console.log(audioList);
             window.audioList = audioList;
             //渲染全部歌单
@@ -942,6 +950,7 @@
             const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
         }
         const renderPlayList = () => {
+            const currentDate = new Date();
             const empty = () => {
                 audioListModule.innerHTML = "";
                 document.getElementById("empty").style.display = "block";
@@ -955,6 +964,15 @@
                     audioListModule.style.display = "none";
                     audioListModule.innerHTML = "";
                     window.list.forEach(songInfo => {
+                        let needRed = false
+                        if (songInfo.official) {
+                            let releaseDate = songInfo.release_date.split("-");
+                            let compareDate = new Date(releaseDate[0], releaseDate[1] - 1, releaseDate[2]);
+                            let far = (currentDate.getTime() - compareDate.getTime()) / 86400000;
+                            if (far < 14 && !songInfo.viewed) {
+                                needRed = true;
+                            }
+                        };
                         let song = makeItem(songInfo.name, songInfo.full_title, songInfo.cover, (event) => {
                             //歌曲菜单
                             event.stopPropagation();
@@ -967,8 +985,18 @@
                             });
                             menuList.appendChild(deleteMenu);
                             makeSongMenu(songInfo);
+                            if (needRed) {
+                                let goMenu = document.getElementById("goMenu");
+                                goMenu.style.backgroundColor = "wheat";
+                                goMenu.getElementsByClassName("mdc-list-item__text")[0].innerText = "去给塔宝一键三连";
+                                goMenu.addEventListener("click", () => {
+                                    songInfo.viewed = true;
+                                    localStorage.playList = JSON.stringify(window.list);
+                                })
+
+                            }
                             showMenu();
-                        });
+                        }, needRed);
                         song.addEventListener("click", () => {
                             //立即播放
                             playNow(songInfo);
@@ -1051,16 +1079,17 @@
                 }
             };
             if ('mediaSession' in navigator) {
+                await (await fetch(song.cover, {
+                    mode: "cors"
+                })).blob();
                 navigator.mediaSession.metadata = new MediaMetadata({
                     title: song.name,
                     artist: "帅比笙歌超可爱OvO",
                     album: "545在线",
                     artwork: [{
-                        sizes: "320x180", // <- MUST BE EXACTLY!
-                        src: URL.createObjectURL(await (await fetch(song.cover, {
-                            mode: "cors"
-                        })).blob()),
-                        type: ""
+                        sizes: "320x180",
+                        src: song.cover,
+                        type: "image/webp"
                     }]
                 });
             };
