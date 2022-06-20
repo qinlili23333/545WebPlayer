@@ -430,7 +430,7 @@
                 showLoadingTip: false
             }
             let startTime = Date.now();
-            await loadScriptAsync("https://gen2.qinlili.bid/libs/hamood.min.js");
+            await loadScriptAsync("./lib/hamood.min.js");
             let loadUseTime = Date.now() - startTime;
             Hamood.init(hamoodConfig, (loadUseTime >= 500));
         })();
@@ -726,7 +726,7 @@
                     dlHiMenu.addEventListener("click", async () => {
                         if (!window.ctfile) {
                             setStatus("加载城通网盘解析模块", true);
-                            await loadScriptAsync("https://ctfile.qinlili.bid/ctget.js");
+                            await loadScriptAsync("./lib/ctget.min.js");
                         }
                         setStatus("获取下载地址", true);
                         let fileInfo = await window.ctfile.getByID(songInfo.hi_res_id, "547873715");
