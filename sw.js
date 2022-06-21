@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '1.0.9.20220620'
-var VERSION_AZUSA_PATCH_USE = '1.0.8.20220619'
+var VERSION = '1.1.0.20220621'
+var VERSION_AZUSA_PATCH_USE = '1.0.9.20220620'
 var AZUSA_PATCH_SKIP_LIST = [
     './img/bai.png',
     './img/wanan.png',
@@ -49,6 +49,8 @@ var AZUSA_PATCH_SKIP_LIST = [
     './lib/base64.js',
     './lib/long-press.min.js',
     './lib/ogvjs/ogv.js',
+    './lib/ctget.min.js',
+    //'./lib/hamood.min.js',
     './lib/ogvjs/ogv-decoder-audio-opus-wasm.js',
     './lib/ogvjs/ogv-decoder-audio-opus-wasm.wasm',
     './lib/ogvjs/ogv-demuxer-ogg-wasm.js',
@@ -59,8 +61,8 @@ var AZUSA_PATCH_SKIP_LIST = [
     './toolFrame/cardres/base.png',
     './toolFrame/cardres/fansnum.ttf',
     './toolFrame/audioCutter/',
-    //'./toolFrame/audioCutter/dist/index.js',
-    //'./toolFrame/audioCutter/dist/worker.js',
+    './toolFrame/audioCutter/dist/index.js',
+    './toolFrame/audioCutter/dist/worker.js',
     './toolFrame/audioCutter/vendor/Mp3LameEncoder.min.js',
     './toolFrame/audioCutter/vendor/Mp3LameEncoder.min.js.mem',
     './font/YRDZST-Heavy.woff2',
