@@ -7,6 +7,9 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link href="../public.css" rel="stylesheet">
+    <script crossorigin="anonymous"
+        integrity="sha512-EAKzSKex+PXC0U9OG13r1059ysjrjkJEpZoONCnZa0mBROY28iBOOxZSErUVw1LzLr2+U5PhR7zPCPKidUVJqg=="
+        src="https://lib.baomitu.com/pako/2.0.4/pako.min.js"></script>
     <link crossorigin="anonymous"
         integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ=="
         href="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.css" rel="stylesheet">
@@ -27,21 +30,19 @@
         <span class="mdc-button__label" id="downBtnLabel">全部缓存</span>
     </button>
     <p id="cacheStatus"></p>
-    <H4 style="padding:16px;">下方文本框内容即为你的播放列表信息</H4>
-    <label class="mdc-text-field mdc-text-field--filled mdc-text-field--textarea mdc-text-field--no-label"
-        style="padding:10px;height:auto;width:100%;">
-        <span class="mdc-text-field__ripple"></span>
-        <span class="mdc-text-field__resizer" style="width:100%;">
-            <textarea class="mdc-text-field__input" rows="8" cols="40" aria-label="Label" id="playList"
-                style="resize:none;overflow-x: hidden;"></textarea>
-        </span>
-        <span class="mdc-line-ripple"></span>
-    </label>
+    <H4 style="padding:16px;">播放列表管理</H4>
     <br>
     <button class="mdc-button mdc-button--raised mdc-button--leading" style="width:80%;margin:16px;" id="saveBtn">
         <span class="mdc-button__ripple"></span>
         <i class="material-icons mdc-button__icon" aria-hidden="true">save</i>
-        <span class="mdc-button__label">保存</span>
+        <span class="mdc-button__label">保存歌单到本地</span>
+    </button>
+    <br>
+    <button class="mdc-button mdc-button--raised mdc-button--leading" style="width:80%;margin:16px;" id="importBtn">
+        <span class="mdc-button__ripple"></span>
+        <i class="material-icons mdc-button__icon" aria-hidden="true">open_in_browser</i>
+        <span class="mdc-button__label">从本地导入歌单</span>
+        <input type="file" style="display:none;" id="hiddenFileUploader">
     </button>
     <script>
         window.mdc.autoInit();
@@ -53,23 +54,32 @@
         document.querySelectorAll('.mdc-checkbox').forEach(element => {
             new MDCCheckbox(element);
         });
-        const textField = new MDCTextField(document.querySelector('.mdc-text-field'));
-        if (localStorage.playList) {
-            document.getElementById("playList").value = Base64.encode(localStorage.playList);
-        }
         document.getElementById("saveBtn").addEventListener("click", () => {
-            let newPlayList;
+            let eleLink = document.createElement('a');
+            eleLink.download = "歌单.545";
+            eleLink.style.display = 'none';
+            eleLink.href = URL.createObjectURL(new Blob([pako.gzip(localStorage.playList)]));
+            document.body.appendChild(eleLink);
+            eleLink.click();
+            document.body.removeChild(eleLink);
+        });
+        document.getElementById("importBtn").addEventListener("click", () => {
+            document.getElementById("hiddenFileUploader").click();
+        });
+        document.getElementById("hiddenFileUploader").addEventListener("change", (e) => {
             try {
-                newPlayList = Base64.decode(document.getElementById("playList").value);
-                console.log(JSON.parse(newPlayList));
-                if (typeof JSON.parse(newPlayList) == "object") {
-                    localStorage.playList = newPlayList;
-                    window.parent.postMessage("close", "*");
-                } else {
-                    alert("解析播放列表失败，请检查你的输入！");
+                let target = e.target || e.srcElement;
+                let file = target.files[0];
+                var reader = new FileReader();
+                reader.onloadend = (data) => {
+                    console.log(data)
+                    let res = data.target || data.srcElement;
+                    localStorage.playList = new TextDecoder().decode(pako.ungzip(res.result));
                 }
+                reader.readAsArrayBuffer(file);
+                window.parent.postMessage("close", "*");
             } catch (e) {
-                alert("解析播放列表失败，请检查你的输入！");
+                alert("导入失败:" + e.message)
             }
         });
         const cdn = localStorage.preferCDN ? localStorage.preferCDN : "yuketang";
