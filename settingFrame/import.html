@@ -75,9 +75,9 @@
                     console.log(data)
                     let res = data.target || data.srcElement;
                     localStorage.playList = new TextDecoder().decode(pako.ungzip(res.result));
+                    window.parent.postMessage("close", "*");
                 }
                 reader.readAsArrayBuffer(file);
-                window.parent.postMessage("close", "*");
             } catch (e) {
                 alert("导入失败:" + e.message)
             }
