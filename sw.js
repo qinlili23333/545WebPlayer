@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '1.1.0.20220626'
-var VERSION_AZUSA_PATCH_USE = '1.1.0.20220621'
+var VERSION = '1.1.1.20220628'
+var VERSION_AZUSA_PATCH_USE = '1.1.0.20220626'
 var AZUSA_PATCH_SKIP_LIST = [
     './img/bai.png',
     './img/wanan.png',
@@ -50,7 +50,7 @@ var AZUSA_PATCH_SKIP_LIST = [
     './lib/long-press.min.js',
     './lib/ogvjs/ogv.js',
     './lib/ctget.min.js',
-    //'./lib/hamood.min.js',
+    './lib/hamood.min.js',
     './lib/ogvjs/ogv-decoder-audio-opus-wasm.js',
     './lib/ogvjs/ogv-decoder-audio-opus-wasm.wasm',
     './lib/ogvjs/ogv-demuxer-ogg-wasm.js',
@@ -66,8 +66,6 @@ var AZUSA_PATCH_SKIP_LIST = [
     './toolFrame/audioCutter/vendor/Mp3LameEncoder.min.js',
     './toolFrame/audioCutter/vendor/Mp3LameEncoder.min.js.mem',
     './font/YRDZST-Heavy.woff2',
-    'https://gen2.qinlili.bid/libs/hamood.min.js',
-    'https://ctfile.qinlili.bid/ctget.js'
 ]
 var CACHE_NAME = APP_PREFIX + VERSION
 var AZUSA_CACHE = APP_PREFIX + VERSION_AZUSA_PATCH_USE
@@ -104,31 +102,38 @@ self.addEventListener('fetch', event => {
         event.respondWith(new Response(VERSION));
         return;
     }
-    //针对Glitch和Vercel预处理网页
-    let alterRequest = false;
-    if (event.request.url.indexOf("glitch") > 1 || event.request.url.indexOf("vercel") > 1) {
-        if (event.request.url.substring(event.request.url.lastIndexOf("/")).indexOf(".") == -1 && !event.request.url.endsWith("/")) {
-            event.request.url += ".html";
-            console.log("processing url:" + event.request.url);
-            alterRequest = new Request(event.request.url + ".html", {
-                method: event.request.method,
-                headers: event.request.headers,
-                mode: 'same-origin',
-                credentials: event.request.credentials,
-                redirect: 'manual'
-            });
-        }
-    }
     if (event.request.method == "GET" && (event.request.url.indexOf("http") == 0) && (event.request.url.indexOf("ForceNoCache") == -1) && (event.request.url.indexOf("webapi.ctfile.com") == -1)) {
         event.respondWith(
             caches.open(getCacheName(event.request.url)).then(async cache => {
                 return cache.match(event.request).then(response => {
-                    return response || fetch(alterRequest ? alterRequest : event.request).then(response => {
+                    return response || fetch(event.request).then(response => {
                         if (response.status < 400) {
                             cache.put(event.request, response.clone());
                             console.log('file cached : ' + event.request.url)
                         }
-                        return response;
+                        //修复不支持自动补足.html的平台无法访问的问题
+                        if (response.status == 404) {
+                            if (event.request.url.substring(event.request.url.lastIndexOf("/")).indexOf(".") == -1 && !event.request.url.endsWith("/")) {
+                                event.request.url += ".html";
+                                console.log("processing url:" + event.request.url);
+                                alterRequest = new Request(event.request.url + ".html", {
+                                    method: event.request.method,
+                                    headers: event.request.headers,
+                                    mode: 'same-origin',
+                                    credentials: event.request.credentials,
+                                    redirect: 'manual'
+                                });
+                                return fetch(alterRequest).then(response => {
+                                    if (response.status < 400) {
+                                        cache.put(event.request, response.clone());
+                                        console.log('file cached : ' + event.request.url)
+                                    }
+                                    return response;
+                                })
+                            }
+                        } else {
+                            return response;
+                        }
                     }).catch(error => {
                         console.log("failed to fetch :" + event.request.url)
                         console.log(error);
