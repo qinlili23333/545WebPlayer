@@ -473,6 +473,7 @@
         window.wasmPlayer = localStorage.wasmPlayer ? JSON.parse(localStorage.wasmPlayer) : false;
         window.fileShare = localStorage.fileShare ? JSON.parse(localStorage.fileShare) : false;
         window.clientLive = localStorage.clientLive ? JSON.parse(localStorage.clientLive) : false;
+        window.devMode = localStorage.erudaEnabled ? JSON.parse(localStorage.erudaEnabled) : false;
         if (repeatSwitch) {
             document.getElementById("repeatBtn").className = "topBtn active";
         };
@@ -852,6 +853,55 @@
             //渲染全部歌单
             const audioFolderModule = document.getElementById("audioFolderModule");
             audioFolderModule.innerHTML = "";
+            if (devMode) {
+                //开启隐藏终端模式
+                let terminalItem = makeItem("韭菜盒子", "运行一些能补充营养的指令", "./img/ottobox.svg");
+                audioFolderModule.insertAdjacentElement("afterbegin", terminalItem);
+                terminalItem.addEventListener("click", async () => {
+                    //处理终端命令
+                    let command = prompt("太监传话");
+                    if (command == null) {
+                        return;
+                    }
+                    switch (command) {
+                        case "addSong":
+                            {
+                                let songInfo = prompt("输入符合格式的歌曲信息");
+                                try {
+                                    addToPlayList(JSON.parse(songInfo));
+                                } catch (e) {
+                                    alert("解析失败");
+                                }
+                                break;
+                            };
+                        case "emptyList":
+                            {
+                                localStorage.removeItem("playList");
+                                location.reload();
+                                break;
+                            };
+                        case "connectDevice":
+                            {
+                                const device = await navigator.usb.requestDevice({
+                                    filters: []
+                                });
+                                if (device) {
+                                    await device.open();
+                                    alert("连接外置声卡成功！\n制造厂商：" + device.manufacturerName + "\n设备型号：" + device.productName);
+                                    await device.close();
+                                } else {
+                                    alert("连接到外置声卡失败！");
+                                }
+                                break;
+                            }
+                        default:
+                            {
+                                alert("营养缺失了")
+                                break;
+                            }
+                    }
+                });
+            }
             let searchItem = makeItem("搜索", "本地歌单搜索，搜不到请设置内更新歌单", "./img/search.svg");
             searchItem.addEventListener("click", () => {
                 let searchValue = prompt("请输入关键字，支持歌名/完整标题\n留空为显示全部歌曲");
@@ -1386,60 +1436,13 @@
         renderAudioList(false, true);
         renderPlayList();
         (() => {
-            if (localStorage.erudaEnabled && JSON.parse(localStorage.erudaEnabled)) {
+            if (devMode) {
                 let script = document.createElement('script');
                 script.src = "https://lib.baomitu.com/eruda/2.4.1/eruda.min.js";
                 document.body.appendChild(script);
                 script.onload = function () {
                     eruda.init()
                 }
-                //开启隐藏终端模式
-                let terminalItem = makeItem("韭菜盒子", "运行一些能补充营养的指令", "./img/ottobox.svg");
-                audioFolderModule.insertAdjacentElement("afterbegin", terminalItem);
-                terminalItem.addEventListener("click", async () => {
-                    //处理终端命令
-                    let command = prompt("太监传话");
-                    if (command == null) {
-                        return;
-                    }
-                    switch (command) {
-                        case "addSong":
-                            {
-                                let songInfo = prompt("输入符合格式的歌曲信息");
-                                try {
-                                    addToPlayList(JSON.parse(songInfo));
-                                } catch (e) {
-                                    alert("解析失败");
-                                }
-                                break;
-                            };
-                        case "emptyList":
-                            {
-                                localStorage.removeItem("playList");
-                                location.reload();
-                                break;
-                            };
-                        case "connectDevice":
-                            {
-                                const device = await navigator.usb.requestDevice({
-                                    filters: []
-                                });
-                                if (device) {
-                                    await device.open();
-                                    alert("连接外置声卡成功！\n制造厂商：" + device.manufacturerName + "\n设备型号：" + device.productName);
-                                    await device.close();
-                                } else {
-                                    alert("连接到外置声卡失败！");
-                                }
-                                break;
-                            }
-                        default:
-                            {
-                                alert("营养缺失了")
-                                break;
-                            }
-                    }
-                })
             }
         })();
     </script>
