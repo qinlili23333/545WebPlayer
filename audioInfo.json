@@ -1,6 +1,6 @@
 {
   "success": true,
-  "version": "2022061601",
+  "version": "2022070901",
   "domains": {
     "yuketang": [
       "https://bj.bcebos.com/yunpanx/",
@@ -449,7 +449,7 @@
           "name": "齐天",
           "url": {
             "yuketang": "https://bj.bcebos.com/yunpanx/%E9%BD%90%E5%A4%A9_20220330160223_3534.ogg",
-            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E9%BD%90%E5%A4%A95.ogg"
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E9%BD%90%E5%A4%A9.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/89cfcacc7796816c368f78e891fc0b6d7e26014b.jpg@.webp",
           "quality": "OPUS96",
