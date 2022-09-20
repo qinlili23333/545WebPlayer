@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '1.1.1.20220709'
-var VERSION_AZUSA_PATCH_USE = '1.1.1.20220628'
+var VERSION = '1.1.2.20220920'
+var VERSION_AZUSA_PATCH_USE = '1.1.1.20220709'
 var AZUSA_PATCH_SKIP_LIST = [
     './img/bai.png',
     './img/wanan.png',
@@ -12,6 +12,7 @@ var AZUSA_PATCH_SKIP_LIST = [
     './img/addlist.svg',
     './img/audiofile.svg',
     './img/broadcast.svg',
+    './img/cast.svg',
     './img/close.svg',
     './img/chunlian.webp',
     './img/cover.svg',
@@ -51,6 +52,7 @@ var AZUSA_PATCH_SKIP_LIST = [
     './lib/ogvjs/ogv.js',
     './lib/ctget.min.js',
     './lib/hamood.min.js',
+    './lib/cast.min.js',
     './lib/ogvjs/ogv-decoder-audio-opus-wasm.js',
     './lib/ogvjs/ogv-decoder-audio-opus-wasm.wasm',
     './lib/ogvjs/ogv-demuxer-ogg-wasm.js',

@@ -783,6 +783,31 @@
                     shareSong(songInfo);
                 });
                 menuList.appendChild(shareMenu);
+                let castMenu = makeMenu("Chromecast", "./img/cast.svg");
+                castMenu.addEventListener("click", async () => {
+                    if (!window.cjs) {
+                        setStatus("加载Chromecast模块", true);
+                        await loadScriptAsync("./lib/cast.min.js");
+                        window.cjs = new Castjs();
+                        cjs.on('playing', () => {
+                            setStatus("Chromecast推送成功");
+                        });
+                        cjs.on('disconnect', () => {
+                            setStatus("Chromecast连接已断开");
+                        });
+                        cjs.on('end', () => {
+                            setStatus("Chromecast播放已结束");
+                        });
+                        await sleep(1000);
+                    };
+                    if (cjs.available) {
+                        setStatus("连接中", true);
+                        await cjs.cast(songInfo.url[cdn]);
+                    } else {
+                        setStatus("Chromecast尚未就绪，建议等待半分钟");
+                    };
+                });
+                menuList.appendChild(castMenu);
             }
             let qualityMenu = makeMenu("播放音质:" + songInfo.quality + "/原始音质:" + songInfo.source_quality, "./img/audiofile.svg");
             menuList.appendChild(qualityMenu);
@@ -1217,6 +1242,13 @@
         const functionMenu = () => {
             menuList.innerHTML = "";
             //功能菜单
+            if (window.cjs) {
+                let castMenu = makeMenu("停止Chromecast", "./img/cast.svg");
+                castMenu.addEventListener("click", () => {
+                    cjs.disconnect();
+                });
+                menuList.appendChild(castMenu);
+            }
             let sleepMenu = makeMenu("睡眠模式", "./img/sleep.svg");
             sleepMenu.addEventListener("click", () => {
                 let time = prompt("入睡需要多少时间捏？(单位：分钟，请输入一个整数，小数点后会被忽略)");
