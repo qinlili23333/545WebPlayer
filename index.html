@@ -220,7 +220,7 @@
             flex-direction: row;
             height: 32px;
             padding-left: 4px;
-            max-width: calc(100vw - 100px);
+            max-width: calc(100vw - 140px);
         }
 
         #tips,
@@ -364,6 +364,7 @@
                 <p id="tips">正在加载播放器</p>
             </div>
             <div id="buttons" class="buttons">
+                <img class="topBtn" id="castBtn" onclick="switchCast();" alt="Chromecast" src="./img/cast.svg">
                 <img class="topBtn" id="shuffleBtn" onclick="switchShuffle();" alt="随机播放" src="./img/shuffle.svg">
                 <img class="topBtn" id="repeatBtn" onclick="switchRepeat();" alt="循环播放" src="./img/repeat.svg">
                 <img class="topBtn" id="settingBtn" onclick="functionMenu()" alt="菜单" src="./img/menu.svg">
@@ -466,6 +467,9 @@
         }
     </script>
     <script>
+        window.Castjs = false;
+        window.cjs = false;
+        window.cjsplay = false;
         const cdn = localStorage.preferCDN ? localStorage.preferCDN : "yuketang";
         window.repeatSwitch = localStorage.repeat ? JSON.parse(localStorage.repeat) : false;
         window.shuffleSwitch = localStorage.shuffle ? JSON.parse(localStorage.shuffle) : false;
@@ -474,11 +478,54 @@
         window.fileShare = localStorage.fileShare ? JSON.parse(localStorage.fileShare) : false;
         window.clientLive = localStorage.clientLive ? JSON.parse(localStorage.clientLive) : false;
         window.devMode = localStorage.erudaEnabled ? JSON.parse(localStorage.erudaEnabled) : false;
+        window.castSwitch = false;
+        window.ignoreNextCastEnd = false;
         if (repeatSwitch) {
             document.getElementById("repeatBtn").className = "topBtn active";
         };
         if (shuffleSwitch) {
             document.getElementById("shuffleBtn").className = "topBtn active";
+        };
+        const switchCast = async () => {
+            if (window.castSwitch) {
+                //结束投屏
+                cjsplay.disconnect();
+            } else {
+                //开始投屏
+                if (!Castjs) {
+                    setStatus("加载Chromecast模块", true);
+                    await loadScriptAsync("./lib/cast.min.js");
+                }
+                if (!window.cjsplay) {
+                    window.cjsplay = new Castjs();
+                    cjsplay.on('playing', () => {
+                        player.pause();
+                        ignoreNextCastEnd = false;
+                        setStatus("推送成功:" + currentPlay);
+                        document.getElementById("castBtn").className = "topBtn active";
+                    });
+                    cjsplay.on('disconnect', () => {
+                        setStatus("连接已断开");
+                        window.castSwitch = false;
+                        document.getElementById("castBtn").className = "topBtn";
+                    });
+                    cjsplay.on('end', () => {
+                        setStatus("播放已结束，推送下一首...");
+                        if (!ignoreNextCastEnd) {
+                            player.dispatchEvent(new CustomEvent('ended'));
+                        }
+                    });
+                    await sleep(1000);
+                };
+                if (cjsplay.available) {
+                    window.castSwitch = true;
+                    setStatus("连接中", true);
+                    let song = JSON.parse(localStorage.lastPlay)
+                    playNow(song);
+                } else {
+                    setStatus("Chromecast尚未就绪");
+                };
+            }
         };
         const switchRepeat = () => {
             window.repeatSwitch = repeatSwitch ? false : true;
@@ -785,9 +832,11 @@
                 menuList.appendChild(shareMenu);
                 let castMenu = makeMenu("Chromecast", "./img/cast.svg");
                 castMenu.addEventListener("click", async () => {
-                    if (!window.cjs) {
+                    if (!Castjs) {
                         setStatus("加载Chromecast模块", true);
                         await loadScriptAsync("./lib/cast.min.js");
+                    }
+                    if (!window.cjs) {
                         window.cjs = new Castjs();
                         cjs.on('playing', () => {
                             setStatus("Chromecast推送成功");
@@ -802,7 +851,11 @@
                     };
                     if (cjs.available) {
                         setStatus("连接中", true);
-                        await cjs.cast(songInfo.url[cdn]);
+                        await cjs.cast(songInfo.url[cdn], {
+                            poster: songInfo.cover,
+                            title: songInfo.name,
+                            description: "连续播放需保持页面开启"
+                        })
                     } else {
                         setStatus("Chromecast尚未就绪，建议等待半分钟");
                     };
@@ -1114,8 +1167,18 @@
         }
         const playNow = async song => {
             document.title = song.name + "-545在线";
-            setStatus("正在下载" + song.name, true);
             window.currentPlay = song.name;
+            if (window.castSwitch) {
+                ignoreNextCastEnd = true;
+                cjsplay.cast(song.url[cdn], {
+                    poster: song.cover,
+                    title: song.name,
+                    description: "连续播放需保持页面开启"
+                });
+                localStorage.lastPlay = JSON.stringify(song);
+                return;
+            }
+            setStatus("正在下载" + song.name, true);
             let playBlob = await (await fetch(song.url[cdn]).catch(error => {
                 setStatus("下载失败" + song.name, false);
                 if (!navigator.onLine) {
@@ -1231,7 +1294,8 @@
         const patchEnd = () => {
             player.addEventListener("ended", () => {
                 if (repeatSwitch) {
-                    player.play();
+                    let song = JSON.parse(localStorage.lastPlay);
+                    playNow(song);
                     return;
                 }
                 if (shuffleSwitch) {
@@ -1242,10 +1306,14 @@
         const functionMenu = () => {
             menuList.innerHTML = "";
             //功能菜单
-            if (window.cjs) {
+            if (window.cjs || window.cjsplay) {
                 let castMenu = makeMenu("停止Chromecast", "./img/cast.svg");
                 castMenu.addEventListener("click", () => {
-                    cjs.disconnect();
+                    if (cjs) {
+                        cjs.disconnect();
+                    } else {
+                        cjsplay.disconnect();
+                    }
                 });
                 menuList.appendChild(castMenu);
             }
