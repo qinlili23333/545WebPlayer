@@ -1,44 +1,7 @@
 var APP_PREFIX = '545在线'
-var VERSION = '1.1.2.20220920'
-var VERSION_AZUSA_PATCH_USE = '1.1.1.20220709'
+var VERSION = '1.1.3.20221003'
+var VERSION_AZUSA_PATCH_USE = '1.1.2.20220920'
 var AZUSA_PATCH_SKIP_LIST = [
-    './img/bai.png',
-    './img/wanan.png',
-    './img/大塔.webp',
-    './img/wallpaper.webp',
-    './img/smallp.webp',
-    './img/smallm.webp',
-    './img/smalla.webp',
-    './img/addlist.svg',
-    './img/audiofile.svg',
-    './img/broadcast.svg',
-    './img/cast.svg',
-    './img/close.svg',
-    './img/chunlian.webp',
-    './img/cover.svg',
-    './img/calendar.svg',
-    './img/download.svg',
-    './img/delete.svg',
-    './img/expand.svg',
-    './img/exit.svg',
-    './img/folder.svg',
-    './img/fullscreen.svg',
-    './img/loading.svg',
-    './img/history.svg',
-    './img/link.svg',
-    './img/menu.svg',
-    './img/ottobox.svg',
-    './img/repeat.svg',
-    './img/share.svg',
-    './img/sleep.svg',
-    './img/search.svg',
-    './img/setting.svg',
-    './img/shuffle.svg',
-    './img/save.svg',
-    './img/terminal.svg',
-    './img/tool.svg',
-    './img/play.svg',
-    './img/next.svg',
     './cursor/normal.png',
     './icon.png',
     './icon_mask.png',
@@ -47,17 +10,6 @@ var AZUSA_PATCH_SKIP_LIST = [
     './icon_badminton_mask.webp',
     './icon_badminton_small.webp',
     './icon_badminton_mask_small.webp',
-    './lib/base64.js',
-    './lib/long-press.min.js',
-    './lib/ogvjs/ogv.js',
-    './lib/ctget.min.js',
-    './lib/hamood.min.js',
-    './lib/cast.min.js',
-    './lib/ogvjs/ogv-decoder-audio-opus-wasm.js',
-    './lib/ogvjs/ogv-decoder-audio-opus-wasm.wasm',
-    './lib/ogvjs/ogv-demuxer-ogg-wasm.js',
-    './lib/ogvjs/ogv-demuxer-ogg-wasm.wasm',
-    './lib/ogvjs/ogv-worker-audio.js',
     './public.css',
     './manifest.json',
     './toolFrame/cardres/base.png',
@@ -91,7 +43,7 @@ const getCacheName = url => {
     if (url.indexOf("bcebos.com") > 0 || url.indexOf("cdn-cf.545.qinlili.bid") > 0) {
         return "MusicCache";
     };
-    if (url.indexOf("bytecdntp.com") > 0 || url.indexOf("googleapis.com") > 0 || url.indexOf("gstatic.com") > 0 || url.indexOf("baomitu.com") > 0) {
+    if (url.indexOf("bytecdntp.com") > 0 || url.indexOf("googleapis.com") > 0 || url.indexOf("gstatic.com") > 0 || url.indexOf("baomitu.com") > 0 || url.indexOf("/lib/") > 0 || url.indexOf("/img/") > 0) {
         return "StaticCache";
     };
     if (url.indexOf("hdslb.com") > 0 || url.indexOf("zhimg.com") > 0) {
