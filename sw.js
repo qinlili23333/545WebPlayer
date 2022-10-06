@@ -1,5 +1,5 @@
 var APP_PREFIX = '545在线'
-var VERSION = '1.1.34.20221006'
+var VERSION = '1.1.4.20221006'
 var VERSION_AZUSA_PATCH_USE = '1.1.3.20221003'
 var AZUSA_PATCH_SKIP_LIST = [
     './cursor/normal.png',
