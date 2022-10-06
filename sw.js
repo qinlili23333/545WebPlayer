@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '1.1.3.20221003'
-var VERSION_AZUSA_PATCH_USE = '1.1.2.20220920'
+var VERSION = '1.1.34.20221006'
+var VERSION_AZUSA_PATCH_USE = '1.1.3.20221003'
 var AZUSA_PATCH_SKIP_LIST = [
     './cursor/normal.png',
     './icon.png',
@@ -38,7 +38,7 @@ var URLS = [
     './toolFrame/cardmake',
     './toolFrame/calendar',
     './toolFrame/chunlian'
-]
+];
 const getCacheName = url => {
     if (url.indexOf("bcebos.com") > 0 || url.indexOf("cdn-cf.545.qinlili.bid") > 0) {
         return "MusicCache";
@@ -50,7 +50,7 @@ const getCacheName = url => {
         return "ImageCache";
     };
     return CACHE_NAME;
-}
+};
 self.addEventListener('fetch', event => {
     if (event.request.url.indexOf("getVersionWorker") > 0) {
         event.respondWith(new Response(VERSION));
@@ -91,6 +91,10 @@ self.addEventListener('fetch', event => {
                     }).catch(error => {
                         console.log("failed to fetch :" + event.request.url)
                         console.log(error);
+                        return cache.match("/error").then(response => {
+                            return response || new Response("加载出错了！");
+                        })
+
                     });
                 });
             })
@@ -117,7 +121,10 @@ self.addEventListener('install', e => {
                 })
             })
         };
-        return true;
+        return fetch("/error").then(response => {
+            cache.put("/error", response);
+            return true;
+        })
     }
     e.waitUntil(install());
 });

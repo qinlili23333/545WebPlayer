@@ -31,6 +31,10 @@ a {
     text-decoration: none !important;
 }
 
+li {
+    user-select: all !important;
+}
+
 * {
     cursor: url('./cursor/normal.png'), default !important;
     scrollbar-width: thin;
