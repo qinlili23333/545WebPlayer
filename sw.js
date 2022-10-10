@@ -108,7 +108,7 @@ self.addEventListener('install', e => {
                 })
             })
         };
-        return fetch("/error.html").then(response => {
+        return fetch("/error").then(response => {
             cache.put("/error", response);
             return true;
         })
