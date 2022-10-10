@@ -109,7 +109,7 @@ self.addEventListener('install', e => {
             })
         };
         return fetch("/error").then(response => {
-            cache.put("/error", response);
+            cache.put("/error", new Response(response.body, { status: 200, header: { "content-type": "text/html; charset=utf-8" } }));
             return true;
         })
     }
