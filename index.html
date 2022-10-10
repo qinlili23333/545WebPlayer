@@ -364,10 +364,14 @@
                 <p id="tips">正在加载播放器</p>
             </div>
             <div id="buttons" class="buttons">
-                <img class="topBtn" id="castBtn" onclick="switchCast();" alt="Chromecast" src="./img/cast.svg">
-                <img class="topBtn" id="shuffleBtn" onclick="switchShuffle();" alt="随机播放" src="./img/shuffle.svg">
-                <img class="topBtn" id="repeatBtn" onclick="switchRepeat();" alt="循环播放" src="./img/repeat.svg">
-                <img class="topBtn" id="settingBtn" onclick="functionMenu()" alt="菜单" src="./img/menu.svg">
+                <p class="topBtn" id="castBtn" onclick="switchCast();" alt="Chromecast"
+                    style="background-image: url(./img/cast.svg)">
+                <p class="topBtn" id="shuffleBtn" onclick="switchShuffle();" alt="随机播放"
+                    style="background-image: url(./img/shuffle.svg)">
+                <p class="topBtn" id="repeatBtn" onclick="switchRepeat();" alt="循环播放"
+                    style="background-image: url(./img/repeat.svg)">
+                <p class="topBtn" id="settingBtn" onclick="functionMenu()" alt="菜单"
+                    style="background-image: url(./img/menu.svg)">
             </div>
         </div>
         <audio controls autoplay id="player" style="width: 100%;height:32px;"></audio>
@@ -664,6 +668,10 @@
             textSpan.appendChild(infoSpan);
             newItem.appendChild(textSpan);
             if (menuCallback) {
+                newItem.addEventListener("contextmenu", (event) => {
+                    event.preventDefault();
+                    menuCallback(event);
+                });
                 let menu = document.createElement("span");
                 menu.className = "mdc-list-item__meta";
                 let menuBtn = document.createElement("button");
@@ -680,13 +688,14 @@
         }
         const makeMenu = (text, icon) => {
             let menuItem = document.createElement("li");
+            menuItem.oncontextmenu = () => { return false; };
             menuItem.className = "mdc-list-item";
             let ripple = document.createElement("span");
             ripple.className == "mdc-list-item__ripple";
             menuItem.appendChild(ripple);
             if (icon) {
-                let iconItem = document.createElement("img");
-                iconItem.src = icon;
+                let iconItem = document.createElement("p");
+                iconItem.style.backgroundImage = "url(" + icon + ")";
                 iconItem.className = "mdc-list-item__graphic material-icons";
                 menuItem.appendChild(iconItem);
             }

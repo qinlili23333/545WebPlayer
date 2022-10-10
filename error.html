@@ -18,6 +18,10 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <title>545在线-出错了</title>
     <style>
+        * {
+            user-select: none;
+        }
+
         body {
             max-width: 700px;
             margin: auto;
@@ -70,6 +74,11 @@
             src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDQ4IDQ4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik00MiA4VjI0IiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PHBhdGggZD0iTTYgMjRMNiA0MCIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik00MiAyNEM0MiAxNC4wNTg5IDMzLjk0MTEgNiAyNCA2QzE4LjkxNDUgNiAxNC4zMjE2IDguMTA4OTYgMTEuMDQ4MSAxMS41TTYgMjRDNiAzMy45NDExIDE0LjA1ODkgNDIgMjQgNDJDMjguODU1NiA0MiAzMy4yNjIyIDQwLjA3NzQgMzYuNSAzNi45NTE5IiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iNCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+">
         重试</button>
     <br>
+    <button id="setting">
+        <img style="height:20px;"
+            src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDQ4IDQ4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgZmlsbD0id2hpdGUiIGZpbGwtb3BhY2l0eT0iMC4wMSIvPjxwYXRoIGQ9Ik0zNC4wMDAzIDQxTDQ0IDI0TDM0LjAwMDMgN0gxNC4wMDAyTDQgMjRMMTQuMDAwMiA0MUgzNC4wMDAzWiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNMjQgMjlDMjYuNzYxNCAyOSAyOSAyNi43NjE0IDI5IDI0QzI5IDIxLjIzODYgMjYuNzYxNCAxOSAyNCAxOUMyMS4yMzg2IDE5IDE5IDIxLjIzODYgMTkgMjRDMTkgMjYuNzYxNCAyMS4yMzg2IDI5IDI0IDI5WiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=">
+        设置网络</button>
+    <br>
     <div style="padding-top:20px;display: flex;flex-direction: row;justify-content: center;">
         <img id="icon" style="height:20px;" src="/img/loading.svg">
         <p id="detect">正在检测...</p>
@@ -82,6 +91,17 @@
         document.getElementById("refresh").addEventListener("click", () => {
             location.reload();
         });
+        document.getElementById("setting").addEventListener("click", () => {
+            switch (navigator.userAgentData.platform) {
+                case "Windows": {
+                    window.open("ms-settings:network");
+                    break;
+                };
+                default: {
+                    alert("暂不支持该平台");
+                }
+            }
+        });
         document.getElementById("link").innerText = "请求地址：" + location.pathname;
         if (!(window.self === window.top)) {
             document.getElementById("back").style.display = "none";
@@ -91,7 +111,7 @@
             let trace = document.getElementById("trace");
             if (!navigator.onLine) {
                 status.innerText = "设备未连接网络"
-                documet.getElementById("icon").style.display = "none";
+                document.getElementById("icon").style.display = "none";
                 return;
             }
             await fetch("https://www.cloudflare.com/?ForceNoCache=1", { method: "HEAD", mode: "no-cors" }).then(() => {
@@ -104,7 +124,41 @@
                 document.getElementById("trace").appendChild(info);
                 info.innerText = "Cloudflare连接失败"
                 info.style.color = "red";
-            })
+                document.getElementById("icon").style.display = "none";
+                status.innerText = "请检查和Cloudflare的连接，可能是内网占用1.1.1.1导致";
+                return false;
+            });
+            await fetch("https://qinlili.bid/?ForceNoCache=1", { method: "HEAD", mode: "no-cors" }).then(() => {
+                let info = document.createElement("p");
+                document.getElementById("trace").appendChild(info);
+                info.innerText = "琴梨梨的小站连接成功"
+                info.style.color = "green";
+            }).catch(() => {
+                let info = document.createElement("p");
+                document.getElementById("trace").appendChild(info);
+                info.innerText = "琴梨梨的小站连接失败"
+                info.style.color = "red";
+                document.getElementById("icon").style.display = "none";
+                status.innerText = "请检查是否拦截琴梨梨的域名，你的网络可能存在DNS污染或SNI阻断";
+                return false;
+            });
+            await fetch(location.origin + "/?ForceNoCache=1", { method: "HEAD", mode: "no-cors" }).then(() => {
+                let info = document.createElement("p");
+                document.getElementById("trace").appendChild(info);
+                info.innerText = "545在线连接成功"
+                info.style.color = "green";
+                document.getElementById("icon").style.display = "none";
+                status.innerText = "似乎不是网络问题，请截图反馈";
+                return false;
+            }).catch(() => {
+                let info = document.createElement("p");
+                document.getElementById("trace").appendChild(info);
+                info.innerText = "545在线连接失败"
+                info.style.color = "red";
+                document.getElementById("icon").style.display = "none";
+                status.innerText = "试试更换一个节点或许有所帮助";
+                return false;
+            });
         }
         detect();
     </script>

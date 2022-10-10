@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '1.1.4.20221006'
-var VERSION_AZUSA_PATCH_USE = '1.1.3.20221003'
+var VERSION = '1.1.5.20221010'
+var VERSION_AZUSA_PATCH_USE = '1.1.4.20221006'
 var AZUSA_PATCH_SKIP_LIST = [
     './cursor/normal.png',
     './icon.png',
@@ -21,24 +21,8 @@ var AZUSA_PATCH_SKIP_LIST = [
     './toolFrame/audioCutter/vendor/Mp3LameEncoder.min.js.mem',
     './font/YRDZST-Heavy.woff2',
 ]
-var CACHE_NAME = APP_PREFIX + VERSION
-var AZUSA_CACHE = APP_PREFIX + VERSION_AZUSA_PATCH_USE
-var URLS = [
-    './',
-    './settings',
-    './tools',
-    './wallpaper',
-    './settingFrame/about',
-    './settingFrame/cache',
-    './settingFrame/close',
-    './settingFrame/import',
-    './settingFrame/privacy',
-    './settingFrame/quality',
-    './settingFrame/source',
-    './toolFrame/cardmake',
-    './toolFrame/calendar',
-    './toolFrame/chunlian'
-];
+var CACHE_NAME = APP_PREFIX + VERSION;
+var AZUSA_CACHE = APP_PREFIX + VERSION_AZUSA_PATCH_USE;
 const getCacheName = url => {
     if (url.indexOf("bcebos.com") > 0 || url.indexOf("cdn-cf.545.qinlili.bid") > 0) {
         return "MusicCache";
@@ -91,10 +75,13 @@ self.addEventListener('fetch', event => {
                     }).catch(error => {
                         console.log("failed to fetch :" + event.request.url)
                         console.log(error);
-                        return cache.match("/error").then(response => {
-                            return response || new Response("加载出错了！");
-                        })
-
+                        if (event.request.url.substring(event.request.url.lastIndexOf("/")).indexOf(".") == -1 && !event.request.url.endsWith("/")) {
+                            return cache.match("/error").then(response => {
+                                return response || new Response("加载出错了！");
+                            })
+                        } else {
+                            return false;
+                        }
                     });
                 });
             })
@@ -121,7 +108,7 @@ self.addEventListener('install', e => {
                 })
             })
         };
-        return fetch("/error").then(response => {
+        return fetch("/error.html").then(response => {
             cache.put("/error", response);
             return true;
         })
