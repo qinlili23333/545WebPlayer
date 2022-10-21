@@ -138,9 +138,6 @@
                 scene.add(mesh);
                 window.bodymesh = mesh;
                 console.log(mesh);
-                physics = new MMDPhysics(mesh, null, {
-                    gravity: new THREE.Vector3(0, -4 * 10, 0)
-                });
                 helper.add(mesh, {
                     animation: mmd.animation,
                     physics: true
