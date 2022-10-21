@@ -8,7 +8,7 @@
     <link type="text/css" rel="stylesheet" href="main.css">
     <style>
         body {
-            background-color: #fff;
+            background-color: transparent;
             color: #444;
         }
 
@@ -71,11 +71,11 @@
             // scene
 
             scene = new THREE.Scene();
-            scene.background = new THREE.Color(0xbec23f);
+            //scene.background = new THREE.Color(0xbec23f);
 
-            const gridHelper = new THREE.PolarGridHelper(30, 0);
-            gridHelper.position.y = - 10;
-            scene.add(gridHelper);
+            //const gridHelper = new THREE.PolarGridHelper(30, 0);
+            //gridHelper.position.y = - 10;
+            //scene.add(gridHelper);
 
             const ambient = new THREE.AmbientLight(0x666666);
             scene.add(ambient);
@@ -86,7 +86,8 @@
 
             //
 
-            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setClearColor(0x000000, 0);
             renderer.setPixelRatio(window.devicePixelRatio);
             renderer.setSize(window.innerWidth, window.innerHeight);
             container.appendChild(renderer.domElement);

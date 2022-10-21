@@ -143,6 +143,14 @@
             transition: right 1s ease-out, top 1s ease-out, width 2s ease-in-out, max-width 2s ease-in-out;
         }
 
+        .threeFrame {
+            border-radius: 0px !important;
+            box-shadow: none !important;
+            background-color: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+        }
+
         .musicFrame {
             width: 30vw;
         }
@@ -282,6 +290,11 @@
                         };
                 }
             });
+            document.getElementById("liveStatus").addEventListener("contextmenu", () => {
+                document.getElementById("playerFrame").src = "./3d/";
+                document.getElementById("playerFrame").className = "threeFrame";
+
+            })
             document.getElementById("liveStatus").addEventListener("click", async () => {
                 //切换直播页面
                 switch (isLive) {
@@ -311,63 +324,53 @@
                 if (time < 0) {
                     time += 24;
                 }
-                if (time < 4 || time > 9) {
-                    let liveStatus = await (await fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.live.bilibili.com/bili/living_v2/15641218" : "https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(async error => {
-                        await sleep(60000);
-                        detectLive();
-                    })).json().catch(async error => {
-                        await sleep(60000);
-                        detectLive();
-                    });
-                    if (liveStatus.data) {
-                        switch (liveStatus.data.status) {
-                            case 1:
-                                {
-                                    document.getElementById("liveStatus").style.right = "0px";
-                                    document.getElementById("liveStatus").style.backgroundColor = "rgba(255, 255, 255, .5)";
-                                    if (isLive) {
-                                        document.getElementById("liveText").innerText = "返回音乐播放";
+                let liveStatus = await (await fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.live.bilibili.com/bili/living_v2/15641218" : "https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(async error => {
+                    await sleep(60000);
+                    detectLive();
+                })).json().catch(async error => {
+                    await sleep(60000);
+                    detectLive();
+                });
+                if (liveStatus.data) {
+                    switch (liveStatus.data.status) {
+                        case 1:
+                            {
+                                document.getElementById("liveStatus").style.right = "0px";
+                                document.getElementById("liveStatus").style.backgroundColor = "rgba(255, 255, 255, .5)";
+                                if (isLive) {
+                                    document.getElementById("liveText").innerText = "返回音乐播放";
+                                } else {
+                                    if (directLive && !autoLive) {
+                                        document.getElementById("liveText").innerText = "自动打开直播";
+                                        isLive = true;
+                                        autoLive = true;
+                                        document.getElementById("playerFrame").className = "liveFrame";
+                                        document.getElementById("playerFrame").src = "https://www.bilibili.com/blackboard/live/live-activity-player.html?cid=573893&quality=10000";
                                     } else {
-                                        if (directLive && !autoLive) {
-                                            document.getElementById("liveText").innerText = "自动打开直播";
-                                            isLive = true;
-                                            autoLive = true;
-                                            document.getElementById("playerFrame").className = "liveFrame";
-                                            document.getElementById("playerFrame").src = "https://www.bilibili.com/blackboard/live/live-activity-player.html?cid=573893&quality=10000";
-                                        } else {
-                                            document.getElementById("liveText").innerText = "塔宝正在直播";
-                                        }
+                                        document.getElementById("liveText").innerText = "塔宝正在直播";
                                     }
-                                    document.getElementById("liveText").style.color = "rgba(0,200,0,1)";
-                                    document.getElementById("liveIcon").style.filter = "invert(54%) sepia(37%) saturate(6074%) hue-rotate(89deg) brightness(112%) contrast(119%)";
-                                    break;
-                                };
-                            case 2:
-                            case 0:
-                            default:
-                                {
-                                    document.getElementById("liveStatus").style.right = "-160px";
-                                    document.getElementById("liveStatus").style.backgroundColor = "";
-                                    document.getElementById("liveText").innerText = "塔宝还没直播";
-                                    document.getElementById("liveText").style.color = "black";
-                                    document.getElementById("liveIcon").style.filter = "none";
-                                    autoLivbe = false;
-                                    break;
                                 }
-                        };
-                        await sleep(300000);
-                        detectLive();
-                    } else {
-                        await sleep(60000);
-                        detectLive();
-                    }
+                                document.getElementById("liveText").style.color = "rgba(0,200,0,1)";
+                                document.getElementById("liveIcon").style.filter = "invert(54%) sepia(37%) saturate(6074%) hue-rotate(89deg) brightness(112%) contrast(119%)";
+                                break;
+                            };
+                        case 2:
+                        case 0:
+                        default:
+                            {
+                                document.getElementById("liveStatus").style.right = "-160px";
+                                document.getElementById("liveStatus").style.backgroundColor = "";
+                                document.getElementById("liveText").innerText = "塔宝还没直播";
+                                document.getElementById("liveText").style.color = "black";
+                                document.getElementById("liveIcon").style.filter = "none";
+                                autoLivbe = false;
+                                break;
+                            }
+                    };
+                    await sleep(300000);
+                    detectLive();
                 } else {
-                    document.getElementById("liveStatus").style.right = "-160px";
-                    document.getElementById("liveStatus").style.backgroundColor = "";
-                    document.getElementById("liveText").innerText = "塔宝必在睡觉";
-                    document.getElementById("liveText").style.color = "black";
-                    document.getElementById("liveIcon").style.filter = "invert(51%) sepia(1%) saturate(915%) hue-rotate(322deg) brightness(90%) contrast(86%)";
-                    await sleep(120000);
+                    await sleep(60000);
                     detectLive();
                 }
             };
