@@ -1499,21 +1499,16 @@
                             if (time < 0) {
                                 time += 24;
                             }
-                            if (time < 4 || time > 9) {
-                                let liveStatus = await (await fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.live.bilibili.com/bili/living_v2/15641218" : "https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => { })).json();
-                                if (liveStatus.data && (liveStatus.data.status == 1)) {
-                                    navigator.serviceWorker.ready.then(function (registration) {
-                                        registration.showNotification('塔宝正在直播！', {
-                                            body: '赶紧去直播间补充塔能量吧',
-                                            badge: './icon_mono.png',
-                                            icon: './icon.png',
-                                            tag: clientLive ? '直播推送客户端' : '直播推送'
-                                        });
+                            let liveStatus = await (await fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.live.bilibili.com/bili/living_v2/15641218" : "https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => { })).json();
+                            if (liveStatus.data && (liveStatus.data.status == 1)) {
+                                navigator.serviceWorker.ready.then(function (registration) {
+                                    registration.showNotification('塔宝正在直播！', {
+                                        body: '赶紧去直播间补充塔能量吧',
+                                        badge: './icon_mono.png',
+                                        icon: './icon.png',
+                                        tag: clientLive ? '直播推送客户端' : '直播推送'
                                     });
-                                } else {
-                                    await sleep(300000);
-                                    detectLive();
-                                }
+                                });
                             } else {
                                 await sleep(300000);
                                 detectLive();
