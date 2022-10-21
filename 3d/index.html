@@ -18,7 +18,7 @@
     </style>
 </head>
 
-<body>
+<body style="-webkit-app-region: drag;">
 
     <script src="https://unpkg.com/three@0.145.0/examples/js/libs/ammo.wasm.js"></script>
 
@@ -134,7 +134,9 @@
                 scene.add(mesh);
                 window.bodymesh = mesh;
                 console.log(mesh);
-
+                physics = new MMDPhysics(mesh, null, {
+                    gravity: new THREE.Vector3(0, -4 * 10, 0)
+                });
                 helper.add(mesh, {
                     animation: mmd.animation,
                     physics: true
