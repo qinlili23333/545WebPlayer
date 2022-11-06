@@ -426,7 +426,7 @@
             });
         }
         (async () => {
-            if (localStorage.skipSplash ? JSON.parse(localStorage.skipSplash) : false) {
+            if ((localStorage.skipSplash ? JSON.parse(localStorage.skipSplash) : false) || !(window.self === window.top)) {
                 return;
             };
             const hamoodConfig = {
