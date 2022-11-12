@@ -304,6 +304,10 @@
             padding: 0 0 !important;
         }
 
+        .material-icons {
+            background-repeat: round;
+        }
+
         @media (min-width: 700px) {
             #listContainer {
                 display: flex !important;
@@ -467,7 +471,11 @@
             document.body.removeChild(eleLink);
         }
         const bottomdown = () => {
-            document.getElementById("playPanel").style.animation = "bottomdown 0.15s";
+            document.getElementById("playPanel").style.animation = "bottomdown 0.5s";
+            setTimeout(() => {
+                document.getElementById("playPanel").style.animation = "";
+                document.getElementById("playPanel").style.display = "none";
+            }, 450);
         }
     </script>
     <script>
@@ -1362,8 +1370,18 @@
             menuList.appendChild(sleepMenu);
             if (window.innerWidth > window.innerHeight && window.innerHeight > 600 && window.self === window.top && !window.isBiliLite) {
                 let wallpaperMenu = makeMenu("壁纸模式", "./img/fullscreen.svg");
-                wallpaperMenu.addEventListener("click", () => {
-                    bottomdown();
+                wallpaperMenu.addEventListener("click", async event => {
+                    event.stopPropagation();
+                    let btn = event.currentTarget;
+                    btn.querySelector("p").style.backgroundImage = "url(./img/loading.svg)";
+                    let text = btn.querySelector(".mdc-list-item__text");
+                    text.innerText = "加载壁纸模式...0%";
+                    await (await fetch("./img/op.webm")).blob();
+                    text.innerText = "加载壁纸模式...33%";
+                    await (await fetch("./img/wallpaper.webp")).blob();
+                    text.innerText = "加载壁纸模式...66%";
+                    await (await fetch("./img/splash.webp")).blob();
+                    text.innerText = "加载壁纸模式...100%";
                     document.location.href = './wallpaper';
                 });
                 menuList.appendChild(wallpaperMenu);

@@ -17,8 +17,6 @@
     <meta name="apple-touch-fullscreen" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <title>545在线-壁纸模式</title>
-    <link href="./lib/starlight-loading.min.css" rel="stylesheet" />
-    <script src="./lib/starlight-loading.min.js"></script>
     <style>
         @keyframes smallp {
             0% {
@@ -229,6 +227,17 @@
             position: absolute;
             transition: opacity 0.1s ease-in-out;
         }
+
+        #splash {
+            object-fit: cover;
+            background-color: white;
+            position: absolute;
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
     </style>
 </head>
 
@@ -250,6 +259,7 @@
         <img class="smallAnim" id="smalla" style="animation: smalla 3s;animation-iteration-count: infinite;"
             src="./img/smalla.webp">
     </div>
+    <video id="splash" poster="./img/splash.webp" muted autoplay oncontextmenu="return false;"></video>
     <script>
         window.directLive = localStorage.directLive ? JSON.parse(localStorage.directLive) : false;
         window.autoLive = false;
@@ -260,6 +270,29 @@
             }
         }, false);
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
+        (async () => {
+            const hide = async () => {
+                if (!hided) {
+                    document.getElementById("splash").style.opacity = 0;
+                    await sleep(500);
+                    document.getElementById("splash").remove();
+                    hided = true;
+                }
+            }
+            let loaded = false;
+            let hided = false;
+            setTimeout(() => {
+                if (!loaded) {
+                    hide();
+                }
+            }, 1000)
+            let video = URL.createObjectURL(await (await fetch("./img/op.webm").catch(() => { hide(); })).blob().catch(() => { hide(); }))
+            loaded = true;
+            document.getElementById("splash").src = video;
+            document.getElementById("splash").addEventListener("ended", () => {
+                hide();
+            })
+        })();
         (() => {
             let displayPanel = true;
             let isLive = false;
