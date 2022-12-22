@@ -477,6 +477,15 @@
                 document.getElementById("playPanel").style.display = "none";
             }, 450);
         }
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted) {
+                console.log('This page was restored from the bfcache.');
+                setTimeout(() => {
+                    document.getElementById("playPanel").style.display = "flex";
+                    document.getElementById("playPanel").style.animation = "bottomup 0.5s";
+                }, 450);
+            }
+        });
     </script>
     <script>
         window.Castjs = false;
