@@ -41,6 +41,7 @@ li {
     scrollbar-color: #FADCBB transparent;
     --mdc-theme-primary: #DCAC89;
     --mdc-theme-secondary: #FADCBB;
+    --mdc-theme--on-surface: #DCAC89;
     box-sizing: border-box;
     margin: 0;
     padding: 0;

@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '1.1.7.20230108'
-var VERSION_AZUSA_PATCH_USE = '1.1.7.20221222'
+var VERSION = '1.1.8.20230111'
+var VERSION_AZUSA_PATCH_USE = '1.1.7.20230108'
 var AZUSA_PATCH_SKIP_LIST = [
     './cursor/normal.png',
     './icon.png',
@@ -13,6 +13,7 @@ var AZUSA_PATCH_SKIP_LIST = [
     './public.css',
     './manifest.json',
     './toolFrame/cardres/base.png',
+    './toolFrame/cardres/base2.png',
     './toolFrame/cardres/fansnum.ttf',
     './toolFrame/audioCutter/',
     './toolFrame/audioCutter/dist/index.js',

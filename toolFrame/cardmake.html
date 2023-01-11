@@ -120,6 +120,24 @@
             <span class="infotext" id="dateinfo">DATE</span>
             <span id="date">2021/12/30</span>
         </div>
+        <br>
+        <label style="width: 80%;margin-left: 10vw;" class="mdc-text-field mdc-text-field--outlined"
+            data-mdc-auto-init="MDCTextField">
+            <select name="background" id="background"
+                style="cursor:pointer;-webkit-tap-highlight-color: transparent!important;" class="mdc-text-field__input"
+                aria-labelledby="my-label-id">
+                <option value="base.png">舞娘</option>
+                <option value="base2.png">泳装</option>
+            </select>
+            <span class="mdc-notched-outline">
+                <span class="mdc-notched-outline__leading"></span>
+                <span class="mdc-notched-outline__notch">
+                    <span class="mdc-floating-label" id="my-label-id" style="color:#DCAC89;">模板</span>
+                </span>
+                <span class="mdc-notched-outline__trailing"></span>
+            </span>
+        </label>
+        <br>
         <H4 style="padding-top:12px;width:100vw;text-align: center;">点击头像/ID/编号均可编辑</H4>
         <input type="file" style="display:none;" id="hiddenImgUploader">
         <button class="mdc-button mdc-button--raised mdc-button--leading"
@@ -132,7 +150,8 @@
     <script>
         if (window.self === window.top) {
             location.replace("/tools?cardmake")
-        }
+        };
+        window.mdc.autoInit();
         const today = new Date()
         document.getElementById("date").innerText = today.getFullYear() + "/" + (today.getMonth() + 1).toString().padStart(2, "0") + "/" + today.getDate().toString().padStart(2, "0");
         document.getElementById("saveBtn").addEventListener("click", () => {
@@ -155,6 +174,9 @@
                 document.getElementById("headImg").src = res.result;
             }
             reader.readAsDataURL(file)
+        });
+        document.getElementById("background").addEventListener("change", (e) => {
+            document.getElementById("baseImg").src = "./cardres/" + document.getElementById("background").value;
         });
         document.getElementById("headImg").addEventListener("click", () => {
             document.getElementById("hiddenImgUploader").click();
