@@ -19,6 +19,7 @@
     <meta name="referrer" content="no-referrer" />
     <link rel="preconnect" href="https://i0.hdslb.com">
     <link rel="preconnect" href="https://bj.bcebos.com">
+    <link rel="preconnect" href="https://cdn-cf.545.qinlili.bid">
     <script>
         document.title = "载入播放器中...";
     </script>
@@ -87,6 +88,7 @@
         }
 
         ::-webkit-scrollbar {
+            cursor: url('./cursor/normal.png'), default !important;
             height: 12px;
             width: 8px;
             background: transparent;
@@ -95,6 +97,7 @@
         }
 
         ::-webkit-scrollbar-thumb {
+            cursor: url('./cursor/normal.png'), default !important;
             width: 10px;
             background-color: #FADCBB;
             z-index: 12;
@@ -368,13 +371,13 @@
                 <p id="tips">正在加载播放器</p>
             </div>
             <div id="buttons" class="buttons">
-                <p class="topBtn" id="castBtn" onclick="switchCast();" alt="Chromecast"
+                <p class="topBtn" id="castBtn" onclick="switchCast();" alt="Chromecast" tabindex="-1"
                     style="background-image: url(./img/cast.svg)">
-                <p class="topBtn" id="shuffleBtn" onclick="switchShuffle();" alt="随机播放"
+                <p class="topBtn" id="shuffleBtn" onclick="switchShuffle();" alt="随机播放" tabindex="-1"
                     style="background-image: url(./img/shuffle.svg)">
-                <p class="topBtn" id="repeatBtn" onclick="switchRepeat();" alt="循环播放"
+                <p class="topBtn" id="repeatBtn" onclick="switchRepeat();" alt="循环播放" tabindex="-1"
                     style="background-image: url(./img/repeat.svg)">
-                <p class="topBtn" id="settingBtn" onclick="functionMenu()" alt="菜单"
+                <p class="topBtn" id="settingBtn" onclick="functionMenu()" alt="菜单" tabindex="-1"
                     style="background-image: url(./img/menu.svg)">
             </div>
         </div>
@@ -587,6 +590,7 @@
         }
         const showMenu = async () => {
             document.getElementById("floatMenuContainer").style.display = "block";
+            document.getElementById("floatMenuContainer").getElementsByClassName("mdc-list-item").length ? document.getElementById("floatMenuContainer").getElementsByClassName("mdc-list-item")[0].focus() : false;
             await sleep(1);
             document.getElementById("floatMenuContainer").style.opacity = 1;
         };
@@ -654,6 +658,7 @@
         const makeItem = (name, info, avatar, menuCallback, redDot) => {
             let newItem = document.createElement("li");
             newItem.className = "mdc-list-item";
+            newItem.tabIndex = "-1";
             let rippleSpan = document.createElement("span");
             rippleSpan.className = "mdc-list-item__ripple";
             newItem.appendChild(rippleSpan);
@@ -705,6 +710,8 @@
         }
         const makeMenu = (text, icon) => {
             let menuItem = document.createElement("li");
+            menuItem.style.userSelect = "all";
+            menuItem.tabIndex = "-1";
             menuItem.oncontextmenu = () => { return false; };
             menuItem.className = "mdc-list-item";
             let ripple = document.createElement("span");
