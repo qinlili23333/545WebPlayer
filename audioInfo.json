@@ -1,6 +1,6 @@
 {
   "success": true,
-  "version": "2022102101",
+  "version": "2023011301",
   "domains": {
     "yuketang": [
       "https://bj.bcebos.com/yunpanx/",
@@ -24,12 +24,26 @@
       "description": "塔宝投稿的独唱歌曲",
       "list": [
         {
+          "name": "Blessing",
+          "url": {
+            "yuketang": "https://bj.bcebos.com/yunpanx/Blessing_20230113162721_26166.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/Blessing.ogg"
+          },
+          "cover": "https://i0.hdslb.com/bfs/archive/c352c37a89c8c9a13fd0b531429806756535b91e.jpg@.avif",
+          "quality": "OPUS192",
+          "full_title": "《世界弹射物语》Blessing「将感谢寄托于歌，愿祝福常伴身侧」",
+          "origin": "https://www.bilibili.com/video/BV1Fv4y127T4",
+          "source_quality": "AAC320",
+          "release_date": "2022-11-20",
+          "official": true
+        },
+        {
           "name": "青花瓷（动漫填词）",
           "url": {
             "yuketang": "https://bj.bcebos.com/yunpanx/%E9%9D%92%E8%8A%B1%E7%93%B7%E5%8A%A8%E6%BC%AB_20221021214654_67488.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E9%9D%92%E8%8A%B1%E7%93%B7%E5%8A%A8%E6%BC%AB.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/d4a7189b8954a107d6caf32bc21b10d395ffaafe.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/d4a7189b8954a107d6caf32bc21b10d395ffaafe.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "用六十部动漫唱一首《青花瓷》！！！",
           "origin": "https://www.bilibili.com/video/BV1KR4y1R7ju",
@@ -43,7 +57,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%9B%B8%E6%80%9D_20221021214230_71013.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E7%9B%B8%E6%80%9D.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/91c3051da5003b2cb78f687ed70e906ef8b55660.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/91c3051da5003b2cb78f687ed70e906ef8b55660.jpg@.avif",
           "quality": "OPUS96",
           "full_title": "生唱版《相思》 带你梦回【西游记后传】",
           "origin": "https://www.bilibili.com/video/BV1S94y1R7P9",
@@ -57,7 +71,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B8%89%E6%9C%88%E9%9B%A8_20220619180925_24246.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%B8%89%E6%9C%88%E9%9B%A8.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/5efa5779f351f3077801bf0ef883663c109ff044.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/5efa5779f351f3077801bf0ef883663c109ff044.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "【三月雨】国风温柔带你重温超经典歌曲——「笙歌」",
           "origin": "https://www.bilibili.com/video/BV1et4y1h7F1",
@@ -71,7 +85,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%91%A8%E5%A4%A7%E4%BE%A0_20220523195805_59650.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%91%A8%E5%A4%A7%E4%BE%A0.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/5894984fc7b608af6d83e1b7d10f4523c3d10af5.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/5894984fc7b608af6d83e1b7d10f4523c3d10af5.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "《天天跳刘畊宏的管人唱的刚学会的周大侠》——锻炼身体 从我做起",
           "origin": "https://www.bilibili.com/video/BV135411X7X3",
@@ -86,7 +100,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%87%92%E4%BA%BA_20220522150354_62743.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E6%87%92%E4%BA%BA.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/564d24156eb77ccb714178448ba477bf5f4508be.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/564d24156eb77ccb714178448ba477bf5f4508be.jpg@.avif",
           "quality": "OPUS96",
           "full_title": "【笙歌】周年投稿 —《懒人》",
           "origin": "https://www.bilibili.com/video/BV1bY4y1z7uu",
@@ -100,7 +114,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%94%9C%E7%94%9C%E7%9A%84_20220415195959_59765.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E7%94%9C%E7%94%9C%E7%9A%84.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/1fb9ea6efd090ac978dd0545afdd13e0ebd9432f.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/1fb9ea6efd090ac978dd0545afdd13e0ebd9432f.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "送给大家《甜甜的》保持好心情！",
           "origin": "https://www.bilibili.com/video/BV1VY4y1p7kU",
@@ -115,7 +129,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/letting_go_20220405202529_28054.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/letting_go.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/2b77144108c6782fe751ee3adf3d3cd1dc378772.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/2b77144108c6782fe751ee3adf3d3cd1dc378772.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "随便唱了下《letting go》随便发一下",
           "origin": "https://www.bilibili.com/video/BV1A94y1Z7s8",
@@ -129,7 +143,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%A4%A7%E5%96%9C_20220325122827_12379.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%A4%A7%E5%96%9C.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/c751c763a22e662ccaefc1cd934b906cd082ccc2.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/c751c763a22e662ccaefc1cd934b906cd082ccc2.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "『笙歌』年夜饭不得不听的《大喜》｜祝大家新年快乐！",
           "origin": "https://www.bilibili.com/video/BV1ba41127Fn",
@@ -143,7 +157,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E8%99%9A%E6%8B%9Fparadise_20220325124722_60749.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E8%99%9A%E6%8B%9Fparadise.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/4234c855581f6d2be0799cbebb09b9f9b0b32023.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/4234c855581f6d2be0799cbebb09b9f9b0b32023.jpg@.avif",
           "quality": "OPUS96",
           "full_title": "原创曲生日作【虚拟paradise】—笙歌 ｜有没有被虚拟主播治愈过的瞬间",
           "origin": "https://www.bilibili.com/video/BV1Fr4y1i7g5",
@@ -157,7 +171,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E9%9A%BE%E8%BF%87233%E7%A7%92_20220328102409_62707.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E9%9A%BE%E8%BF%87233%E7%A7%92.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/fbe77d53971c1113b3d8862cafd0ec7afde8c5cb.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/fbe77d53971c1113b3d8862cafd0ec7afde8c5cb.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "【笙歌】难过233秒",
           "origin": "https://www.bilibili.com/video/BV1cg411L7pp",
@@ -171,7 +185,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%86%99%E7%BB%99%E4%BD%A0%E7%9A%84%E6%AD%8C_20220328103223_6451.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%86%99%E7%BB%99%E4%BD%A0%E7%9A%84%E6%AD%8C.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/05f7d0a05a150dfd7e8f1ef97bb36a80862459ef.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/05f7d0a05a150dfd7e8f1ef97bb36a80862459ef.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "【笙歌】周年小作文和《for you 写给你的歌》(cover 泠鸢)",
           "origin": "https://www.bilibili.com/video/BV1hK4y1G72m?p=2",
@@ -185,7 +199,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/22765_20220328104355_39616.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%A4%A9%E5%9C%B0%E5%8A%AB.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/8a66ea444e032871929a5978ae35a1e97305e48b.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/8a66ea444e032871929a5978ae35a1e97305e48b.jpg@.avif",
           "quality": "OPUS96",
           "full_title": "【笙歌x王老九】带rap男女双版本高燃翻唱——《天地劫》",
           "origin": "https://www.bilibili.com/video/BV1By4y1x7Ms?p=2",
@@ -199,7 +213,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BA%A2%E5%8F%B6%E5%AF%BA_20220325124721_6771.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E7%BA%A2%E5%8F%B6%E5%AF%BA.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/7e91258b4423201f8618ed6d21fd90333af371b0.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/7e91258b4423201f8618ed6d21fd90333af371b0.jpg@.avif",
           "quality": "OPUS96",
           "full_title": "【红叶寺】笙歌——就问你们够不够御姐是不是心魔！",
           "origin": "https://www.bilibili.com/video/BV1kC4y1h717",
@@ -213,7 +227,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E9%B2%B8_20220328110647_50920.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E9%B2%B8.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/521932e1a4b1d2fdb36782a83e2337c55099c655.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/521932e1a4b1d2fdb36782a83e2337c55099c655.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "【鲸】歌声空灵，能直击心脏让人泪下的翻唱——生而为鲸，死而为寂 体验不一样的深海。",
           "origin": "https://www.bilibili.com/video/BV1af4y1R7yZ",
@@ -227,7 +241,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%A5%BD%E5%AD%97%E5%94%AF%E4%B9%8B_20220328111258_54818.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%A5%BD%E5%AD%97%E5%94%AF%E4%B9%8B.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/d07890b6b209821a7c42157ca3a2bd6c6bd736a4.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/d07890b6b209821a7c42157ca3a2bd6c6bd736a4.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "【笙歌】温柔洒脱女声翻唱《好字唯之》——忘川风华录",
           "origin": "https://www.bilibili.com/video/BV1E54y1q7ve",
@@ -241,7 +255,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%85%A2%E5%86%B7_20220328114339_22683.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E6%85%A2%E5%86%B7.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/1a7075eeb4d37bf8014a8c644eb5f2bca9043006.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/1a7075eeb4d37bf8014a8c644eb5f2bca9043006.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "【慢冷】六岁怨妇女声翻唱梁静茹情歌啦！！！",
           "origin": "https://www.bilibili.com/video/BV1mJ411L7nk",
@@ -255,7 +269,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%A0%B4%E8%A3%82_20220328114643_15196.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E7%A0%B4%E8%A3%82.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/12149ff7a7a7ba6a22598b7a052bf7dfaa2ec83f.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/12149ff7a7a7ba6a22598b7a052bf7dfaa2ec83f.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "【破裂】音阙诗听翻唱姬——有PV不摇头版气质女声温柔致郁翻唱（cover王梓钰）",
           "origin": "https://www.bilibili.com/video/BV1rJ41147gf",
@@ -269,7 +283,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B2%BF%E8%8A%B1%E8%B7%AF%E5%89%8D%E8%A1%8C_20220328125721_356.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E6%B2%BF%E8%8A%B1%E8%B7%AF%E5%89%8D%E8%A1%8C.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/d91e7a837f4ae358ca760234c3b4995bc32ce845.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/d91e7a837f4ae358ca760234c3b4995bc32ce845.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "【笙歌】音之守护者2.0主题曲《沿花路前行》翻唱——这次不是怨妇音，是你没听过的甜美治愈！",
           "origin": "https://www.bilibili.com/video/BV1TE411a7Fi",
@@ -283,7 +297,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BA%BA%E9%97%B4%E4%B8%8D%E5%80%BC%E5%BE%97_20220325140311_31095.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%BA%BA%E9%97%B4%E4%B8%8D%E5%80%BC%E5%BE%97.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/music/a2b38aba10aa7243ce12a8cc08cad3942d49ca23.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/music/a2b38aba10aa7243ce12a8cc08cad3942d49ca23.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "温柔女声超好听戏腔【人间不值得】（cover：黄诗扶）——笙歌",
           "origin": "https://www.bilibili.com/audio/au1045251",
@@ -297,7 +311,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E8%8A%92%E7%A7%8D_20220326173651_85598.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E8%8A%92%E7%A7%8D.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/112ab6a3dfaf08d4e5db98793d96c0bbec96c136.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/112ab6a3dfaf08d4e5db98793d96c0bbec96c136.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "【芒种】超甜少女版原创PV「一想你我就啊哈哈哈哈哈哈」",
           "origin": "https://www.bilibili.com/video/BV1G4411r7Yj",
@@ -311,7 +325,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BA%BA%E9%97%B4%E7%99%BD%E9%A6%96_20220328141641_17375.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%BA%BA%E9%97%B4%E7%99%BD%E9%A6%96.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/65eebd7d41759f6dcead95f48f9fd2fca91dc6ed.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/65eebd7d41759f6dcead95f48f9fd2fca91dc6ed.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "带念白催泪向剪辑——狐妖竹业篇【人间白首】怨气女声翻唱",
           "origin": "https://www.bilibili.com/video/BV1H4411V73k",
@@ -325,7 +339,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E9%A3%9F%E8%89%B2_20220328143655_4057.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E9%A3%9F%E8%89%B2.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/b11eaf981b003b0bda7e3f265a4f35fee77a31dd.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/b11eaf981b003b0bda7e3f265a4f35fee77a31dd.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄第一次投稿这种风格的歌——『食色』，“幸”也。",
           "origin": "https://www.bilibili.com/video/BV1z4411M7JH",
@@ -339,7 +353,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%98%AF%E4%BD%A0%E4%BE%9D%E7%84%B6%E5%9C%A8_20220328144027_48064.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E6%98%AF%E4%BD%A0%E4%BE%9D%E7%84%B6%E5%9C%A8.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/505582930c3a241afd233eca776851c6ddbf829e.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/505582930c3a241afd233eca776851c6ddbf829e.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "【是你依然在】两周年投稿—感谢每一个能听我唱歌的人",
           "origin": "https://www.bilibili.com/video/BV16441157bB",
@@ -353,7 +367,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B9%9D%E4%B8%87%E5%AD%97_20220330173043_33989.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%B9%9D%E4%B8%87%E5%AD%97.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/music/af6319677da966ab21509bb2c2919b2eeb2df33a.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/music/af6319677da966ab21509bb2c2919b2eeb2df33a.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "【九万字】——笙歌（cover：黄诗扶）",
           "origin": "https://www.bilibili.com/audio/au702402",
@@ -367,7 +381,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B8%AD%E6%AF%92_20220330173744_85205.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%B8%AD%E6%AF%92.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/music/113d94e2722f4afd9356852d3c46cce5df4f13ac.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/music/113d94e2722f4afd9356852d3c46cce5df4f13ac.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "《中毒》怨妇女声在线中毒——笙歌",
           "origin": "https://www.bilibili.com/audio/au668615",
@@ -381,7 +395,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BA%BA%E7%BE%8E%E8%B7%AF%E5%AD%90%E9%87%8E_20220330150243_14574.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%BA%BA%E7%BE%8E%E8%B7%AF%E5%AD%90%E9%87%8E.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/516ee936a60a82d1698cd55269ea089eaac4afc5.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/516ee936a60a82d1698cd55269ea089eaac4afc5.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "【人美路子野】快来听社会宝儿姐啦！——笙歌",
           "origin": "https://www.bilibili.com/video/BV1Qt411i7EX",
@@ -395,7 +409,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B8%80%E7%88%B1%E9%9A%BE%E6%B1%82_20220330175502_15453.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%B8%80%E7%88%B1%E9%9A%BE%E6%B1%82.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "《一爱难求》—笙歌",
           "origin": "https://www.bilibili.com/audio/au419042",
@@ -409,7 +423,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%AE%E6%9C%A8_20220330175500_80830.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E6%B5%AE%E6%9C%A8.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "《浮木》——笙歌",
           "origin": "https://www.bilibili.com/audio/au572735",
@@ -423,7 +437,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%AD%A4%E7%94%9F%E4%B8%8E%E4%BD%A0%E4%B8%8D%E8%BF%87%E7%9B%B8%E9%80%A2_20220330150514_29051.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E6%AD%A4%E7%94%9F%E4%B8%8E%E4%BD%A0%E4%B8%8D%E8%BF%87%E7%9B%B8%E9%80%A2.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/37da3c33f305e79bfa3d1ed2892d893516663aab.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/37da3c33f305e79bfa3d1ed2892d893516663aab.jpg@.avif",
           "quality": "OPUS96",
           "full_title": "【此生与你不过相逢】——笙歌",
           "origin": "https://www.bilibili.com/video/BV1Qt411i7EX",
@@ -437,7 +451,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%AA%E4%BA%BA%E7%90%B5%E7%90%B6_20220330150703_65969.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E6%B5%AA%E4%BA%BA%E7%90%B5%E7%90%B6.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/58af92ba541aa9b3a33635e676b99964408359cd.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/58af92ba541aa9b3a33635e676b99964408359cd.jpg@.avif",
           "quality": "OPUS96",
           "full_title": "【浪人琵琶】——你们都是手势舞！我就不一样了！我是！！！看了绝对不亏！",
           "origin": "https://www.bilibili.com/video/BV1Es411N7Er",
@@ -451,7 +465,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%98%AF%E9%A3%8E%E5%8A%A8_20220330154652_23514.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E6%98%AF%E9%A3%8E%E5%8A%A8.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/963e50777faffeec6890d51c6b47f6489ec31cd0.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/963e50777faffeec6890d51c6b47f6489ec31cd0.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "【笙歌】是风动——不！是心动！",
           "origin": "https://www.bilibili.com/video/BV1Hs411J7Rd",
@@ -465,7 +479,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BD%95%E6%97%A5%E9%87%8D%E5%88%B0%E8%8B%8F%E6%BE%9C%E6%A1%A5_20220330155714_37345.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%BD%95%E6%97%A5%E9%87%8D%E5%88%B0%E8%8B%8F%E6%BE%9C%E6%A1%A5.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/0da8e5300a9760cb0615db4e0ae3d855cf3d0c03.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/0da8e5300a9760cb0615db4e0ae3d855cf3d0c03.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "『笙歌』——何日重到苏澜桥",
           "origin": "https://www.bilibili.com/video/BV1Hs411J7Rd",
@@ -479,7 +493,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E9%BD%90%E5%A4%A9_20220330160223_3534.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E9%BD%90%E5%A4%A9.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/89cfcacc7796816c368f78e891fc0b6d7e26014b.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/89cfcacc7796816c368f78e891fc0b6d7e26014b.jpg@.avif",
           "quality": "OPUS96",
           "full_title": "『笙歌』齐天——大圣归来混剪",
           "origin": "https://www.bilibili.com/video/BV1SW411V7sL",
@@ -493,7 +507,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%AF%84%E6%98%8E%E6%9C%88_20220330161453_46932.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%AF%84%E6%98%8E%E6%9C%88.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/5f1e7bbaca9ec877aa55a9473bce32001e6b7434.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/5f1e7bbaca9ec877aa55a9473bce32001e6b7434.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "『笙歌』—寄明月",
           "origin": "https://www.bilibili.com/audio/au653619",
@@ -507,7 +521,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%9A%8E%E7%84%B6%E8%AE%B0_20220330162240_42488.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E7%9A%8E%E7%84%B6%E8%AE%B0.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/8a6488b244d03ad4a728c534e06de597dd433198.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/8a6488b244d03ad4a728c534e06de597dd433198.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "祝大家元旦快乐！皎然记——『笙歌』",
           "origin": "https://www.bilibili.com/video/BV1SW411q7SY",
@@ -521,7 +535,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%B0%81%E5%88%80%E4%B8%8D%E4%B8%BA%E5%B3%A5%E5%B5%98_20220330163908_38248.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%B0%81%E5%88%80%E4%B8%8D%E4%B8%BA%E5%B3%A5%E5%B5%98.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/0158ab045f47a3df175e84aa50a22c810cc879a1.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/0158ab045f47a3df175e84aa50a22c810cc879a1.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "封刀不为峥嵘（Cover 言和）",
           "origin": "https://music.163.com/#/song?id=525600555",
@@ -535,7 +549,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E9%80%A0%E6%A2%A6%E8%80%85_20220330164758_1737.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E9%80%A0%E6%A2%A6%E8%80%85.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/592e5648f809d2f52f3b85d59f4de21f5c781c15.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/592e5648f809d2f52f3b85d59f4de21f5c781c15.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "造梦者（Cover 以冬）",
           "origin": "https://music.163.com/#/song?id=509793165",
@@ -549,7 +563,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E4%BD%A0%E8%BF%98%E8%A6%81%E6%88%91%E6%80%8E%E6%A0%B7_20220330165256_37436.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%BD%A0%E8%BF%98%E8%A6%81%E6%88%91%E6%80%8E%E6%A0%B7.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/6e2eba3e4fc897b926f1b7ec386ae58139edfea4.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/6e2eba3e4fc897b926f1b7ec386ae58139edfea4.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "『笙歌』你还要我怎样——有多不正经就有多深情",
           "origin": "https://www.bilibili.com/video/BV1kx411b7G5",
@@ -563,7 +577,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B8%9C%E9%A3%8E%E5%BF%97_20220330165806_37686.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%B8%9C%E9%A3%8E%E5%BF%97.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/60ab1059d8837bf2d1d9800796c665febfe4d244.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/60ab1059d8837bf2d1d9800796c665febfe4d244.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "『笙歌』这是一首有表情的——【东风志】",
           "origin": "https://www.bilibili.com/video/BV1Ux411H7ZQ",
@@ -577,7 +591,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B8%96%E6%9C%AB%E6%AD%8C%E8%80%85_20220330165932_87804.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E4%B8%96%E6%9C%AB%E6%AD%8C%E8%80%85.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/57df0fb885806dac715b0a0fa338b83c24f5d29b.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/57df0fb885806dac715b0a0fa338b83c24f5d29b.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "『笙歌』世末歌者",
           "origin": "https://www.bilibili.com/video/BV18x411h7hY",
@@ -591,7 +605,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%88%91%E7%9A%84%E4%B8%80%E4%B8%AA%E9%81%93%E5%A7%91%E6%9C%8B%E5%8F%8B_20220330170243_58419.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E6%88%91%E7%9A%84%E4%B8%80%E4%B8%AA%E9%81%93%E5%A7%91%E6%9C%8B%E5%8F%8B.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/1de3e799cb32721bab2ee7dc1e85b3cccb4aaca7.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/1de3e799cb32721bab2ee7dc1e85b3cccb4aaca7.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "我的一个道姑朋友（Cover Lon）",
           "origin": "https://music.163.com/#/song?id=470814284",
@@ -605,7 +619,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%94%BB%E5%9C%B0%E4%B8%BA%E7%89%A2_20220330185352_29604.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E7%94%BB%E5%9C%B0%E4%B8%BA%E7%89%A2.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "画地为牢（Cover 云泣&叶里）",
           "origin": "https://music.163.com/#/song?id=478006917",
@@ -619,7 +633,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%B9%B2%E7%89%A9%E5%A5%B3weiwei_20220330170431_48079.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%B9%B2%E7%89%A9%E5%A5%B3weiwei.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/43d21877870a351e550c3aa63addb3324c890163.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/43d21877870a351e550c3aa63addb3324c890163.jpg@.avif",
           "quality": "OPUS96",
           "full_title": "『笙歌』干物女weiwei",
           "origin": "https://www.bilibili.com/video/BV16s41127Mo",
@@ -634,12 +648,26 @@
       "description": "塔宝参与联合投稿的合唱",
       "list": [
         {
+          "name": "舞娘(&兰音&扇宝&说说&唐九夏)",
+          "url": {
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E8%88%9E%E5%A8%98(&%E5%85%B0%E9%9F%B3&%E6%89%87%E5%AE%9D&%E8%AF%B4%E8%AF%B4&%E5%94%90%E4%B9%9D%E5%A4%8F)_20230113163237_32325.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E8%88%9E%E5%A8%98(&%E5%85%B0%E9%9F%B3&%E6%89%87%E5%AE%9D&%E8%AF%B4%E8%AF%B4&%E5%94%90%E4%B9%9D%E5%A4%8F).ogg"
+          },
+          "cover": "https://i0.hdslb.com/bfs/archive/fa86b5d8a678d19fbeb8ee29b151d673ecbe66c4.jpg@.avif",
+          "quality": "OPUS128",
+          "full_title": "要与妾身共舞吗？绝美异域风！『舞娘』【兰音×扇宝×说说×笙歌×唐九夏】",
+          "origin": "https://www.bilibili.com/video/BV1D8411n7kM",
+          "source_quality": "AAC192",
+          "release_date": "2022-12-22",
+          "official": true
+        },
+        {
           "name": "天选(S12应援)",
           "url": {
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%A4%A9%E9%80%89_20221021215623_14800.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E5%A4%A9%E9%80%89.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/80855d2eaf26de3f4f1f4296d8ae18775f5d366c.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/80855d2eaf26de3f4f1f4296d8ae18775f5d366c.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "虚拟主播合唱国风戏腔燃曲应援LPL——我是《天选》,也是唯一！LPL加油！",
           "origin": "https://www.bilibili.com/video/BV1WG4y1n78E",
@@ -653,7 +681,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B9%98%E9%A3%8Enovus_20221021215256_23427.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E4%B9%98%E9%A3%8Enovus.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/05f0fca1e9cbb0072ebed7a0e103a3852296427b.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/05f0fca1e9cbb0072ebed7a0e103a3852296427b.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "山海之间，愿我们乘风。",
           "origin": "https://www.bilibili.com/video/BV1WW4y1H71E",
@@ -667,7 +695,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%90%B4%E5%B8%88%E5%80%BE%E5%B0%BD%E5%A4%A9%E4%B8%8Bx%E7%8E%8B%E8%80%81%E4%B9%9D_20220328103708_913.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E7%90%B4%E5%B8%88%E5%80%BE%E5%B0%BD%E5%A4%A9%E4%B8%8Bx%E7%8E%8B%E8%80%81%E4%B9%9D.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/d3c40e1ee322bc203a9b456c7c6bc0703287f23f.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/d3c40e1ee322bc203a9b456c7c6bc0703287f23f.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "梦回经典古风歌《琴师x倾尽天下》—水墨画风│男女合唱『笙歌＆王老九』",
           "origin": "https://www.bilibili.com/video/BV1uT4y12782",
@@ -681,7 +709,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BE%8E%E4%B8%BD%E4%B9%8B%E7%89%A9(&%E7%BA%A2%E6%99%93%E9%9F%B3)_20220328144448_14033.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E7%BE%8E%E4%B8%BD%E4%B9%8B%E7%89%A9(&%E7%BA%A2%E6%99%93%E9%9F%B3).ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/e4a599b0de6eaa4977f70bb0ea704797e29c4f55.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/e4a599b0de6eaa4977f70bb0ea704797e29c4f55.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "中日双语版超经典歌曲《美丽之物》「红晓音＆笙歌」",
           "origin": "https://www.bilibili.com/video/BV1TR4y137Jk",
@@ -695,7 +723,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BB%9D%E4%B8%96%E8%88%9E%E5%A7%ACx%E5%8D%88%E5%93%9E%E5%93%9E_20220326173048_48056.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E7%BB%9D%E4%B8%96%E8%88%9E%E5%A7%ACx%E5%8D%88%E5%93%9E%E5%93%9E.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/d2d133f6e9cd670e8ce79e2950955c6c2a1d3198.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/d2d133f6e9cd670e8ce79e2950955c6c2a1d3198.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "【笙歌x午哞哞】双御翻唱│又美又飒的《绝世舞姬》",
           "origin": "https://www.bilibili.com/video/BV1nb4y1276n",
@@ -709,7 +737,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%A4%A9%E5%9C%B0%E5%8A%ABx%E7%8E%8B%E8%80%81%E4%B9%9D_20220328104137_31418.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E5%A4%A9%E5%9C%B0%E5%8A%ABx%E7%8E%8B%E8%80%81%E4%B9%9D.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/8a66ea444e032871929a5978ae35a1e97305e48b.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/8a66ea444e032871929a5978ae35a1e97305e48b.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "【笙歌x王老九】带rap男女双版本高燃翻唱——《天地劫》",
           "origin": "https://www.bilibili.com/video/BV1By4y1x7Ms",
@@ -723,7 +751,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%90%9B%E5%AD%90%E5%A6%82%E6%AD%8Cx%E5%8F%81%E5%A4%9C%E5%AD%90xBraskax%E7%9C%9F%E6%98%AF%E6%80%AA%E6%80%AA%E7%9A%84_20220328105053_55828.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E5%90%9B%E5%AD%90%E5%A6%82%E6%AD%8Cx%E5%8F%81%E5%A4%9C%E5%AD%90xBraskax%E7%9C%9F%E6%98%AF%E6%80%AA%E6%80%AA%E7%9A%84.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/07f62e436b0310a1b5a3255157bb3bb2758e76c1.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/07f62e436b0310a1b5a3255157bb3bb2758e76c1.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "【梅兰竹菊】《君子如歌》「超好听的清新甜美电子国风曲带你迎接万物复苏之春」",
           "origin": "https://www.bilibili.com/video/BV1rN411Q7A6",
@@ -737,7 +765,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%A5%B3%E9%A9%B8%E9%A9%ACx%E5%85%B0%E9%9F%B3_20220328102846_73415.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E5%A5%B3%E9%A9%B8%E9%A9%ACx%E5%85%B0%E9%9F%B3.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/e93cb0b539e059250f3a307d25c52e21083813d1.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/e93cb0b539e059250f3a307d25c52e21083813d1.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "【女驸马】橘势大好丨她与她的花烛前【笙歌×兰音】",
           "origin": "https://www.bilibili.com/video/BV1WQ4y1m7Uq",
@@ -751,7 +779,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B1%89%E6%B1%9F%E6%81%8Bx%E9%98%BF%E6%A2%93_20220327110835_62862.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E6%B1%89%E6%B1%9F%E6%81%8Bx%E9%98%BF%E6%A2%93.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/eaacb90c6b2a8f975fe8c4926f60d8ad3b0e9bf1.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/eaacb90c6b2a8f975fe8c4926f60d8ad3b0e9bf1.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "【笙歌阿梓】汉江恋【原创曲】",
           "origin": "https://www.bilibili.com/video/BV1Mg4y167hS",
@@ -765,7 +793,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%98%AF%E9%A3%8E%E5%8A%A8xHalo_20220328120850_50596.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E6%98%AF%E9%A3%8E%E5%8A%A8xHalo.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/410a3760a2c7dde11b849edeb8de279fa64e0dca.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/410a3760a2c7dde11b849edeb8de279fa64e0dca.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "【Halo&笙歌】男女声合唱《是风动》， 见你如是才无憾",
           "origin": "https://www.bilibili.com/video/BV1mJ411v72d",
@@ -779,7 +807,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%9C%89%E5%85%A5%E8%BF%9C%E5%B1%B1x%E9%99%8C%E9%85%B1%E9%85%B1_20220330184330_59719.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E7%9C%89%E5%85%A5%E8%BF%9C%E5%B1%B1x%E9%99%8C%E9%85%B1%E9%85%B1.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/album/0cba308674226731858a60e1a17ebf8855c74a63.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/album/0cba308674226731858a60e1a17ebf8855c74a63.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "眉入远山 | 注：这里真的是塔宝打错字了捏",
           "origin": "https://music.163.com/#/song?id=1428020069",
@@ -793,7 +821,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B8%90%E6%97%A0%E4%B9%A6xVanKu%E6%9D%B0_20220330181616_23401.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E6%B8%90%E6%97%A0%E4%B9%A6xVanKu%E6%9D%B0.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "渐无书（男女合唱版）",
           "origin": "https://music.163.com/#/song?id=1382651367",
@@ -807,7 +835,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%94%9F%E8%80%8C%E4%B8%BA%E5%8C%A0x%E5%B0%A4%E8%B6%85%E7%99%BDx%E5%B0%8F%E6%8B%8D%E5%AD%90x%E6%AC%A7%E5%A7%86%E8%9B%8B_20220330183848_73249.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E7%94%9F%E8%80%8C%E4%B8%BA%E5%8C%A0x%E5%B0%A4%E8%B6%85%E7%99%BDx%E5%B0%8F%E6%8B%8D%E5%AD%90x%E6%AC%A7%E5%A7%86%E8%9B%8B.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/5fd93d19c2a7429240fbdb056a8de39cd28101c1.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/5fd93d19c2a7429240fbdb056a8de39cd28101c1.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "生而为匠",
           "origin": "https://www.bilibili.com/video/BV1r4411a7qx",
@@ -821,7 +849,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%8B%BE%E6%8C%87%E8%B5%B7%E8%AA%93(%E5%9C%B0%E4%B8%89%E9%B2%9C)_20220327111251_40992.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E5%8B%BE%E6%8C%87%E8%B5%B7%E8%AA%93(%E5%9C%B0%E4%B8%89%E9%B2%9C).ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/84740995d55eda5909dc6948b89613f024fc05ce.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/84740995d55eda5909dc6948b89613f024fc05ce.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "【阿梓x小可x笙歌】当三个不同声线的女生唱《勾指起誓》会产生什么反应！",
           "origin": "https://www.bilibili.com/video/BV1bb411x7fb",
@@ -835,7 +863,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E8%97%8F(&%E5%B0%8F%E6%8B%8D%E5%AD%90)_20220328144737_18199.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E8%97%8F(&%E5%B0%8F%E6%8B%8D%E5%AD%90).ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/b168fceb3f4b022f3af5d38b02ae1a53d6b44972.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/b168fceb3f4b022f3af5d38b02ae1a53d6b44972.jpg@.avif",
           "quality": "OPUS96",
           "full_title": "【小拍子x笙歌】藏——超“甜美”男女声合唱",
           "origin": "https://www.bilibili.com/video/BV1sb41187LP",
@@ -849,7 +877,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%9F%A5%E5%90%A6%E7%9F%A5%E5%90%A6(&%E7%8E%8B%E8%80%81%E4%B9%9D)_20220328150216_75773.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E7%9F%A5%E5%90%A6%E7%9F%A5%E5%90%A6(&%E7%8E%8B%E8%80%81%E4%B9%9D).ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/d243ab23abfd776d468b8ea6c97e5bd96a7407cf.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/d243ab23abfd776d468b8ea6c97e5bd96a7407cf.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "【王老九x笙歌】知否知否——应是绿肥红瘦",
           "origin": "https://www.bilibili.com/video/BV1Wt41187zn",
@@ -863,7 +891,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%9C%9D%E6%B1%90x%E9%98%BF%E6%A2%93_20220330145518_29287.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E6%9C%9D%E6%B1%90x%E9%98%BF%E6%A2%93.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/c1147a55198580e9e6059ab9f52d4f2fcf5e16c7.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/c1147a55198580e9e6059ab9f52d4f2fcf5e16c7.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "【阿梓x笙歌】朝汐——两个“游戏”主播合唱的巅峰之作",
           "origin": "https://www.bilibili.com/video/BV1xt411v7U9",
@@ -877,7 +905,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%87%89%E5%87%89x%E7%8E%8B%E8%80%81%E4%B9%9D_20220330174921_53435.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E5%87%89%E5%87%89x%E7%8E%8B%E8%80%81%E4%B9%9D.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "《凉凉》——笙歌&王老九",
           "origin": "https://www.bilibili.com/audio/au653717",
@@ -891,7 +919,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B8%85%E6%98%8E%E6%A2%A6x%E5%B0%8F%E5%8F%AF_20220330175218_80389.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E6%B8%85%E6%98%8E%E6%A2%A6x%E5%B0%8F%E5%8F%AF.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/music/6d2ce149b4f3e80a3149fe3d3b4b0472f7ce8e09.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "《清明梦》—笙歌&小可",
           "origin": "https://www.bilibili.com/audio/au653849",
@@ -904,7 +932,7 @@
           "url": {
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%80%A9%E9%9F%B3%E6%B5%81%E5%B9%B4x%E9%BB%AF%E5%B0%98_20220330160605_22507.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/ace21b75046441f6c442cfac697e064f9cf3ac03.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/ace21b75046441f6c442cfac697e064f9cf3ac03.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "敲好听合唱(◕∀◕)【古风】倩音流年——笙歌&黯尘",
           "origin": "https://www.bilibili.com/video/BV1aW411T7DB",
@@ -924,7 +952,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BA%A2%E5%8F%B6%E5%AF%BA(&%E9%98%BF%E6%A2%93)_%E7%90%B4%E6%A2%A8%E6%A2%A8_20220409205911_89774.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E4%BA%91%E5%90%88%E5%94%B1/%E7%BA%A2%E5%8F%B6%E5%AF%BA(&%E9%98%BF%E6%A2%93)_%E7%90%B4%E6%A2%A8%E6%A2%A8.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/music/94df73695e0875261479f7d1614650717bea9501.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/music/94df73695e0875261479f7d1614650717bea9501.jpg@.avif",
           "quality": "OPUS320",
           "full_title": "制作:琴梨梨",
           "origin": "https://www.bilibili.com/video/BV1xL4y157HY",
@@ -937,7 +965,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%AA%E4%BA%BA%E7%90%B5%E7%90%B6(&%E5%B0%8F%E5%8F%AF)_%E7%90%B4%E6%A2%A8%E6%A2%A8_20220408143650_45626.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E4%BA%91%E5%90%88%E5%94%B1/%E6%B5%AA%E4%BA%BA%E7%90%B5%E7%90%B6(&%E5%B0%8F%E5%8F%AF)_%E7%90%B4%E6%A2%A8%E6%A2%A8.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/music/6d0214dd2f0adb40899cb79bc7679e56222719b9.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/music/6d0214dd2f0adb40899cb79bc7679e56222719b9.jpg@.avif",
           "quality": "OPUS320",
           "full_title": "制作:琴梨梨",
           "origin": "https://www.bilibili.com/video/BV1A94y1Z7s8",
@@ -950,7 +978,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%8D%B1%E9%99%A9%E6%B4%BE%E5%AF%B9(&%E5%86%85%E5%BE%B7%E7%BB%B4%E5%BE%B7)_kami_20220415204454_43795.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E4%BA%91%E5%90%88%E5%94%B1/%E5%8D%B1%E9%99%A9%E6%B4%BE%E5%AF%B9(&%E5%86%85%E5%BE%B7%E7%BB%B4%E5%BE%B7)_kami.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/9e066a5db97317400d77fa349e0403d16fcfe1a9.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/9e066a5db97317400d77fa349e0403d16fcfe1a9.jpg@.avif",
           "quality": "OPUS96",
           "full_title": "制作:帅比猪猪kamiOvO",
           "origin": "https://www.bilibili.com/video/BV1cr4y1B7rN",
@@ -963,7 +991,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BB%9D%E4%B8%96%E8%88%9E%E5%A7%AC(%E5%9C%B0%E4%B8%89%E9%B2%9C)_20220415205221_39667.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E4%BA%91%E5%90%88%E5%94%B1/%E7%BB%9D%E4%B8%96%E8%88%9E%E5%A7%AC(%E5%9C%B0%E4%B8%89%E9%B2%9C).ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/6b817a4786febf8e881c94ea317e77f00156ea9c.png@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/6b817a4786febf8e881c94ea317e77f00156ea9c.png@.avif",
           "quality": "OPUS96",
           "full_title": "制作:落玄汐",
           "origin": "https://www.bilibili.com/video/BV1r44y1H7Tc",
@@ -980,7 +1008,22 @@
     {
       "type": "精修歌切",
       "description": "经过精修的直播歌切",
-      "list": []
+      "list": [
+        {
+          "name": "眉南边",
+          "url": {
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%9C%89%E5%8D%97%E8%BE%B9_20230113165122_85854.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%B2%BE%E4%BF%AE/%E7%9C%89%E5%8D%97%E8%BE%B9.ogg"
+          },
+          "cover": "https://i0.hdslb.com/bfs/archive/d0b350b9112eab3ff7d7d269cbbd8d2d5cda448b.jpg@.avif",
+          "quality": "OPUS192",
+          "full_title": "三周年文艺汇演《眉南边》",
+          "origin": "https://www.bilibili.com/video/BV1cN4y1N7Ev",
+          "source_quality": "AAC320",
+          "release_date": "2022-10-03",
+          "4k": true
+        }
+      ]
     },
     {
       "type": "纯享歌切",
@@ -992,7 +1035,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/365_20220526210933_37869.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/36.5.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/a6b6d631b1ea2f62b531bc54c62cb891b7eee8a1.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/a6b6d631b1ea2f62b531bc54c62cb891b7eee8a1.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "切歌&优化:琴梨梨",
           "origin": "https://www.bilibili.com/video/BV1qZ4y1b78U",
@@ -1005,7 +1048,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%9A%97%E5%8F%B7_20220421213153_49015.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E6%9A%97%E5%8F%B7.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/9cb6ec4dc7e808fde52a4042df9790f83d896ad2.png@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/9cb6ec4dc7e808fde52a4042df9790f83d896ad2.png@.avif",
           "quality": "OPUS192",
           "full_title": "切歌:樱乃笙曦大铸币",
           "origin": "https://www.bilibili.com/video/BV1FY41177Tu",
@@ -1018,7 +1061,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E9%9D%92%E5%AA%9A%E7%8B%90_20220331211938_3007.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E9%9D%92%E5%AA%9A%E7%8B%90.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/18d8bac9216a0242574cfe48b9d7f989b5a940cc.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/18d8bac9216a0242574cfe48b9d7f989b5a940cc.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "切歌:杏仁没有核|优化:琴梨梨",
           "origin": "https://www.bilibili.com/video/BV1tY4y1W7VW",
@@ -1031,7 +1074,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B8%85%E5%B9%B3%E8%AF%AF_20220415214042_69439.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E6%B8%85%E5%B9%B3%E8%AF%AF.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/e1d96912c9a5a31e473346d78e4d5d5b52ea414b.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/e1d96912c9a5a31e473346d78e4d5d5b52ea414b.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "切歌:皇珈頂碗人",
           "origin": "https://www.bilibili.com/video/BV1hL411A7BX",
@@ -1044,7 +1087,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%B7%E6%B5%B7%E6%B5%B7_20220415194656_23666.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E6%B5%B7%E6%B5%B7%E6%B5%B7.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/9cb6ec4dc7e808fde52a4042df9790f83d896ad2.png@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/9cb6ec4dc7e808fde52a4042df9790f83d896ad2.png@.avif",
           "quality": "OPUS192",
           "full_title": "切歌:樱乃笙曦大铸币|优化:琴梨梨",
           "origin": "https://www.bilibili.com/video/BV1XY411n7ic",
@@ -1057,7 +1100,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%AE%9D%E8%B4%9D_20220415195119_13842.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E5%AE%9D%E8%B4%9D.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/9cb6ec4dc7e808fde52a4042df9790f83d896ad2.png@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/9cb6ec4dc7e808fde52a4042df9790f83d896ad2.png@.avif",
           "quality": "OPUS192",
           "full_title": "切歌:樱乃笙曦大铸币",
           "origin": "https://www.bilibili.com/video/BV1dU4y1R7gH",
@@ -1070,7 +1113,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E8%8A%92%E7%A7%8D_20220415204216_74787.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E8%8A%92%E7%A7%8D.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/9cb6ec4dc7e808fde52a4042df9790f83d896ad2.png@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/9cb6ec4dc7e808fde52a4042df9790f83d896ad2.png@.avif",
           "quality": "OPUS192",
           "full_title": "切歌:樱乃笙曦大铸币|优化:琴梨梨",
           "origin": "https://www.bilibili.com/video/BV1q3411s7YE",
@@ -1083,7 +1126,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E8%BF%98%E6%98%AF%E4%BD%A0%E7%9A%84%E7%AC%91%E5%AE%B9%E6%9C%80%E5%8F%AF%E7%88%B1_20220417214712_77721.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E8%BF%98%E6%98%AF%E4%BD%A0%E7%9A%84%E7%AC%91%E5%AE%B9%E6%9C%80%E5%8F%AF%E7%88%B1.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/a7b561a0cc9e09f829571e9f587d4923a2e5d740.png@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/a7b561a0cc9e09f829571e9f587d4923a2e5d740.png@.avif",
           "quality": "OPUS192",
           "full_title": "切歌:樱乃笙曦大铸币",
           "origin": "https://www.bilibili.com/video/BV1eF411s7aj",
@@ -1096,7 +1139,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%BB%9D%E4%B8%96%E8%88%9E%E5%A7%AC_20220415212813_23407.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E7%BB%9D%E4%B8%96%E8%88%9E%E5%A7%AC.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/9cb6ec4dc7e808fde52a4042df9790f83d896ad2.png@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/9cb6ec4dc7e808fde52a4042df9790f83d896ad2.png@.avif",
           "quality": "OPUS192",
           "full_title": "切歌:樱乃笙曦大铸币",
           "origin": "https://www.bilibili.com/video/BV1Ku411z74N",
@@ -1109,7 +1152,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E8%88%9E%E5%A8%98_20220411141546_61901.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E8%88%9E%E5%A8%98.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/e1d96912c9a5a31e473346d78e4d5d5b52ea414b.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/e1d96912c9a5a31e473346d78e4d5d5b52ea414b.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "切歌:皇珈頂碗人|优化:琴梨梨",
           "origin": "https://www.bilibili.com/video/BV1s34y1t73v",
@@ -1122,7 +1165,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%89%B9%E5%8A%A1J_20220415213215_89013.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E7%89%B9%E5%8A%A1J.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/e1d96912c9a5a31e473346d78e4d5d5b52ea414b.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/e1d96912c9a5a31e473346d78e4d5d5b52ea414b.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "切歌:樱乃笙曦大铸币",
           "origin": "https://www.bilibili.com/video/BV1oY411J7rc",
@@ -1135,7 +1178,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E8%A6%81%E6%8A%B1%E6%8A%B1_20220414201107_57359.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E8%A6%81%E6%8A%B1%E6%8A%B1.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/2ccdc50f8d9ddb2ff09576cad444ba5979d44a02.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/2ccdc50f8d9ddb2ff09576cad444ba5979d44a02.jpg@.avif",
           "quality": "OPUS320",
           "full_title": "切歌:樱乃笙曦大铸币|优化:琴梨梨",
           "origin": "https://www.bilibili.com/video/BV1r3411W7bV",
@@ -1148,7 +1191,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%8D%B1%E9%99%A9%E6%B4%BE%E5%AF%B9_20220415192515_66976.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E5%8D%B1%E9%99%A9%E6%B4%BE%E5%AF%B9.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/026d61ec54bab65543a97df26d48603a91ae8f2e.png@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/026d61ec54bab65543a97df26d48603a91ae8f2e.png@.avif",
           "quality": "OPUS192",
           "full_title": "切歌:樱乃笙曦大铸币",
           "origin": "https://www.bilibili.com/video/BV1hi4y1r7jW",
@@ -1161,7 +1204,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%AD%A6%E7%8C%AB%E5%8F%AB_20220416211300_52289.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E5%AD%A6%E7%8C%AB%E5%8F%AB.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/026d61ec54bab65543a97df26d48603a91ae8f2e.png@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/026d61ec54bab65543a97df26d48603a91ae8f2e.png@.avif",
           "quality": "OPUS192",
           "full_title": "切歌:樱乃笙曦大铸币",
           "origin": "https://www.bilibili.com/video/BV1MS4y167hv",
@@ -1174,7 +1217,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%B5%81%E5%85%89%E8%AE%B0_20220421220942_66575.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E6%B5%81%E5%85%89%E8%AE%B0.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/026d61ec54bab65543a97df26d48603a91ae8f2e.png@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/026d61ec54bab65543a97df26d48603a91ae8f2e.png@.avif",
           "quality": "OPUS192",
           "full_title": "切歌:樱乃笙曦大铸币|优化:琴梨梨",
           "origin": "https://www.bilibili.com/video/BV11b4y177hi",
@@ -1187,7 +1230,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E8%8B%8F%E5%85%AC%E5%A0%A4_20220617110634_6120.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E8%8B%8F%E5%85%AC%E5%A0%A4V2.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/a67ec5eea83766d998c39dab3fa69645f079875c.png@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/a67ec5eea83766d998c39dab3fa69645f079875c.png@.avif",
           "quality": "OPUS256",
           "full_title": "切歌:樱乃笙曦&孙小花|优化:琴梨梨[Hi-Res]",
           "origin": "https://www.bilibili.com/video/BV1wq4y187FK",
@@ -1201,7 +1244,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E4%B9%9D%E5%BC%A0%E6%9C%BA_20220530153906_67681.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E4%B9%9D%E5%BC%A0%E6%9C%BA.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/c6a6f32b54b6d692c03a233225e8da30eb942edb.png@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/c6a6f32b54b6d692c03a233225e8da30eb942edb.png@.avif",
           "quality": "OPUS96",
           "full_title": "切歌:孙小花",
           "origin": "https://www.bilibili.com/video/BV1cQ4y1Y7Nh",
@@ -1214,7 +1257,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E7%A9%BA%E5%BF%83_20220421223528_10384.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%BA%AF%E4%BA%AB/%E7%A9%BA%E5%BF%83.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/e3dea42d955891735b2aae1ba79d31032aca73d7.png@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/e3dea42d955891735b2aae1ba79d31032aca73d7.png@.avif",
           "quality": "OPUS128",
           "full_title": "切歌:孙小花",
           "origin": "https://www.bilibili.com/video/BV18h411H7EJ",
@@ -1233,7 +1276,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%8D%81%E4%B8%87%E7%B2%89_20220504210925_21858.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E6%95%B4%E6%B4%BB/%E5%8D%81%E4%B8%87%E7%B2%89.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/3cf703766388e911e2005fcb603ba82c28b2ec4a.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/3cf703766388e911e2005fcb603ba82c28b2ec4a.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "这样庆祝自己十万粉了是可以的吗",
           "origin": "https://www.bilibili.com/video/BV1nT4y167KS",
@@ -1246,7 +1289,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E9%98%B2%E7%A9%BA%E8%AD%A6%E6%8A%A5_20220415210541_64394.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E6%95%B4%E6%B4%BB/%E9%98%B2%E7%A9%BA%E8%AD%A6%E6%8A%A5.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/bb60ce1104429a2d73fe6350743c172f25894616.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/bb60ce1104429a2d73fe6350743c172f25894616.jpg@.avif",
           "quality": "OPUS128",
           "full_title": "素材:樱乃笙曦大铸币|封面:柑橘烏雲",
           "origin": "https://www.bilibili.com/video/BV1Dr4y1i7xG",
@@ -1259,7 +1302,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/80272_20220416204857_10990.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E6%95%B4%E6%B4%BB/%E5%93%88%E5%93%88%E5%93%88%E5%93%88%E5%93%88%E5%93%88%E5%93%88%E5%93%88%E5%93%88%E5%93%88.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/09d56baa975fd712abdd32c76c7c51a3f2bd5555.png@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/09d56baa975fd712abdd32c76c7c51a3f2bd5555.png@.avif",
           "quality": "OPUS128",
           "full_title": "素材:孙小花",
           "origin": "https://www.bilibili.com/video/BV1nU4y1G76y",
@@ -1272,7 +1315,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E5%91%A8%E5%B9%B4%E5%B0%8F%E4%BD%9C%E6%96%87_20220417213747_9443.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E6%95%B4%E6%B4%BB/%E5%91%A8%E5%B9%B4%E5%B0%8F%E4%BD%9C%E6%96%87.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/05f7d0a05a150dfd7e8f1ef97bb36a80862459ef.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/05f7d0a05a150dfd7e8f1ef97bb36a80862459ef.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "【笙歌】周年小作文和《for you 写给你的歌》(cover 泠鸢)",
           "origin": "https://www.bilibili.com/video/BV1hK4y1G72m",
@@ -1285,7 +1328,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/200%E8%88%B0%E5%B0%8F%E4%BD%9C%E6%96%87_20220417213334_43344.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E6%95%B4%E6%B4%BB/200%E8%88%B0%E5%B0%8F%E4%BD%9C%E6%96%87.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/edf9dbb55b44b7f839dfea4ea9223622a3f02bad.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/edf9dbb55b44b7f839dfea4ea9223622a3f02bad.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "《200舰感谢小作文》",
           "origin": "https://www.bilibili.com/video/BV1Jy4y1a7n7",
@@ -1298,7 +1341,7 @@
             "yuketang": "https://bj.bcebos.com/yunpanx/%E6%9C%AC%E8%8D%89%E7%BA%B2%E7%9B%AE_20220416211735_22076.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E6%95%B4%E6%B4%BB/%E6%9C%AC%E8%8D%89%E7%BA%B2%E7%9B%AE.ogg"
           },
-          "cover": "https://i0.hdslb.com/bfs/archive/68c05eb4867effa29ceaaa2036472db069d89fc0.jpg@.webp",
+          "cover": "https://i0.hdslb.com/bfs/archive/68c05eb4867effa29ceaaa2036472db069d89fc0.jpg@.avif",
           "quality": "OPUS192",
           "full_title": "【笙歌-本草纲目】冒死从直播间偷出来的主播黑历史",
           "origin": "https://www.bilibili.com/video/BV1CK4y1S7Lw",

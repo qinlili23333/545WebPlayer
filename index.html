@@ -666,7 +666,7 @@
             avatarSpan.className = "mdc-list-item__graphic";
             let imgItem = document.createElement("img");
             if (avatar.indexOf(".hdslb.") > 0) {
-                avatar = avatar.replace("@.webp", "@120h.webp")
+                avatar = avatar.replace("@.avif", "@120h.avif")
             };
             imgItem.src = avatar;
             imgItem.crossOrigin = "anonymous";
@@ -746,7 +746,7 @@
                 saveMenu.setSpan("正在保存...");
                 dlFile(URL.createObjectURL(await (await fetch(url, {
                     mode: "cors"
-                })).blob()), name + "_封面.webp");
+                })).blob()), name + "_封面.avif");
                 hideMenu();
             });
             menuList.appendChild(saveMenu);
@@ -762,8 +762,8 @@
                         url: "https://545.qinlili.bid",
                         files: [new File([await (await fetch(url, {
                             mode: "cors"
-                        })).blob()], name + "_封面.webp", {
-                            type: "image/webp"
+                        })).blob()], name + "_封面.avif", {
+                            type: "image/avif"
                         })]
                     });
                 } else {
@@ -885,7 +885,7 @@
                     if (cjs.available) {
                         setStatus("连接中", true);
                         await cjs.cast(songInfo.url[cdn], {
-                            poster: songInfo.cover,
+                            poster: songInfo.cover.replace(".avif", ".webp"),
                             title: songInfo.name,
                             description: "连续播放需保持页面开启"
                         })
@@ -1204,7 +1204,7 @@
             if (window.castSwitch) {
                 ignoreNextCastEnd = true;
                 cjsplay.cast(song.url[cdn], {
-                    poster: song.cover,
+                    poster: song.cover.replace(".avif", ".webp"),
                     title: song.name,
                     description: "连续播放需保持页面开启"
                 });
@@ -1260,7 +1260,7 @@
                     artwork: [{
                         sizes: "320x180",
                         src: song.cover,
-                        type: "image/webp"
+                        type: "image/avif"
                     }]
                 });
             };
