@@ -1021,7 +1021,7 @@
           "origin": "https://www.bilibili.com/video/BV1cN4y1N7Ev",
           "source_quality": "AAC320",
           "release_date": "2022-10-03",
-          "4k": true
+          "is4k": true
         }
       ]
     },

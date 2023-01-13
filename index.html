@@ -29,9 +29,7 @@
     <script crossorigin="anonymous"
         integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
         src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
-    <link crossorigin="anonymous"
-        href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/material-design-icons/3.0.2/iconfont/material-icons.min.css"
-        rel="stylesheet">
+    <link crossorigin="anonymous" href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         @keyframes leftin {
             from {
@@ -309,6 +307,10 @@
 
         .material-icons {
             background-repeat: round;
+        }
+
+        .material-icons {
+            display: flex;
         }
 
         @media (min-width: 700px) {
@@ -725,7 +727,8 @@
             }
             let textItem = document.createElement("span");
             textItem.className = "mdc-list-item__text";
-            textItem.innerText = text;
+            textItem.style.display = "flex";
+            textItem.innerHTML = text;
             menuItem.setSpan = text => {
                 textItem.innerText = text;
             }
@@ -805,42 +808,7 @@
                 if (songInfo.hi_res_id) {
                     let dlHiMenu = makeMenu("下载Hi-Res FLAC", "./img/download.svg");
                     dlHiMenu.addEventListener("click", async () => {
-                        if (!window.ctfile) {
-                            setStatus("加载城通网盘解析模块", true);
-                            await loadScriptAsync("./lib/ctget.min.js");
-                        }
-                        setStatus("获取下载地址", true);
-                        let fileInfo = await window.ctfile.getByID(songInfo.hi_res_id, "547873715");
-                        if (fileInfo.success) {
-                            let xhr = new XMLHttpRequest();
-                            xhr.responseType = "blob";
-                            xhr.onprogress = event => {
-                                if (event.loaded && event.total) {
-                                    var percent = String(Number(event.loaded) / Number(event.total) * 100).substring(0, 4);
-                                    setStatus("正在下载" + songInfo.name + percent + "%", true);
-                                }
-                            };
-                            xhr.onload = event => {
-                                if (xhr.readyState === 4) {
-                                    if (xhr.status === 200) {
-                                        setStatus("正在写出" + songInfo.name, true);
-                                        let a = document.createElement('a');
-                                        a.href = URL.createObjectURL(xhr.response);
-                                        a.download = songInfo.name + ".flac";
-                                        a.click();
-                                        setStatus("下载" + songInfo.name + "成功", false);
-                                    } else {
-                                        setStatus("节点返回异常状态码:" + xhr.status);
-                                    }
-                                }
-                            }
-                            xhr.onerror = function (e) {
-                            }
-                            xhr.open('GET', fileInfo.link + "&ForceNoCache=1", true)
-                            xhr.send()
-                        } else {
-                            setStatus("读取下载链接失败:" + fileInfo.errormsg);
-                        }
+                        window.open("https://ctfile.qinlili.bid/?file=" + songInfo.hi_res_id + "&pass=547873715");
                     });
                     menuList.appendChild(dlHiMenu);
                 }
@@ -851,7 +819,7 @@
                 saveImgMenu(songInfo.cover, songInfo.name);
             });
             menuList.appendChild(coverMenu)
-            let goMenu = makeMenu("查看原始投稿", "./img/link.svg");
+            let goMenu = makeMenu("查看原始投稿" + (songInfo.is4k ? `<span class="material-icons">4k</span>` : ""), "./img/link.svg");
             goMenu.id = "goMenu";
             goMenu.addEventListener("click", () => {
                 window.open(songInfo.origin, "_blank")
