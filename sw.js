@@ -3,7 +3,7 @@ var VERSION = '1.1.8.20230124'
 var VERSION_AZUSA_PATCH_USE = '1.1.8.20230113'
 var AZUSA_PATCH_SKIP_LIST = [
     './cursor/normal.png',
-    './icon.png',
+    './icon.webp',
     './icon_mask.png',
     './icon_mono.png',
     './icon_badminton.webp',
