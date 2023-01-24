@@ -592,7 +592,6 @@
         }
         const showMenu = async () => {
             document.getElementById("floatMenuContainer").style.display = "block";
-            document.getElementById("floatMenuContainer").getElementsByClassName("mdc-list-item").length ? document.getElementById("floatMenuContainer").getElementsByClassName("mdc-list-item")[0].focus() : false;
             await sleep(1);
             document.getElementById("floatMenuContainer").style.opacity = 1;
         };
@@ -1421,6 +1420,12 @@
                 const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
             });
             menuList.appendChild(historyMenu);
+            let giftMenu = makeMenu("领取礼物", "./img/gift.svg");
+            giftMenu.addEventListener("click", () => {
+                bottomdown();
+                window.open("https://club.psplive.com/GiftBox", "_blank")
+            });
+            menuList.appendChild(giftMenu);
             let settingMenu = makeMenu("设置", "./img/setting.svg");
             settingMenu.addEventListener("click", () => {
                 bottomdown();
