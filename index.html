@@ -285,20 +285,16 @@
         }
 
         #floatMenu {
+            transform: scale(0.1, 0.1);
+            transform-origin: left top;
             overflow-y: auto;
             overflow-y: overlay;
-            width: calc(100% - 20vw);
-            height: -moz-fit-content;
-            height: fit-content;
-            max-height: calc(100% - 20vh);
+            width: 80%;
+            max-height: 0px;
             border-radius: 5px;
             backdrop-filter: blur(5px) brightness(100%);
             -webkit-backdrop-filter: blur(5px) brightness(100%);
             background-color: rgba(255, 255, 255, 0.75);
-            margin-top: 10vh;
-            margin-bottom: 10vh;
-            margin-left: 10vw;
-            margin-right: 10vw;
         }
 
         .mdc-list {
@@ -589,22 +585,54 @@
             document.getElementById("floatMenuContainer").style.backdropFilter = "blur(3px) brightness(100%)";
             document.getElementById("floatMenuContainer").setAttribute("style", document.getElementById("floatMenuContainer").getAttribute("style") + "-webkit-backdrop-filter:blur(3px) brightness(100%)");
 
-        }
+        };
+        //指尖跟随菜单
+        window.lastClick = { x: 0, y: 0 };
+        window.addEventListener('pointerdown', (event) => {
+            lastClick.x = event.clientX;
+            lastClick.y = event.clientY;
+        });
         const showMenu = async () => {
+            if (document.getElementById("floatMenuContainer").style.display == "block") { return true; }
             document.getElementById("floatMenuContainer").style.display = "block";
-            await sleep(1);
+            document.getElementById("floatMenu").style.marginLeft = lastClick.x + "px";
+            document.getElementById("floatMenu").style.marginTop = lastClick.y + "px";
+            document.getElementById("floatMenu").style.transition = "transform 0.3s, margin-top 0.3s, margin-left 0.3s,max-height 0.3s";
+            await sleep(5);
             document.getElementById("floatMenuContainer").style.opacity = 1;
+            document.getElementById("floatMenu").style.marginLeft = "10%";
+            document.getElementById("floatMenu").style.marginTop = "10%";
+            document.getElementById("floatMenu").style.transform = "scale(1,1)";
         };
         const hideMenu = async () => {
+            document.getElementById("floatMenu").style.transform = "scale(0.1, 0.1)";
+            document.getElementById("floatMenu").style.marginLeft = lastClick.x + "px";
+            document.getElementById("floatMenu").style.marginTop = lastClick.y + "px";
             document.getElementById("floatMenuContainer").style.opacity = 0;
-            await sleep(200);
+            await sleep(300);
             document.getElementById("floatMenuContainer").style.display = "none";
             menuList.innerHTML = "";
+            document.getElementById("floatMenu").style.transition = "max-height 0.3s";
         };
         document.getElementById("floatMenuContainer").addEventListener("click", (event) => {
             event.stopPropagation();
             hideMenu();
         })
+        //菜单魔法展开
+        const observer = new MutationObserver(function (mutations) {
+            let contentHeight = document.getElementById("floatMenu").scrollHeight;
+            document.getElementById("floatMenu").style.height = "auto";
+            let originHeight = document.getElementById("floatMenu").style.maxHeight;
+            let maxHeight = document.body.clientHeight * 0.8;
+            if (contentHeight > maxHeight) {
+                contentHeight = maxHeight;
+            };
+            document.getElementById("floatMenu").style.maxHeight = (contentHeight + 1) + "px";
+            if (parseInt(originHeight) > contentHeight) {
+                document.getElementById("floatMenu").style.height = originHeight;
+            }
+        });
+        observer.observe(document.getElementById("floatMenu"), { childList: true, subtree: true, attributes: true, attributeFilter: ['loaded'] });
         const setStatus = (text, loading) => {
             document.getElementById("loading").style.display = loading ? "block" : "none";
             document.getElementById("tips").innerText = text;
@@ -739,7 +767,11 @@
             let imgItem = document.createElement("img");
             imgItem.src = url;
             imgItem.crossOrigin = "anonymous";
-            imgItem.style = "max-height:calc(80vh - 96px);width:100%;height:auto;object-fit:cover;border-radius: 5px 5px 0px 0px;";
+            imgItem.style = "max-height:calc(80vh - 96px);width:100%;height:auto;object-fit:cover;border-radius: 5px 5px 0px 0px;opacity:0;transition: opacity 0.5s;";
+            imgItem.onload = () => {
+                imgItem.style.opacity = 1;
+                imgItem.setAttribute("loaded", "true")
+            }
             menuList.appendChild(imgItem);
             let saveMenu = makeMenu("保存图片", "./img/save.svg");
             saveMenu.addEventListener("click", async (e) => {
@@ -1385,6 +1417,7 @@
                     liveFrame.allowFullscreen = true;
                     liveFrame.style = "width:80vw;height:45vw;max-height:80vh;"
                     liveFrame.src = "https://www.bilibili.com/blackboard/html5mobileplayer.html?aid=" + aid + "&bvid=" + bvid + "&posterFirst=1";
+                    liveFrame.onload = () => { liveFrame.setAttribute("loaded", "true") };
                     menuList.appendChild(liveFrame);
                     let openMenu = makeMenu("在新窗口打开", "./img/link.svg");
                     openMenu.addEventListener("click", () => {
@@ -1404,7 +1437,11 @@
                     hideMenu();
                 });
                 menuList.innerHTML = "";
-                historyList.data.archives.forEach(live => {
+                const listFrag = document.createDocumentFragment();
+                let historyData = historyList.data.archives;
+                //每次加载100条
+                for (let i = 0; i < 100; i++) {
+                    let live = historyData.shift()
                     let liveMenu = makeMenu(live.title.replace("【直播回放】", ""))
                     liveMenu.addEventListener("click", e => {
                         if (window.isBiliLite) {
@@ -1414,8 +1451,36 @@
                             openLiveFrame(live.aid, live.bvid);
                         }
                     })
-                    menuList.appendChild(liveMenu);
-                })
+                    listFrag.appendChild(liveMenu);
+                };
+                menuList.appendChild(listFrag);
+                const moreMenu = makeMenu("点我加载更多...");
+                moreMenu.addEventListener("click", e => {
+                    e.stopPropagation();
+                    const listFrag = document.createDocumentFragment();
+                    for (let i = 0; i < 100 && historyData.length; i++) {
+                        let live = historyData.shift()
+                        let liveMenu = makeMenu(live.title.replace("【直播回放】", ""))
+                        liveMenu.addEventListener("click", e => {
+                            if (window.isBiliLite) {
+                                window.open("https://www.bilibili.com/video/" + live.bvid, "_blank")
+                            } else {
+                                e.stopPropagation();
+                                openLiveFrame(live.aid, live.bvid);
+                            }
+                        })
+                        listFrag.appendChild(liveMenu);
+                    }
+                    menuList.appendChild(listFrag);
+                    if (historyData.length) {
+                        menuList.appendChild(moreMenu);
+                    } else {
+                        menuList.removeChild(moreMenu);
+                    }
+                    const list = new MDCList(menuList);
+                    const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
+                });
+                menuList.appendChild(moreMenu);
                 const list = new MDCList(menuList);
                 const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
             });
@@ -1431,7 +1496,6 @@
                 window.open("https://club.psplive.com/GiftBox", "_blank");
                 await sleep(500);
                 hideMenu();
-                menuList.innerHTML = "";
             });
             menuList.appendChild(giftMenu);
             let settingMenu = makeMenu("设置", "./img/setting.svg");
