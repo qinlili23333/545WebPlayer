@@ -601,25 +601,26 @@
             await sleep(5);
             document.getElementById("floatMenuContainer").style.opacity = 1;
             document.getElementById("floatMenu").style.marginLeft = "10%";
-            document.getElementById("floatMenu").style.marginTop = "10%";
+            document.getElementById("floatMenu").style.marginTop = document.body.clientHeight * 0.1 + "px";
             document.getElementById("floatMenu").style.transform = "scale(1,1)";
         };
-        const hideMenu = async () => {
+        const hideMenu = async (rebuild) => {
             document.getElementById("floatMenu").style.transform = "scale(0.1, 0.1)";
             document.getElementById("floatMenu").style.marginLeft = lastClick.x + "px";
             document.getElementById("floatMenu").style.marginTop = lastClick.y + "px";
             document.getElementById("floatMenuContainer").style.opacity = 0;
             await sleep(300);
             document.getElementById("floatMenuContainer").style.display = "none";
-            menuList.innerHTML = "";
+            rebuild ? showMenu() + resizeMenu() : menuList.innerHTML = "";
             document.getElementById("floatMenu").style.transition = "max-height 0.3s";
         };
+        window.addEventListener("resize", (event) => { if (document.getElementById("floatMenuContainer").style.display == "block") { hideMenu(true); } });
         document.getElementById("floatMenuContainer").addEventListener("click", (event) => {
             event.stopPropagation();
             hideMenu();
         })
         //菜单魔法展开
-        const observer = new MutationObserver(function (mutations) {
+        const resizeMenu = () => {
             let contentHeight = document.getElementById("floatMenu").scrollHeight;
             document.getElementById("floatMenu").style.height = "auto";
             let originHeight = document.getElementById("floatMenu").style.maxHeight;
@@ -631,7 +632,8 @@
             if (parseInt(originHeight) > contentHeight) {
                 document.getElementById("floatMenu").style.height = originHeight;
             }
-        });
+        }
+        const observer = new MutationObserver(resizeMenu);
         observer.observe(document.getElementById("floatMenu"), { childList: true, subtree: true, attributes: true, attributeFilter: ['loaded'] });
         const setStatus = (text, loading) => {
             document.getElementById("loading").style.display = loading ? "block" : "none";
@@ -894,7 +896,15 @@
                 });
                 menuList.appendChild(castMenu);
             }
-            let qualityMenu = makeMenu("播放音质:" + songInfo.quality + "/原始音质:" + songInfo.source_quality, "./img/audiofile.svg");
+            let qualityMenu = makeMenu("播放音质:" + songInfo.quality, "./img/audiofile.svg");
+            let playQuality = true;
+            qualityMenu.addEventListener("click", (event) => {
+                event.stopPropagation();
+                let btn = event.currentTarget;
+                let text = btn.querySelector(".mdc-list-item__text");
+                text.innerText = playQuality ? "原始音质:" + songInfo.source_quality : "播放音质:" + songInfo.quality;
+                playQuality = !playQuality;
+            });
             menuList.appendChild(qualityMenu);
             let timeMenu = makeMenu("发布时间:" + songInfo.release_date, "./img/calendar.svg");
             menuList.appendChild(timeMenu);
