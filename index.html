@@ -604,17 +604,22 @@
             document.getElementById("floatMenu").style.marginTop = document.body.clientHeight * 0.1 + "px";
             document.getElementById("floatMenu").style.transform = "scale(1,1)";
         };
-        const hideMenu = async (rebuild) => {
+        const hideMenu = async () => {
             document.getElementById("floatMenu").style.transform = "scale(0.1, 0.1)";
             document.getElementById("floatMenu").style.marginLeft = lastClick.x + "px";
             document.getElementById("floatMenu").style.marginTop = lastClick.y + "px";
             document.getElementById("floatMenuContainer").style.opacity = 0;
             await sleep(300);
             document.getElementById("floatMenuContainer").style.display = "none";
-            rebuild ? showMenu() + resizeMenu() : menuList.innerHTML = "";
+            menuList.innerHTML = "";
             document.getElementById("floatMenu").style.transition = "max-height 0.3s";
         };
-        window.addEventListener("resize", (event) => { if (document.getElementById("floatMenuContainer").style.display == "block") { hideMenu(true); } });
+        window.addEventListener("resize", (event) => {
+            if (document.getElementById("floatMenuContainer").style.display == "block") {
+                document.getElementById("floatMenu").style.marginTop = document.body.clientHeight * 0.1 + "px";
+                resizeMenu();
+            }
+        });
         document.getElementById("floatMenuContainer").addEventListener("click", (event) => {
             event.stopPropagation();
             hideMenu();
