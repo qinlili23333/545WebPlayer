@@ -1421,9 +1421,17 @@
             });
             menuList.appendChild(historyMenu);
             let giftMenu = makeMenu("领取礼物", "./img/gift.svg");
-            giftMenu.addEventListener("click", () => {
-                bottomdown();
-                window.open("https://club.psplive.com/GiftBox", "_blank")
+            giftMenu.addEventListener("click", async (e) => {
+                e.stopPropagation();
+                let btn = event.currentTarget;
+                btn.querySelector("p").style.backgroundImage = "url(./img/loading.svg)";
+                let text = btn.querySelector(".mdc-list-item__text");
+                text.innerText = "请稍等...";
+                await sleep(50);
+                window.open("https://club.psplive.com/GiftBox", "_blank");
+                await sleep(500);
+                hideMenu();
+                menuList.innerHTML = "";
             });
             menuList.appendChild(giftMenu);
             let settingMenu = makeMenu("设置", "./img/setting.svg");
