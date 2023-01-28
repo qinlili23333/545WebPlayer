@@ -145,6 +145,12 @@
             height: 100%;
         }
 
+        .liveFrame {
+            width: 80vw;
+            height: 45vw;
+            max-height: 80vh;
+        }
+
         #playPanel {
             backdrop-filter: blur(5px) brightness(100%);
             -webkit-backdrop-filter: blur(5px) brightness(100%);
@@ -337,6 +343,11 @@
 
             #floatMenu {
                 max-width: 400px;
+            }
+
+            .liveFrame {
+                max-width: 400px;
+                max-height: 225px;
             }
         }
     </style>
@@ -1429,7 +1440,7 @@
                     let liveFrame = document.createElement("iframe");
                     liveFrame.frameBorder = 0;
                     liveFrame.allowFullscreen = true;
-                    liveFrame.style = "width:80vw;height:45vw;max-height:80vh;"
+                    liveFrame.className = "liveFrame";
                     liveFrame.src = "https://www.bilibili.com/blackboard/html5mobileplayer.html?aid=" + aid + "&bvid=" + bvid + "&posterFirst=1";
                     liveFrame.onload = () => { liveFrame.setAttribute("loaded", "true") };
                     menuList.appendChild(liveFrame);
