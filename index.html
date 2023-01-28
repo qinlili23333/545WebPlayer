@@ -615,8 +615,10 @@
         //指尖跟随菜单
         window.lastClick = { x: 0, y: 0 };
         window.addEventListener('pointerdown', (event) => {
-            lastClick.x = event.clientX;
-            lastClick.y = event.clientY;
+            if (!(document.getElementById("floatMenuContainer").style.display == "block")) {
+                lastClick.x = event.clientX;
+                lastClick.y = event.clientY;
+            }
         });
         const locateMenu = () => {
             //大屏随动菜单
@@ -682,7 +684,7 @@
                 contentHeight = maxHeight;
                 document.getElementById("floatMenu").style.marginTop = document.body.clientHeight * 0.1 + "px";
             }
-            document.getElementById("floatMenu").style.maxHeight = (contentHeight + 1) + "px";
+            document.getElementById("floatMenu").style.maxHeight = (contentHeight) + "px";
             if (parseInt(originHeight) > contentHeight) {
                 document.getElementById("floatMenu").style.height = originHeight;
             };
