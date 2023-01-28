@@ -22,6 +22,8 @@
     <link rel="preconnect" href="https://cdn-cf.545.qinlili.bid">
     <script>
         document.title = "载入播放器中...";
+        window.Castjs = false;
+        window.cjsplay = false;
     </script>
     <link crossorigin="anonymous"
         integrity="sha512-tH5CEoO7QorGJK5RZrcKozo5xe0qC0UgOhjkIoqXNVe9ApFAjJRbVFzDfVvdRUSOJ5g2Pw9VzzOBguouzhLoIQ=="
@@ -30,6 +32,8 @@
         integrity="sha512-5zCl3JhN4Fqq6+irTX1v8J+77hwL54zTbrdl2Dl8YHe+KGcuV14C01u/uWFrSg+kZgOfGMneoUySVHqEgdRaPQ=="
         src="https://lib.baomitu.com/material-components-web/6.0.0/material-components-web.min.js"></script>
     <link crossorigin="anonymous" href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="./lib/hamood.min.js"></script>
+    <script defer src="./lib/cast.min.js" onload="initCast();"></script>
     <style>
         @keyframes leftin {
             from {
@@ -281,17 +285,18 @@
             height: auto;
             width: auto;
             position: fixed;
-            background-color: rgba(0, 0, 0, 0.15);
+            background-color: rgba(0, 0, 0, 0.25);
         }
 
         #floatMenu {
+            box-shadow: rgb(0 0 0 / 25%) 0px 4px 20px 1px;
             transform: scale(0.1, 0.1);
             transform-origin: left top;
             overflow-y: auto;
             overflow-y: overlay;
             width: 80%;
             max-height: 0px;
-            border-radius: 5px;
+            border-radius: 4px;
             backdrop-filter: blur(5px) brightness(100%);
             -webkit-backdrop-filter: blur(5px) brightness(100%);
             background-color: rgba(255, 255, 255, 0.75);
@@ -328,6 +333,10 @@
 
             #tabBar {
                 display: none;
+            }
+
+            #floatMenu {
+                max-width: 400px;
             }
         }
     </style>
@@ -414,6 +423,17 @@
         </div>
     </div>
     <script>
+        (() => {
+            if ((localStorage.skipSplash ? JSON.parse(localStorage.skipSplash) : false) || !(window.self === window.top)) {
+                return;
+            };
+            const hamoodConfig = {
+                data: "./hamood.json?ForceNoCache=1",
+                forceSkipPreload: true,
+                showLoadingTip: true
+            }
+            Hamood.init(hamoodConfig, false);
+        })();
         window.isBiliLite = false;
         const $ = text => {
             if (text == '.h5-download-bar') {
@@ -430,20 +450,6 @@
                 document.body.appendChild(script);
             });
         }
-        (async () => {
-            if ((localStorage.skipSplash ? JSON.parse(localStorage.skipSplash) : false) || !(window.self === window.top)) {
-                return;
-            };
-            const hamoodConfig = {
-                data: "./hamood.json?ForceNoCache=1",
-                forceSkipPreload: false,
-                showLoadingTip: false
-            }
-            let startTime = Date.now();
-            await loadScriptAsync("./lib/hamood.min.js");
-            let loadUseTime = Date.now() - startTime;
-            Hamood.init(hamoodConfig, (loadUseTime >= 500));
-        })();
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay))
         window.MDCTabBar = mdc.tabBar.MDCTabBar;
         window.MDCList = mdc.list.MDCList;
@@ -489,9 +495,6 @@
         });
     </script>
     <script>
-        window.Castjs = false;
-        window.cjs = false;
-        window.cjsplay = false;
         const cdn = localStorage.preferCDN ? localStorage.preferCDN : "yuketang";
         window.repeatSwitch = localStorage.repeat ? JSON.parse(localStorage.repeat) : false;
         window.shuffleSwitch = localStorage.shuffle ? JSON.parse(localStorage.shuffle) : false;
@@ -508,6 +511,26 @@
         if (shuffleSwitch) {
             document.getElementById("shuffleBtn").className = "topBtn active";
         };
+        const initCast = () => {
+            window.cjsplay = new Castjs();
+            cjsplay.on('playing', () => {
+                player.pause();
+                ignoreNextCastEnd = false;
+                setStatus("推送成功:" + currentPlay);
+                document.getElementById("castBtn").className = "topBtn active";
+            });
+            cjsplay.on('disconnect', () => {
+                setStatus("连接已断开");
+                window.castSwitch = false;
+                document.getElementById("castBtn").className = "topBtn";
+            });
+            cjsplay.on('end', () => {
+                setStatus("播放已结束，推送下一首...");
+                if (!ignoreNextCastEnd) {
+                    player.dispatchEvent(new CustomEvent('ended'));
+                }
+            });
+        };
         const switchCast = async () => {
             if (window.castSwitch) {
                 //结束投屏
@@ -515,38 +538,23 @@
             } else {
                 //开始投屏
                 if (!Castjs) {
-                    setStatus("加载Chromecast模块", true);
-                    await loadScriptAsync("./lib/cast.min.js");
+                    setStatus("Chromecast模块尚未就绪，再等等");
+                    return false;
                 }
-                if (!window.cjsplay) {
-                    window.cjsplay = new Castjs();
-                    cjsplay.on('playing', () => {
-                        player.pause();
-                        ignoreNextCastEnd = false;
-                        setStatus("推送成功:" + currentPlay);
-                        document.getElementById("castBtn").className = "topBtn active";
-                    });
-                    cjsplay.on('disconnect', () => {
-                        setStatus("连接已断开");
-                        window.castSwitch = false;
-                        document.getElementById("castBtn").className = "topBtn";
-                    });
-                    cjsplay.on('end', () => {
-                        setStatus("播放已结束，推送下一首...");
-                        if (!ignoreNextCastEnd) {
-                            player.dispatchEvent(new CustomEvent('ended'));
-                        }
-                    });
-                    await sleep(1000);
-                };
+                setStatus("正在寻找设备", true);
                 if (cjsplay.available) {
                     window.castSwitch = true;
                     setStatus("连接中", true);
                     let song = JSON.parse(localStorage.lastPlay)
                     playNow(song);
                 } else {
-                    setStatus("Chromecast尚未就绪");
-                };
+                    cjsplay.on('available', () => {
+                        window.castSwitch = true;
+                        setStatus("连接中", true);
+                        let song = JSON.parse(localStorage.lastPlay)
+                        playNow(song);
+                    });
+                }
             }
         };
         const switchRepeat = () => {
@@ -592,6 +600,29 @@
             lastClick.x = event.clientX;
             lastClick.y = event.clientY;
         });
+        const locateMenu = () => {
+            //大屏随动菜单
+            if (document.body.clientWidth >= 700) {
+                //右侧有空间
+                if (document.body.clientWidth - 400 > lastClick.x) {
+                    document.getElementById("floatMenu").style.marginLeft = lastClick.x + "px";
+                } else {
+                    document.getElementById("floatMenu").style.marginLeft = document.body.clientWidth - 400 + "px";
+                };
+                if (document.body.clientHeight - document.getElementById("floatMenu").scrollHeight > lastClick.y) {
+                    document.getElementById("floatMenu").style.marginTop = lastClick.y + "px";
+                } else {
+                    if (document.body.clientHeight - document.getElementById("floatMenu").scrollHeight < 0) {
+                        document.getElementById("floatMenu").style.marginTop = document.body.clientHeight * 0.1 + "px";
+                    } else {
+                        document.getElementById("floatMenu").style.marginTop = document.body.clientHeight - document.getElementById("floatMenu").scrollHeight + "px";
+                    }
+                }
+            } else {
+                document.getElementById("floatMenu").style.marginLeft = "10%";
+                document.getElementById("floatMenu").style.marginTop = document.body.clientHeight * 0.1 + "px";
+            }
+        };
         const showMenu = async () => {
             if (document.getElementById("floatMenuContainer").style.display == "block") { return true; }
             document.getElementById("floatMenuContainer").style.display = "block";
@@ -600,8 +631,7 @@
             document.getElementById("floatMenu").style.transition = "transform 0.3s, margin-top 0.3s, margin-left 0.3s,max-height 0.3s";
             await sleep(5);
             document.getElementById("floatMenuContainer").style.opacity = 1;
-            document.getElementById("floatMenu").style.marginLeft = "10%";
-            document.getElementById("floatMenu").style.marginTop = document.body.clientHeight * 0.1 + "px";
+            locateMenu()
             document.getElementById("floatMenu").style.transform = "scale(1,1)";
         };
         const hideMenu = async () => {
@@ -614,11 +644,11 @@
             menuList.innerHTML = "";
             document.getElementById("floatMenu").style.transition = "max-height 0.3s";
         };
-        window.addEventListener("resize", (event) => {
+        window.addEventListener("resize", async (event) => {
             if (document.getElementById("floatMenuContainer").style.display == "block") {
-                document.getElementById("floatMenu").style.marginTop = document.body.clientHeight * 0.1 + "px";
+                await sleep(100);
                 resizeMenu();
-            }
+            };
         });
         document.getElementById("floatMenuContainer").addEventListener("click", (event) => {
             event.stopPropagation();
@@ -632,11 +662,13 @@
             let maxHeight = document.body.clientHeight * 0.8;
             if (contentHeight > maxHeight) {
                 contentHeight = maxHeight;
-            };
+                document.getElementById("floatMenu").style.marginTop = document.body.clientHeight * 0.1 + "px";
+            }
             document.getElementById("floatMenu").style.maxHeight = (contentHeight + 1) + "px";
             if (parseInt(originHeight) > contentHeight) {
                 document.getElementById("floatMenu").style.height = originHeight;
-            }
+            };
+            locateMenu();
         }
         const observer = new MutationObserver(resizeMenu);
         observer.observe(document.getElementById("floatMenu"), { childList: true, subtree: true, attributes: true, attributeFilter: ['loaded'] });
@@ -774,10 +806,12 @@
             let imgItem = document.createElement("img");
             imgItem.src = url;
             imgItem.crossOrigin = "anonymous";
-            imgItem.style = "max-height:calc(80vh - 96px);width:100%;height:auto;object-fit:cover;border-radius: 5px 5px 0px 0px;opacity:0;transition: opacity 0.5s;";
-            imgItem.onload = () => {
+            imgItem.style = "max-height:0px;width:100%;height:auto;object-fit:cover;border-radius: 5px 5px 0px 0px;opacity:0;transition: opacity 0.5s, max-height 0.1s;";
+            imgItem.onload = async () => {
                 imgItem.style.opacity = 1;
-                imgItem.setAttribute("loaded", "true")
+                imgItem.style.maxHeight = "calc(80vh - 96px)";
+                await sleep(100);
+                imgItem.setAttribute("loaded", "true");
             }
             menuList.appendChild(imgItem);
             let saveMenu = makeMenu("保存图片", "./img/save.svg");
@@ -869,37 +903,6 @@
                     shareSong(songInfo);
                 });
                 menuList.appendChild(shareMenu);
-                let castMenu = makeMenu("Chromecast", "./img/cast.svg");
-                castMenu.addEventListener("click", async () => {
-                    if (!Castjs) {
-                        setStatus("加载Chromecast模块", true);
-                        await loadScriptAsync("./lib/cast.min.js");
-                    }
-                    if (!window.cjs) {
-                        window.cjs = new Castjs();
-                        cjs.on('playing', () => {
-                            setStatus("Chromecast推送成功");
-                        });
-                        cjs.on('disconnect', () => {
-                            setStatus("Chromecast连接已断开");
-                        });
-                        cjs.on('end', () => {
-                            setStatus("Chromecast播放已结束");
-                        });
-                        await sleep(1000);
-                    };
-                    if (cjs.available) {
-                        setStatus("连接中", true);
-                        await cjs.cast(songInfo.url[cdn], {
-                            poster: songInfo.cover.replace(".avif", ".webp"),
-                            title: songInfo.name,
-                            description: "连续播放需保持页面开启"
-                        })
-                    } else {
-                        setStatus("Chromecast尚未就绪，建议等待半分钟");
-                    };
-                });
-                menuList.appendChild(castMenu);
             }
             let qualityMenu = makeMenu("播放音质:" + songInfo.quality, "./img/audiofile.svg");
             let playQuality = true;
@@ -1353,14 +1356,10 @@
         const functionMenu = () => {
             menuList.innerHTML = "";
             //功能菜单
-            if (window.cjs || window.cjsplay) {
+            if (window.castSwitch) {
                 let castMenu = makeMenu("停止Chromecast", "./img/cast.svg");
                 castMenu.addEventListener("click", () => {
-                    if (cjs) {
-                        cjs.disconnect();
-                    } else {
-                        cjsplay.disconnect();
-                    }
+                    cjsplay.disconnect();
                 });
                 menuList.appendChild(castMenu);
             }
