@@ -614,10 +614,14 @@
         };
         //指尖跟随菜单
         window.lastClick = { x: 0, y: 0 };
+        window.lastClickMenu = { x: 0, y: 0 };
         window.addEventListener('pointerdown', (event) => {
             if (!(document.getElementById("floatMenuContainer").style.display == "block")) {
                 lastClick.x = event.clientX;
                 lastClick.y = event.clientY;
+            } else {
+                lastClickMenu.x = event.clientX;
+                lastClickMenu.y = event.clientY;
             }
         });
         const locateMenu = () => {
@@ -656,8 +660,8 @@
         };
         const hideMenu = async () => {
             document.getElementById("floatMenu").style.transform = "scale(0.1, 0.1)";
-            document.getElementById("floatMenu").style.marginLeft = lastClick.x + "px";
-            document.getElementById("floatMenu").style.marginTop = lastClick.y + "px";
+            document.getElementById("floatMenu").style.marginLeft = lastClickMenu.x + "px";
+            document.getElementById("floatMenu").style.marginTop = lastClickMenu.y + "px";
             document.getElementById("floatMenuContainer").style.opacity = 0;
             await sleep(300);
             document.getElementById("floatMenuContainer").style.display = "none";
