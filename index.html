@@ -434,6 +434,13 @@
         </div>
     </div>
     <script>
+        if (localStorage.disableAnim ? JSON.parse(localStorage.disableAnim) : false) {
+            var style = document.createElement('style');
+            style.type = 'text/css';
+            style.rel = 'stylesheet';
+            style.appendChild(document.createTextNode(`*{transition:none !important;}`));
+            document.getElementsByTagName('head')[0].appendChild(style);
+        };
         (() => {
             if ((localStorage.skipSplash ? JSON.parse(localStorage.skipSplash) : false) || !(window.self === window.top)) {
                 return;

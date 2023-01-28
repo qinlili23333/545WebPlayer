@@ -342,6 +342,24 @@
                     <div class="mdc-checkbox__ripple"></div>
                 </div>
             </li>
+            <li class="mdc-list-item" id="animCheck">
+                <span class="mdc-list-item__ripple"></span>
+                <span class="mdc-list-item__text">
+                    <span class="mdc-list-item__primary-text">禁用动画效果</span>
+                    <span class="mdc-list-item__secondary-text">有助于改善性能并减少视觉刺激</span>
+                </span>
+                <div class="mdc-checkbox" style="position:absolute;float:right;right:0px;">
+                    <input type="checkbox" class="mdc-checkbox__native-control" id="animCheckbox" />
+                    <div class="mdc-checkbox__background">
+                        <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                            <path class="mdc-checkbox__checkmark-path" fill="none"
+                                d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                        </svg>
+                        <div class="mdc-checkbox__mixedmark"></div>
+                    </div>
+                    <div class="mdc-checkbox__ripple"></div>
+                </div>
+            </li>
             <li class="mdc-list-item" id="erudaCheck">
                 <span class="mdc-list-item__ripple"></span>
                 <span class="mdc-list-item__text">
@@ -435,6 +453,13 @@
         </div>
     </div>
     <script>
+        if (localStorage.disableAnim ? JSON.parse(localStorage.disableAnim) : false) {
+            var style = document.createElement('style');
+            style.type = 'text/css';
+            style.rel = 'stylesheet';
+            style.appendChild(document.createTextNode(`*{transition:none !important;}`));
+            document.getElementsByTagName('head')[0].appendChild(style);
+        };
         window.isBiliLite = false;
         const $ = text => {
             if (text == '.h5-download-bar') {
@@ -595,6 +620,7 @@
         initCheckbox("directLive", "directLiveCheckbox");
         initCheckbox("clientLive", "clientCheckbox");
         initCheckbox("skipSplash", "splashCheckbox");
+        initCheckbox("disableAnim", "animCheckbox");
         const showDirectLive = () => {
             if (window.innerWidth > window.innerHeight && window.innerHeight > 600 || !(window.self === window.top)) {
                 document.getElementById("directLiveCheck").style.display = "flex";
