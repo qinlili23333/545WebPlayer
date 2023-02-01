@@ -1543,38 +1543,14 @@
             alert(window.isBiliLite ? "为什么你要在64位操作系统上装32位的BiliLite？" : "你正在64位操作系统上使用32位浏览器!为了更快的访问速度请改用64位浏览器!");
         }
         if (navigator.serviceWorker && !navigator.serviceWorker.controller) {
-            const install = async (silent) => {
-                let tip = loadMenu("正在准备Service Worker...");
-                if (!silent) {
-                    menuList.innerHTML = "";
-                    menuList.appendChild(tip);
-                    showMenu();
-                }
-                await (await fetch("./sw.js")).blob();
-                tip.setText("读取版本信息...");
-                let versionJson = await (await fetch("../version.json?ForceNoCache=1")).json();
-                if (versionJson.success) {
-                    tip.setText(`安装版本号：` + versionJson.latest);
-                    await navigator.serviceWorker.register('./sw.js', {
-                        scope: '/'
-                    });
-                    await sleep(3000)
-                    tip.setText("安装完成，刷新后生效");
-                    localStorage.triedInstall = true;
-                    if (!silent) {
-                        document.location.reload();
-                    }
-                } else {
-                    if (confirm("读取版本失败！再试一次吗？")) {
-                        install();
-                    };
-                }
-            };
-            if (!localStorage.triedInstall) {
-                install()
-            } else {
-                install(true);
-            }
+            (async () => {
+                setStatus("正在安装Service Worker", true);
+                await navigator.serviceWorker.register('./sw.js', {
+                    scope: '/'
+                });
+                setStatus("安装成功，刷新后生效", true);
+                location.reload();
+            })();
         } else {
             //检测直播
             if (window.self === window.top) {
