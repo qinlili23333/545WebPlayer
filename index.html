@@ -946,13 +946,16 @@
         const shareSong = async songInfo => {
             if (navigator.share) {
                 if (window.fileShare) {
+                    setStatus("准备分享的文件", true);
+                    let file = new File([await (await fetch(songInfo.url[cdn])).blob()], songInfo.name + ".ogg", {
+                        type: "audio/ogg"
+                    })
+                    setStatus("发起分享", true);
                     navigator.share({
                         title: songInfo.name,
                         text: "我正在用545在线(545.qinlili.bid)分享给你塔宝的" + songInfo.name,
                         url: "https://545.qinlili.bid",
-                        files: [new File([await (await fetch(songInfo.url[cdn])).blob()], songInfo.name + ".ogg", {
-                            type: "audio/ogg"
-                        })]
+                        files: [file]
                     });
                 } else {
                     navigator.share({
@@ -961,6 +964,7 @@
                         url: "https://545.qinlili.bid"
                     });
                 }
+                setStatus("分享成功", false);
             } else {
                 alert("你使用的浏览器不支持分享");
             }
