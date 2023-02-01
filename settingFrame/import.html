@@ -31,18 +31,24 @@
     </button>
     <p id="cacheStatus"></p>
     <H4 style="padding:16px;">播放列表管理</H4>
-    <br>
     <button class="mdc-button mdc-button--raised mdc-button--leading" style="width:80%;margin:16px;" id="saveBtn">
         <span class="mdc-button__ripple"></span>
         <i class="material-icons mdc-button__icon" aria-hidden="true">save</i>
-        <span class="mdc-button__label">保存歌单到本地</span>
+        <span class="mdc-button__label">保存播放列表到本地</span>
     </button>
     <br>
     <button class="mdc-button mdc-button--raised mdc-button--leading" style="width:80%;margin:16px;" id="importBtn">
         <span class="mdc-button__ripple"></span>
         <i class="material-icons mdc-button__icon" aria-hidden="true">open_in_browser</i>
-        <span class="mdc-button__label">从本地导入歌单</span>
+        <span class="mdc-button__label">从本地导入播放列表</span>
         <input type="file" style="display:none;" id="hiddenFileUploader">
+    </button>
+    <br>
+    <button class="mdc-button mdc-button--raised mdc-button--leading"
+        style="width:80%;margin:16px;background-color: crimson;" id="emptyBtn">
+        <span class="mdc-button__ripple"></span>
+        <i class="material-icons mdc-button__icon" aria-hidden="true">delete</i>
+        <span class="mdc-button__label" id="deleteLabel">清空播放列表</span>
     </button>
     <script>
         window.mdc.autoInit();
@@ -65,6 +71,19 @@
         });
         document.getElementById("importBtn").addEventListener("click", () => {
             document.getElementById("hiddenFileUploader").click();
+        });
+        let clickDelete = 5;
+        document.getElementById("emptyBtn").addEventListener("click", () => {
+            clickDelete--;
+
+            if (clickDelete == 0) {
+                localStorage.removeItem("playList");
+                document.getElementById("deleteLabel").innerText = "播放列表已清空";
+                document.getElementById("emptyBtn").disabled = true;
+                document.getElementById("emptyBtn").style.backgroundColor = "gray";
+            } else {
+                document.getElementById("deleteLabel").innerText = "再点击" + clickDelete + "次清空播放列表";
+            }
         });
         document.getElementById("hiddenFileUploader").addEventListener("change", (e) => {
             try {
