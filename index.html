@@ -1604,21 +1604,7 @@
                             }
                         };
                         detectLive();
-                    } else {
-                        if (!window.isBiliLite) {
-                            showMenu();
-                            menuList.innerHTML = "";
-                            menuList.appendChild(loadMenu("正在检测塔宝直播状态..."));
-                            let liveStatus = await (await fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.live.bilibili.com/bili/living_v2/15641218" : "https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => {
-                                //检测失败
-                                hideMenu();
-                            })).json();
-                            if (liveStatus.data && (liveStatus.data.status == 1) && confirm("塔宝正在直播，不去看直播？\n（点击确定即可快速打开直播间）")) {
-                                window.open(clientLive ? "bilibili://live/545" : "https://live.bilibili.com/545", "_blank");
-                            }
-                            hideMenu();
-                        }
-                    }
+                    };
                 })();
             }
             if (!window.wasmPlayer && !window.codecBoost && window.self === window.top) {
