@@ -1592,6 +1592,24 @@
             }
         }
         patchEnd();
+        const updatePlayList = () => {
+            let allSongs = [];
+            window.audioList.forEach(folder => {
+                allSongs = allSongs.concat(folder.list);
+            });
+            let newList = [];
+            window.list.forEach(song => {
+                let newSong = allSongs.find(s => { return s.name == song.name && s.release_date == song.release_date });
+                if (!newSong) {
+                    newSong = song;
+                };
+                if (song.viewed) { newSong.viewed = song.viewed };
+                newList.push(newSong);
+            });
+            window.list = newList;
+            localStorage.playList = JSON.stringify(window.list);
+            renderPlayList();
+        };
         renderPlayList();
         if (!localStorage.cacheSong) {
             getAudioList().then(songs => {
@@ -1599,6 +1617,7 @@
                     localStorage.cacheSong = JSON.stringify(songs);
                     localStorage.lastSongUpdate = new Date().toLocaleDateString();
                     window.audioList = songs;
+                    updatePlayList();
                     renderAudioList();
                 } else {
                     alert("读取歌单失败！");
@@ -1613,6 +1632,7 @@
                         localStorage.cacheSong = JSON.stringify(songs);
                         localStorage.lastSongUpdate = new Date().toLocaleDateString();
                         window.audioList = songs;
+                        updatePlayList();
                         renderAudioList();
                     }
                 })
