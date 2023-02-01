@@ -964,44 +964,16 @@
             } else {
                 alert("你使用的浏览器不支持分享");
             }
+        };
+        const getAudioList = async () => {
+            let jsonData = await (await fetch("audioInfo.json?ForceNoCache=1")).json()
+            if (jsonData && jsonData.success) {
+                return jsonData.songs;
+            }
+            return false;
         }
-        document.title = "读取歌单...";
         const renderAudioList = async (force, update, silent) => {
-            if (!silent) {
-                setStatus("加载歌单", true);
-            };
-            const getAudioList = async () => {
-                let jsonData = await (await fetch("audioInfo.json?ForceNoCache=1")).json()
-                if (jsonData && jsonData.success) {
-                    return jsonData.songs;
-                }
-                return false;
-            }
-            let audioList;
-            if (localStorage.cacheSong && !force && update) {
-                audioList = JSON.parse(localStorage.cacheSong);
-                //异步更新歌单
-                getAudioList().then(songs => {
-                    if (songs) {
-                        localStorage.cacheSong = JSON.stringify(songs);
-                        window.audioList = songs;
-                        renderAudioList(false, false, true)
-                    }
-                })
-            } else {
-                audioList = await getAudioList();
-                if (audioList) {
-                    localStorage.cacheSong = JSON.stringify(audioList);
-                } else {
-                    alert("读取歌单失败！请尝试刷新页面重试！");
-                }
-            }
-            if (!silent) {
-                setStatus("就绪", false)
-                document.title = "545在线-播放";
-            }
-            console.log(audioList);
-            window.audioList = audioList;
+            console.log(window.audioList);
             //渲染全部歌单
             const audioFolderModule = document.getElementById("audioFolderModule");
             audioFolderModule.innerHTML = "";
@@ -1070,7 +1042,7 @@
                     audioFilesModule.style.display = "none";
                 })
                 //逐一匹配
-                audioList.forEach(folderInfo => {
+                window.audioList.forEach(folderInfo => {
                     folderInfo.list.forEach(songInfo => {
                         if ((songInfo.name.indexOf(searchValue) >= 0) || (songInfo.full_title.indexOf(searchValue) >= 0)) {
                             let song = makeItem(songInfo.name, songInfo.full_title, songInfo.cover, (event) => {
@@ -1092,7 +1064,7 @@
                 audioFilesModule.style.display = "block";
             });
             audioFolderModule.appendChild(searchItem);
-            audioList.forEach(folderInfo => {
+            window.audioList.forEach(folderInfo => {
                 //分类渲染
                 let folder = makeItem(folderInfo.type, folderInfo.description, "./img/folder.svg", (event) => {
                     //文件夹菜单
@@ -1654,8 +1626,32 @@
             }
         }
         patchEnd();
-        renderAudioList(false, true);
         renderPlayList();
+        if (!localStorage.cacheSong) {
+            getAudioList().then(songs => {
+                if (songs) {
+                    localStorage.cacheSong = JSON.stringify(songs);
+                    localStorage.lastSongUpdate = new Date().toLocaleDateString();
+                    window.audioList = songs;
+                    renderAudioList();
+                } else {
+                    alert("读取歌单失败！");
+                }
+            })
+        } else {
+            window.audioList = JSON.parse(localStorage.cacheSong);
+            renderAudioList();
+            if (localStorage.lastSongUpdate == new Date().toLocaleDateString()) { } else {
+                getAudioList().then(songs => {
+                    if (songs) {
+                        localStorage.cacheSong = JSON.stringify(songs);
+                        localStorage.lastSongUpdate = new Date().toLocaleDateString();
+                        window.audioList = songs;
+                        renderAudioList();
+                    }
+                })
+            };
+        };
         (() => {
             if (devMode) {
                 let script = document.createElement('script');
