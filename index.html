@@ -709,7 +709,7 @@
                 return;
             }
             if (window.wasmPlayer) {
-                setStatus("加载WASM播放器");
+                setStatus("加载WASM播放器", true);
                 await loadScriptAsync("./lib/ogvjs/ogv.js");
                 document.getElementById("playPanel").removeChild(player);
                 player = new ogvjs.OGVPlayer();
@@ -720,6 +720,7 @@
                 document.getElementById("playPanel").appendChild(player);
                 useBackupControl();
                 patchEnd();
+                setStatus("就绪");
                 return;
             };
             if (window.codecBoost) {
@@ -1241,7 +1242,11 @@
                     localStorage.lastPlay = JSON.stringify(song);
                 } else {
                     player.src = URL.createObjectURL(playBlob);
-                    player.play().catch(() => { "Need user action first." });
+                    if (window.wasmPlayer) {
+                        player.play();
+                    } else {
+                        player.play().catch(() => { "Need user action first." });
+                    }
                     setStatus(song.name, false);
                     localStorage.lastPlay = JSON.stringify(song);
                 }
@@ -1564,7 +1569,8 @@
                         detectLive();
                     };
                 })();
-            }
+            };
+            status("就绪")
             if (!window.wasmPlayer && !window.codecBoost && window.self === window.top) {
                 recoverPlay();
             }
