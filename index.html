@@ -650,6 +650,7 @@
         const showMenu = async () => {
             if (document.getElementById("floatMenuContainer").style.display == "block") { return true; }
             document.getElementById("floatMenuContainer").style.display = "block";
+            document.getElementById("floatMenu").style.overflowY = "hidden";
             document.getElementById("floatMenu").style.marginLeft = lastClick.x + "px";
             document.getElementById("floatMenu").style.marginTop = lastClick.y + "px";
             document.getElementById("floatMenu").style.transition = "transform 0.3s, margin-top 0.3s, margin-left 0.3s,max-height 0.3s";
@@ -657,6 +658,9 @@
             document.getElementById("floatMenuContainer").style.opacity = 1;
             locateMenu()
             document.getElementById("floatMenu").style.transform = "scale(1,1)";
+            await sleep(295);
+            document.getElementById("floatMenu").style.overflowY = "auto";
+            document.getElementById("floatMenu").style.overflowY = "overlay";
         };
         const hideMenu = async () => {
             document.getElementById("floatMenu").style.transform = "scale(0.1, 0.1)";
