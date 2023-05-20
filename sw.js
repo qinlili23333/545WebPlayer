@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '1.2.2.20230318'
-var VERSION_AZUSA_PATCH_USE = '1.2.2.20230219'
+var VERSION = '2.0.0.20230522'
+var VERSION_AZUSA_PATCH_USE = 'ForceUpdate'
 var AZUSA_PATCH_SKIP_LIST = [
     './cursor/normal.png',
     './icon.webp',
@@ -28,7 +28,7 @@ const getCacheName = url => {
     if (url.indexOf("bcebos.com") > 0 || url.indexOf("cdn-cf.545.qinlili.bid") > 0) {
         return "MusicCache";
     };
-    if (url.indexOf("bytecdntp.com") > 0 || url.indexOf("googleapis.com") > 0 || url.indexOf("gstatic.com") > 0 || url.indexOf("baomitu.com") > 0 || url.indexOf("/lib/") > 0 || url.indexOf("/img/") > 0) {
+    if (url.indexOf("bytecdntp.com") > 0 || url.indexOf("googleapis.com") > 0 || url.indexOf("gstatic.com") > 0 || url.indexOf("baomitu.com") > 0 || url.indexOf("/lib/") > 0 || url.indexOf("/img/") > 0 || url.indexOf("/cursor/") > 0) {
         return "StaticCache";
     };
     if (url.indexOf("hdslb.com") > 0 || url.indexOf("zhimg.com") > 0) {

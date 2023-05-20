@@ -90,8 +90,8 @@
         }
 
         ::-webkit-scrollbar {
-            cursor: url('./cursor/normal.png'), default !important;
-            height: 12px;
+            border-top: 4px solid rgba(0, 0, 0, 0);
+            border-bottom: 4px solid rgba(0, 0, 0, 0);
             width: 8px;
             background: transparent;
             z-index: 12;
@@ -99,16 +99,12 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            cursor: url('./cursor/normal.png'), default !important;
-            width: 10px;
+            border-top: 4px solid rgba(0, 0, 0, 0);
+            border-bottom: 4px solid rgba(0, 0, 0, 0);
+            width: 4px;
             background-color: #FADCBB;
-            z-index: 12;
-            border: 3px solid rgba(0, 0, 0, 0);
+            border-left: 4px solid rgba(0, 0, 0, 0);
             background-clip: padding-box;
-            transition: background-color .32s ease-in-out;
-            margin: 4px;
-            min-height: 32px;
-            min-width: 32px;
         }
 
         ::-webkit-scrollbar-thumb:hover {
@@ -123,8 +119,55 @@
             outline: none;
         }
 
+        @keyframes cursor {
+            0% {
+                cursor: url("/cursor/1.webp"), auto;
+            }
+
+            10% {
+                cursor: url("/cursor/2.webp"), auto;
+            }
+
+            20% {
+                cursor: url("/cursor/3.webp"), auto;
+            }
+
+            30% {
+                cursor: url("/cursor/4.webp"), auto;
+            }
+
+            40% {
+                cursor: url("/cursor/5.webp"), auto;
+            }
+
+            50% {
+                cursor: url("/cursor/6.webp"), auto;
+            }
+
+            60% {
+                cursor: url("/cursor/7.webp"), auto;
+            }
+
+            70% {
+                cursor: url("/cursor/8.webp"), auto;
+            }
+
+            80% {
+                cursor: url("/cursor/9.webp"), auto;
+            }
+
+            90% {
+                cursor: url("/cursor/10.webp"), auto;
+            }
+
+            100% {
+                cursor: url("/cursor/1.webp"), auto;
+            }
+
+        }
+
         * {
-            cursor: url('./cursor/normal.png'), default !important;
+            animation: cursor 1s infinite;
             -webkit-tap-highlight-color: transparent;
             scrollbar-width: thin;
             scrollbar-color: #FADCBB transparent;
@@ -136,6 +179,7 @@
             -webkit-user-select: none;
             user-select: none;
         }
+
 
         html,
         body {
@@ -185,6 +229,7 @@
             height: calc(100% - 48px);
             padding-bottom: 100px;
             transition: width 0.2s ease-in;
+            position: relative;
         }
 
         #playList {
@@ -198,6 +243,24 @@
         #menuList {
             display: flex;
             flex-direction: column;
+        }
+
+        #audioFolderModule,
+        #audioFilesModule {
+            transition: transform 0.2s ease-out;
+            position: absolute;
+            width: 100%;
+        }
+
+        #audioFolderModule {
+            transform-origin: left;
+            transform: scale(1, 1);
+        }
+
+        #audioFilesModule {
+            transform-origin: right;
+            display: none;
+            transform: scale(0, 1);
         }
 
         #tabBar {
@@ -245,6 +308,7 @@
         }
 
         #loading {
+            width: 24px;
             margin: 4px;
         }
 
@@ -268,11 +332,26 @@
         }
 
         .topBtn:active {
-            background-color: #999999
+            background-color: #999999;
         }
 
         .topBtn.active {
-            background-color: #FADCBB
+            background-color: #FADCBB;
+        }
+
+        @keyframes breath {
+            from {
+
+                background-color: #FADCBB;
+            }
+
+            to {
+                background-color: #FFFFFF;
+            }
+        }
+
+        .topBtn.breath {
+            animation: breath 0.25s infinite alternate;
         }
 
         #padding {
@@ -413,7 +492,7 @@
         <div id="audioList" style="display:none;">
             <ul id="audioFolderModule" class="mdc-list mdc-list--two-line mdc-list--avatar-list">
             </ul>
-            <ul id="audioFilesModule" style="display:none;" class="mdc-list mdc-list--two-line mdc-list--avatar-list">
+            <ul id="audioFilesModule" class="mdc-list mdc-list--two-line mdc-list--avatar-list">
             </ul>
         </div>
         <div id="playList">
@@ -725,6 +804,7 @@
                 useBackupControl();
                 patchEnd();
                 setStatus("就绪");
+                document.title = "545在线";
                 return;
             };
             if (window.codecBoost) {
@@ -985,6 +1065,37 @@
             console.log(window.audioList);
             //渲染全部歌单
             const audioFolderModule = document.getElementById("audioFolderModule");
+            const audioFilesModule = document.getElementById("audioFilesModule");
+            const switchListDisplay = async (type) => {
+                if (window.switchQueue) {
+                    await sleep(250);
+                    return switchListDisplay(type);
+                }
+                window.switchQueue = true;
+                switch (type) {
+                    default:
+                    case 0: {
+                        audioFilesModule.style.transform = "scale(0,1)";
+                        audioFolderModule.style.display = "block";
+                        await sleep(5);
+                        audioFolderModule.style.transform = "scale(1,1)";
+                        await sleep(200);
+                        audioFilesModule.style.display = "none";
+                        audioFilesModule.innerHTML = "";
+                        break;
+                    };
+                    case 1: {
+                        audioFolderModule.style.transform = "scale(0,1)";
+                        audioFilesModule.style.display = "block";
+                        await sleep(5);
+                        audioFilesModule.style.transform = "scale(1,1)";
+                        await sleep(200);
+                        audioFolderModule.style.display = "none";
+                        break;
+                    };
+                }
+                window.switchQueue = false;
+            }
             audioFolderModule.innerHTML = "";
             if (devMode) {
                 //开启隐藏终端模式
@@ -1021,14 +1132,10 @@
                 if (searchValue == null) {
                     return;
                 };
-                const audioFilesModule = document.getElementById("audioFilesModule");
-                audioFilesModule.innerHTML = "";
-                audioFolderModule.style.display = "none";
                 let backItem = makeItem("...", "返回歌单列表", "./img/folder.svg")
                 audioFilesModule.appendChild(backItem);
                 backItem.addEventListener("click", () => {
-                    audioFolderModule.style.display = "block";
-                    audioFilesModule.style.display = "none";
+                    switchListDisplay(0);
                 })
                 //逐一匹配
                 window.audioList.forEach(folderInfo => {
@@ -1050,7 +1157,7 @@
                 })
                 const list = new MDCList(audioFilesModule);
                 const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
-                audioFilesModule.style.display = "block";
+                switchListDisplay(1);
             });
             audioFolderModule.appendChild(searchItem);
             window.audioList.forEach(folderInfo => {
@@ -1083,14 +1190,10 @@
                 audioFolderModule.appendChild(folder);
                 folder.addEventListener("click", () => {
                     //展开文件夹
-                    const audioFilesModule = document.getElementById("audioFilesModule");
-                    audioFilesModule.innerHTML = "";
-                    audioFolderModule.style.display = "none";
                     let backItem = makeItem("...", "返回上一级目录", "./img/folder.svg")
                     audioFilesModule.appendChild(backItem);
                     backItem.addEventListener("click", () => {
-                        audioFolderModule.style.display = "block";
-                        audioFilesModule.style.display = "none";
+                        switchListDisplay(0)
                     })
                     //渲染子项目
                     folderInfo.list.forEach(songInfo => {
@@ -1106,7 +1209,7 @@
                         })
                         audioFilesModule.appendChild(song);
                     })
-                    audioFilesModule.style.display = "block";
+                    switchListDisplay(1);
                 })
             })
             const list = new MDCList(audioFolderModule);
@@ -1205,6 +1308,7 @@
             window.currentPlay = song.name;
             if (window.castSwitch) {
                 ignoreNextCastEnd = true;
+                document.getElementById("castBtn").className = "topBtn breath";
                 cjsplay.cast(song.url[cdn], {
                     poster: song.cover.replace(".avif", ".webp"),
                     title: song.name,
@@ -1574,7 +1678,8 @@
                     };
                 })();
             };
-            setStatus("就绪")
+            setStatus("就绪");
+            document.title = "545在线";
             if (!window.wasmPlayer && !window.codecBoost && window.self === window.top) {
                 recoverPlay();
             }
