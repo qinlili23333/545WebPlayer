@@ -35,55 +35,68 @@ li {
     user-select: all !important;
 }
 
-@keyframes cursor {
-    0% {
-        cursor: url("/cursor/1.webp"), auto;
+@media (hover: hover) {
+    audio {
+        cursor: url("/cursor/1.webp"), auto !important;
     }
 
-    10% {
-        cursor: url("/cursor/2.webp"), auto;
+    @keyframes cursor {
+        0% {
+            cursor: url("/cursor/1.webp"), auto;
+        }
+
+        10% {
+            cursor: url("/cursor/2.webp"), auto;
+        }
+
+        20% {
+            cursor: url("/cursor/3.webp"), auto;
+        }
+
+        30% {
+            cursor: url("/cursor/4.webp"), auto;
+        }
+
+        40% {
+            cursor: url("/cursor/5.webp"), auto;
+        }
+
+        50% {
+            cursor: url("/cursor/6.webp"), auto;
+        }
+
+        60% {
+            cursor: url("/cursor/7.webp"), auto;
+        }
+
+        70% {
+            cursor: url("/cursor/8.webp"), auto;
+        }
+
+        80% {
+            cursor: url("/cursor/9.webp"), auto;
+        }
+
+        90% {
+            cursor: url("/cursor/10.webp"), auto;
+        }
+
+        100% {
+            cursor: url("/cursor/1.webp"), auto;
+        }
+
     }
 
-    20% {
-        cursor: url("/cursor/3.webp"), auto;
+    div *:not(audio) {
+        cursor: inherit !important;
     }
 
-    30% {
-        cursor: url("/cursor/4.webp"), auto;
+    body {
+        animation: cursor 1s infinite;
     }
-
-    40% {
-        cursor: url("/cursor/5.webp"), auto;
-    }
-
-    50% {
-        cursor: url("/cursor/6.webp"), auto;
-    }
-
-    60% {
-        cursor: url("/cursor/7.webp"), auto;
-    }
-
-    70% {
-        cursor: url("/cursor/8.webp"), auto;
-    }
-
-    80% {
-        cursor: url("/cursor/9.webp"), auto;
-    }
-
-    90% {
-        cursor: url("/cursor/10.webp"), auto;
-    }
-
-    100% {
-        cursor: url("/cursor/1.webp"), auto;
-    }
-
 }
 
 * {
-    animation: cursor 1s infinite;
     scrollbar-width: thin;
     scrollbar-color: #FADCBB transparent;
     --mdc-theme-primary: #DCAC89;

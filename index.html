@@ -119,55 +119,7 @@
             outline: none;
         }
 
-        @keyframes cursor {
-            0% {
-                cursor: url("/cursor/1.webp"), auto;
-            }
-
-            10% {
-                cursor: url("/cursor/2.webp"), auto;
-            }
-
-            20% {
-                cursor: url("/cursor/3.webp"), auto;
-            }
-
-            30% {
-                cursor: url("/cursor/4.webp"), auto;
-            }
-
-            40% {
-                cursor: url("/cursor/5.webp"), auto;
-            }
-
-            50% {
-                cursor: url("/cursor/6.webp"), auto;
-            }
-
-            60% {
-                cursor: url("/cursor/7.webp"), auto;
-            }
-
-            70% {
-                cursor: url("/cursor/8.webp"), auto;
-            }
-
-            80% {
-                cursor: url("/cursor/9.webp"), auto;
-            }
-
-            90% {
-                cursor: url("/cursor/10.webp"), auto;
-            }
-
-            100% {
-                cursor: url("/cursor/1.webp"), auto;
-            }
-
-        }
-
         * {
-            animation: cursor 1s infinite;
             -webkit-tap-highlight-color: transparent;
             scrollbar-width: thin;
             scrollbar-color: #FADCBB transparent;
@@ -427,6 +379,67 @@
             .liveFrame {
                 max-width: 400px;
                 max-height: 225px;
+            }
+        }
+
+        @media (hover: hover) {
+            audio {
+                cursor: url("/cursor/1.webp"), auto !important;
+            }
+
+            @keyframes cursor {
+                0% {
+                    cursor: url("/cursor/1.webp"), auto;
+                }
+
+                10% {
+                    cursor: url("/cursor/2.webp"), auto;
+                }
+
+                20% {
+                    cursor: url("/cursor/3.webp"), auto;
+                }
+
+                30% {
+                    cursor: url("/cursor/4.webp"), auto;
+                }
+
+                40% {
+                    cursor: url("/cursor/5.webp"), auto;
+                }
+
+                50% {
+                    cursor: url("/cursor/6.webp"), auto;
+                }
+
+                60% {
+                    cursor: url("/cursor/7.webp"), auto;
+                }
+
+                70% {
+                    cursor: url("/cursor/8.webp"), auto;
+                }
+
+                80% {
+                    cursor: url("/cursor/9.webp"), auto;
+                }
+
+                90% {
+                    cursor: url("/cursor/10.webp"), auto;
+                }
+
+                100% {
+                    cursor: url("/cursor/1.webp"), auto;
+                }
+
+            }
+
+            div *:not(audio) {
+                cursor: inherit !important;
+            }
+
+            body {
+                animation: cursor 1s infinite;
             }
         }
     </style>
@@ -732,7 +745,7 @@
             document.getElementById("floatMenu").style.overflowY = "hidden";
             document.getElementById("floatMenu").style.marginLeft = lastClick.x + "px";
             document.getElementById("floatMenu").style.marginTop = lastClick.y + "px";
-            document.getElementById("floatMenu").style.transition = "transform 0.3s, margin-top 0.3s, margin-left 0.3s,max-height 0.3s";
+            document.getElementById("floatMenu").style.transition = "all 0.3s";
             await sleep(5);
             document.getElementById("floatMenuContainer").style.opacity = 1;
             locateMenu()
@@ -749,7 +762,7 @@
             await sleep(300);
             document.getElementById("floatMenuContainer").style.display = "none";
             menuList.innerHTML = "";
-            document.getElementById("floatMenu").style.transition = "max-height 0.3s";
+            document.getElementById("floatMenu").style.transition = "max-height 0.3s linear";
         };
         window.addEventListener("resize", async (event) => {
             if (document.getElementById("floatMenuContainer").style.display == "block") {
