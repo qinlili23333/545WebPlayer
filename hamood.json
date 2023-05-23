@@ -3,24 +3,13 @@
         {
             "minRatio": 0.3,
             "maxRatio": 0.75,
-            "pic": "./img/hamood/default.webp?ForceNoCache=1",
-            "name": "default_splash",
+            "pic": "./img/hamood/6.webp",
+            "name": "60th",
             "maxRepeat": 999,
             "maxDailyRepeat": 3,
             "link": "https://space.bilibili.com/15641218/",
-            "showTime": 3,
-            "text": "关注塔宝喵关注塔宝谢谢喵"
-        },
-        {
-            "minRatio": 0.3,
-            "maxRatio": 0.75,
-            "pic": "./img/hamood/jianfei.webp?ForceNoCache=1",
-            "name": "jianfei",
-            "maxRepeat": 999,
-            "maxDailyRepeat": 5,
-            "link": "https://zh.moegirl.org.cn/index.php?title=%E7%AC%99%E6%AD%8C&variant=zh-hans&mobileaction=toggle_view_desktop",
-            "showTime": 5,
-            "text": "走近103KG背后的秘密"
+            "showTime": 8,
+            "text": "60大寿，感谢有你"
         }
     ]
 }
