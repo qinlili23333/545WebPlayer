@@ -3,7 +3,7 @@
         {
             "minRatio": 0.3,
             "maxRatio": 0.75,
-            "pic": "./img/hamood/6.webp",
+            "pic": "./img/hamood/6.webp?ForceNoCache=1",
             "name": "60th",
             "maxRepeat": 999,
             "maxDailyRepeat": 3,
