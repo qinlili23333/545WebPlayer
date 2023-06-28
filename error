@@ -80,7 +80,7 @@
         设置网络</button>
     <br>
     <div style="padding-top:20px;display: flex;flex-direction: row;justify-content: center;">
-        <img id="icon" style="height:20px;" src="/img/loading.svg">
+        <img id="icon" style="height:20px;" src="/img/loading.webp">
         <p id="detect">正在检测...</p>
     </div>
     <div id="trace"></div>

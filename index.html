@@ -260,8 +260,8 @@
         }
 
         #loading {
-            width: 24px;
-            margin: 4px;
+            width: 32px;
+            margin: 0px;
         }
 
         .buttons {
@@ -477,7 +477,7 @@
     <div id="playPanel">
         <div id="controls" class="controls">
             <div id="status">
-                <img src="./img/loading.svg" id="loading">
+                <img src="./img/loading.webp" id="loading">
                 <p id="tips">正在加载播放器</p>
             </div>
             <div id="buttons" class="buttons">
@@ -977,8 +977,8 @@
             let loadDiv = document.createElement("div");
             loadDiv.style = "display:flex;flex-direction:row;text-align:center;width:100%;justify-content: space-around;";
             let loadSvg = document.createElement("img");
-            loadSvg.src = "./img/loading.svg";
-            loadSvg.style = "width:32px;height:32px;padding:4px;";
+            loadSvg.src = "./img/loading.webp";
+            loadSvg.style = "width:32px;height:32px;padding:0px;";
             loadDiv.appendChild(loadSvg);
             let loadText = document.createElement("p");
             loadText.className = "tips32";
@@ -1508,7 +1508,7 @@
                 wallpaperMenu.addEventListener("click", async event => {
                     event.stopPropagation();
                     let btn = event.currentTarget;
-                    btn.querySelector("p").style.backgroundImage = "url(./img/loading.svg)";
+                    btn.querySelector("p").style.backgroundImage = "url(./img/loading.webp)";
                     let text = btn.querySelector(".mdc-list-item__text");
                     text.innerText = "加载壁纸模式...0%";
                     await (await fetch("./img/op.webm")).blob();
@@ -1607,7 +1607,7 @@
             giftMenu.addEventListener("click", async (e) => {
                 e.stopPropagation();
                 let btn = event.currentTarget;
-                btn.querySelector("p").style.backgroundImage = "url(./img/loading.svg)";
+                btn.querySelector("p").style.backgroundImage = "url(./img/loading.webp)";
                 let text = btn.querySelector(".mdc-list-item__text");
                 text.innerText = "请稍等...";
                 await sleep(50);
