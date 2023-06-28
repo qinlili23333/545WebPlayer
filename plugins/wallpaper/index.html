@@ -122,7 +122,7 @@
             overflow: hidden;
             width: 100vw;
             height: 100vh;
-            background-image: url(./img/wallpaper.webp);
+            background-image: url(./wallpaper.webp);
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
@@ -242,22 +242,22 @@
 </head>
 
 <body>
-    <iframe src="./" id="playerFrame" class="musicFrame" frameborder="0" framespacing="0" scrolling="no"
+    <iframe src="/" id="playerFrame" class="musicFrame" frameborder="0" framespacing="0" scrolling="no"
         allow="autoplay; encrypted-media" allowfullscreen="true"></iframe>
     <div id="displayBtn">
-        <img id="displayBtnIcon" src="./img/expand.svg" alt="切换音频面板">
+        <img id="displayBtnIcon" src="/img/expand.svg" alt="切换音频面板">
     </div>
     <div id="liveStatus">
-        <img id="liveIcon" src="./img/broadcast.svg" alt="直播间">
+        <img id="liveIcon" src="/img/broadcast.svg" alt="直播间">
         <span id="liveText">连接中请稍等</span>
     </div>
     <div id="anim">
         <img class="smallAnim" id="smallp" style="animation: smallp 3s;animation-iteration-count: infinite;"
-            src="./img/smallp.webp">
+            src="/img/smallp.webp">
         <img class="smallAnim" id="smallm" style="animation: smallm 3s;animation-iteration-count: infinite;"
-            src="./img/smallm.webp">
+            src="/img/smallm.webp">
         <img class="smallAnim" id="smalla" style="animation: smalla 3s;animation-iteration-count: infinite;"
-            src="./img/smalla.webp">
+            src="/img/smalla.webp">
     </div>
     <video id="splash" playsinline muted autoplay oncontextmenu="return false;"></video>
     <script>
@@ -293,7 +293,7 @@
                     hide();
                 }
             }, 1000)
-            let video = URL.createObjectURL(await (await fetch("./img/op.webm").catch(() => { hide(); })).blob().catch(() => { hide(); }))
+            let video = URL.createObjectURL(await (await fetch("./op.webm").catch(() => { hide(); })).blob().catch(() => { hide(); }))
             loaded = true;
             document.getElementById("splash").src = video;
             document.getElementById("splash").addEventListener("ended", () => {
@@ -333,7 +333,7 @@
                             document.getElementById("playerFrame").className = "musicFrame";
                             document.getElementById("playerFrame").src = "about:blank";
                             await sleep(1000);
-                            document.getElementById("playerFrame").src = "./";
+                            document.getElementById("playerFrame").src = "/";
                             break;
                         };
                     case false:
