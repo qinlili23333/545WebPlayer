@@ -1505,17 +1505,8 @@
             menuList.appendChild(sleepMenu);
             if (window.innerWidth > window.innerHeight && window.innerHeight > 600 && window.self === window.top && !window.isBiliLite) {
                 let wallpaperMenu = makeMenu("壁纸模式", "./img/fullscreen.svg");
-                wallpaperMenu.addEventListener("click", async event => {
-                    event.stopPropagation();
-                    let btn = event.currentTarget;
-                    btn.querySelector("p").style.backgroundImage = "url(./img/loading.webp)";
-                    let text = btn.querySelector(".mdc-list-item__text");
-                    text.innerText = "加载壁纸模式...0%";
-                    await (await fetch("./img/op.webm")).blob();
-                    text.innerText = "加载壁纸模式...33%";
-                    await (await fetch("./img/wallpaper.webp")).blob();
-                    text.innerText = "加载壁纸模式...66%";
-                    document.location.href = './wallpaper';
+                wallpaperMenu.addEventListener("click", event => {
+                    document.location.href = './plugins/loader?wallpaper';
                 });
                 menuList.appendChild(wallpaperMenu);
             };

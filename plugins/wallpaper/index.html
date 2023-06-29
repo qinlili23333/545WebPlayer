@@ -253,11 +253,11 @@
     </div>
     <div id="anim">
         <img class="smallAnim" id="smallp" style="animation: smallp 3s;animation-iteration-count: infinite;"
-            src="/img/smallp.webp">
+            src="./smallp.webp">
         <img class="smallAnim" id="smallm" style="animation: smallm 3s;animation-iteration-count: infinite;"
-            src="/img/smallm.webp">
+            src="./smallm.webp">
         <img class="smallAnim" id="smalla" style="animation: smalla 3s;animation-iteration-count: infinite;"
-            src="/img/smalla.webp">
+            src="./smalla.webp">
     </div>
     <video id="splash" playsinline muted autoplay oncontextmenu="return false;"></video>
     <script>
@@ -273,7 +273,7 @@
         window.addEventListener("message", async (event) => {
             console.log(event.data)
             if (event.data == "exit") {
-                location.replace("./")
+                location.replace("/")
             }
         }, false);
         const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
