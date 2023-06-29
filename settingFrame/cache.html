@@ -104,10 +104,29 @@
         <label for="splashCache" id="splashSize">开屏缓存</label>
     </div>
     <br>
+    <div class="mdc-form-field">
+        <div class="mdc-checkbox">
+            <input type="checkbox" class="mdc-checkbox__native-control" id="pluginCache" />
+            <div class="mdc-checkbox__background">
+                <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                    <path class="mdc-checkbox__checkmark-path" fill="none" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                </svg>
+                <div class="mdc-checkbox__mixedmark"></div>
+            </div>
+            <div class="mdc-checkbox__ripple"></div>
+        </div>
+        <label for="pluginCache" id="pluginSize">已安装插件</label>
+    </div>
+    <br>
     <button class="mdc-button mdc-button--raised mdc-button--leading" style="width:80%;margin:16px;" id="cleanBtn">
         <span class="mdc-button__ripple"></span>
         <i class="material-icons mdc-button__icon" aria-hidden="true">delete</i>
         <span class="mdc-button__label">清理</span>
+    </button>
+    <button class="mdc-button mdc-button--raised mdc-button--leading" style="width:80%;margin:16px;" id="pluginBtn">
+        <span class="mdc-button__ripple"></span>
+        <i class="material-icons mdc-button__icon" aria-hidden="true">extension</i>
+        <span class="mdc-button__label">管理插件安装</span>
     </button>
     <script>
         window.mdc.autoInit();
@@ -153,6 +172,7 @@
         caches.open("MusicCache").then(c => cacheSize(c).then(size => document.getElementById("musicSize").innerText += ":" + humanFileSize(size)));
         document.getElementById("listSize").innerText += ":" + humanFileSize(localStorage.cacheSong ? localStorage.cacheSong.length : 0);
         caches.open("Hamood").then(c => cacheSize(c).then(size => document.getElementById("splashSize").innerText += ":" + humanFileSize(size)));
+        caches.open("Plugins").then(c => cacheSize(c).then(size => document.getElementById("pluginSize").innerText += ":" + humanFileSize(size)));
         (async () => {
             let currentVersion = await (await fetch("getVersionWorker")).text();
             if (!(currentVersion.length >= 8)) {
@@ -187,6 +207,9 @@
                 localStorage.removeItem("hamood");
             };
             window.parent.postMessage("close", "*");
+        })
+        document.getElementById("pluginBtn").addEventListener("click", async () => {
+            location.replace("./plugin");
         })
     </script>
 </body>
