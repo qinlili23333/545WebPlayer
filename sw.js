@@ -34,6 +34,9 @@ const getCacheName = url => {
     if (url.indexOf("hdslb.com") > 0 || url.indexOf("zhimg.com") > 0) {
         return "ImageCache";
     };
+    if (url.indexOf("/plugins/") > 0) {
+        return "Plugins"
+    };
     return CACHE_NAME;
 };
 self.addEventListener('fetch', event => {
