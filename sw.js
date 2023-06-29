@@ -14,13 +14,7 @@ var AZUSA_PATCH_SKIP_LIST = [
     './manifest.json',
     './toolFrame/cardres/base.png',
     './toolFrame/cardres/base2.png',
-    './toolFrame/cardres/fansnum.ttf',
-    './toolFrame/audioCutter/',
-    './toolFrame/audioCutter/dist/index.js',
-    './toolFrame/audioCutter/dist/worker.js',
-    './toolFrame/audioCutter/vendor/Mp3LameEncoder.min.js',
-    './toolFrame/audioCutter/vendor/Mp3LameEncoder.min.js.mem',
-    './font/YRDZST-Heavy.woff2',
+    './toolFrame/cardres/fansnum.ttf', ,
 ]
 var CACHE_NAME = APP_PREFIX + VERSION;
 var AZUSA_CACHE = APP_PREFIX + VERSION_AZUSA_PATCH_USE;
@@ -47,10 +41,17 @@ self.addEventListener('fetch', event => {
     if (event.request.method == "GET" && (event.request.url.indexOf("http") == 0) && (event.request.url.indexOf("ForceNoCache") == -1) && (event.request.url.indexOf("webapi.ctfile.com") == -1)) {
         event.respondWith(
             caches.open(getCacheName(event.request.url)).then(async cache => {
-                return cache.match(event.request).then(response => {
+                return cache.match(event.request, { 'ignoreSearch': event.request.url.startsWith(location.origin) }).then(response => {
                     return response || fetch(event.request).then(response => {
                         if (response.status < 400) {
-                            cache.put(event.request, response.clone());
+                            let tempUrl = new URL(event.request.url);
+                            cache.put(event.request.url.startsWith(location.origin) ? (new Request(tempUrl.origin + tempUrl.pathname, {
+                                method: event.request.method,
+                                headers: event.request.headers,
+                                mode: 'same-origin',
+                                credentials: event.request.credentials,
+                                redirect: event.request.redirect
+                            })) : event.request, response.clone());
                             console.log('file cached : ' + event.request.url)
                         }
                         //修复不支持自动补足.html的平台无法访问的问题
