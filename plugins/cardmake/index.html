@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>545在线-装扮制作</title>
-    <link href="../public.css" rel="stylesheet">
+    <link href="/public.css" rel="stylesheet">
     <!--从b站css里抄来的字体-->
     <style>
         @font-face {
@@ -107,14 +107,14 @@
         }
     </style>
 
-    <script src="../lib/html2canvas.min.js"></script>
+    <script src="/lib/html2canvas.min.js"></script>
 </head>
 
 <body style="overflow-x:hidden;">
     <div id="settings" style="height:100vh;overflow-y:auto;overflow-y: overlay;">
         <div id="cardContainer">
-            <img id="baseImg" src="./cardres/base.png">
-            <img id="headImg" src="../icon.webp">
+            <img id="baseImg" src="cardres/base.png">
+            <img id="headImg" src="/icon.webp">
             <span id="username" contenteditable="true">帅比笙歌超可爱OvO</span>
             <span class="infotext" id="fansinfo">FANS NO.</span>
             <span id="num" contenteditable="true">000000</span>
@@ -149,9 +149,6 @@
         </button>
     </div>
     <script>
-        if (window.self === window.top) {
-            location.replace("/tools?cardmake")
-        };
         window.mdc.autoInit();
         const today = new Date()
         document.getElementById("date").innerText = today.getFullYear() + "/" + (today.getMonth() + 1).toString().padStart(2, "0") + "/" + today.getDate().toString().padStart(2, "0");
@@ -177,7 +174,7 @@
             reader.readAsDataURL(file)
         });
         document.getElementById("background").addEventListener("change", (e) => {
-            document.getElementById("baseImg").src = "./cardres/" + document.getElementById("background").value;
+            document.getElementById("baseImg").src = "cardres/" + document.getElementById("background").value;
         });
         document.getElementById("headImg").addEventListener("click", () => {
             document.getElementById("hiddenImgUploader").click();
