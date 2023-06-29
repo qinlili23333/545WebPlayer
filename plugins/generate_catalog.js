@@ -20,6 +20,10 @@ const walk = function (dir) {
                 fs.rmSync(file);
                 return next()
             }
+            //忽略信息文件
+            if (path.basename(file) == "version" || path.basename(file) == "name") {
+                return next()
+            }
             results.push(path.relative(path.join(dirname, item), file).split('\\').join('/'));
             next();
         }
