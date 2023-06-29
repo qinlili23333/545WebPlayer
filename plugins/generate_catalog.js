@@ -32,6 +32,7 @@ arr.forEach(item => {
         console.log("Processing " + item);
         let pluginInfo = {};
         pluginInfo.name = item;
+        pluginInfo.displayName = fs.readFileSync(path.join(dirname, item, "name"), "utf-8");
         pluginInfo.version = fs.readFileSync(path.join(dirname, item, "version"), "utf-8");
         console.log("Version: " + pluginInfo.version);
         global.item = item;
