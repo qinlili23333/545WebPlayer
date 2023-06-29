@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="robots" content="noindex">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <link rel="canonical" href="https://545.qinlili.bid/plugins/loader" />
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#FADCBB">
+    <title>插件准备中...-545在线</title>
+    <style>
+        * {
+            box-sizing: content-box;
+        }
+
+        body {
+            overflow-y: hidden;
+            position: fixed;
+            height: 100%;
+            overflow-x: hidden;
+            width: 100vw;
+            animation: rightin 0.12s;
+        }
+
+        #info {
+            text-align: center;
+            width: 256px;
+            height: fit-content;
+            position: absolute;
+            margin: auto;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #loading {
+            width: 128px;
+            margin-left: 64px;
+            margin-bottom: 16px;
+        }
+
+        #name {
+            padding: 8px;
+            font-size: 1.25em;
+        }
+
+        #status,
+        #speed {
+            padding: 8px;
+            font-size: 1em;
+        }
+
+        #progress {
+            margin-top: 8px;
+            width: 256px;
+            height: 8px;
+            border-radius: 0px;
+            border: none;
+            background-color: aliceblue;
+        }
+
+        progress::-webkit-progress-bar {
+            background: aliceblue;
+        }
+
+
+        progress[value]::-webkit-progress-value {
+            transition: width 0.3s;
+            background: #DCAC89;
+        }
+
+        ::-moz-progress-bar {
+            transition: all 0.3s;
+            background-color: #DCAC89;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="info">
+        <img id="loading" src="/img/loading.webp">
+        <H5 id="name"></H5>
+        <p id="status">插件准备中...</p>
+        <p id="speed">0KB/S</p>
+        <progress id="progress" max="100" value="1"></progress>
+    </div>
+    <script>
+        let pluginInstall = localStorage.pluginInstall ? JSON.parse(localStorage.pluginInstall) : {};
+        if (localStorage.disableAnim ? JSON.parse(localStorage.disableAnim) : false) {
+            var style = document.createElement('style');
+            style.type = 'text/css';
+            style.rel = 'stylesheet';
+            style.appendChild(document.createTextNode(`*{transition:none !important;}`));
+            document.getElementsByTagName('head')[0].appendChild(style);
+        };
+        const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
+        //https://stackoverflow.com/questions/10420352/converting-file-size-in-bytes-to-human-readable-string
+        const humanFileSize = (bytes, si = true, dp = 1) => {
+            const thresh = si ? 1000 : 1024;
+            if (Math.abs(bytes) < thresh) {
+                return bytes + ' B';
+            };
+            const units = si
+                ? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+                : ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
+            let u = -1;
+            const r = 10 ** dp;
+            do {
+                bytes /= thresh;
+                ++u;
+            } while (Math.round(Math.abs(bytes) * r) / r >= thresh && u < units.length - 1);
+            return bytes.toFixed(dp) + ' ' + units[u];
+        }
+        if (location.search.length) {
+            const pluginName = location.search.substr(1);
+            console.log(pluginName);
+            (async () => {
+                let errcount = 0;
+                //TODO:检测是否安装
+                if (!pluginInstall[pluginName] || pluginInstall[pluginName].error > 0 || Date.now() - pluginInstall[pluginName].date > 604800000) {
+                    document.getElementById("status").innerText = pluginInstall[pluginName] ? "检查插件更新..." : "读取插件信息...";
+                    const pluginInfo = await (await fetch("/plugins/" + pluginName + "/manifest.json?ForceNoCache=1").catch(() => {
+                        document.getElementById("status").innerText = "网络请求失败";
+                    })).json();
+                    document.title = pluginInfo.displayName + "-545在线";
+                    console.log(pluginInfo);
+                    document.getElementById("name").innerText = pluginInfo.displayName;
+                    if (pluginInstall[pluginName] && pluginInfo.version == pluginInstall[pluginName].version) {
+                        document.getElementById("progress").max = 1;
+                    } else {
+                        document.getElementById("progress").max = pluginInfo.fileList.length + 2;
+                        //document.getElementById("status").innerText = "安装前置依赖...";
+                        document.getElementById("status").innerText = (pluginInstall[pluginName] ? "更新体积：" : "安装体积：") + humanFileSize(pluginInfo.fileSize);
+                        const pluginCache = await caches.open("Plugins")
+                        for (const file of pluginInfo.fileList) {
+                            let startTime = Date.now();
+                            if (pluginCache.match("/plugins/" + pluginName + "/" + file)) {
+                                pluginCache.delete("/plugins/" + pluginName + "/" + file);
+                            }
+                            let fileSize = (await (await fetch("/plugins/" + pluginName + "/" + file.replace("index.html", "").replace(".html", "")).catch(() => {
+                                errcount++;
+                                document.getElementById("status").innerText = "有" + errcount + "个文件下载失败";
+                            })).blob()).size;
+                            let time = Date.now() - startTime;
+                            document.getElementById("speed").innerText = (fileSize / time).toFixed(2) + "KB/S";
+                            document.getElementById("progress").value += 1;
+                        }
+                    }
+                    pluginInstall[pluginName] = {
+                        version: pluginInfo.version,
+                        files: pluginInfo.fileList,
+                        date: Date.now(),
+                        error: errcount
+                    };
+                    localStorage.pluginInstall = JSON.stringify(pluginInstall);
+                } else {
+                    document.getElementById("progress").max = 1;
+                };
+                document.getElementById("status").innerText = "插件启动中...";
+                location.replace("/plugins/" + pluginName + "/");
+            })();
+        } else {
+            document.getElementById("name").innerText = "插件名称缺失";
+            document.getElementById("status").innerText = "点击任意位置返回";
+            document.body.addEventListener("click", () => {
+                history.go(-1);
+            });
+        };
+    </script>
+</body>
+
+</html>
