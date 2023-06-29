@@ -286,6 +286,10 @@
                 await caches.delete("Hamood");
                 localStorage.removeItem("hamood");
             };
+            if (document.getElementById("pluginCache").checked && confirm("更推荐使用插件管理来移除指定插件\n你确定要移除所有插件吗？")) {
+                await caches.delete("Plugins");
+                localStorage.removeItem("pluginInstall");
+            };
             window.parent.postMessage("close", "*");
         })
         document.getElementById("pluginBtn").addEventListener("click", async () => {
