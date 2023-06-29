@@ -16,9 +16,15 @@
     <link crossorigin="anonymous"
         href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/material-design-icons/3.0.2/iconfont/material-icons.min.css"
         rel="stylesheet">
+    <script crossorigin="anonymous"
+        integrity="sha512-TJ7U6JRJx5IpyvvO9atNnBzwJIoZDaQnQhb0Wmw32Rj5BQHAmJG16WzaJbDns2Wk5VG6gMt4MytZApZG47rCdg=="
+        src="https://lib.baomitu.com/Chart.js/4.3.0/chart.umd.min.js"></script>
 </head>
 
 <body style="text-align: center">
+    <div style="height:60vw;margin:auto;">
+        <canvas id="chart"></canvas>
+    </div>
     <H4 style="padding:16px;">请选择你需要清理的部分</H4>
     <div class="mdc-form-field">
         <div class="mdc-checkbox">
@@ -137,6 +143,7 @@
         document.querySelectorAll('.mdc-checkbox').forEach(element => {
             new MDCCheckbox(element);
         });
+        const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
         //https://stackoverflow.com/questions/28337027/how-can-i-get-the-size-and-or-number-of-elements-in-a-serviceworker-cache
         const cacheSize = (c) => {
             return c.keys().then(a => {
@@ -167,21 +174,94 @@
 
             return bytes.toFixed(dp) + ' ' + units[u];
         }
-        caches.open("StaticCache").then(c => cacheSize(c).then(size => document.getElementById("staticSize").innerText += ":" + humanFileSize(size)));
-        caches.open("ImageCache").then(c => cacheSize(c).then(size => document.getElementById("imageSize").innerText += ":" + humanFileSize(size)));
-        caches.open("MusicCache").then(c => cacheSize(c).then(size => document.getElementById("musicSize").innerText += ":" + humanFileSize(size)));
+        let cacheStat = {}
+        caches.open("StaticCache").then(c => cacheSize(c).then(size => {
+            cacheStat.static = size;
+            document.getElementById("staticSize").innerText += ":" + humanFileSize(size);
+        }));
+        caches.open("ImageCache").then(c => cacheSize(c).then(size => {
+            cacheStat.image = size;
+            document.getElementById("imageSize").innerText += ":" + humanFileSize(size)
+        }));
+        caches.open("MusicCache").then(c => cacheSize(c).then(size => {
+            cacheStat.music = size;
+            document.getElementById("musicSize").innerText += ":" + humanFileSize(size)
+        }));
         document.getElementById("listSize").innerText += ":" + humanFileSize(localStorage.cacheSong ? localStorage.cacheSong.length : 0);
-        caches.open("Hamood").then(c => cacheSize(c).then(size => document.getElementById("splashSize").innerText += ":" + humanFileSize(size)));
-        caches.open("Plugins").then(c => cacheSize(c).then(size => document.getElementById("pluginSize").innerText += ":" + humanFileSize(size)));
+        cacheStat.list = localStorage.cacheSong ? localStorage.cacheSong.length : 0;
+        caches.open("Hamood").then(c => cacheSize(c).then(size => {
+            cacheStat.splash = size;
+            document.getElementById("splashSize").innerText += ":" + humanFileSize(size)
+        }));
+        caches.open("Plugins").then(c => cacheSize(c).then(size => {
+            cacheStat.plugins = size;
+            document.getElementById("pluginSize").innerText += ":" + humanFileSize(size)
+        }));
         (async () => {
             let currentVersion = await (await fetch("getVersionWorker")).text();
             if (!(currentVersion.length >= 8)) {
                 //版本号异常
                 currentVersion = false;
             }
-            caches.open("545在线" + currentVersion).then(c => cacheSize(c).then(size => document.getElementById("programSize").innerText += ":" + humanFileSize(size)));
+            caches.open("545在线" + currentVersion).then(c => cacheSize(c).then(size => {
+                cacheStat.program = size;
+                document.getElementById("programSize").innerText += ":" + humanFileSize(size)
+            }));
         })()
-        document.getElementById("cleanBtn").addEventListener("click", async () => {
+        const getRandomColor = () => {
+            return '#' + (color => {
+                return (color += '89abcd'[Math.floor(Math.random() * 6)])
+                    && (color.length == 6) ? color : arguments.callee(color);
+            })('');
+        }
+        const checkKeys = async () => {
+            if (Object.keys(cacheStat).length == 7) {
+                const config = {
+                    type: 'doughnut',
+                    data: {
+                        labels: [
+                            '静态缓存',
+                            '图片缓存',
+                            '音乐缓存',
+                            '程序缓存',
+                            '开屏缓存',
+                            '歌单缓存',
+                            '已安装插件'
+                        ],
+                        datasets: [{
+                            label: '缓存分布',
+                            data: [cacheStat.static, cacheStat.image, cacheStat.music, cacheStat.program, cacheStat.splash, cacheStat.list, cacheStat.plugins],
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        aspectRatio: 2,
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: function (tooltipItem, data) {
+                                        console.log(tooltipItem);
+                                        return humanFileSize(tooltipItem.raw);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                };
+                const myChart = new Chart(document.getElementById("chart"), config);
+            } else {
+                await sleep(100);
+                return checkKeys();
+            }
+        }
+        checkKeys();
+
+        document.getElementById("cleanBtn").addEventListener("click", async (event) => {
+            console.log(event);
+            event.target.parentElement.disabled = true;
+            event.target.parentElement.getElementsByClassName("mdc-button__label")[0].innerText = "清理中";
             if (document.getElementById("programCache").checked) {
                 let currentVersion = await (await fetch("getVersionWorker")).text();
                 if (!(currentVersion.length >= 8)) {
