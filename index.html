@@ -177,7 +177,6 @@
             width: 100vw;
             text-align: left;
             overflow-y: auto;
-            overflow-y: overlay;
             height: calc(100% - 48px);
             padding-bottom: 100px;
             transition: width 0.2s ease-in;
@@ -331,7 +330,6 @@
             transform: scale(0.1, 0.1);
             transform-origin: left top;
             overflow-y: auto;
-            overflow-y: overlay;
             width: 80%;
             max-height: 0px;
             border-radius: 4px;
@@ -753,7 +751,6 @@
             document.getElementById("floatMenu").style.transform = "scale(1,1)";
             await sleep(295);
             document.getElementById("floatMenu").style.overflowY = "auto";
-            document.getElementById("floatMenu").style.overflowY = "overlay";
         };
         const hideMenu = async () => {
             document.getElementById("floatMenu").style.transform = "scale(0.1, 0.1)";
@@ -784,6 +781,9 @@
             if (contentHeight > maxHeight) {
                 contentHeight = maxHeight;
                 document.getElementById("floatMenu").style.marginTop = document.body.clientHeight * 0.1 + "px";
+                document.getElementById("floatMenu").style.overflowY = "auto";
+            } else {
+                document.getElementById("floatMenu").style.overflowY = "hidden";
             }
             document.getElementById("floatMenu").style.maxHeight = (contentHeight) + "px";
             if (parseInt(originHeight) > contentHeight) {
