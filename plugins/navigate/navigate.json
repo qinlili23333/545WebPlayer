@@ -1,0 +1,38 @@
+{
+    "version": "20230712",
+    "top": [
+        {
+            "icon": "/img/gift.svg",
+            "info": "领取礼物点这里",
+            "url": "https://club.psplive.com/GiftBox",
+            "external": true
+        }
+    ],
+    "list": [
+        {
+            "name": "塔宝账号",
+            "icon": "/icon_mono.png",
+            "sublist": [
+                {
+                    "name": "B站主页",
+                    "description": "UID15641218",
+                    "icon": "/img/video.svg",
+                    "url": "https://space.bilibili.com/15641218/",
+                    "external": true
+                },
+                {
+                    "name": "直播间",
+                    "description": "545/573893",
+                    "icon": "/img/fm.svg",
+                    "url": "https://live.bilibili.com/545",
+                    "external": true
+                }
+            ]
+        },
+        {
+            "name": "环塔圈",
+            "icon": "/img/circle.svg",
+            "sublist": []
+        }
+    ]
+}

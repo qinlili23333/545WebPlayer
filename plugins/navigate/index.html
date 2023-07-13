@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="545在线网址导航，收录笙歌官方账号以及环塔圈" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <link rel="icon" href="/icon_mono.png">
+    <link rel="apple-touch-icon" href="/icon_badminton_mask_small.png.png">
+    <meta name="apple-mobile-web-app-title" content="545在线">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="canonical" href="https://545.qinlili.bid/plugins/navigate/" />
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#bfee6f">
+    <title>导航 - 545在线</title>
+    <link href="/public.css" rel="stylesheet">
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .top {
+            height: 56px;
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.6);
+        }
+
+        .navi {
+            width: 100vw;
+            height: 32px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .navicon {
+            cursor: pointer;
+            border-radius: 16px;
+            display: inline;
+            width: 32px;
+            height: 32px;
+            padding: 4px;
+            transition: all 0.3s;
+            background-color: transparent;
+        }
+
+        .navicon:hover {
+            border-radius: 0px;
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+
+        .navicon:active {
+            border-radius: 0px;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .navicon-img {
+            width: 100%;
+            height: 100%
+        }
+
+        #noti {
+            transition: all 0.2s;
+            background-color: rgba(0, 0, 0, 0);
+            width: 100vw;
+            height: 24px;
+            display: flex;
+            cursor: pointer;
+        }
+
+        #noti:hover {
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+
+        #notiIcon {
+            width: 24px;
+            height: 24px;
+            margin-left: 4px;
+            margin-right: 4px;
+            padding: 4px;
+        }
+
+        #notiText {
+            font-size: 0.9em;
+            line-height: 24px;
+            color: #333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .search {
+            position: relative;
+            min-width: 100px;
+            width: 100%;
+        }
+
+        #searchBtn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            opacity: 0.5;
+        }
+
+        .clickIcon {
+            cursor: pointer;
+            opacity: 0.8;
+            width: auto;
+            height: 24px;
+            padding: 2px;
+            margin: 4px;
+            border-radius: 0px;
+            background-color: transparent;
+            transition: all 0.2s;
+        }
+
+        .clickIcon:hover {
+            border-radius: 4px;
+            background-color: rgba(50, 180, 50, 0.3);
+            opacity: 0.9 !important;
+        }
+
+        .clickIcon:active {
+            border-radius: 8px;
+            background-color: rgba(50, 180, 50, 0.6);
+            opacity: 1 !important;
+        }
+
+        input[role="textbox"] {
+            background-color: transparent;
+            position: absolute;
+            padding-right: 40px;
+            height: 26px;
+            width: calc(100% - 16px);
+            margin-top: 2px;
+            font-size: 1.1em;
+            margin-left: 8px;
+            margin-right: 8px;
+            border: none;
+            border-bottom: 1px solid #777777;
+            outline: none;
+            transition: all 0.2s linear;
+        }
+
+        input[role="textbox"]:focus-visible {
+            height: 27.25px !important;
+            border-bottom: 2px solid #35f39a !important;
+        }
+
+        input[role="textbox"]:hover {
+            height: 26.75px;
+            border-bottom: 1.5px solid #333333;
+        }
+
+        input[role="textbox"]:active {
+            height: 27.25px !important;
+            border-bottom: 2px solid #35f39a !important;
+        }
+
+        #search {
+            left: 0px;
+            top: 0px;
+        }
+
+        .settingFloat {
+            display: none;
+            opacity: 0;
+            z-index: 10;
+            top: 0px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 8px;
+            padding: 8px;
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px) brightness(90%);
+            -webkit-backdrop-filter: blur(5px) brightness(90%);
+            box-shadow: 2px 2px 4px rgba(77, 155, 22, 0.6);
+            border-radius: 4px;
+            transition: all 0.25s;
+            flex-direction: column;
+        }
+
+        .settingFloat.show {
+            top: 32px;
+            opacity: 1;
+        }
+
+        #settingsBox {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .settingItem {
+            margin-top: 6px;
+            margin-bottom: 6px;
+            padding: 2px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .settingItemTitle {
+            font-size: 0.9em;
+            line-height: 20px;
+        }
+
+        .settingItemSwitchInput {
+            height: 20px;
+            width: 24px;
+        }
+
+        .main {
+            height: calc(100% - 56px);
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .side,
+        .list {
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: auto;
+            overflow-y: overlay;
+            display: flex;
+            align-items: center;
+        }
+
+        .side {
+            width: 128px;
+            flex-direction: column;
+            justify-content: flex-start;
+            box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .list {
+            width: calc(100% - 128px);
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-content: flex-start;
+        }
+
+        .sideItem {
+            cursor: pointer;
+            border-radius: 16px;
+            background-color: transparent;
+            align-items: center;
+            width: 100%;
+            display: flex;
+            padding-left: 4px;
+            padding-right: 4px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            flex-direction: row;
+            justify-content: space-between;
+            transition: all 0.2s;
+        }
+
+        .sideItem:hover,
+        .listItem:hover {
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+
+        .sideItem[active] {
+            background-color: rgba(138, 255, 138, 0.5);
+        }
+
+        .sideItem:active,
+        .listItem:active {
+            border-radius: 0px;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .sideItemIcon {
+            vertical-align: middle;
+            width: 24px;
+            height: 100%;
+        }
+
+        .sideItemTitle {
+            font-size: 1em;
+            line-height: 20px;
+            color: #333;
+        }
+
+        .listItem {
+            border: 1px solid #999;
+            cursor: pointer;
+            border-radius: 16px;
+            background-color: transparent;
+            align-items: center;
+            max-width: min(calc(100vw - 120px), 400px);
+            display: flex;
+            padding: 8px;
+            margin: 4px;
+            flex-direction: row;
+            justify-content: space-around;
+            transition: all 0.2s;
+        }
+
+        .listItem:hover {
+            border: 1px solid #666;
+        }
+
+        .listItem:active {
+            border: 1px solid #333;
+        }
+
+
+        .listItemTextGroup {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .listItemIcon {
+            object-fit: contain;
+            border-radius: 2px;
+            vertical-align: middle;
+            width: 24px;
+            height: 24px;
+            margin-right: 4px;
+        }
+
+        .listItemTitle {
+            display: inline-flex;
+            word-break: break-all;
+            font-size: 1em;
+            color: #000;
+            line-height: 20px;
+            height: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .listItemDesc {
+            display: inline-flex;
+            word-break: break-all;
+            font-size: 0.85em;
+            color: #333;
+            line-height: 17px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            height: 17px;
+        }
+
+        .tipIcon {
+            opacity: 0.7;
+            height: 20px;
+            width: 16px;
+            object-fit: contain;
+        }
+
+        #floatMenuContainer {
+            transition: opacity 0.2s ease-in;
+            opacity: 0;
+            display: none;
+            z-index: 9999;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            height: auto;
+            width: auto;
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.25);
+        }
+
+        #floatMenu {
+            box-shadow: rgb(0 0 0 / 25%) 0px 4px 20px 1px;
+            transform: scale(0.1, 0.1);
+            transform-origin: left top;
+            overflow-y: auto;
+            overflow-y: overlay;
+            width: 80%;
+            max-height: 0px;
+            border-radius: 4px;
+            backdrop-filter: blur(5px) brightness(100%);
+            -webkit-backdrop-filter: blur(5px) brightness(100%);
+            background-color: rgba(255, 255, 255, 0.75);
+        }
+
+        #menuList {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menuItem {
+            height: 40px;
+            display: flex;
+            flex-direction: row;
+            transition: all 0.2s;
+            padding: 4px;
+        }
+
+        .menuItem:hover {
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+
+        .menuItem:active {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .menuIcon {
+            height: 32px;
+            width: 32px;
+            padding: 4px;
+        }
+
+        .menuText {
+            line-height: 24px;
+            margin: 4px;
+        }
+
+        @media (min-width: 700px) {
+            #floatMenu {
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width:300px) {
+            .sideItemIcon {
+                display: none;
+            }
+
+            .sideItemTitle {
+                font-size: 0.85em;
+            }
+
+            .listItem {
+                max-width: min(calc(100vw - 88px), 400px);
+            }
+
+            .side {
+                width: 96px;
+            }
+
+            .list {
+                width: calc(100vw - 96px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">
+        <div class="navi">
+            <div class="leftNavi" style="display:flex;">
+                <div class="navicon" id="backBtn" style="display:inline;" aria-label="返回" role="button" alt="返回">
+                    <img class="navicon-img" src="/img/left.svg">
+                </div>
+            </div>
+            <div class="search" style="display:flex;">
+                <input role="textbox" id="search" name="搜索" placeholder="搜索">
+                <img class="clickIcon" id="searchBtn" src="/img/search.svg">
+            </div>
+            <div class="rightNavi" style="display:flex;">
+                <div class="navicon" id="settingBtn" aria-label="设置" role="button" alt="设置"
+                    onclick="Module.settings.show();">
+                    <img class="navicon-img" src="/img/setting.svg">
+                </div>
+            </div>
+        </div>
+        <div id="noti">
+            <img id="notiIcon" src="/img/loading.webp">
+            <span id="notiText">正在加载导航...</span>
+        </div>
+    </div>
+    <div class="main">
+        <div class="side"></div>
+        <div class="list"></div>
+    </div>
+    <div class="settingFloat" id="settingFloat">
+        <div id="settingsBox"></div>
+        <div style="display: flex;width:100%;justify-content: space-between;">
+            <span style="font-size: 0.8em;line-height: 20px;" class="clickIcon"
+                onclick="Module.naviUpdater.updateAndRender(this);">强制更新</span>
+            <div>
+                <img class="clickIcon" id="hidesettingBtn" src="/img/close2.svg" onclick="Module.settings.hide();">
+            </div>
+
+        </div>
+    </div>
+    <div id="floatMenuContainer">
+        <div id="floatMenu">
+            <ul id="menuList">
+
+            </ul>
+        </div>
+    </div>
+    <script>
+        const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
+        const random = (min, max) => {
+            return Math.round(Math.random() * (max - min)) + min;
+        };
+        const link = (url, external, deeplink) => {
+            if (external) {
+                window.open(url, "_blank");
+            } else {
+                location.href = url;
+            }
+        };
+        if (document.referrer.indexOf(location.origin) == 0) {
+            document.getElementById("backBtn").addEventListener("click", () => {
+                history.back();
+            });
+        } else {
+            document.getElementById("backBtn").getElementsByClassName("navicon-img")[0].src = "/img/home.svg";
+            document.getElementById("backBtn").addEventListener("click", () => {
+                location.href = "/";
+            });
+        }
+        const Module = {
+            autoinit: {
+                run: () => {
+                    Object.entries(Module).forEach(([key, value]) => {
+                        if (value.init) {
+                            value.init();
+                        }
+                    });
+                }
+            },
+            netTick: {
+                tick: 0,
+                wait: async () => {
+                    await sleep(Math.pow(2, Module.netTick.tick) * 1000);
+                    Module.netTick.tick++;
+                }
+            },
+            logger: {
+                collect: (error) => {
+                    console.warn(error.message);
+                }
+            },
+            settings: {
+                init: () => {
+                    Module.settings.list.push({ title: "我是单推人，隐藏环塔圈", key: "hideCircle", type: 0 });
+                    Module.settings.list.push({ title: "隐藏不再维护的过时内容", key: "hideLegacy", type: 0 });
+                },
+                list: [],
+                show: async () => {
+                    document.getElementById("settingFloat").style.display = "flex";
+                    await sleep(1);
+                    document.getElementById("settingFloat").className = "settingFloat show";
+                    document.getElementById("settingsBox").innerHTML = "";
+                    Module.settings.list.forEach(item => {
+                        let settingItem = document.createElement("div");
+                        settingItem.className = "settingItem";
+                        let settingItemTitle = document.createElement("span");
+                        settingItemTitle.className = "settingItemTitle";
+                        settingItemTitle.innerText = item.title;
+                        settingItem.appendChild(settingItemTitle);
+                        let settingItemSwitchInput = document.createElement("input");
+                        settingItemSwitchInput.type = "checkbox";
+                        settingItemSwitchInput.className = "settingItemSwitchInput";
+                        settingItemSwitchInput.checked = Module.pref.get(item.key);
+                        settingItemSwitchInput.addEventListener("change", () => {
+                            Module.pref.set(item.key, settingItemSwitchInput.checked);
+                        });
+                        settingItem.appendChild(settingItemSwitchInput);
+                        document.getElementById("settingsBox").appendChild(settingItem);
+                    });
+                },
+                hide: async () => {
+                    document.getElementById("settingFloat").className = "settingFloat";
+                    await sleep(250);
+                    document.getElementById("settingFloat").style.display = "none";
+                }
+            },
+            naviUpdater: {
+                init: async () => {
+                    await sleep(2000);
+                    if ((Module.pref.get("lastNaviUpdate") == new Date().toLocaleDateString()) && localStorage.naviCache) { } else {
+                        Module.naviUpdater.update();
+                    };
+                },
+                getData: async () => {
+                    if (!localStorage.naviCache) {
+                        await Module.naviUpdater.update();
+                    };
+                    return JSON.parse(localStorage.naviCache);
+                },
+                update: async () => {
+                    let jsonText = "";
+                    try {
+                        jsonText = await (await fetch("navigate.json?ForceNoCache=1")).text()
+                    } catch (e) {
+                        Module.logger.collect(e);
+                        await Module.netTick.wait();
+                        return await Module.naviUpdater.update();
+                    };
+                    try {
+                        //自动Minify
+                        localStorage.naviCache = JSON.stringify(JSON.parse(jsonText));
+                        Module.pref.set("lastNaviUpdate", new Date().toLocaleDateString())
+                    } catch (e) {
+                        Module.logger.collect(e);
+                    }
+                },
+                updateAndRender: async (btn) => {
+                    btn ? btn.innerText = "更新中..." : false;
+                    await Module.naviUpdater.update();
+                    window.naviList = await Module.naviUpdater.getData();
+                    Module.list.render();
+                    btn ? btn.innerText = "更新完成" : false;
+                }
+            },
+            pref: {
+                init: () => {
+                    if (localStorage.pref) {
+                        Module.pref.data = JSON.parse(localStorage.pref);
+                    } else {
+                        Module.pref.sync();
+                    }
+                },
+                data: {},
+                sync: () => {
+                    localStorage.pref = JSON.stringify(Module.pref.data);
+                },
+                get: (key) => {
+                    return Module.pref.data[key] || false;
+                },
+                set: (key, value) => {
+                    Module.pref.data[key] = value;
+                    Module.pref.sync();
+                }
+            },
+            top: {
+                render: () => {
+                    //顶栏
+                    const topInfo = naviList.top[random(0, naviList.top.length - 1)];
+                    document.getElementById("notiIcon").src = topInfo.icon;
+                    document.getElementById("notiText").innerText = topInfo.info;
+                    document.getElementById("noti").onclick = () => {
+                        link(topInfo.url, topInfo.external);
+                    }
+                }
+            },
+            list: {
+                init: () => {
+                    document.getElementById("searchBtn").addEventListener("click", () => {
+                        Module.list.filter(document.getElementById("search").value);
+                    });
+                },
+                render: () => {
+                    document.querySelector(".side").innerHTML = "";
+                    window.naviList.list.forEach((item, index) => {
+                        const side = document.createElement("div");
+                        side.className = "sideItem";
+                        side.innerHTML = `
+                        <img class="sideItemIcon" src="${item.icon}">
+                        <span class="sideItemTitle">${item.name}</span>
+                        `;
+                        side.onclick = () => {
+                            Module.list.renderSublist(item.sublist);
+                            document.querySelector(".sideItem[active]") ? document.querySelector(".sideItem[active]").removeAttribute("active") : false;
+                            side.setAttribute("active", "true");
+                        };
+                        document.querySelector(".side").appendChild(side);
+                    });
+                    document.querySelector(".sideItem").click();
+                },
+                renderSublist: sublist => {
+                    document.querySelector(".list").innerHTML = "";
+                    const newTip = icon => {
+                        return `<img class="tipIcon" src="${icon}">`
+                    }
+                    sublist.forEach((item, index) => {
+                        if ((item.hidden && !Module.pref.get("showHidden")) || (Module.pref.get("hideLegacy") && item.legacy)) { return false; };
+                        if (item.divider) {
+                            const divider = document.createElement("hr");
+                            divider.setAttribute("name", item.name);
+                            document.querySelector(".list").appendChild(divider);
+                            return false;
+                        };
+                        const list = document.createElement("a");
+                        list.className = "listItem";
+                        let tipIcons = "";
+                        item.pwa ? tipIcons += newTip("/img/application.svg") : item.external ? tipIcons += newTip("/img/external.svg") : false;
+                        item.working ? tipIcons += newTip("/img/working.svg") : false;
+                        item.legacy ? tipIcons += newTip("/img/legacy.svg") : false;
+                        list.innerHTML += item.icon ? `<img class="listItemIcon" src="${item.icon}">` : "";
+                        list.innerHTML += `
+                        <div class="listItemTextGroup">
+                            <span class="listItemTitle">${item.name}${tipIcons}</span>
+                            <span class="listItemDesc">${item.description}</span>
+                        </div>
+                        `;
+                        list.href = item.url;
+                        item.external ? list.target = "_blank" : false;
+                        list.oncontextmenu = (e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const newMenu = (icon, text, click) => {
+                                const menu = document.createElement("div");
+                                menu.className = "menuItem";
+                                menu.innerHTML = `
+                                <img class="menuIcon" src="${icon}">
+                                <span class="menuText">${text}</span>
+                                `;
+                                menu.onclick = click;
+                                return document.getElementById("menuList").appendChild(menu);
+                            };
+                            item.deeplink ? newMenu("/img/app.svg", "唤起本地APP", () => { link(item.deeplink); }) : false;
+                            navigator.share ? newMenu("/img/share.svg", "分享", () => { navigator.share({ title: "item.title", text: item.description, url: item.url }) }) : false;
+                            Module.magicMenu.showMenu();
+                        };
+                        document.querySelector(".list").appendChild(list);
+                    });
+                },
+                filter: text => {
+                    let filterList = [];
+                    window.naviList.list.forEach((item, index) => {
+                        item.sublist.forEach((item, index) => {
+                            if ((item.name.indexOf(text) != -1 || (item.description && item.description.indexOf(text) != -1)) && !item.divider == true) {
+                                filterList.push(item);
+                            };
+                        });
+                    });
+                    Module.list.renderSublist(filterList);
+                    document.querySelector(".sideItem[active]") ? document.querySelector(".sideItem[active]").removeAttribute("active") : false;
+                }
+            },
+            //指尖跟随菜单
+            magicMenu: {
+                init: () => {
+                    window.addEventListener('pointerdown', (event) => {
+                        if (!(document.getElementById("floatMenuContainer").style.display == "block")) {
+                            Module.magicMenu.lastClick.x = event.clientX;
+                            Module.magicMenu.lastClick.y = event.clientY;
+                        } else {
+                            Module.magicMenu.lastClickMenu.x = event.clientX;
+                            Module.magicMenu.lastClickMenu.y = event.clientY;
+                        }
+                    });
+                    window.addEventListener("resize", async (event) => {
+                        if (document.getElementById("floatMenuContainer").style.display == "block") {
+                            await sleep(100);
+                            Module.magicMenu.resizeMenu();
+                        };
+                    });
+                    document.getElementById("floatMenuContainer").addEventListener("click", (event) => {
+                        event.stopPropagation();
+                        Module.magicMenu.hideMenu();
+                    })
+                    //菜单魔法展开
+                    const observer = new MutationObserver(Module.magicMenu.resizeMenu);
+                    observer.observe(document.getElementById("floatMenu"), { childList: true, subtree: true, attributes: true, attributeFilter: ['loaded'] });
+
+                },
+                lastClick: { x: 0, y: 0 },
+                lastClickMenu: { x: 0, y: 0 },
+                locateMenu: () => {
+                    //大屏随动菜单
+                    if (document.body.clientWidth >= 700) {
+                        //右侧有空间
+                        if (document.body.clientWidth - 400 > Module.magicMenu.lastClick.x) {
+                            document.getElementById("floatMenu").style.marginLeft = Module.magicMenu.lastClick.x + "px";
+                        } else {
+                            document.getElementById("floatMenu").style.marginLeft = document.body.clientWidth - 400 + "px";
+                        };
+                        if (document.body.clientHeight - document.getElementById("floatMenu").scrollHeight > Module.magicMenu.lastClick.y) {
+                            document.getElementById("floatMenu").style.marginTop = Module.magicMenu.lastClick.y + "px";
+                        } else {
+                            if (document.body.clientHeight - document.getElementById("floatMenu").scrollHeight < 0) {
+                                document.getElementById("floatMenu").style.marginTop = document.body.clientHeight * 0.1 + "px";
+                            } else {
+                                document.getElementById("floatMenu").style.marginTop = document.body.clientHeight - document.getElementById("floatMenu").scrollHeight + "px";
+                            }
+                        }
+                    } else {
+                        document.getElementById("floatMenu").style.marginLeft = "10%";
+                        document.getElementById("floatMenu").style.marginTop = document.body.clientHeight * 0.1 + "px";
+                    }
+                },
+                showMenu: async () => {
+                    if (document.getElementById("floatMenuContainer").style.display == "block") { return true; }
+                    document.getElementById("floatMenuContainer").style.display = "block";
+                    document.getElementById("floatMenu").style.overflowY = "hidden";
+                    document.getElementById("floatMenu").style.marginLeft = Module.magicMenu.lastClick.x + "px";
+                    document.getElementById("floatMenu").style.marginTop = Module.magicMenu.lastClick.y + "px";
+                    document.getElementById("floatMenu").style.transition = "transform 0.3s, margin-top 0.3s, margin-left 0.3s,max-height 0.3s";
+                    await sleep(5);
+                    document.getElementById("floatMenuContainer").style.opacity = 1;
+                    Module.magicMenu.locateMenu();
+                    document.getElementById("floatMenu").style.transform = "scale(1,1)";
+                    await sleep(295);
+                    document.getElementById("floatMenu").style.overflowY = "auto";
+                    document.getElementById("floatMenu").style.overflowY = "overlay";
+                },
+                hideMenu: async () => {
+                    document.getElementById("floatMenu").style.transform = "scale(0.1, 0.1)";
+                    document.getElementById("floatMenu").style.marginLeft = Module.magicMenu.lastClickMenu.x + "px";
+                    document.getElementById("floatMenu").style.marginTop = Module.magicMenu.lastClickMenu.y + "px";
+                    document.getElementById("floatMenuContainer").style.opacity = 0;
+                    await sleep(300);
+                    document.getElementById("floatMenuContainer").style.display = "none";
+                    menuList.innerHTML = "";
+                    document.getElementById("floatMenu").style.transition = "max-height 0.3s";
+                },
+                resizeMenu: () => {
+                    let contentHeight = document.getElementById("floatMenu").scrollHeight;
+                    document.getElementById("floatMenu").style.height = "auto";
+                    let originHeight = document.getElementById("floatMenu").style.maxHeight;
+                    let maxHeight = document.body.clientHeight * 0.8;
+                    if (contentHeight > maxHeight) {
+                        contentHeight = maxHeight;
+                        document.getElementById("floatMenu").style.marginTop = document.body.clientHeight * 0.1 + "px";
+                    }
+                    document.getElementById("floatMenu").style.maxHeight = (contentHeight) + "px";
+                    if (parseInt(originHeight) > contentHeight) {
+                        document.getElementById("floatMenu").style.height = originHeight;
+                    };
+                    Module.magicMenu.locateMenu();
+                }
+            }
+        };
+        //初始化
+        (async () => {
+            Module.autoinit.run();
+            window.naviList = await Module.naviUpdater.getData();
+            Module.top.render();
+            Module.list.render();
+        })();
+    </script>
+</body>
+
+</html>
