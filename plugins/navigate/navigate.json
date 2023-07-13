@@ -10,9 +10,16 @@
     ],
     "list": [
         {
-            "name": "塔宝账号",
+            "name": "关于塔宝",
             "icon": "/icon_mono.png",
             "sublist": [
+                {
+                    "name": "领取礼物",
+                    "icon": "/img/gift.svg",
+                    "description": "在这里填写收货地址",
+                    "url": "https://club.psplive.com/GiftBox",
+                    "external": true
+                },
                 {
                     "name": "B站主页",
                     "description": "UID15641218",
@@ -26,13 +33,100 @@
                     "icon": "/img/fm.svg",
                     "url": "https://live.bilibili.com/545",
                     "external": true
+                },
+                {
+                    "name": "微博",
+                    "description": "UID5316242140",
+                    "icon": "/img/weibo.svg",
+                    "url": "https://weibo.com/5316242140",
+                    "external": true
+                },
+                {
+                    "name": "网易云",
+                    "description": "UID428566518",
+                    "icon": "/img/disc.svg",
+                    "url": "https://music.163.com/#/user/home?id=428566518",
+                    "external": true
+                },
+                {
+                    "name": "萌娘百科",
+                    "description": "",
+                    "icon": "/img/info.svg",
+                    "url": "https://zh.moegirl.org.cn/zh-hans/%E7%AC%99%E6%AD%8C",
+                    "external": true
+                }
+            ]
+        },
+        {
+            "name": "小团体",
+            "icon": "/img/group.svg",
+            "sublist": [
+                {
+                    "name": "禁言通知群",
+                    "description": "748433145",
+                    "icon": "/img/qq.svg",
+                    "url": "https://qm.qq.com/cgi-bin/qm/qr?k=YZIDxzgdQb4on0Htrhd6Y-a50jz0YiKQ&authKey=bkp5jV8cMDm5T3+17dmCYUMxDiUfdHCLp54O+/SgjF29znHfCtnwbelPwD3Eh+hE&noverify=08",
+                    "deeplink": "mqqopensdkapi://bizAgent/qm/qr?url=https%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Fk%3DYZIDxzgdQb4on0Htrhd6Y-a50jz0YiKQ%26jump_from%3D%26auth%3D%26app_name%3D%26authSig%3Dbkp5jV8cMDm5T3%2B17dmCYUMxDiUfdHCLp54O%2B%2FSgjF29znHfCtnwbelPwD3Eh%2BhE%26source_id%3D3_40001",
+                    "external": true
+                },
+                {
+                    "name": "粉丝群",
+                    "description": "967128182",
+                    "icon": "/img/qq.svg",
+                    "url": "https://qm.qq.com/cgi-bin/qm/qr?k=aAT1eFnAPVknF0Csmha6Ki4k93ggAO7e&authKey=GLbjBJdNoLYO9aEZEU4WOwVOpG6N2Tb+WWm6prDxEvATqYnS6Rz1hFJ+IbjwrOew&noverify=0",
+                    "deeplink": "mqqopensdkapi://bizAgent/qm/qr?url=https%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Fk%3DaAT1eFnAPVknF0Csmha6Ki4k93ggAO7e%26jump_from%3D%26auth%3D%26app_name%3D%26authSig%3DGLbjBJdNoLYO9aEZEU4WOwVOpG6N2Tb%2BWWm6prDxEvATqYnS6Rz1hFJ%2BIbjwrOew%26source_id%3D3_40001",
+                    "external": true
+                },
+                {
+                    "name": "舰长群",
+                    "description": "817665247",
+                    "icon": "/img/qq.svg",
+                    "url": "https://t.bilibili.com/531240811171900848",
+                    "external": true
+                },
+                {
+                    "name": "小狗屎的fufu群",
+                    "description": "720984755",
+                    "icon": "/img/qq.svg",
+                    "url": "https://qm.qq.com/cgi-bin/qm/qr?k=QfCcz-QG3-vKpLsDG2Vqi_4Tlf5AlSza&authKey=it6QRZ1KcjH3u/veMcugFIX3jnLXu9uhRGCGBI8EZuho6FHCd9cr+Q/3MK7WiCVX&noverify=0&personal_qrcode_source=0",
+                    "deeplink": "mqqopensdkapi://bizAgent/qm/qr?url=https%3A%2F%2Fqm.qq.com%2Fcgi-bin%2Fqm%2Fqr%3Fk%3DQfCcz-QG3-vKpLsDG2Vqi_4Tlf5AlSza%26jump_from%3D%26auth%3D%26app_name%3D%26authSig%3Dit6QRZ1KcjH3u%2FveMcugFIX3jnLXu9uhRGCGBI8EZuho6FHCd9cr%2BQ%2F3MK7WiCVX%26source_id%3D3_40001",
+                    "external": true
                 }
             ]
         },
         {
             "name": "环塔圈",
             "icon": "/img/circle.svg",
-            "sublist": []
+            "sublist": [
+                {
+                    "name": "阿梓",
+                    "description": "我似楞呐-地三鲜",
+                    "icon": "https://i0.hdslb.com/bfs/face/ba9ce36ef60a53e24a97f54429e62bdb951530a0.jpg@240w_240h.avif",
+                    "url": "https://space.bilibili.com/7706705/",
+                    "external": true
+                },
+                {
+                    "name": "小可",
+                    "description": "红黑毛猪头-地三鲜",
+                    "icon": "https://i0.hdslb.com/bfs/face/50bec7d47935d0660c7174e7c075d38f259e8d15.jpg@240w_240h.avif",
+                    "url": "https://space.bilibili.com/14387072/",
+                    "external": true
+                },
+                {
+                    "name": "星汐",
+                    "description": "山猪王-笙呼汐",
+                    "icon": "https://i0.hdslb.com/bfs/face/43ef2891d907eadedd5256edff249f935cf0fb71.jpg@240w_240h.avif",
+                    "url": "https://space.bilibili.com/51030552",
+                    "external": true
+                },
+                {
+                    "name": "内德维德",
+                    "description": "红毛鸡蛋",
+                    "icon": "https://i0.hdslb.com/bfs/face/7aad26788e392df1b28ff21793abf7c9a990c6a1.jpg@240w_240h.avif",
+                    "url": "https://space.bilibili.com/90873",
+                    "external": true
+                }
+            ]
         }
     ]
 }

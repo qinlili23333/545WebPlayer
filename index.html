@@ -1507,7 +1507,7 @@
             if (window.innerWidth > window.innerHeight && window.innerHeight > 600 && window.self === window.top && !window.isBiliLite) {
                 let wallpaperMenu = makeMenu("壁纸模式", "./img/fullscreen.svg");
                 wallpaperMenu.addEventListener("click", event => {
-                    document.location.href = './plugins/loader?wallpaper';
+                    document.location.href = './plugins/loader?name=wallpaper';
                 });
                 menuList.appendChild(wallpaperMenu);
             };
@@ -1595,19 +1595,12 @@
                 const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
             });
             menuList.appendChild(historyMenu);
-            let giftMenu = makeMenu("领取礼物", "./img/gift.svg");
-            giftMenu.addEventListener("click", async (e) => {
-                e.stopPropagation();
-                let btn = event.currentTarget;
-                btn.querySelector("p").style.backgroundImage = "url(./img/loading.webp)";
-                let text = btn.querySelector(".mdc-list-item__text");
-                text.innerText = "请稍等...";
-                await sleep(50);
-                window.open("https://club.psplive.com/GiftBox", "_blank");
-                await sleep(500);
-                hideMenu();
+            let navMenu = makeMenu("导航", "./img/nav.svg");
+            navMenu.addEventListener("click", async (e) => {
+                bottomdown();
+                document.location.href = './plugins/loader?name=navigate';
             });
-            menuList.appendChild(giftMenu);
+            menuList.appendChild(navMenu);
             let settingMenu = makeMenu("设置", "./img/setting.svg");
             settingMenu.addEventListener("click", () => {
                 bottomdown();

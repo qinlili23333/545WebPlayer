@@ -597,7 +597,7 @@
                 update: async () => {
                     let jsonText = "";
                     try {
-                        jsonText = await (await fetch("navigate.json?ForceNoCache=1")).text()
+                        jsonText = await (await fetch("navigate.json")).text()
                     } catch (e) {
                         Module.logger.collect(e);
                         await Module.netTick.wait();
@@ -612,11 +612,7 @@
                     }
                 },
                 updateAndRender: async (btn) => {
-                    btn ? btn.innerText = "更新中..." : false;
-                    await Module.naviUpdater.update();
-                    window.naviList = await Module.naviUpdater.getData();
-                    Module.list.render();
-                    btn ? btn.innerText = "更新完成" : false;
+                    location.replace("/plugins/loader?name=navigate&update=1");
                 }
             },
             pref: {
