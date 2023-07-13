@@ -605,7 +605,7 @@
                     };
                     try {
                         //自动Minify
-                        Module.naviUpdater.navidata = JSON.stringify(JSON.parse(jsonText));
+                        Module.naviUpdater.navidata = JSON.parse(jsonText);
                     } catch (e) {
                         Module.logger.collect(e);
                     }
@@ -654,6 +654,7 @@
                 render: () => {
                     document.querySelector(".side").innerHTML = "";
                     window.naviList.list.forEach((item, index) => {
+                        if ((Module.pref.get("hideCircle") && item.name == "环塔圈")) return;
                         const side = document.createElement("div");
                         side.className = "sideItem";
                         side.innerHTML = `

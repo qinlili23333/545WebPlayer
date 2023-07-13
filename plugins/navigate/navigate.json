@@ -95,6 +95,33 @@
             ]
         },
         {
+            "name": "下载站",
+            "icon": "/img/download.svg",
+            "sublist": [
+                {
+                    "name": "545在线全部歌曲文件",
+                    "description": "Github仓库-琴梨梨维护",
+                    "icon": "/img/disc.svg",
+                    "url": "https://github.com/qinlili23333/545AudioFileStorage",
+                    "external": true
+                },
+                {
+                    "name": "舞娘装MMD模型",
+                    "description": "官方配布",
+                    "icon": "/img/dress.svg",
+                    "url": "https://www.aplaybox.com/details/model/dlLYoyNxCZoS",
+                    "external": true
+                },
+                {
+                    "name": "生日动态壁纸",
+                    "description": "",
+                    "icon": "/img/video.svg",
+                    "url": "https://steamcommunity.com/sharedfiles/filedetails/?id=2744510417",
+                    "external": true
+                }
+            ]
+        },
+        {
             "name": "环塔圈",
             "icon": "/img/circle.svg",
             "sublist": [

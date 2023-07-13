@@ -152,7 +152,7 @@
                         //document.getElementById("status").innerText = "安装前置依赖...";
                         document.getElementById("status").innerText = (pluginInstall[pluginName] ? "更新体积：" : "安装体积：") + humanFileSize(pluginInfo.fileSize);
                         const pluginCache = await caches.open("Plugins")
-                        for (const file of pluginInfo.fileList) {
+                        for (let file of pluginInfo.fileList) {
                             let startTime = Date.now();
                             file = file.replace("index.html", "").replace(".html", "");
                             if (pluginCache.match("/plugins/" + pluginName + "/" + file)) {
