@@ -145,7 +145,7 @@
                     document.title = pluginInfo.displayName + "-545在线";
                     console.log(pluginInfo);
                     document.getElementById("name").innerText = pluginInfo.displayName;
-                    if (pluginInstall[pluginName] && pluginInfo.version == pluginInstall[pluginName].version) {
+                    if (pluginInstall[pluginName] && pluginInfo.version == pluginInstall[pluginName].version && !url.get("force")) {
                         document.getElementById("progress").max = 1;
                     } else {
                         document.getElementById("progress").max = pluginInfo.fileList.length + 2;
@@ -154,10 +154,11 @@
                         const pluginCache = await caches.open("Plugins")
                         for (const file of pluginInfo.fileList) {
                             let startTime = Date.now();
+                            file = file.replace("index.html", "").replace(".html", "");
                             if (pluginCache.match("/plugins/" + pluginName + "/" + file)) {
                                 pluginCache.delete("/plugins/" + pluginName + "/" + file);
                             }
-                            let fileSize = (await (await fetch("/plugins/" + pluginName + "/" + file.replace("index.html", "").replace(".html", "")).catch(() => {
+                            let fileSize = (await (await fetch("/plugins/" + pluginName + "/" + file).catch(() => {
                                 errcount++;
                                 document.getElementById("status").innerText = "有" + errcount + "个文件下载失败";
                             })).blob()).size;

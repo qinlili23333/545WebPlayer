@@ -99,21 +99,21 @@
             "icon": "/img/circle.svg",
             "sublist": [
                 {
-                    "name": "阿梓",
+                    "name": "阿梓从小就很可爱",
                     "description": "我似楞呐-地三鲜",
                     "icon": "https://i0.hdslb.com/bfs/face/ba9ce36ef60a53e24a97f54429e62bdb951530a0.jpg@240w_240h.avif",
                     "url": "https://space.bilibili.com/7706705/",
                     "external": true
                 },
                 {
-                    "name": "小可",
+                    "name": "小可学妹",
                     "description": "红黑毛猪头-地三鲜",
                     "icon": "https://i0.hdslb.com/bfs/face/50bec7d47935d0660c7174e7c075d38f259e8d15.jpg@240w_240h.avif",
                     "url": "https://space.bilibili.com/14387072/",
                     "external": true
                 },
                 {
-                    "name": "星汐",
+                    "name": "星汐Seki",
                     "description": "山猪王-笙呼汐",
                     "icon": "https://i0.hdslb.com/bfs/face/43ef2891d907eadedd5256edff249f935cf0fb71.jpg@240w_240h.avif",
                     "url": "https://space.bilibili.com/51030552",
@@ -121,9 +121,65 @@
                 },
                 {
                     "name": "内德维德",
-                    "description": "红毛鸡蛋",
+                    "description": "红毛鸡蛋，塔宝的好父亲",
                     "icon": "https://i0.hdslb.com/bfs/face/7aad26788e392df1b28ff21793abf7c9a990c6a1.jpg@240w_240h.avif",
                     "url": "https://space.bilibili.com/90873",
+                    "external": true
+                },
+                {
+                    "name": "艾露露Ailurus",
+                    "description": "女通讯录，凹凸世界主题曲演唱者",
+                    "icon": "https://i0.hdslb.com/bfs/face/ebc7d0f646549c26f5ea28937060710a1360a518.jpg@240w_240h.avif",
+                    "url": "https://space.bilibili.com/1501380958",
+                    "external": true
+                },
+                {
+                    "name": "东爱璃Lovely",
+                    "description": "",
+                    "icon": "https://i0.hdslb.com/bfs/face/602b90b452b0d1a6ec32fb0e4d509ed245dea800.jpg@240w_240h.avif",
+                    "url": "https://space.bilibili.com/3821157",
+                    "external": true
+                },
+                {
+                    "name": "红晓音Akane",
+                    "description": "",
+                    "icon": "https://i0.hdslb.com/bfs/face/12fe483ccaccef9010646b1b8bcb33f174ab8f60.jpg@240w_240h.avif",
+                    "url": "https://space.bilibili.com/899804",
+                    "external": true
+                },
+                {
+                    "name": "兰音Reine",
+                    "description": "",
+                    "icon": "https://i0.hdslb.com/bfs/face/b14b51c6112218ceeb6b16c3453d08bb5ff2a83c.jpg@240w_240h.avif",
+                    "url": "https://space.bilibili.com/698029620",
+                    "external": true
+                },
+                {
+                    "name": "i王老九",
+                    "description": "",
+                    "icon": "https://i0.hdslb.com/bfs/face/018e4820cad606e45d1f701923411c9e9a78e1f5.jpg@240w_240h.avif",
+                    "url": "https://space.bilibili.com/27937634",
+                    "external": true
+                },
+                {
+                    "name": "早凉",
+                    "description": "",
+                    "icon": "https://i0.hdslb.com/bfs/face/c7577b2e1788a3008314dbaeab5a3d0f738d37a0.jpg@240w_240h.avif",
+                    "url": "https://space.bilibili.com/518817",
+                    "external": true
+                },
+                {
+                    "name": "秋凛子Rinco",
+                    "description": "",
+                    "icon": "https://i0.hdslb.com/bfs/face/850cdb5eb92066a0a54932e8f3ebdc8ef1495769.jpg@240w_240h.avif",
+                    "url": "https://space.bilibili.com/47963306",
+                    "external": true
+                },
+                {
+                    "name": "扇宝",
+                    "description": "",
+                    "icon": "https://i0.hdslb.com/bfs/face/585b530b5e51865d788d487f8d51aea9741e5091.jpg@240w_240h.avif",
+                    "url": "https://space.bilibili.com/698438232",
                     "external": true
                 }
             ]
