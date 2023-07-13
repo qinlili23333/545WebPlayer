@@ -1,6 +1,6 @@
 {
   "success": true,
-  "version": "2023011301",
+  "version": "2023071301",
   "domains": {
     "yuketang": [
       "https://bj.bcebos.com/yunpanx/",
@@ -23,6 +23,62 @@
       "type": "塔宝投稿",
       "description": "塔宝投稿的独唱歌曲",
       "list": [
+        {
+          "name": "十年如烟",
+          "url": {
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%8D%81%E5%B9%B4%E5%A6%82%E7%83%9F_20230713115303_56530.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%8D%81%E5%B9%B4%E5%A6%82%E7%83%9F.ogg"
+          },
+          "cover": "https://i0.hdslb.com/bfs/archive/7c0667e227835df9d0d831af3f4d72a7ab3ed0eb.jpg@.avif",
+          "quality": "OPUS128",
+          "full_title": "【十年如烟】空气感清澈女声周年献唱好声音治愈歌曲",
+          "origin": "https://www.bilibili.com/video/BV1Ch411T7XR",
+          "source_quality": "AAC192",
+          "release_date": "2023-06-14",
+          "official": true
+        },
+        {
+          "name": "百变千金",
+          "url": {
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%99%BE%E5%8F%98%E5%8D%83%E9%87%91_20230713114652_10297.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E7%99%BE%E5%8F%98%E5%8D%83%E9%87%91.ogg"
+          },
+          "cover": "https://i0.hdslb.com/bfs/archive/a311781f6c04110ef9efe28b4cc36ade3cc01363.jpg@.avif",
+          "quality": "OPUS128",
+          "full_title": "笙歌直播生涯个人简历填词改编爆笑歌曲《百变千金》！",
+          "origin": "https://www.bilibili.com/video/BV1QX4y187eG",
+          "source_quality": "AAC192",
+          "release_date": "2023-06-04",
+          "official": true
+        },
+        {
+          "name": "小塔姑娘",
+          "url": {
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E5%B0%8F%E5%A1%94%E5%A7%91%E5%A8%98_20230713114642_38836.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E5%B0%8F%E5%A1%94%E5%A7%91%E5%A8%98.ogg"
+          },
+          "cover": "https://i0.hdslb.com/bfs/archive/7c222471a639094aa9d42070b410e02d7ecfc8c6.jpg@.avif",
+          "quality": "OPUS128",
+          "full_title": "【原创曲】笙歌温柔演绎国风角色曲 —《小塔姑娘》",
+          "origin": "https://www.bilibili.com/video/BV1Uz4y1b7wn",
+          "source_quality": "AAC192",
+          "release_date": "2023-05-23",
+          "official": true
+        },
+        {
+          "name": "舞娘(冰火歌会)",
+          "url": {
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E8%88%9E%E5%A8%98-%E5%86%B0%E7%81%AB_20230713113603_45842.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E8%87%AA%E4%BC%A0/%E8%88%9E%E5%A8%98-%E5%86%B0%E7%81%AB.ogg"
+          },
+          "cover": "https://i0.hdslb.com/bfs/archive/e8b10644418cf306bfde6ecc3d154ba82be1729c.jpg@.avif",
+          "quality": "OPUS96",
+          "full_title": "异域风情柔软身姿献唱【舞娘】——旋转，跳跃我闭着眼",
+          "origin": "https://www.bilibili.com/video/BV1tM411G7YK",
+          "source_quality": "AAC180",
+          "release_date": "2023-04-30",
+          "official": true
+        },
         {
           "name": "Blessing",
           "url": {
@@ -648,6 +704,20 @@
       "description": "塔宝参与联合投稿的合唱",
       "list": [
         {
+          "name": "老克去哪儿",
+          "url": {
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E8%80%81%E5%85%8B%E5%8E%BB%E5%93%AA%E5%84%BF_20230713114921_71308.ogg",
+            "cloudflare": "https://cdn-cf.545.qinlili.bid/%E5%90%88%E5%94%B1/%E8%80%81%E5%85%8B%E5%8E%BB%E5%93%AA%E5%84%BF.ogg"
+          },
+          "cover": "https://i0.hdslb.com/bfs/archive/d303cdc759cc13476da41c90b5c8e20e4191164c.jpg@.avif",
+          "quality": "OPUS128",
+          "full_title": "V圈最温馨的一集天才填词版《老克去哪儿》",
+          "origin": "https://www.bilibili.com/video/BV1Ro4y1u7i9",
+          "source_quality": "AAC216",
+          "release_date": "2023-06-06",
+          "official": true
+        },
+        {
           "name": "舞娘(&兰音&扇宝&说说&唐九夏)",
           "url": {
             "yuketang": "https://bj.bcebos.com/yunpanx/%E8%88%9E%E5%A8%98(&%E5%85%B0%E9%9F%B3&%E6%89%87%E5%AE%9D&%E8%AF%B4%E8%AF%B4&%E5%94%90%E4%B9%9D%E5%A4%8F)_20230113163237_32325.ogg",
@@ -1012,7 +1082,7 @@
         {
           "name": "眉南边",
           "url": {
-            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%9C%89%E5%8D%97%E8%BE%B9_20230113165122_85854.ogg",
+            "yuketang": "https://bj.bcebos.com/yunpanx/%E7%9C%89%E5%8D%97%E8%BE%B9_20230713115606_75478.ogg",
             "cloudflare": "https://cdn-cf.545.qinlili.bid/%E7%B2%BE%E4%BF%AE/%E7%9C%89%E5%8D%97%E8%BE%B9.ogg"
           },
           "cover": "https://i0.hdslb.com/bfs/archive/d0b350b9112eab3ff7d7d269cbbd8d2d5cda448b.jpg@.avif",
