@@ -122,10 +122,18 @@
             (async () => {
                 let errcount = 0;
                 //TODO:检测是否安装
-                if (!pluginInstall[pluginName] || pluginInstall[pluginName].error > 0 || Date.now() - pluginInstall[pluginName].date > 604800000) {
+                if (!pluginInstall[pluginName] || pluginInstall[pluginName].error > 0 || ((Date.now() - pluginInstall[pluginName].date > 604800000) && navigator.onLine)) {
                     document.getElementById("status").innerText = pluginInstall[pluginName] ? "检查插件更新..." : "读取插件信息...";
                     const pluginInfo = await (await fetch("/plugins/" + pluginName + "/manifest.json?ForceNoCache=1").catch(() => {
                         document.getElementById("status").innerText = "网络请求失败";
+                        if (pluginInstall[pluginName]) {
+                            location.replace("/plugins/" + pluginName + "/");
+                        } else {
+                            document.getElementById("status").innerText = "点击任意位置返回";
+                            document.body.addEventListener("click", () => {
+                                history.go(-1);
+                            });
+                        }
                     })).json();
                     document.title = pluginInfo.displayName + "-545在线";
                     console.log(pluginInfo);
