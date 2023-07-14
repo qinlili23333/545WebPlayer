@@ -36,7 +36,9 @@ li {
 }
 
 @media (hover: hover) {
-    audio {
+
+    /* Chrome的bug */
+    audio, video {
         cursor: url("/cursor/1.webp"), auto !important;
     }
 

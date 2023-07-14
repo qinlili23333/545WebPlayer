@@ -185,6 +185,7 @@
             border: none;
             border-bottom: 2px solid #FADCBB;
             box-shadow: 0px 1px 3px #fadcbb88;
+            outline: none !important;
         }
 
         .settingItemSelectInput:hover {
@@ -213,14 +214,18 @@
             display: none;
         }
 
-        #error {
+        .error {
+            position: absolute;
             display: none;
             width: 100%;
             height: 100%;
-            display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
+        }
+
+        #videoerrorMsg {
+            color: white;
         }
 
         .detailContainer {
@@ -229,6 +234,35 @@
             height: 100%;
         }
 
+        #listContainer {
+            overflow-y: auto;
+            flex-direction: column;
+        }
+
+        .listItem {
+            text-align: left;
+            width: 100%;
+            font-size: 1.1em;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            background-color: transparent;
+            transition: all 0.15s;
+        }
+
+        .listItem:hover {
+            background-color: #00000025;
+        }
+
+        .listItem:active {
+            background-color: #00000055;
+        }
+
+        #playerContainer {
+            width: 100%;
+            height: 100%;
+        }
 
         @media (orientation: landscape) {
             .main {
@@ -388,25 +422,30 @@
     </div>
     <div class="main">
         <div class="player">
+            <div id="playerContainer"></div>
             <img id="videoLoading" src="/img/loading.webp" class="loading">
+            <div id="viderror" class="error">
+                <img src="/img/error.webp" style="width: 64px;height: 64px;">
+                <span id="videoerrorMsg" class="errorMsg"></span>
+            </div>
         </div>
         <div class="list">
-            <img id="listLoading" src="/img/loading.webp" class="loading">
-            <div id="error">
-                <img src="/img/error.webp" style="width: 64px;height: 64px;">
-                <span id="errorMsg"></span>
-            </div>
             <div id="listContainer" class="detailContainer"></div>
             <div id="calendarContainer" class="detailContainer"></div>
+            <img id="listLoading" src="/img/loading.webp" class="loading">
+            <div id="listerror" class="error">
+                <img src="/img/error.webp" style="width: 64px;height: 64px;">
+                <span id="listerrorMsg" class="errorMsg"></span>
+            </div>
         </div>
     </div>
     <div class="settingFloat" id="settingFloat">
         <div id="settingsBox"></div>
-        <div style="display: flex;width:100%;justify-content: space-between;">
+        <div style="display: flex;width:100%;justify-content: space-between;flex-direction: row-reverse;">
+
             <div>
                 <img class="clickIcon" id="hidesettingBtn" src="/img/close2.svg" onclick="Module.settings.hide();">
             </div>
-
         </div>
     </div>
     <div id="floatMenuContainer">
@@ -547,15 +586,15 @@
             },
             listRender: {
                 init: async () => {
-                    document.getElementById("error").style.display = "none";
+                    document.getElementById("listerror").style.display = "none";
                     document.getElementById("listLoading").style.display = "block";
                     const error = () => {
                         Module.listRender.showError("读取录播信息失败！\n点击这里重试");
                         let ret = () => {
                             Module.recordFetch.init();
-                            document.getElementById("error").removeEventListener("click", ret);
+                            document.getElementById("listerror").removeEventListener("click", ret);
                         }
-                        document.getElementById("error").addEventListener("click", ret);
+                        document.getElementById("listerror").addEventListener("click", ret);
                     };
                     let historyList = await (await fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.bilibili.com/x/series/archives?mid=15641218&&series_id=180061&only_normal=true&sort=desc&pn=1&ps=10000&ForceNoCache=1" : "https://biliapi.qinlili.bid/archives?mid=15641218&sid=180061&ForceNoCache=1").catch((e) => {
                         Module.logger.collect(e);
@@ -565,13 +604,48 @@
                         error();
                     });
                     window.playList = historyList;
+                    Module.listRender.renderList();
                 },
                 renderMode: "list",
                 renderList: () => {
+                    document.getElementById("listContainer").innerHTML = "";
+                    document.getElementById("calendarContainer").innerHTML = "";
                     switch (Module.listRender.renderMode) {
                         case "list": {
                             document.getElementById("listContainer").style.display = "flex";
                             document.getElementById("calendarContainer").style.display = "none";
+                            const makeList = (title) => {
+                                let liveText = document.createElement("span");
+                                liveText.className = "listItem";
+                                liveText.innerText = title;
+                                return liveText;
+                            };
+                            let historyData = [].concat(window.playList.data.archives);
+                            //每次加载100条
+                            const renderNextPage = () => {
+                                console.log("renderNext")
+                                const listFrag = document.createDocumentFragment();
+                                for (let i = 0; i < 100 && historyData.length; i++) {
+                                    const live = historyData.shift()
+                                    let liveMenu = makeList(live.title.replace("【直播回放】", ""))
+                                    liveMenu.addEventListener("click", e => {
+                                        Module.player.play(live.aid, live.bvid);
+                                    })
+                                    listFrag.appendChild(liveMenu);
+                                }
+                                document.getElementById("listContainer").appendChild(listFrag);
+                                if (!historyData.length) {
+                                    document.getElementById("listContainer").removeEventListener("scrollend", renderNextPage);
+                                }
+                            }
+                            document.getElementById("listContainer").addEventListener("scroll", e => {
+                                const { scrollTop, offsetHeight, scrollHeight } = e.target
+                                if ((scrollTop + offsetHeight + 100) >= scrollHeight) {
+                                    renderNextPage();
+                                }
+                            });
+                            renderNextPage();
+                            document.getElementById("listLoading").style.display = "none";
                             break;
                         }
                         case "calendar": {
@@ -583,8 +657,8 @@
                 },
                 showError: message => {
                     document.getElementById("listLoading").style.display = "none";
-                    document.getElementById("errorMsg").innerText = message;
-                    document.getElementById("error").style.display = "flex";
+                    document.getElementById("listerrorMsg").innerText = message;
+                    document.getElementById("listerror").style.display = "flex";
                 },
                 switch: () => {
                     Module.listRender.renderMode = (Module.listRender.renderMode == "calendar") ? "list" : "calendar";
@@ -593,8 +667,55 @@
                 }
             },
             player: {
-                reload: () => {
-
+                reload: async () => {
+                    document.getElementById("videoLoading").style.display = "block";
+                    document.getElementById("playerContainer").innerHTML = "";
+                    const createFrame = url => {
+                        let liveFrame = document.createElement("iframe");
+                        liveFrame.style = "width:100%;height:100%;opacity:0;transition:all 0.2s;"
+                        liveFrame.frameBorder = 0;
+                        liveFrame.allowFullscreen = true;
+                        liveFrame.src = url;
+                        liveFrame.onload = async () => {
+                            await sleep(500);
+                            liveFrame.style.opacity = 1;
+                            await sleep(500);
+                            document.getElementById("videoLoading").style.display = "none";
+                        };
+                        document.getElementById("playerContainer").appendChild(liveFrame);
+                    }
+                    switch (Module.pref.get("playerMode")) {
+                        case "official": {
+                            createFrame("https://www.bilibili.com/blackboard/html5mobileplayer.html?aid=" + Module.player.currentPlay.aid + "&bvid=" + Module.player.currentPlay.bvid + "&autoplay=1")
+                            break;
+                        };
+                        case "3rdEmbed": {
+                            createFrame("https://api.injahow.cn/bparse/?av=" + Module.player.currentPlay.aid + "&p=1&q=64&format=dash&otype=dplayer")
+                            break;
+                        };
+                        case "3rdUrl": {
+                            let videoPlayer = document.createElement("video");
+                            videoPlayer.style = "width:100%;height:100%;";
+                            videoPlayer.controls = true;
+                            videoPlayer.autoplay = true;
+                            videoPlayer.src = await (await fetch("https://api.injahow.cn/bparse/?av=" + Module.player.currentPlay.aid + "&p=1&q=80&format=mp4&otype=url").catch((e) => {
+                                Module.logger.collect(e);
+                                Module.player.showError("读取视频地址失败！\n点击这里重试");
+                            })).text().catch((e) => {
+                                Module.logger.collect(e);
+                                Module.player.showError("读取视频地址失败！\n点击这里重试");
+                            });
+                            document.getElementById("playerContainer").appendChild(videoPlayer);
+                            videoPlayer.addEventListener("loadeddata", () => {
+                                document.getElementById("videoLoading").style.display = "none";
+                            })
+                            break;
+                        };
+                        case "client": {
+                            window.open("bilibili://video/" + Module.player.currentPlay.aid, "_blank")
+                            break;
+                        }
+                    }
                 },
                 currentPlay: {
                     aid: 0,
@@ -608,7 +729,12 @@
                     Module.player.reload();
                 },
                 down: () => { },
-                share: () => { }
+                share: () => { },
+                showError: message => {
+                    document.getElementById("videoLoading").style.display = "none";
+                    document.getElementById("videoerrorMsg").innerText = message;
+                    document.getElementById("videoerror").style.display = "flex";
+                },
             },
             //指尖跟随菜单
             magicMenu: {
