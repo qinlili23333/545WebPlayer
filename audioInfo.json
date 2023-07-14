@@ -1,6 +1,6 @@
 {
   "success": true,
-  "version": "2023071301",
+  "version": "2023071401",
   "domains": {
     "yuketang": [
       "https://bj.bcebos.com/yunpanx/",
@@ -1419,6 +1419,11 @@
           "release_date": "2021-02-28"
         }
       ]
+    },
+    {
+      "type": "AI塔宝",
+      "description": "有了全新的电子播放器，不听话的小塔可以下岗了",
+      "list": []
     }
   ]
 }
