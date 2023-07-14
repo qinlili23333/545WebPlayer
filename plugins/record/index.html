@@ -264,6 +264,11 @@
             height: 100%;
         }
 
+        .player,
+        .list {
+            transition: all 0.2s;
+        }
+
         @media (orientation: landscape) {
             .main {
                 flex-direction: row;
@@ -312,11 +317,13 @@
                 box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
                 background-color: black;
                 flex-shrink: 0;
+                max-height: 56.25vw;
             }
 
             .list {
                 overflow-x: hidden;
                 overflow-y: auto;
+                width: 100%;
                 height: 100%;
                 display: flex;
             }
@@ -403,7 +410,7 @@
                 </div>
             </div>
             <div class="rightNavi" style="display:flex;">
-                <div class="navicon" id="modeBtn" aria-label="显示模式" role="button" alt="显示模式"
+                <div class="navicon" id="modeBtn" aria-label="显示模式" role="button" alt="显示模式" style="display: none;"
                     onclick="Module.listRender.switch();">
                     <img class="navicon-img" src="/img/list.svg">
                 </div>
@@ -424,7 +431,7 @@
         <div class="player">
             <div id="playerContainer"></div>
             <img id="videoLoading" src="/img/loading.webp" class="loading">
-            <div id="viderror" class="error">
+            <div id="videoerror" class="error">
                 <img src="/img/error.webp" style="width: 64px;height: 64px;">
                 <span id="videoerrorMsg" class="errorMsg"></span>
             </div>
@@ -668,6 +675,7 @@
             },
             player: {
                 reload: async () => {
+                    document.getElementById("videoerror").style.display = "none";
                     document.getElementById("videoLoading").style.display = "block";
                     document.getElementById("playerContainer").innerHTML = "";
                     const createFrame = url => {
@@ -676,6 +684,14 @@
                         liveFrame.frameBorder = 0;
                         liveFrame.allowFullscreen = true;
                         liveFrame.src = url;
+                        liveFrame.onerror = () => {
+                            const reload = () => {
+                                document.getElementById("videoerror").removeEventListener("click", reload);
+                                return createFrame(url);
+                            };
+                            Module.player.showError("加载视频失败！\n点击这里重试");
+                            document.getElementById("videoerror").addEventListener("click", reload);
+                        }
                         liveFrame.onload = async () => {
                             await sleep(500);
                             liveFrame.style.opacity = 1;
@@ -694,19 +710,24 @@
                             break;
                         };
                         case "3rdUrl": {
+                            let videoDiv = document.createElement("div");
+                            videoDiv.style = "width:100%;height:100%;";
                             let videoPlayer = document.createElement("video");
-                            videoPlayer.style = "width:100%;height:100%;";
+                            videoPlayer.style = "width:100%;height:100%;opacity:0;transition:all 0.2s;";
                             videoPlayer.controls = true;
                             videoPlayer.autoplay = true;
-                            videoPlayer.src = await (await fetch("https://api.injahow.cn/bparse/?av=" + Module.player.currentPlay.aid + "&p=1&q=80&format=mp4&otype=url").catch((e) => {
+                            Module.player.currentPlay.parsedUrl = await (await fetch("https://api.injahow.cn/bparse/?av=" + Module.player.currentPlay.aid + "&p=1&q=80&format=mp4&otype=url&ForceNoCache=1").catch((e) => {
                                 Module.logger.collect(e);
-                                Module.player.showError("读取视频地址失败！\n点击这里重试");
+                                Module.player.showError("读取视频地址失败！");
                             })).text().catch((e) => {
                                 Module.logger.collect(e);
-                                Module.player.showError("读取视频地址失败！\n点击这里重试");
+                                Module.player.showError("读取视频地址失败！");
                             });
-                            document.getElementById("playerContainer").appendChild(videoPlayer);
+                            videoPlayer.src = Module.player.currentPlay.parsedUrl + "&ForceNoCache=1";
+                            videoDiv.appendChild(videoPlayer);
+                            document.getElementById("playerContainer").appendChild(videoDiv);
                             videoPlayer.addEventListener("loadeddata", () => {
+                                videoPlayer.style.opacity = 1;
                                 document.getElementById("videoLoading").style.display = "none";
                             })
                             break;
@@ -728,12 +749,29 @@
                     Module.player.currentPlay.parsedUrl = "";
                     Module.player.reload();
                 },
-                down: () => { },
-                share: () => { },
-                showError: message => {
+                down: async () => {
+                    if (Module.player.currentPlay.parsedUrl == "") {
+                        Module.player.currentPlay.parsedUrl = await (await fetch("https://api.injahow.cn/bparse/?av=" + Module.player.currentPlay.aid + "&p=1&q=80&format=mp4&otype=url&ForceNoCache=1").catch((e) => {
+                            Module.logger.collect(e);
+                        })).text().catch((e) => {
+                            Module.logger.collect(e);
+                        });
+                    }
+                    await navigator.clipboard.writeText(Module.player.currentPlay.parsedUrl);
+                    alert("已复制视频地址！请使用下载器下载");
+                },
+                share: () => {
+                    navigator.share({
+                        title: "545录播分享",
+                        text: "我在545在线上看到了塔宝的录播",
+                        url: "https://www.bilibili.com/video/" + Module.player.currentPlay.bvid
+                    })
+                },
+                showError: (message, wait) => {
                     document.getElementById("videoLoading").style.display = "none";
                     document.getElementById("videoerrorMsg").innerText = message;
                     document.getElementById("videoerror").style.display = "flex";
+                    document.getElementById("videoerror").getElementsByTagName("img")[0].src = wait ? "/img/bai.png" : "/img/error.webp";
                 },
             },
             //指尖跟随菜单
@@ -833,6 +871,7 @@
         //初始化
         (async () => {
             Module.autoinit.run();
+            Module.player.showError("等待点播...", true)
         })();
     </script>
 </body>

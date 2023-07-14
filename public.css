@@ -89,7 +89,7 @@ li {
 
     }
 
-    div *:not(audio) {
+    div *:not(audio, video) {
         cursor: inherit !important;
     }
 

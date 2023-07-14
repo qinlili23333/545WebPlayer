@@ -1,1 +1,1 @@
-{"name":"audioCutter","displayName":"铃声裁剪","version":"20230628","fileList":["dist/index.js","dist/worker.js","index.html","vendor/Mp3LameEncoder.min.js","vendor/Mp3LameEncoder.min.js.mem"],"fileSize":674060}
+{"name":"audioCutter","displayName":"铃声裁剪","version":"20230628","fileList":["dist/index.js","dist/worker.js","index.html","vendor/Mp3LameEncoder.min.js","vendor/Mp3LameEncoder.min.js.mem"],"fileSize":674061}
