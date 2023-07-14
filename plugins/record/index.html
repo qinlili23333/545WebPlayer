@@ -701,6 +701,7 @@
                         document.getElementById("playerContainer").appendChild(liveFrame);
                     }
                     switch (Module.pref.get("playerMode")) {
+                        default:
                         case "official": {
                             createFrame("https://www.bilibili.com/blackboard/html5mobileplayer.html?aid=" + Module.player.currentPlay.aid + "&bvid=" + Module.player.currentPlay.bvid + "&autoplay=1")
                             break;
