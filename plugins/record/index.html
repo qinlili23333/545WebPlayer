@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="545录播播放器" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <link rel="icon" href="/icon_mono.png">
+    <link rel="apple-touch-icon" href="/icon_badminton_mask_small.png.png">
+    <meta name="apple-mobile-web-app-title" content="545在线">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <link rel="canonical" href="https://545.qinlili.bid/plugins/record/" />
+    <link rel="manifest" href="/manifest.json">
+    <meta name="referrer" content="no-referrer" />
+    <meta name="theme-color" content="#FADCBB">
+    <title>看录播 - 545在线</title>
+    <link href="/public.css" rel="stylesheet">
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .top {
+            height: 32px;
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.6);
+        }
+
+        .navi {
+            width: 100vw;
+            height: 32px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .navicon {
+            cursor: pointer;
+            border-radius: 16px;
+            display: inline;
+            width: 32px;
+            height: 32px;
+            padding: 4px;
+            transition: all 0.3s;
+            background-color: transparent;
+        }
+
+        .navicon:hover {
+            border-radius: 0px;
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+
+        .navicon:active {
+            border-radius: 0px;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .navicon-img {
+            width: 100%;
+            height: 100%
+        }
+
+        .clickIcon {
+            cursor: pointer;
+            opacity: 0.8;
+            width: auto;
+            height: 24px;
+            padding: 2px;
+            margin: 4px;
+            border-radius: 0px;
+            background-color: transparent;
+            transition: all 0.2s;
+        }
+
+        .clickIcon:hover {
+            border-radius: 4px;
+            background-color: #FADCBB;
+            opacity: 0.9 !important;
+        }
+
+        .clickIcon:active {
+            border-radius: 8px;
+            background-color: #DCAC89;
+            opacity: 1 !important;
+        }
+
+        input[role="textbox"] {
+            background-color: transparent;
+            position: absolute;
+            padding-right: 40px;
+            height: 26px;
+            width: calc(100% - 16px);
+            margin-top: 2px;
+            font-size: 1.1em;
+            margin-left: 8px;
+            margin-right: 8px;
+            border: none;
+            border-bottom: 1px solid #777777;
+            outline: none;
+            transition: all 0.2s linear;
+        }
+
+        input[role="textbox"]:focus-visible {
+            height: 27.25px !important;
+            border-bottom: 2px solid #FADCBB !important;
+        }
+
+        input[role="textbox"]:hover {
+            height: 26.75px;
+            border-bottom: 1.5px solid #333333;
+        }
+
+        input[role="textbox"]:active {
+            height: 27.25px !important;
+            border-bottom: 2px solid #DCAC89 !important;
+        }
+
+        #search {
+            left: 0px;
+            top: 0px;
+        }
+
+        .settingFloat {
+            display: none;
+            opacity: 0;
+            z-index: 10;
+            top: 0px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 8px;
+            padding: 8px;
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px) brightness(90%);
+            -webkit-backdrop-filter: blur(5px) brightness(90%);
+            box-shadow: 2px 2px 4px #FADCBB;
+            border-radius: 4px;
+            transition: all 0.25s;
+            flex-direction: column;
+        }
+
+        .settingFloat.show {
+            top: 32px;
+            opacity: 1;
+        }
+
+        #settingsBox {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+        .settingItem {
+            margin-top: 6px;
+            margin-bottom: 6px;
+            padding: 2px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .settingItemTitle {
+            font-size: 0.9em;
+            line-height: 20px;
+        }
+
+        .settingItemSwitchInput {
+            height: 20px;
+            width: 24px;
+        }
+
+        .settingItemSelectInput {
+            transition: all 0.2s;
+            border-radius: 0px;
+            height: 20px;
+            border: none;
+            border-bottom: 2px solid #FADCBB;
+            box-shadow: 0px 1px 3px #fadcbb88;
+        }
+
+        .settingItemSelectInput:hover {
+            border-bottom: 2px solid #DCAC89;
+        }
+
+        .main {
+            height: calc(100% - 32px);
+            width: 100vw;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .loading {
+            width: 96px;
+            height: 96px;
+            margin: auto;
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+        }
+
+        #videoLoading {
+            display: none;
+        }
+
+        #error {
+            display: none;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .detailContainer {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+
+        @media (orientation: landscape) {
+            .main {
+                flex-direction: row;
+            }
+
+            .player,
+            .list {
+                position: relative;
+                height: 100%;
+                display: flex;
+                align-items: center;
+            }
+
+            .player {
+                box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
+                background-color: black;
+                width: 100%;
+            }
+
+            .list {
+                overflow-x: hidden;
+                overflow-y: auto;
+                min-width: 200px;
+                max-width: 400px;
+                width: 30vw;
+                display: flex;
+                flex-shrink: 0;
+            }
+        }
+
+        @media (orientation: portrait) {
+            .main {
+                flex-direction: column;
+            }
+
+            .player,
+            .list {
+                position: relative;
+                width: 100%;
+                display: flex;
+                align-items: center;
+            }
+
+            .player {
+                aspect-ratio: 16/9;
+                box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.4);
+                background-color: black;
+                flex-shrink: 0;
+            }
+
+            .list {
+                overflow-x: hidden;
+                overflow-y: auto;
+                height: 100%;
+                display: flex;
+            }
+        }
+
+
+
+
+        #floatMenuContainer {
+            transition: opacity 0.2s ease-in;
+            opacity: 0;
+            display: none;
+            z-index: 9999;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            height: auto;
+            width: auto;
+            position: fixed;
+            background-color: rgba(0, 0, 0, 0.25);
+        }
+
+        #floatMenu {
+            box-shadow: rgb(0 0 0 / 25%) 0px 4px 20px 1px;
+            transform: scale(0.1, 0.1);
+            transform-origin: left top;
+            overflow-y: auto;
+            overflow-y: overlay;
+            width: 80%;
+            max-height: 0px;
+            border-radius: 4px;
+            backdrop-filter: blur(5px) brightness(100%);
+            -webkit-backdrop-filter: blur(5px) brightness(100%);
+            background-color: rgba(255, 255, 255, 0.75);
+        }
+
+        #menuList {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menuItem {
+            height: 40px;
+            display: flex;
+            flex-direction: row;
+            transition: all 0.2s;
+            padding: 4px;
+        }
+
+        .menuItem:hover {
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+
+        .menuItem:active {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .menuIcon {
+            height: 32px;
+            width: 32px;
+            padding: 4px;
+        }
+
+        .menuText {
+            line-height: 24px;
+            margin: 4px;
+        }
+
+        @media (min-width: 700px) {
+            #floatMenu {
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">
+        <div class="navi">
+            <div class="leftNavi" style="display:flex;">
+                <div class="navicon" id="backBtn" style="display:inline;" aria-label="返回" role="button" alt="返回">
+                    <img class="navicon-img" src="/img/left.svg">
+                </div>
+            </div>
+            <div class="rightNavi" style="display:flex;">
+                <div class="navicon" id="modeBtn" aria-label="显示模式" role="button" alt="显示模式"
+                    onclick="Module.listRender.switch();">
+                    <img class="navicon-img" src="/img/list.svg">
+                </div>
+                <div class="navicon" id="dlBtn" aria-label="分享" role="button" alt="分享" onclick="Module.player.share();">
+                    <img class="navicon-img" src="/img/share.svg">
+                </div>
+                <div class="navicon" id="dlBtn" aria-label="下载" role="button" alt="下载" onclick="Module.player.down();">
+                    <img class="navicon-img" src="/img/download.svg">
+                </div>
+                <div class="navicon" id="settingBtn" aria-label="设置" role="button" alt="设置"
+                    onclick="Module.settings.show();">
+                    <img class="navicon-img" src="/img/setting.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="player">
+            <img id="videoLoading" src="/img/loading.webp" class="loading">
+        </div>
+        <div class="list">
+            <img id="listLoading" src="/img/loading.webp" class="loading">
+            <div id="error">
+                <img src="/img/error.webp" style="width: 64px;height: 64px;">
+                <span id="errorMsg"></span>
+            </div>
+            <div id="listContainer" class="detailContainer"></div>
+            <div id="calendarContainer" class="detailContainer"></div>
+        </div>
+    </div>
+    <div class="settingFloat" id="settingFloat">
+        <div id="settingsBox"></div>
+        <div style="display: flex;width:100%;justify-content: space-between;">
+            <div>
+                <img class="clickIcon" id="hidesettingBtn" src="/img/close2.svg" onclick="Module.settings.hide();">
+            </div>
+
+        </div>
+    </div>
+    <div id="floatMenuContainer">
+        <div id="floatMenu">
+            <ul id="menuList">
+
+            </ul>
+        </div>
+    </div>
+    <script>
+        const sleep = delay => new Promise((resolve) => setTimeout(resolve, delay));
+        const random = (min, max) => {
+            return Math.round(Math.random() * (max - min)) + min;
+        };
+        if (document.referrer.indexOf(location.origin) == 0) {
+            document.getElementById("backBtn").addEventListener("click", () => {
+                history.back();
+            });
+        } else {
+            document.getElementById("backBtn").getElementsByClassName("navicon-img")[0].src = "/img/home.svg";
+            document.getElementById("backBtn").addEventListener("click", () => {
+                location.href = "/";
+            });
+        }
+        const Module = {
+            autoinit: {
+                run: () => {
+                    Object.entries(Module).forEach(([key, value]) => {
+                        if (value.init) {
+                            value.init();
+                        }
+                    });
+                }
+            },
+            netTick: {
+                tick: 0,
+                wait: async () => {
+                    await sleep(Math.pow(2, Module.netTick.tick) * 1000);
+                    Module.netTick.tick++;
+                }
+            },
+            logger: {
+                collect: (error) => {
+                    console.warn(error.message);
+                }
+            },
+            settings: {
+                init: () => {
+                    Module.settings.list.push({
+                        title: "播放模式",
+                        key: "playerMode",
+                        options: [
+                            { key: "official", name: "官方嵌入式" },
+                            { key: "3rdEmbed", name: "第三方嵌入式" },
+                            { key: "3rdUrl", name: "第三方地址+内建播放器" },
+                            { key: "client", name: "拉起客户端" }
+                        ],
+                        listener: () => {
+                            document.getElementsByClassName("player")[0].style.display = (Module.pref.get("playerMode") == "client") ? "none" : "flex";
+                            Module.player.reload();
+                        },
+                        type: 1
+                    });
+                },
+                list: [],
+                show: async () => {
+                    document.getElementById("settingFloat").style.display = "flex";
+                    await sleep(1);
+                    document.getElementById("settingFloat").className = "settingFloat show";
+                    document.getElementById("settingsBox").innerHTML = "";
+                    Module.settings.list.forEach(item => {
+                        let settingItem = document.createElement("div");
+                        settingItem.className = "settingItem";
+                        let settingItemTitle = document.createElement("span");
+                        settingItemTitle.className = "settingItemTitle";
+                        settingItemTitle.innerText = item.title;
+                        settingItem.appendChild(settingItemTitle);
+                        switch (item.type) {
+                            default:
+                            case 0: {
+                                let settingItemSwitchInput = document.createElement("input");
+                                settingItemSwitchInput.type = "checkbox";
+                                settingItemSwitchInput.className = "settingItemSwitchInput";
+                                settingItemSwitchInput.checked = Module.pref.get(item.key);
+                                settingItemSwitchInput.addEventListener("change", () => {
+                                    Module.pref.set(item.key, settingItemSwitchInput.checked);
+                                });
+                                settingItem.appendChild(settingItemSwitchInput);
+                                break;
+                            }
+                            case 1: {
+                                let settingItemSelectInput = document.createElement("select");
+                                settingItemSelectInput.className = "settingItemSelectInput";
+                                item.options.forEach(option => {
+                                    let settingItemSelectOption = document.createElement("option");
+                                    settingItemSelectOption.value = option.key;
+                                    settingItemSelectOption.innerText = option.name;
+                                    settingItemSelectInput.appendChild(settingItemSelectOption);
+                                });
+                                settingItemSelectInput.value = Module.pref.get(item.key) || item.options[0].key;
+                                settingItemSelectInput.addEventListener("change", () => {
+                                    Module.pref.set(item.key, settingItemSelectInput.value);
+                                    if (item.listener) {
+                                        item.listener();
+                                    }
+                                });
+                                settingItem.appendChild(settingItemSelectInput);
+                            }
+                        }
+                        document.getElementById("settingsBox").appendChild(settingItem);
+                    });
+                },
+                hide: async () => {
+                    document.getElementById("settingFloat").className = "settingFloat";
+                    await sleep(250);
+                    document.getElementById("settingFloat").style.display = "none";
+                }
+            },
+            pref: {
+                init: () => {
+                    if (localStorage.pref) {
+                        Module.pref.data = JSON.parse(localStorage.pref);
+                    } else {
+                        Module.pref.sync();
+                    }
+                },
+                data: {},
+                sync: () => {
+                    localStorage.pref = JSON.stringify(Module.pref.data);
+                },
+                get: (key) => {
+                    return Module.pref.data[key] || false;
+                },
+                set: (key, value) => {
+                    Module.pref.data[key] = value;
+                    Module.pref.sync();
+                }
+            },
+            listRender: {
+                init: async () => {
+                    document.getElementById("error").style.display = "none";
+                    document.getElementById("listLoading").style.display = "block";
+                    const error = () => {
+                        Module.listRender.showError("读取录播信息失败！\n点击这里重试");
+                        let ret = () => {
+                            Module.recordFetch.init();
+                            document.getElementById("error").removeEventListener("click", ret);
+                        }
+                        document.getElementById("error").addEventListener("click", ret);
+                    };
+                    let historyList = await (await fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.bilibili.com/x/series/archives?mid=15641218&&series_id=180061&only_normal=true&sort=desc&pn=1&ps=10000&ForceNoCache=1" : "https://biliapi.qinlili.bid/archives?mid=15641218&sid=180061&ForceNoCache=1").catch((e) => {
+                        Module.logger.collect(e);
+                        error();
+                    })).json().catch((e) => {
+                        Module.logger.collect(e);
+                        error();
+                    });
+                    window.playList = historyList;
+                },
+                renderMode: "list",
+                renderList: () => {
+                    switch (Module.listRender.renderMode) {
+                        case "list": {
+                            document.getElementById("listContainer").style.display = "flex";
+                            document.getElementById("calendarContainer").style.display = "none";
+                            break;
+                        }
+                        case "calendar": {
+                            document.getElementById("listContainer").style.display = "none";
+                            document.getElementById("calendarContainer").style.display = "flex";
+                            break;
+                        }
+                    }
+                },
+                showError: message => {
+                    document.getElementById("listLoading").style.display = "none";
+                    document.getElementById("errorMsg").innerText = message;
+                    document.getElementById("error").style.display = "flex";
+                },
+                switch: () => {
+                    Module.listRender.renderMode = (Module.listRender.renderMode == "calendar") ? "list" : "calendar";
+                    document.getElementById("modeBtn").getElementsByTagName("img")[0].src = (Module.listRender.renderMode == "calendar") ? "/img/calendar.svg" : "/img/list.svg";
+                    Module.listRender.renderList();
+                }
+            },
+            player: {
+                reload: () => {
+
+                },
+                currentPlay: {
+                    aid: 0,
+                    bvid: "",
+                    parsedUrl: ""
+                },
+                play: (aid, bvid) => {
+                    Module.player.currentPlay.aid = aid;
+                    Module.player.currentPlay.bvid = bvid;
+                    Module.player.currentPlay.parsedUrl = "";
+                    Module.player.reload();
+                },
+                down: () => { },
+                share: () => { }
+            },
+            //指尖跟随菜单
+            magicMenu: {
+                init: () => {
+                    window.addEventListener('pointerdown', (event) => {
+                        if (!(document.getElementById("floatMenuContainer").style.display == "block")) {
+                            Module.magicMenu.lastClick.x = event.clientX;
+                            Module.magicMenu.lastClick.y = event.clientY;
+                        } else {
+                            Module.magicMenu.lastClickMenu.x = event.clientX;
+                            Module.magicMenu.lastClickMenu.y = event.clientY;
+                        }
+                    });
+                    window.addEventListener("resize", async (event) => {
+                        if (document.getElementById("floatMenuContainer").style.display == "block") {
+                            await sleep(100);
+                            Module.magicMenu.resizeMenu();
+                        };
+                    });
+                    document.getElementById("floatMenuContainer").addEventListener("click", (event) => {
+                        event.stopPropagation();
+                        Module.magicMenu.hideMenu();
+                    })
+                    //菜单魔法展开
+                    const observer = new MutationObserver(Module.magicMenu.resizeMenu);
+                    observer.observe(document.getElementById("floatMenu"), { childList: true, subtree: true, attributes: true, attributeFilter: ['loaded'] });
+
+                },
+                lastClick: { x: 0, y: 0 },
+                lastClickMenu: { x: 0, y: 0 },
+                locateMenu: () => {
+                    //大屏随动菜单
+                    if (document.body.clientWidth >= 700) {
+                        //右侧有空间
+                        if (document.body.clientWidth - 400 > Module.magicMenu.lastClick.x) {
+                            document.getElementById("floatMenu").style.marginLeft = Module.magicMenu.lastClick.x + "px";
+                        } else {
+                            document.getElementById("floatMenu").style.marginLeft = document.body.clientWidth - 400 + "px";
+                        };
+                        if (document.body.clientHeight - document.getElementById("floatMenu").scrollHeight > Module.magicMenu.lastClick.y) {
+                            document.getElementById("floatMenu").style.marginTop = Module.magicMenu.lastClick.y + "px";
+                        } else {
+                            if (document.body.clientHeight - document.getElementById("floatMenu").scrollHeight < 0) {
+                                document.getElementById("floatMenu").style.marginTop = document.body.clientHeight * 0.1 + "px";
+                            } else {
+                                document.getElementById("floatMenu").style.marginTop = document.body.clientHeight - document.getElementById("floatMenu").scrollHeight + "px";
+                            }
+                        }
+                    } else {
+                        document.getElementById("floatMenu").style.marginLeft = "10%";
+                        document.getElementById("floatMenu").style.marginTop = document.body.clientHeight * 0.1 + "px";
+                    }
+                },
+                showMenu: async () => {
+                    if (document.getElementById("floatMenuContainer").style.display == "block") { return true; }
+                    document.getElementById("floatMenuContainer").style.display = "block";
+                    document.getElementById("floatMenu").style.overflowY = "hidden";
+                    document.getElementById("floatMenu").style.marginLeft = Module.magicMenu.lastClick.x + "px";
+                    document.getElementById("floatMenu").style.marginTop = Module.magicMenu.lastClick.y + "px";
+                    document.getElementById("floatMenu").style.transition = "transform 0.3s, margin-top 0.3s, margin-left 0.3s,max-height 0.3s";
+                    await sleep(5);
+                    document.getElementById("floatMenuContainer").style.opacity = 1;
+                    Module.magicMenu.locateMenu();
+                    document.getElementById("floatMenu").style.transform = "scale(1,1)";
+                    await sleep(295);
+                    document.getElementById("floatMenu").style.overflowY = "auto";
+                    document.getElementById("floatMenu").style.overflowY = "overlay";
+                },
+                hideMenu: async () => {
+                    document.getElementById("floatMenu").style.transform = "scale(0.1, 0.1)";
+                    document.getElementById("floatMenu").style.marginLeft = Module.magicMenu.lastClickMenu.x + "px";
+                    document.getElementById("floatMenu").style.marginTop = Module.magicMenu.lastClickMenu.y + "px";
+                    document.getElementById("floatMenuContainer").style.opacity = 0;
+                    await sleep(300);
+                    document.getElementById("floatMenuContainer").style.display = "none";
+                    menuList.innerHTML = "";
+                    document.getElementById("floatMenu").style.transition = "max-height 0.3s";
+                },
+                resizeMenu: () => {
+                    let contentHeight = document.getElementById("floatMenu").scrollHeight;
+                    document.getElementById("floatMenu").style.height = "auto";
+                    let originHeight = document.getElementById("floatMenu").style.maxHeight;
+                    let maxHeight = document.body.clientHeight * 0.8;
+                    if (contentHeight > maxHeight) {
+                        contentHeight = maxHeight;
+                        document.getElementById("floatMenu").style.marginTop = document.body.clientHeight * 0.1 + "px";
+                    }
+                    document.getElementById("floatMenu").style.maxHeight = (contentHeight) + "px";
+                    if (parseInt(originHeight) > contentHeight) {
+                        document.getElementById("floatMenu").style.height = originHeight;
+                    };
+                    Module.magicMenu.locateMenu();
+                }
+            }
+        };
+        //初始化
+        (async () => {
+            Module.autoinit.run();
+        })();
+    </script>
+</body>
+
+</html>
