@@ -1374,9 +1374,6 @@
                 }
             };
             if ('mediaSession' in navigator) {
-                await (await fetch(song.cover, {
-                    mode: "cors"
-                })).blob();
                 navigator.mediaSession.metadata = new MediaMetadata({
                     title: song.name,
                     artist: "帅比笙歌超可爱OvO",

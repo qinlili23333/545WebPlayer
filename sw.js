@@ -1,6 +1,6 @@
 var APP_PREFIX = '545在线'
-var VERSION = '2.1.0.20230714'
-var VERSION_AZUSA_PATCH_USE = '2.0.0.20230713'
+var VERSION = '2.1.1.20230910'
+var VERSION_AZUSA_PATCH_USE = '2.1.0.20230714'
 var AZUSA_PATCH_SKIP_LIST = [
     './cursor/normal.png',
     './icon.webp',
@@ -10,7 +10,7 @@ var AZUSA_PATCH_SKIP_LIST = [
     './icon_badminton_mask.webp',
     './icon_badminton_small.webp',
     './icon_badminton_mask_small.webp',
-    //'./public.css',
+    './public.css',
     './manifest.json'
 ]
 var CACHE_NAME = APP_PREFIX + VERSION;
@@ -127,6 +127,7 @@ self.addEventListener('activate', e => {
             cacheWhitelist.push("MusicCache");
             cacheWhitelist.push("StaticCache");
             cacheWhitelist.push("ImageCache");
+            cacheWhitelist.push("Plugins");
             return Promise.all(keyList.map((key, i) => {
                 if (cacheWhitelist.indexOf(key) === -1) {
                     console.log('deleting cache : ' + keyList[i])
