@@ -1562,51 +1562,50 @@
                 await navigator.serviceWorker.register('./sw.js', {
                     scope: '/'
                 });
-                setStatus("安装成功，刷新后生效", true);
-                location.reload();
+                setStatus("安装成功，片刻后生效", true);
             })();
-        } else {
-            //检测直播
-            if (window.self === window.top) {
-                (async () => {
-                    await sleep(100)
-                    if (localStorage.livePush && JSON.parse(localStorage.livePush)) {
-                        if (Notification.permission == "default") {
-                            await Notification.requestPermission();
-                        };
-                        const detectLive = async () => {
-                            if (window.isBiliLite) {
-                                return false;
-                            }
-                            let time = new Date().getHours() + (new Date().getTimezoneOffset() / 60 + 8);
-                            if (time < 0) {
-                                time += 24;
-                            }
-                            let liveStatus = await (await fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.live.bilibili.com/bili/living_v2/15641218" : "https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => { })).json();
-                            if (liveStatus.data && (liveStatus.data.status == 1)) {
-                                navigator.serviceWorker.ready.then(function (registration) {
-                                    registration.showNotification('塔宝正在直播！', {
-                                        body: '赶紧去直播间补充塔能量吧',
-                                        badge: './icon_mono.png',
-                                        icon: './icon.webp',
-                                        tag: clientLive ? '直播推送客户端' : '直播推送'
-                                    });
-                                });
-                            } else {
-                                await sleep(300000);
-                                detectLive();
-                            }
-                        };
-                        detectLive();
-                    };
-                })();
-            };
-            setStatus("就绪");
-            document.title = "545在线";
-            if (!window.wasmPlayer && !window.codecBoost && window.self === window.top) {
-                recoverPlay();
-            }
         }
+        //检测直播
+        if (window.self === window.top) {
+            (async () => {
+                await sleep(100)
+                if (localStorage.livePush && JSON.parse(localStorage.livePush)) {
+                    if (Notification.permission == "default") {
+                        await Notification.requestPermission();
+                    };
+                    const detectLive = async () => {
+                        if (window.isBiliLite) {
+                            return false;
+                        }
+                        let time = new Date().getHours() + (new Date().getTimezoneOffset() / 60 + 8);
+                        if (time < 0) {
+                            time += 24;
+                        }
+                        let liveStatus = await (await fetch((navigator.userAgent === "545LocalPlayer") ? "http://127.0.0.1:60510/https://api.live.bilibili.com/bili/living_v2/15641218" : "https://biliapi.qinlili.bid/status?uid=15641218&ForceNoCache=1").catch(error => { })).json();
+                        if (liveStatus.data && (liveStatus.data.status == 1)) {
+                            navigator.serviceWorker.ready.then(function (registration) {
+                                registration.showNotification('塔宝正在直播！', {
+                                    body: '赶紧去直播间补充塔能量吧',
+                                    badge: './icon_mono.png',
+                                    icon: './icon.webp',
+                                    tag: clientLive ? '直播推送客户端' : '直播推送'
+                                });
+                            });
+                        } else {
+                            await sleep(300000);
+                            detectLive();
+                        }
+                    };
+                    detectLive();
+                };
+            })();
+        };
+        setStatus("就绪");
+        document.title = "545在线";
+        if (!window.wasmPlayer && !window.codecBoost && window.self === window.top) {
+            recoverPlay();
+        }
+
         patchEnd();
         const updatePlayList = () => {
             let allSongs = [];
