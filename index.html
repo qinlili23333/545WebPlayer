@@ -751,6 +751,13 @@
             document.getElementById("floatMenu").style.transform = "scale(1,1)";
             await sleep(295);
             document.getElementById("floatMenu").style.overflowY = "auto";
+            if (window.CloseWatcher) {
+                let MenuBack = new CloseWatcher();
+                MenuBack.onclose = () => {
+                    lastClickMenu = lastClick;
+                    hideMenu();
+                };
+            }
         };
         const hideMenu = async () => {
             document.getElementById("floatMenu").style.transform = "scale(0.1, 0.1)";
@@ -797,6 +804,12 @@
             document.getElementById("loading").style.display = loading ? "block" : "none";
             document.getElementById("tips").innerText = text;
         };
+        const setTempStatus = (text, time) => {
+            document.getElementById("loading").style.display = "none";
+            let currentText = document.getElementById("tips").innerText;
+            setTimeout(() => { document.getElementById("tips").innerText = currentText }, time);
+            document.getElementById("tips").innerText = text;
+        }
         let player = document.getElementById("player");
         (async () => {
             if (window.codecBoost && window.wasmPlayer) {
@@ -1105,6 +1118,12 @@
                         audioFilesModule.style.transform = "scale(1,1)";
                         await sleep(200);
                         audioFolderModule.style.display = "none";
+                        if (window.CloseWatcher) {
+                            let FolderBack = new CloseWatcher();
+                            FolderBack.onclose = () => {
+                                switchListDisplay(0);
+                            };
+                        }
                         break;
                     };
                 }
@@ -1602,6 +1621,16 @@
         };
         setStatus("就绪");
         document.title = "545在线";
+        if (window.CloseWatcher) {
+            const createWatcher = () => {
+                let WindowBack = new CloseWatcher();
+                WindowBack.onclose = () => {
+                    setTempStatus("2秒内再按一次返回退出", 2000);
+                    setTimeout(createWatcher, 2000);
+                };
+            }
+            createWatcher();
+        }
         if (!window.wasmPlayer && !window.codecBoost && window.self === window.top) {
             recoverPlay();
         }
