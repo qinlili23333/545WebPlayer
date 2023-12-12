@@ -506,22 +506,39 @@
         list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
         document.title = "545在线-设置";
         const debugInfo = () => {
-            let ip = document.createElement("script");
-            ip.src = "https://pv.sohu.com/cityjson?ForceNoCache=1";
-            ip.onload = () => {
-                let copyInfo = {
-                    UA: navigator.userAgent,
-                    network: returnCitySN
+            function getVideoCardInfo() {
+                const gl = document.createElement('canvas').getContext('webgl');
+                if (!gl) {
+                    return false;
                 }
-                try {
-                    navigator.clipboard.writeText(Base64.encode(JSON.stringify(copyInfo)))
-                    alert("成功复制诊断数据，请发送给琴梨梨！")
-                } catch (e) {
-                    console.log(e)
-                    alert("写入诊断数据到剪贴板失败！")
-                }
+                const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+                return debugInfo ? {
+                    vendor: gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL),
+                    renderer: gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL),
+                } : false;
             }
-            document.body.appendChild(ip);
+            let GPUinfo = getVideoCardInfo();
+            let GPUname = "No GPU";
+            if (GPUinfo) {
+                GPUname = GPUinfo.renderer;
+                if (GPUinfo.renderer.indexOf("ANGLE") == 0) {
+                    GPUname = GPUname.substring(GPUname.indexOf(",") + 2, GPUname.indexOf("Direct3D") - 1);
+                }
+                console.log(GPUname);
+            } else {
+                console.log("Cannot Get GPU Info!")
+            }
+            let copyInfo = {
+                UA: navigator.userAgent,
+                GPU: GPUname
+            }
+            try {
+                navigator.clipboard.writeText(Base64.encode(JSON.stringify(copyInfo)))
+                alert("成功复制诊断数据，请发送给琴梨梨！")
+            } catch (e) {
+                console.log(e)
+                alert("写入诊断数据到剪贴板失败！")
+            }
         }
         document.getElementById("debugMode").addEventListener('long-press', (e) => {
             e.stopPropagation();
