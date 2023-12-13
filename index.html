@@ -544,6 +544,7 @@
             Hamood.init(hamoodConfig, false);
         })();
         window.isBiliLite = false;
+        window.list = [];
         const $ = text => {
             if (text == '.h5-download-bar') {
                 window.isBiliLite = true;
@@ -1648,15 +1649,17 @@
                 allSongs = allSongs.concat(folder.list);
             });
             let newList = [];
-            window.list.forEach(song => {
-                let newSong = allSongs.find(s => { return s.name == song.name && s.release_date == song.release_date });
-                if (!newSong) {
-                    newSong = song;
-                };
-                if (song.viewed) { newSong.viewed = song.viewed };
-                newList.push(newSong);
-            });
-            window.list = newList;
+            if (window.list.length > 0) {
+                window.list.forEach(song => {
+                    let newSong = allSongs.find(s => { return s.name == song.name && s.release_date == song.release_date });
+                    if (!newSong) {
+                        newSong = song;
+                    };
+                    if (song.viewed) { newSong.viewed = song.viewed };
+                    newList.push(newSong);
+                });
+                window.list = newList;
+            }
             localStorage.playList = JSON.stringify(window.list);
             renderPlayList();
         };
