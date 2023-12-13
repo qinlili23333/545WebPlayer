@@ -752,7 +752,7 @@
             await sleep(295);
             document.getElementById("floatMenu").style.overflowY = "auto";
             if (window.CloseWatcher) {
-                let MenuBack = new CloseWatcher();
+                window.MenuBack = new CloseWatcher();
                 MenuBack.onclose = () => {
                     lastClickMenu = lastClick;
                     hideMenu();
@@ -768,6 +768,9 @@
             document.getElementById("floatMenuContainer").style.display = "none";
             menuList.innerHTML = "";
             document.getElementById("floatMenu").style.transition = "max-height 0.3s linear";
+            if (window.CloseWatcher) {
+                window.MenuBack.destroy();
+            }
         };
         window.addEventListener("resize", async (event) => {
             if (document.getElementById("floatMenuContainer").style.display == "block") {
@@ -1109,6 +1112,9 @@
                         await sleep(200);
                         audioFilesModule.style.display = "none";
                         audioFilesModule.innerHTML = "";
+                        if (window.CloseWatcher) {
+                            window.FolderBack.destroy();
+                        }
                         break;
                     };
                     case 1: {
@@ -1119,7 +1125,7 @@
                         await sleep(200);
                         audioFolderModule.style.display = "none";
                         if (window.CloseWatcher) {
-                            let FolderBack = new CloseWatcher();
+                            window.FolderBack = new CloseWatcher();
                             FolderBack.onclose = () => {
                                 switchListDisplay(0);
                             };
@@ -1623,7 +1629,7 @@
         document.title = "545在线";
         if (window.CloseWatcher) {
             const createWatcher = () => {
-                let WindowBack = new CloseWatcher();
+                window.WindowBack = new CloseWatcher();
                 WindowBack.onclose = () => {
                     setTempStatus("2秒内再按一次返回退出", 2000);
                     setTimeout(createWatcher, 2000);

@@ -264,6 +264,9 @@
                 document.getElementById("floatMenu").style.marginTop = "100vh";
                 await sleep(500);
                 document.getElementById("floatMenuContainer").style.display = "none";
+                if (window.CloseWatcher) {
+                    window.FrameBack.destroy();
+                }
             }
             if (event.data.startsWith("http")) {
                 document.getElementById("loading").style.display = "block";
@@ -285,6 +288,15 @@
             if (wide) {
                 document.getElementById("setFrame").style.maxWidth = "100vw";
             }
+            if (window.CloseWatcher) {
+                window.FrameBack = new CloseWatcher();
+                FrameBack.onclose = async () => {
+                    document.getElementById("floatMenu").style.marginTop = "100vh";
+                    document.getElementById("floatMenuContainer").style.opacity = 0;
+                    await sleep(500);
+                    document.getElementById("floatMenuContainer").style.display = "none";
+                };
+            }
         }
         document.getElementById("closeBtn").addEventListener("click", async (event) => {
             event.stopPropagation();
@@ -293,6 +305,9 @@
             await sleep(500);
             document.getElementById("floatMenuContainer").style.display = "none";
             document.getElementById("floatMenu").removeChild(document.getElementById("setFrame"));
+            if (window.CloseWatcher) {
+                window.FrameBack.destroy();
+            }
         })
         window.titleCount = 0;
         document.getElementById("titleText").addEventListener("click", () => {
