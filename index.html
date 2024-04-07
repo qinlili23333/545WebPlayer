@@ -965,12 +965,12 @@
                 hideMenu();
             });
             menuList.appendChild(saveMenu);
-            let shareMenu = makeMenu("分享图片", "./img/share.svg");
-            shareMenu.addEventListener("click", async (e) => {
-                //保存图片
-                e.stopPropagation();
-                shareMenu.setSpan("正在准备分享...");
-                if (navigator.share) {
+            if (navigator.share) {
+                let shareMenu = makeMenu("分享图片", "./img/share.svg");
+                shareMenu.addEventListener("click", async (e) => {
+                    //保存图片
+                    e.stopPropagation();
+                    shareMenu.setSpan("正在准备分享...");
                     navigator.share({
                         title: name + "封面",
                         text: "我正在用545在线(545.qinlili.bid)分享给你塔宝的" + name + "封面图片",
@@ -981,12 +981,10 @@
                             type: "image/avif"
                         })]
                     });
-                } else {
-                    alert("你使用的浏览器不支持分享");
-                }
-                hideMenu();
-            });
-            menuList.appendChild(shareMenu);
+                    hideMenu();
+                });
+                menuList.appendChild(shareMenu);
+            }
             const list = new MDCList(menuList);
             const listItemRipples = list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
             showMenu();
